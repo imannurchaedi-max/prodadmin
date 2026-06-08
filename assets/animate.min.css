@@ -1,0 +1,5 @@
+.animate__animated{animation-duration:.45s;animation-fill-mode:both}
+.animate__fadeIn{animation-name:animateFadeIn}
+.animate__fadeInDown{animation-name:animateFadeInDown}
+@keyframes animateFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes animateFadeInDown{from{opacity:0;transform:translate3d(0,-18px,0)}to{opacity:1;transform:none}}
