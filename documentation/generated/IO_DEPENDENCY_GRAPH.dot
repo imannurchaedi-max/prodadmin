@@ -73,6 +73,11 @@ digraph IODependency {
   "api/materials.php::delete::POST" -> "api/materials.php::action:delete" [color="#dc2626"];
   "assets/app/admin.js::renderMaterialList" [fillcolor="#dcfce7"];
   "assets/app/admin.js::renderMaterialList" -> "api/materials.php::delete::POST" [color="#16a34a"];
+  "api/materials.php::list::GET" [fillcolor="#fee2e2"];
+  "api/materials.php::action:list" [fillcolor="#dbeafe"];
+  "api/materials.php::list::GET" -> "api/materials.php::action:list" [color="#dc2626"];
+  "assets/app/admin.js::saveMaterialEdit" [fillcolor="#dcfce7"];
+  "assets/app/admin.js::saveMaterialEdit" -> "api/materials.php::list::GET" [color="#16a34a"];
   "api/materials.php::saveList::POST" [fillcolor="#fee2e2"];
   "api/materials.php::action:saveList" [fillcolor="#dbeafe"];
   "api/materials.php::saveList::POST" -> "api/materials.php::action:saveList" [color="#dc2626"];
@@ -83,6 +88,8 @@ digraph IODependency {
   "api/materials.php::update::POST" -> "api/materials.php::action:update" [color="#dc2626"];
   "assets/app/admin.js::addNewMaterial" [fillcolor="#dcfce7"];
   "assets/app/admin.js::addNewMaterial" -> "api/materials.php::update::POST" [color="#16a34a"];
+  "assets/app/admin.js::saveMaterialEdit" [fillcolor="#dcfce7"];
+  "assets/app/admin.js::saveMaterialEdit" -> "api/materials.php::update::POST" [color="#16a34a"];
   "api/photos.php::__default__::POST" [fillcolor="#fee2e2"];
   "api/photos.php::-" [fillcolor="#dbeafe"];
   "api/photos.php::__default__::POST" -> "api/photos.php::-" [color="#dc2626"];

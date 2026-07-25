@@ -1,6 +1,6 @@
 # ProdAdmin — Documentation Index
 
-**Generated:** 2026-06-08 | **Last updated:** 2026-07-07 (comprehensive audit + function mapping) | **GitNexus:** 1.812 nodes · 2.934 edges · 114 flows
+**Generated:** 2026-06-08 | **Last updated:** 2026-07-25 (handover race fix, draft UX, material edit modal, comment relevance audit) | **GitNexus:** 1.851 nodes · 2.977 edges · 116 flows
 
 ---
 

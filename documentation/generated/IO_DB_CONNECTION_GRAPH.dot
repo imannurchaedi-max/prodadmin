@@ -105,6 +105,13 @@ digraph IODBConnection {
   "api/materials.php::delete::POST" -> "api/materials.php::action:delete" [color="#dc2626"];
   "table::suppliers" [label="suppliers\\nDELETE", fillcolor="#fef3c7"];
   "api/materials.php::action:delete" -> "table::suppliers" [color="#2563eb"];
+  "api/materials.php::list::GET" [fillcolor="#fee2e2"];
+  "api/materials.php::action:list" [fillcolor="#dbeafe"];
+  "api/materials.php::list::GET" -> "api/materials.php::action:list" [color="#dc2626"];
+  "table::material_suppliers" [label="material_suppliers\\nJOIN", fillcolor="#fef3c7"];
+  "api/materials.php::action:list" -> "table::material_suppliers" [color="#2563eb"];
+  "table::suppliers" [label="suppliers\\nSELECT", fillcolor="#fef3c7"];
+  "api/materials.php::action:list" -> "table::suppliers" [color="#2563eb"];
   "api/materials.php::saveList::POST" [fillcolor="#fee2e2"];
   "api/materials.php::action:saveList" [fillcolor="#dbeafe"];
   "api/materials.php::saveList::POST" -> "api/materials.php::action:saveList" [color="#dc2626"];

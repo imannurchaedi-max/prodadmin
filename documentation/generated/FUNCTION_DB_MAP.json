@@ -1,15 +1,15 @@
 {
   "summary": {
     "repo_root": "C:\\xampp\\htdocs\\ProdAdmin",
-    "generated_at": "2026-07-07T05:56:17.808809+00:00",
+    "generated_at": "2026-07-25T05:16:43.682344+00:00",
     "table_count": 15,
-    "function_count": 180,
+    "function_count": 179,
     "link_count": 214,
     "direct_link_count": 142,
     "inherited_link_count": 72,
     "db_block_count": 80,
-    "zero_link_block_count": 100,
-    "call_edge_count": 285,
+    "zero_link_block_count": 99,
+    "call_edge_count": 283,
     "orphan_tables": [],
     "db_heavy_functions": [
       {
@@ -343,7 +343,7 @@
         "file_path": "api/auth.php",
         "function_name": "actionLogin",
         "block_kind": "function",
-        "start_line": 188,
+        "start_line": 179,
         "db_table_count": 3,
         "direct_db_table_count": 3,
         "inherited_db_table_count": 0,
@@ -775,7 +775,7 @@
       "function_name": "action:changePassword",
       "block_kind": "action",
       "start_line": 240,
-      "end_line": 263,
+      "end_line": 262,
       "table": "users",
       "operations": [
         "SELECT",
@@ -788,8 +788,8 @@
       "file_path": "api/auth.php",
       "function_name": "getAdminPin",
       "block_kind": "function",
-      "start_line": 60,
-      "end_line": 66,
+      "start_line": 51,
+      "end_line": 57,
       "table": "settings",
       "operations": [
         "SELECT"
@@ -801,8 +801,8 @@
       "file_path": "api/auth.php",
       "function_name": "validateToken",
       "block_kind": "function",
-      "start_line": 69,
-      "end_line": 83,
+      "start_line": 60,
+      "end_line": 74,
       "table": "sessions",
       "operations": [
         "SELECT"
@@ -814,8 +814,8 @@
       "file_path": "api/auth.php",
       "function_name": "validateToken",
       "block_kind": "function",
-      "start_line": 69,
-      "end_line": 83,
+      "start_line": 60,
+      "end_line": 74,
       "table": "users",
       "operations": [
         "JOIN"
@@ -827,8 +827,8 @@
       "file_path": "api/auth.php",
       "function_name": "createSession",
       "block_kind": "function",
-      "start_line": 89,
-      "end_line": 108,
+      "start_line": 80,
+      "end_line": 99,
       "table": "sessions",
       "operations": [
         "DELETE",
@@ -841,8 +841,8 @@
       "file_path": "api/auth.php",
       "function_name": "createSession",
       "block_kind": "function",
-      "start_line": 89,
-      "end_line": 108,
+      "start_line": 80,
+      "end_line": 99,
       "table": "takeover_requests",
       "operations": [
         "DELETE"
@@ -854,8 +854,8 @@
       "file_path": "api/auth.php",
       "function_name": "deleteSession",
       "block_kind": "function",
-      "start_line": 110,
-      "end_line": 115,
+      "start_line": 101,
+      "end_line": 106,
       "table": "sessions",
       "operations": [
         "DELETE"
@@ -867,8 +867,8 @@
       "file_path": "api/auth.php",
       "function_name": "getActiveSession",
       "block_kind": "function",
-      "start_line": 117,
-      "end_line": 125,
+      "start_line": 108,
+      "end_line": 116,
       "table": "sessions",
       "operations": [
         "SELECT"
@@ -880,8 +880,8 @@
       "file_path": "api/auth.php",
       "function_name": "getPendingTakeover",
       "block_kind": "function",
-      "start_line": 127,
-      "end_line": 137,
+      "start_line": 118,
+      "end_line": 128,
       "table": "takeover_requests",
       "operations": [
         "SELECT"
@@ -893,8 +893,8 @@
       "file_path": "api/auth.php",
       "function_name": "clearTakeoverHistory",
       "block_kind": "function",
-      "start_line": 139,
-      "end_line": 144,
+      "start_line": 130,
+      "end_line": 135,
       "table": "takeover_requests",
       "operations": [
         "DELETE"
@@ -906,8 +906,8 @@
       "file_path": "api/auth.php",
       "function_name": "clearTakeoverRequests",
       "block_kind": "function",
-      "start_line": 146,
-      "end_line": 152,
+      "start_line": 137,
+      "end_line": 143,
       "table": "takeover_requests",
       "operations": [
         "DELETE"
@@ -919,8 +919,8 @@
       "file_path": "api/auth.php",
       "function_name": "getTakeoverTimeoutCount",
       "block_kind": "function",
-      "start_line": 154,
-      "end_line": 162,
+      "start_line": 145,
+      "end_line": 153,
       "table": "takeover_requests",
       "operations": [
         "SELECT"
@@ -932,8 +932,8 @@
       "file_path": "api/auth.php",
       "function_name": "promoteTakeover",
       "block_kind": "function",
-      "start_line": 164,
-      "end_line": 184,
+      "start_line": 155,
+      "end_line": 175,
       "table": "sessions",
       "operations": [
         "SELECT",
@@ -946,8 +946,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionLogin",
       "block_kind": "function",
-      "start_line": 188,
-      "end_line": 302,
+      "start_line": 179,
+      "end_line": 293,
       "table": "sessions",
       "operations": [
         "DELETE",
@@ -960,8 +960,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionLogin",
       "block_kind": "function",
-      "start_line": 188,
-      "end_line": 302,
+      "start_line": 179,
+      "end_line": 293,
       "table": "takeover_requests",
       "operations": [
         "INSERT"
@@ -973,8 +973,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionLogin",
       "block_kind": "function",
-      "start_line": 188,
-      "end_line": 302,
+      "start_line": 179,
+      "end_line": 293,
       "table": "users",
       "operations": [
         "SELECT"
@@ -986,8 +986,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionLogout",
       "block_kind": "function",
-      "start_line": 304,
-      "end_line": 321,
+      "start_line": 295,
+      "end_line": 312,
       "table": "sessions",
       "operations": [
         "DELETE",
@@ -1000,8 +1000,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionLogout",
       "block_kind": "function",
-      "start_line": 304,
-      "end_line": 321,
+      "start_line": 295,
+      "end_line": 312,
       "table": "takeover_requests",
       "operations": [
         "DELETE"
@@ -1013,8 +1013,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionForceLogin",
       "block_kind": "function",
-      "start_line": 323,
-      "end_line": 346,
+      "start_line": 314,
+      "end_line": 337,
       "table": "sessions",
       "operations": [
         "SELECT"
@@ -1026,8 +1026,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionChangePassword",
       "block_kind": "function",
-      "start_line": 348,
-      "end_line": 367,
+      "start_line": 339,
+      "end_line": 358,
       "table": "users",
       "operations": [
         "SELECT",
@@ -1040,8 +1040,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionCheckTakeover",
       "block_kind": "function",
-      "start_line": 379,
-      "end_line": 409,
+      "start_line": 370,
+      "end_line": 400,
       "table": "takeover_requests",
       "operations": [
         "DELETE"
@@ -1053,8 +1053,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionTakeoverDecision",
       "block_kind": "function",
-      "start_line": 410,
-      "end_line": 458,
+      "start_line": 401,
+      "end_line": 449,
       "table": "sessions",
       "operations": [
         "UPDATE"
@@ -1066,8 +1066,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionTakeoverDecision",
       "block_kind": "function",
-      "start_line": 410,
-      "end_line": 458,
+      "start_line": 401,
+      "end_line": 449,
       "table": "takeover_requests",
       "operations": [
         "DELETE",
@@ -1080,8 +1080,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionTakeoverStatus",
       "block_kind": "function",
-      "start_line": 460,
-      "end_line": 549,
+      "start_line": 451,
+      "end_line": 538,
       "table": "takeover_requests",
       "operations": [
         "DELETE",
@@ -2540,8 +2540,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionForceLogin",
       "block_kind": "function",
-      "start_line": 323,
-      "end_line": 346,
+      "start_line": 314,
+      "end_line": 337,
       "table": "settings",
       "operations": [
         "CALL"
@@ -2556,8 +2556,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionForceLogin",
       "block_kind": "function",
-      "start_line": 323,
-      "end_line": 346,
+      "start_line": 314,
+      "end_line": 337,
       "table": "takeover_requests",
       "operations": [
         "CALL"
@@ -2573,8 +2573,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionCheckTakeover",
       "block_kind": "function",
-      "start_line": 379,
-      "end_line": 409,
+      "start_line": 370,
+      "end_line": 400,
       "table": "sessions",
       "operations": [
         "CALL"
@@ -2589,8 +2589,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionTakeoverStatus",
       "block_kind": "function",
-      "start_line": 460,
-      "end_line": 549,
+      "start_line": 451,
+      "end_line": 538,
       "table": "sessions",
       "operations": [
         "CALL"
@@ -3327,8 +3327,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionValidate",
       "block_kind": "function",
-      "start_line": 369,
-      "end_line": 377,
+      "start_line": 360,
+      "end_line": 368,
       "table": "sessions",
       "operations": [
         "CALL"
@@ -3343,8 +3343,8 @@
       "file_path": "api/auth.php",
       "function_name": "actionValidate",
       "block_kind": "function",
-      "start_line": 369,
-      "end_line": 377,
+      "start_line": 360,
+      "end_line": 368,
       "table": "users",
       "operations": [
         "CALL"
@@ -3695,27 +3695,27 @@
   "gitnexus_context": {
     "actionSubmit": {
       "symbol": "actionSubmit",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     },
     "actionRevise": {
       "symbol": "actionRevise",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     },
     "actionFinalize": {
       "symbol": "actionFinalize",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     },
     "actionLogin": {
       "symbol": "actionLogin",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     },
     "loadAdminScorecard": {
       "symbol": "loadAdminScorecard",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     },
     "renderAdminCharts": {
       "symbol": "renderAdminCharts",
-      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, prodadmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
     }
   }
 }

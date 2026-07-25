@@ -1,7 +1,7 @@
 # Blast Radius Report — ProdAdmin
 
-**Generated:** 2026-06-08 | **Last Updated:** 2026-07-07C (comment cleanup + bearerToken security fix) | **Tool:** GitNexus Impact Analysis
-**Index:** 1.812 nodes · 2.934 edges · 114 flows · 108 clusters
+**Generated:** 2026-06-08 | **Last Updated:** 2026-07-25 (handover race fix, draft UX, material edit, comment audit) | **Tool:** GitNexus Impact Analysis
+**Index:** 1.851 nodes · 2.977 edges · 116 flows · 109 clusters
 
 ---
 
@@ -12,6 +12,20 @@
 > gitnexus_impact({target: "symbolName", direction: "upstream", repo: "ProdAdmin"})
 > ```
 > dan melaporkan blast radius ke user.
+
+---
+
+## 📋 Sesi 2026-07-25 — Impact Checks Sebelum Edit
+
+| Symbol | Risk | Direct Callers | Catatan |
+|--------|------|-----------------|---------|
+| `renderMaterialTable` | LOW | 3 | Fix default supplier kosong (bukan supplier pertama) — hanya ubah 1 baris fallback, tidak ubah signature |
+| `renderMaterialTable` (2x, session ini) | HIGH → LOW | 3 | Sudah pernah HIGH di sesi 7-inch audit; kali ini cuma 1-line default value change, dampak minimal walau caller count sama |
+| `renderHistoryCards` | LOW | 0 | Aman untuk tambah section "Analisis Output" ke modal detail |
+| `renderMaterialList` (admin.js) | LOW | 1 | Aman untuk tambah tombol edit + modal Edit Material |
+| `refreshAnalysis` | HIGH | 4 (`restoreDraft`, `collectOutputs`, `populateFormFromHistory`, top-level) | Diekstrak jadi `computeMaterialAnalysis()` — signature & DOM output `refreshAnalysis()` tetap identik, jadi ke-4 caller tidak terdampak |
+
+**`triggerHandover()` dan fungsi `window.X = function X()` lain** tidak selalu ter-resolve oleh `gitnexus_impact` (pola assignment ini kadang tidak ke-index sebagai symbol standalone). Untuk kasus ini, caller ditelusuri manual via `grep` — hanya 3 titik pemanggilan (`loadInitialData`, 3× event listener perubahan Mesin/Shift/Tanggal), semua ditemukan dan diverifikasi konsisten.
 
 ---
 
@@ -87,9 +101,10 @@ File `api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php` dan `api/transactions_A
 ## 🟠 HIGH — refreshAnalysis()
 
 **File:** `assets/app/form.js`
-**Fungsi:** Hitung & render analisa hemat/boros kardus+kantong berdasarkan catBox/catBag dari conversions
+**Fungsi:** Render tabel analisa hemat/boros di form live — kalkulasinya sendiri diekstrak ke `computeMaterialAnalysis()` (2026-07-25) supaya bisa dipakai ulang di laporan WA download dan modal detail riwayat tanpa duplikasi rumus
 
 > **Baru ditambahkan 2026-06-11** — belum ada di docs lama.
+> **2026-07-25:** refactor ekstraksi — signature dan output `refreshAnalysis()` (void, tulis ke `#analysisBody`) tetap identik, jadi ke-4 caller di bawah tidak terdampak perilakunya.
 
 | Metric | Value |
 |--------|-------|

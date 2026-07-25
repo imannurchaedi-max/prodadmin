@@ -2,7 +2,7 @@
 
 ## Cluster: App — Frontend (53 symbols)
 
-> **Last updated:** 2026-07-07 (comprehensive audit)
+> **Last updated:** 2026-07-25 (handover race fix, draft auto-resume, material edit modal, comment relevance audit)
 
 ### `assets/app/api.js` — Global State & Utilities
 
@@ -50,10 +50,11 @@
 | Function | Signature | Output | Notes |
 |----------|-----------|--------|-------|
 | `renderHistoryCards(id, rows, isAdmin)` | `(string, array, boolean)` | void → DOM | Render kartu per laporan. Blast radius: 6 outgoing calls |
-| `renderMaterialTable()` | `()` | void → DOM | Render tabel input material — inputs pakai `type="text" inputmode="numeric"` + format ribuan |
+| `renderMaterialTable()` | `()` | void → DOM | Render tabel input material — inputs pakai `type="text" inputmode="decimal"` + format ribuan. Baris yang belum pernah disentuh default supplier-nya kosong (`defaultMaterialRow(material)`, TANPA prefill supplier pertama — fixed 2026-07-25) |
 | `renderOutputs()` | `()` | void → DOM | Render baris output produksi — hanya dipanggil saat SKU berubah |
 | `collectOutputs()` | `()` | void | Baca output rows dari DOM → state.outputs (qtyBox/counterPcs via parseIntField), lalu `refreshAnalysis()`. TIDAK memanggil renderOutputs |
-| `refreshAnalysis()` | `()` | void → DOM | Hitung & tampilkan analisa hemat/boros — 5 kolom: Kategori, Target(Std+Rj), Aktual+bar, Selisih, Status. Formula: `diff = grand - (stdTarget + reject)` |
+| `refreshAnalysis()` | `()` | void → DOM | Render tabel analisa hemat/boros live — 5 kolom: Kategori, Target(Std+Rj), Aktual+bar, Selisih, Status. Kalkulasinya sendiri ada di `computeMaterialAnalysis()` |
+| `computeMaterialAnalysis(outputs, materials)` | `(array, array)` | array of analysis rows | Rumus boros/hemat/pas: `diff = grand - (stdTarget + reject)`. Dipakai bersama oleh `refreshAnalysis()` (form live), laporan WA download, dan modal detail riwayat — supaya angkanya konsisten di 3 tempat |
 | `snapshotRows()` | `()` | void | Snapshot material rows → state.formRows |
 | `defaultMaterialRow(name, supplier="")` | `(string, string?)` | object | Buat row material default |
 | `getActiveMaterials()` | `()` | array | Baca material dari DOM — menggunakan `parseIntField()` untuk nilai numerik |
@@ -69,8 +70,9 @@
 | `saveDraft()` | `()` | void | Serialize form → localStorage. Skip saat mode revisi |
 | `autoSaveDraft()` | `()` | void | Debounce 3s sebelum `saveDraft()`. Dipanggil dari input events |
 | `restoreDraft(draft)` | `(object)` | void | Set `state.formRows`, `state.outputs`, field form, `renderMaterialTable()` |
-| `discardDraft()` | `()` | void | Hapus draft dari localStorage + clear `_draftTimer`. Reset form HANYA jika `_pendingDraft` masih set (user klik "Abaikan"). Dipanggil juga dari `submitData()` — di sana TIDAK reset form |
-| `resumeDraft()` | `()` | void | Hide banner saja — state sudah pre-loaded di `loadInitialData()` |
+| `discardDraft()` | `()` | void | Hapus draft dari localStorage + clear `_draftTimer`. Reset form HANYA jika `_pendingDraft` masih set (user klik "Mulai Baru"). Dipanggil juga dari `submitData()` — di sana TIDAK reset form |
+| `dismissDraftBanner()` | `()` | void | Hide notice draft saja — draft SUDAH aktif sejak sebelum banner ini muncul (pre-loaded di `loadInitialData()`), jadi ini bukan gate. Rename dari `resumeDraft()` 2026-07-25 karena nama lama menyesatkan (seolah aksinya yang mengaktifkan draft) |
+| `triggerHandover()` | `async ()` | void → DOM | GET `previousStock`, isi `stockAwal` tiap material dari `SISA` shift sebelumnya. Dipanggil saat login (jika `enableHandover`) dan tiap Mesin/Shift/Tanggal berubah — untuk SEMUA role termasuk admin (gate `!state.isAdmin` dihapus 2026-07-25). Pakai sequence-counter guard (`_handoverSeq`) supaya response API yang telat (stale) dari trigger sebelumnya tidak menimpa hasil trigger terbaru |
 | `resetData()` | `()` | void | Reset semua state form termasuk `state.materialPhotos = {}` |
 
 ---
@@ -80,13 +82,15 @@
 | Function | Signature | Output | Notes |
 |----------|-----------|--------|-------|
 | `renderConversionTable()` | `()` | void → DOM | Render tabel master produk (SKU, berat, ratio, catBag, catBox). Dipanggil via `filterConversionTable` dari `oninput` HTML (bukan addEventListener — tidak double-fire) |
-| `renderMaterialList()` | `()` | void → DOM | Render daftar master material dengan drag-reorder (Sortable.js) |
+| `renderMaterialList()` | `()` | void → DOM | Render daftar master material dengan drag-reorder (Sortable.js) + tombol edit (pensil, buka `modalMaterial`) dan delete per baris. Nama material dibungkus `<span class="material-name">` — dipakai `saveMaterialChanges()` untuk extract urutan tanpa ikut menangkap span tombol aksi |
+| `openMaterialEditModal(name)` | `(string)` | void | Prefill field Nama + textarea Supplier (satu per baris, dari `state.suppliers.map[name]`), tampilkan `modalMaterial`. Ditambahkan 2026-07-25 — backend `api/materials.php?action=update` sudah lama support rename+ganti supplier, UI-nya baru dibuat |
+| `saveMaterialEdit()` | `async ()` | void | POST `api/materials.php?action=update` (rename material + replace daftar supplier) → reload `api/materials.php?action=list` → re-render list + tabel input material |
 | `resetConversionModalBtn()` | `()` | void | Reset button Simpan ke enabled state — dipanggil saat modal dibuka (open + edit) |
 | `openConversionModal()` | `()` | void | Buka modal tambah produk baru (form kosong + reset button) |
 | `saveConversionData()` | `async ()` | void | POST save → reload list → `modal.hide()` → re-enable button. Order: hide dulu, enable button sesudahnya |
 | `filterConversionTable()` | `()` | void | Filter tabel produk berdasarkan input search (alias `renderConversionTable`) |
 | `addNewMaterial()` | `async ()` | void | POST tambah material baru |
-| `saveMaterialChanges()` | `async ()` | void | POST urutan material baru |
+| `saveMaterialChanges()` | `async ()` | void | POST urutan material baru — extract urutan dari `.material-name` span saja (lihat catatan `renderMaterialList()`) |
 | `saveMachineSizeConfig()` | `async ()` | void | POST config mesin/size/aliases |
 | `saveLockDate()` | `async ()` | void | POST lock date |
 | `saveBroadcast()` | `async ()` | void | POST broadcast message |
@@ -142,6 +146,19 @@
 
 ---
 
+### `api/materials.php` — Master Material + Supplier CRUD
+
+| Action | Method | Input | Output |
+|--------|--------|-------|--------|
+| `list` (default GET) | GET | — | `{map: {materialName: [suppliers]}, order: [materialNames]}` |
+| `saveList` | POST | `{order: [names]}` | `true` — reset `display_order` sesuai urutan drag |
+| `delete` | POST | `{name}` | `true` — DELETE FROM suppliers (cascade ke material_suppliers) |
+| `update` | POST | `{oldName, newName, suppliers: [names]}` | `true` — rename material (jika `oldName` beda dari `newName`) DAN replace seluruh daftar supplier. `oldName=""` berarti insert material baru |
+
+> **Catatan:** action `update` sudah ada sejak awal tapi baru dipakai UI-nya 2026-07-25 lewat modal "Edit Material" di admin panel (`openMaterialEditModal` / `saveMaterialEdit` di atas).
+
+---
+
 ### `api/conversions.php` — Master SKU CRUD
 
 | Action | Method | Input | Output |
@@ -160,7 +177,7 @@
 | `actionRevise()` | body JSON + uuid lama | {uuid, count, rev} | semua tabel di atas + UPDATE status=HISTORY — pakai `SELECT FOR UPDATE` untuk lock row (anti race condition) |
 | `actionFinalize()` | {uuid} | success | transactions, production_outputs (FINAL) |
 | `actionDelete()` | {uuid} admin only | success | transactions (SUPERSEDED) |
-| `actionPreviousStock()` | ?mesin=&shift= | {materials:[]} | transaction_materials (SELECT) |
+| `actionPreviousStock()` | `?mesin=&shift=&date=` | `{material_name: stock_final}` map | transaction_materials (SELECT) — dipanggil oleh `triggerHandover()` untuk carry SISA shift lalu ke STOK AWAL shift baru |
 | `actionDiff()` | ?uuid= | {revisions:[]} | transactions, materials, outputs (SELECT) |
 | `insertTransaction(db,...)` | 11 params: `$db,$uuid,$tanggal,$shift,$mesin,$size,$revCount,$createdBy,$materials,$outputs,$report` | void | 4-5 tables via PDO transaction |
 | `calcMaterial(mat, shift)` | material obj + shift | computed stock values | — (pure calculation) |

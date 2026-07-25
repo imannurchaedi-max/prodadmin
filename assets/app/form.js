@@ -634,7 +634,7 @@
     const report = {
       counterKg: Number(document.getElementById("grandTotalKg")?.textContent?.replace(/\./g, "").replace(",", ".") || 0),
       lossKg: Number(document.getElementById("grandTotalLoss")?.textContent?.replace(/\./g, "").replace(",", ".") || 0),
-      // C4: use parseLocalizedFloat so "2,50%" -> 2.5, not a raw string that PHP truncates at the comma
+      // Use parseLocalizedFloat so "2,50%" -> 2.5, not a raw string that PHP truncates at the comma
       lossPct: parseLocalizedFloat(document.getElementById("grandTotalLossPct")?.textContent),
       downtimeMin: Number(document.getElementById("rptDowntimeMin")?.value || 0),
       downtimePct: parseLocalizedFloat(document.getElementById("rptDowntimePct")?.value),
@@ -1442,7 +1442,7 @@
     (view === "input" ? input : data)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // M1/L1: pagination state for user history view
+  // Pagination state for user history view
   const HISTORY_PAGE_SIZE = 50;
   let historyCurrentPage  = 1;
   let historyTotalPages   = 1;
@@ -1452,8 +1452,6 @@
     if (btn) btn.classList.toggle("d-none", !visible);
   }
 
-    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
-    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
   window.loadHistory = async function loadHistory() {
     historyCurrentPage = 1;
     const today     = new Date().toISOString().slice(0, 10);

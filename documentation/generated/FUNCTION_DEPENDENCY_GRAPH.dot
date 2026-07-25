@@ -33,13 +33,11 @@ digraph FunctionDependency {
   "api/auth.php::actionChangePassword" -> "api/auth.php::param" [color="#1d4ed8"];
   "api/auth.php::actionChangePassword" -> "api/auth.php::fail" [color="#1d4ed8"];
   "api/auth.php::actionChangePassword" -> "api/auth.php::ok" [color="#1d4ed8"];
-  "api/auth.php::actionValidate" -> "api/auth.php::bearerToken" [color="#1d4ed8"];
-  "api/auth.php::actionValidate" -> "api/auth.php::param" [color="#1d4ed8"];
   "api/auth.php::actionValidate" -> "api/auth.php::fail" [color="#1d4ed8"];
   "api/auth.php::actionValidate" -> "api/auth.php::validateToken" [color="#1d4ed8"];
   "api/auth.php::actionValidate" -> "api/auth.php::ok" [color="#1d4ed8"];
   "api/auth.php::actionCheckTakeover" -> "api/auth.php::param" [color="#1d4ed8"];
-  "api/auth.php::actionCheckTakeover" -> "api/auth.php::bearerToken" [color="#1d4ed8"];
+  "api/auth.php::actionCheckTakeover" -> "api/auth.php::body" [color="#1d4ed8"];
   "api/auth.php::actionCheckTakeover" -> "api/auth.php::fail" [color="#1d4ed8"];
   "api/auth.php::actionCheckTakeover" -> "api/auth.php::getActiveSession" [color="#1d4ed8"];
   "api/auth.php::actionCheckTakeover" -> "api/auth.php::ok" [color="#1d4ed8"];
@@ -192,9 +190,16 @@ digraph FunctionDependency {
   "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff" -> "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::ok" [color="#1d4ed8"];
   "assets/app/admin.js::renderMaterialList" -> "assets/app/api.js::esc" [color="#059669"];
   "assets/app/admin.js::renderMaterialList" -> "assets/app/admin.js::activeSortable" [color="#059669"];
+  "assets/app/admin.js::renderMaterialList" -> "assets/app/admin.js::openMaterialEditModal" [color="#059669"];
   "assets/app/admin.js::renderMaterialList" -> "assets/app/api.js::api" [color="#059669"];
   "assets/app/admin.js::renderMaterialList" -> "assets/app/form.js::renderTable" [color="#059669"];
   "assets/app/admin.js::renderMaterialList" -> "endpoint::api/materials.php::delete" [color="#dc2626"];
+  "assets/app/admin.js::saveMaterialEdit" -> "assets/app/api.js::toast" [color="#059669"];
+  "assets/app/admin.js::saveMaterialEdit" -> "assets/app/api.js::api" [color="#059669"];
+  "assets/app/admin.js::saveMaterialEdit" -> "assets/app/admin.js::renderMaterialList" [color="#059669"];
+  "assets/app/admin.js::saveMaterialEdit" -> "assets/app/form.js::renderTable" [color="#059669"];
+  "assets/app/admin.js::saveMaterialEdit" -> "endpoint::api/materials.php::update" [color="#dc2626"];
+  "assets/app/admin.js::saveMaterialEdit" -> "endpoint::api/materials.php::list" [color="#dc2626"];
   "assets/app/admin.js::renderConversionTable" -> "assets/app/api.js::esc" [color="#059669"];
   "assets/app/admin.js::renderConversionTable" -> "assets/app/api.js::fmt" [color="#059669"];
   "assets/app/admin.js::renderConversionTable" -> "assets/app/admin.js::resetConversionModalBtn" [color="#059669"];
@@ -216,9 +221,4 @@ digraph FunctionDependency {
   "assets/app/admin.js::saveMaterialChanges" -> "assets/app/api.js::api" [color="#059669"];
   "assets/app/admin.js::saveMaterialChanges" -> "assets/app/api.js::toast" [color="#059669"];
   "assets/app/admin.js::saveMaterialChanges" -> "endpoint::api/materials.php::saveList" [color="#dc2626"];
-  "assets/app/admin.js::saveMachineSizeConfig" -> "assets/app/api.js::api" [color="#059669"];
-  "assets/app/admin.js::saveMachineSizeConfig" -> "assets/app/api.js::toast" [color="#059669"];
-  "assets/app/admin.js::saveMachineSizeConfig" -> "endpoint::api/config.php::save" [color="#dc2626"];
-  "assets/app/admin.js::saveLockDate" -> "assets/app/api.js::api" [color="#059669"];
-  "assets/app/admin.js::saveLockDate" -> "assets/app/api.js::toast" [color="#059669"];
 }

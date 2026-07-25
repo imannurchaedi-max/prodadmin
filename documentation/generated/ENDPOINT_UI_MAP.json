@@ -1,8 +1,8 @@
 {
   "summary": {
-    "generated_at": "2026-07-07T16:30:43.164313+00:00",
-    "frontend_call_count": 47,
-    "endpoint_count": 23,
+    "generated_at": "2026-07-25T05:16:38.453442+00:00",
+    "frontend_call_count": 51,
+    "endpoint_count": 24,
     "silent_fail_consumer_count": 0,
     "silent_catch_consumer_count": 7,
     "blank_state_consumer_count": 0,
@@ -280,6 +280,26 @@
         "blank_state_consumer_count": 0
       },
       {
+        "endpoint_key": "api/materials.php::list::GET",
+        "endpoint_base": "api/materials.php",
+        "endpoint_action": "list",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::saveMaterialEdit",
+          "assets/app/admin.js::saveMaterialEdit"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/materials.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "map",
+          "order"
+        ],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
         "endpoint_key": "api/materials.php::saveList::POST",
         "endpoint_base": "api/materials.php",
         "endpoint_action": "saveList",
@@ -301,8 +321,10 @@
         "endpoint_base": "api/materials.php",
         "endpoint_action": "update",
         "method": "POST",
-        "consumer_count": 2,
+        "consumer_count": 4,
         "consumer_functions": [
+          "assets/app/admin.js::saveMaterialEdit",
+          "assets/app/admin.js::saveMaterialEdit",
           "assets/app/admin.js::addNewMaterial",
           "assets/app/admin.js::addNewMaterial"
         ],
@@ -456,7 +478,7 @@
         "endpoint_key": "api/init.php::__default__::GET",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::loadInitialData line 1477"
+          "assets/app/form.js::loadInitialData line 1556"
         ]
       },
       {
@@ -464,7 +486,7 @@
         "endpoint_key": "api/init.php::__default__::GET",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::loadInitialData line 1477"
+          "assets/app/form.js::loadInitialData line 1556"
         ]
       },
       {
@@ -472,7 +494,7 @@
         "endpoint_key": "api/settings.php::__default__::GET",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::loadInitialData line 1477"
+          "assets/app/form.js::loadInitialData line 1556"
         ]
       },
       {
@@ -480,7 +502,7 @@
         "endpoint_key": "api/settings.php::__default__::GET",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::loadInitialData line 1477"
+          "assets/app/form.js::loadInitialData line 1556"
         ]
       },
       {
@@ -488,7 +510,7 @@
         "endpoint_key": "api/transactions.php::delete::POST",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::renderHistoryCards line 694"
+          "assets/app/form.js::renderHistoryCards line 707"
         ]
       },
       {
@@ -504,7 +526,7 @@
         "endpoint_key": "api/transactions.php::diff::GET",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::renderHistoryCards line 694"
+          "assets/app/form.js::renderHistoryCards line 707"
         ]
       },
       {
@@ -512,7 +534,7 @@
         "endpoint_key": "api/transactions.php::finalize::POST",
         "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
         "evidence": [
-          "assets/app/form.js::renderHistoryCards line 694"
+          "assets/app/form.js::renderHistoryCards line 707"
         ]
       },
       {
@@ -542,7 +564,71 @@
       "silent_catch_pattern": false,
       "renders_blank_state": false,
       "auth_recovery": false,
-      "snippet": "App.api(\"api/materials.php?action=delete\", { method: \"POST\", body: JSON.stringify({ name }) });\n      state.materials = state.materials.filter((item) => item !== name);\n      renderMaterialList();\n      window.renderTable();\n    }));\n  }"
+      "snippet": "App.api(\"api/materials.php?action=delete\", { method: \"POST\", body: JSON.stringify({ name }) });\n      state.materials = state.materials.filter((item) => item !== name);\n      if (state.suppliers?.map) delete state.suppliers.map[name];\n      if (state.suppliers?.order) state.suppliers.order = state.suppliers.order.filter((item) => item !== name);\n      renderMaterialList();\n      window.renderTable();\n    }));\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=update",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "update",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialEdit",
+      "start_line": 46,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=update\", { method: \"POST\", body: JSON.stringify({ oldName, newName, suppliers }) });\n      const res = await App.api(\"api/materials.php?action=list\", { method: \"GET\" });\n      state.suppliers = res.data || { map: {}, order: [] };\n      state.materials = [...(state.suppliers.order || [])];\n      renderMaterialList();\n      window.renderTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalMaterial\")).hide();\n      App.toast(\"success\", \"Material tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan material\", e.messa"
+    },
+    {
+      "endpoint": "api/materials.php?action=list",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialEdit",
+      "start_line": 46,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=list\", { method: \"GET\" });\n      state.suppliers = res.data || { map: {}, order: [] };\n      state.materials = [...(state.suppliers.order || [])];\n      renderMaterialList();\n      window.renderTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalMaterial\")).hide();\n      App.toast(\"success\", \"Material tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan material\", e.message);\n    } finally {\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n    }\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=update",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "update",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialEdit",
+      "start_line": 46,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=update\", { method: \"POST\", body: JSON.stringify({ oldName, newName, suppliers }) });\n      const res = await App.api(\"api/materials.php?action=list\", { method: \"GET\" });\n      state.suppliers = res.data || { map: {}, order: [] };\n      state.materials = [...(state.suppliers.order || [])];\n      renderMaterialList();\n      window.renderTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalMaterial\")).hide();\n      App.toast(\"success\", \"Material tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan material\", e.messa"
+    },
+    {
+      "endpoint": "api/materials.php?action=list",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialEdit",
+      "start_line": 46,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=list\", { method: \"GET\" });\n      state.suppliers = res.data || { map: {}, order: [] };\n      state.materials = [...(state.suppliers.order || [])];\n      renderMaterialList();\n      window.renderTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalMaterial\")).hide();\n      App.toast(\"success\", \"Material tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan material\", e.message);\n    } finally {\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n    }\n  }"
     },
     {
       "endpoint": "api/conversions.php?action=delete",
@@ -552,7 +638,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "renderConversionTable",
-      "start_line": 31,
+      "start_line": 70,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -568,7 +654,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveConversionData",
-      "start_line": 100,
+      "start_line": 139,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -584,7 +670,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveConversionData",
-      "start_line": 100,
+      "start_line": 139,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -600,7 +686,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveConversionData",
-      "start_line": 100,
+      "start_line": 139,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -616,7 +702,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveConversionData",
-      "start_line": 100,
+      "start_line": 139,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -632,7 +718,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "addNewMaterial",
-      "start_line": 128,
+      "start_line": 167,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -648,7 +734,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "addNewMaterial",
-      "start_line": 128,
+      "start_line": 167,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -664,7 +750,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveMaterialChanges",
-      "start_line": 139,
+      "start_line": 178,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -680,7 +766,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveMaterialChanges",
-      "start_line": 139,
+      "start_line": 178,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -696,7 +782,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveMachineSizeConfig",
-      "start_line": 146,
+      "start_line": 185,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -712,7 +798,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveMachineSizeConfig",
-      "start_line": 146,
+      "start_line": 185,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -728,7 +814,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveLockDate",
-      "start_line": 156,
+      "start_line": 195,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -744,7 +830,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveLockDate",
-      "start_line": 156,
+      "start_line": 195,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -760,7 +846,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveBroadcast",
-      "start_line": 161,
+      "start_line": 200,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -776,7 +862,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveBroadcast",
-      "start_line": 161,
+      "start_line": 200,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -792,7 +878,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveAppSettings",
-      "start_line": 172,
+      "start_line": 211,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -808,7 +894,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "saveAppSettings",
-      "start_line": 172,
+      "start_line": 211,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -824,7 +910,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "loadAuditLogs",
-      "start_line": 177,
+      "start_line": 216,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -840,7 +926,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "loadAuditLogs",
-      "start_line": 177,
+      "start_line": 216,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -856,7 +942,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "openChangePassword",
-      "start_line": 185,
+      "start_line": 224,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -872,7 +958,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "openChangePassword",
-      "start_line": 185,
+      "start_line": 224,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
@@ -888,7 +974,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "loadPhotoMigrationProgress",
-      "start_line": 204,
+      "start_line": 243,
       "data_paths": [
         ".latestDays",
         ".range",
@@ -908,7 +994,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/admin.js",
       "consumer_function": "loadPhotoMigrationProgress",
-      "start_line": 204,
+      "start_line": 243,
       "data_paths": [
         ".latestDays",
         ".range",
@@ -1066,7 +1152,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "openPhotoModal",
-      "start_line": 319,
+      "start_line": 314,
       "data_paths": [
         ".fileIds"
       ],
@@ -1084,7 +1170,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "openPhotoModal",
-      "start_line": 319,
+      "start_line": 314,
       "data_paths": [
         ".fileIds"
       ],
@@ -1102,7 +1188,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "renderHistoryCards",
-      "start_line": 694,
+      "start_line": 707,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
@@ -1118,7 +1204,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "renderHistoryCards",
-      "start_line": 694,
+      "start_line": 707,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
@@ -1134,7 +1220,7 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "renderHistoryCards",
-      "start_line": 694,
+      "start_line": 707,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
@@ -1150,7 +1236,7 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadHistory",
-      "start_line": 1384,
+      "start_line": 1455,
       "data_paths": [
         ".data",
         ".totalPages"
@@ -1169,7 +1255,7 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadHistory",
-      "start_line": 1384,
+      "start_line": 1455,
       "data_paths": [
         ".data",
         ".totalPages"
@@ -1188,7 +1274,7 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadMoreHistory",
-      "start_line": 1402,
+      "start_line": 1473,
       "data_paths": [
         ".data"
       ],
@@ -1206,7 +1292,7 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadMoreHistory",
-      "start_line": 1402,
+      "start_line": 1473,
       "data_paths": [
         ".data"
       ],
@@ -1224,13 +1310,13 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "triggerHandover",
-      "start_line": 1459,
+      "start_line": 1534,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
       "renders_blank_state": false,
       "auth_recovery": false,
-      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu dimuat\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal tarik stok\", error.messa"
+      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      if (seq !== _handoverSeq) return; // a newer trigger superseded this one; discard\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu "
     },
     {
       "endpoint": "api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}",
@@ -1240,13 +1326,13 @@
       "is_dynamic": true,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "triggerHandover",
-      "start_line": 1459,
+      "start_line": 1534,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": false,
       "renders_blank_state": false,
       "auth_recovery": false,
-      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu dimuat\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal tarik stok\", error.messa"
+      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      if (seq !== _handoverSeq) return; // a newer trigger superseded this one; discard\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu "
     },
     {
       "endpoint": "api/init.php",
@@ -1256,7 +1342,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadInitialData",
-      "start_line": 1477,
+      "start_line": 1556,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
@@ -1272,13 +1358,13 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadInitialData",
-      "start_line": 1477,
+      "start_line": 1556,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
       "renders_blank_state": false,
       "auth_recovery": false,
-      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover && !state.isAdmin) {\n      await window.triggerHandover();\n    }\n\n  }"
+      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover) {\n      await window.triggerHandover();\n    }\n\n  }"
     },
     {
       "endpoint": "api/init.php",
@@ -1288,7 +1374,7 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadInitialData",
-      "start_line": 1477,
+      "start_line": 1556,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
@@ -1304,13 +1390,13 @@
       "is_dynamic": false,
       "consumer_file": "assets/app/form.js",
       "consumer_function": "loadInitialData",
-      "start_line": 1477,
+      "start_line": 1556,
       "data_paths": [],
       "silent_fail_pattern": false,
       "silent_catch_pattern": true,
       "renders_blank_state": false,
       "auth_recovery": false,
-      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover && !state.isAdmin) {\n      await window.triggerHandover();\n    }\n\n  }"
+      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover) {\n      await window.triggerHandover();\n    }\n\n  }"
     }
   ],
   "backend": {
@@ -2223,7 +2309,17 @@
     "loadHistory": {
       "symbol": "loadHistory",
       "context": {
-        "error": "Symbol 'loadHistory' not found"
+        "status": "found",
+        "symbol": {
+          "uid": "Section:documentation/TRACE_CENTER.md:L99:loadHistory",
+          "name": "loadHistory",
+          "filePath": "documentation/TRACE_CENTER.md",
+          "startLine": 99,
+          "endLine": 114
+        },
+        "incoming": {},
+        "outgoing": {},
+        "processes": []
       }
     },
     "loadAdminHistory": {
@@ -2248,7 +2344,7 @@
       "symbol": "actionSubmit",
       "context": {
         "status": "ambiguous",
-        "message": "Found 2 symbols matching 'actionSubmit'. Use uid, file_path, or kind to disambiguate.",
+        "message": "Found 3 symbols matching 'actionSubmit'. Use uid, file_path, or kind to disambiguate.",
         "candidates": [
           {
             "uid": "Function:api/transactions.php:actionSubmit",
@@ -2265,6 +2361,14 @@
             "filePath": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
             "line": 242,
             "score": 0.56
+          },
+          {
+            "uid": "Section:documentation/TRACE_CENTER.md:L83:actionSubmit",
+            "name": "actionSubmit",
+            "kind": "",
+            "filePath": "documentation/TRACE_CENTER.md",
+            "line": 83,
+            "score": 0.5
           }
         ]
       }
@@ -2280,7 +2384,7 @@
             "name": "actionValidate",
             "kind": "Function",
             "filePath": "api/auth.php",
-            "line": 368,
+            "line": 359,
             "score": 0.56
           },
           {

@@ -218,8 +218,10 @@ Map `{ [material_name]: stock_final_float }` — hanya material yang terdaftar d
 | diff button | form.js | GET transactions.php?action=diff |
 | `saveConversionData()` | admin.js | POST conversions.php?action=save → GET conversions.php?action=list |
 | delete product | admin.js | POST conversions.php?action=delete |
-| `addNewMaterial()` | admin.js | POST materials.php?action=update |
+| `addNewMaterial()` | admin.js | POST materials.php?action=update (oldName="", suppliers=[]) |
 | `saveMaterialChanges()` | admin.js | POST materials.php?action=saveList |
+| `saveMaterialEdit()` | admin.js | POST materials.php?action=update (rename + replace suppliers) → GET materials.php?action=list |
+| delete material | admin.js | POST materials.php?action=delete |
 
 ---
 

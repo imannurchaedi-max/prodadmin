@@ -1,18 +1,19 @@
 {
   "repo": {
     "root": "C:\\xampp\\htdocs\\ProdAdmin",
-    "generated_at": "2026-07-07T16:30:29.351820+00:00"
+    "generated_at": "2026-07-25T05:16:30.915909+00:00"
   },
   "gitnexus": {
     "repoPath": "C:\\xampp\\htdocs\\ProdAdmin",
-    "lastCommit": "cf03123a04519ee2bc397fe2f6d5009f8b5a704d",
-    "indexedAt": "2026-07-07T05:56:48.707Z",
+    "lastCommit": "8b8b3e9fc3e81253b5c324a96be1208a34d348c1",
+    "indexedAt": "2026-07-25T05:15:50.969Z",
+    "remoteUrl": "https://github.com/imannurchaedi-max/prodadmin",
     "stats": {
-      "files": 74,
-      "nodes": 1812,
-      "edges": 2934,
-      "communities": 108,
-      "processes": 114,
+      "files": 75,
+      "nodes": 1851,
+      "edges": 2977,
+      "communities": 109,
+      "processes": 116,
       "embeddings": 0
     },
     "capabilities": {
@@ -34,27 +35,43 @@
     "schemaVersion": 1,
     "fileHashes": {
       "index_ASUSVIVO_May-26-130321-2026_Conflict.php": "47ac9641ef141d8c82c9d3511708d5b56af9fb3ec789da923f690ddd7f9312b0",
-      "index.php": "f87b95e06e363c839addecddb70055db9609f4dea8dc3470b2f9a52505ad1c26",
+      "index.php": "ee8d5f6766bb5b609611957ef2ca3b96ebc9e5fc8ef85672051bc226bf10dbf3",
       "import_excel.py": "7a6f793aeeb10413e11052ecfb8f367f27b40533a7b867886975d88d128aade1",
-      "CLAUDE.md": "bfd8716acc15bb879910a6b1af19c3bb9091f827ed5ea374c3644820aa50abe4",
-      "AGENTS.md": "bfd8716acc15bb879910a6b1af19c3bb9091f827ed5ea374c3644820aa50abe4",
-      "sql/setup_fresh.sql": "44e624e3d4f85fc39f5baf047664d00cf9fdbd4a8c0cd38bd6c72e3b23464b18",
-      "sql/migration_v2_scale100.sql": "fa55148c6bd49a43da43b649cf539b54dda3c184e13fb1591efaf042f94854e0",
+      "CLAUDE.md": "aa999901ad1aaaee26d765ff1f76c2219415b7b2e45d46c13d9ec135f7309c58",
+      "AGENTS.md": "aa999901ad1aaaee26d765ff1f76c2219415b7b2e45d46c13d9ec135f7309c58",
       "tools/smoke.php": "badd5f391b18c588617c2407dac50e2730c48a3160a698e67b1082f9c2f68001",
       "tools/setup.php": "066fbf3a5920b3d34a93ea78373700645bf32c3b481cb10c0c0aa270499e5d82",
       "tools/run_migration_v2.php": "b13fed0cf95745e70305871032a610a350337bd28c127c0eefc601f2f6f64a5c",
       "tools/migration_wizard.php": "884af2ab7776ebf6bf0242ea348d243ce903780dffb79ad64c02695422db3c4e",
       "tools/migrate_photos.php": "f109293357a6a89f7c6b50d61da1a3620f858d33c58dbdf13d42634443cc743c",
-      "docs/transaction-flow.md": "b6a61d5d98086947f81b68a6815c76690e5d7d71f7fe6be6eab82c8f42f70262",
-      "docs/README.md": "f4e7167f33479f04f16c3d83f3822040625bd3f827be9d463fe6f99fd6920e47",
-      "docs/python-bot.md": "03d02b79dae77e0949c777c0fee26ad29a84c7d9f6e7a23fc133d13c02f0812f",
-      "docs/io-dependency.md": "8518d8914ef1822ced4d193205c220bca1e95e304daf96d5820e7fe689c41e92",
-      "docs/function-map.md": "335002f1e27812e631c123c95d8f9e177fa56abfe04c63da3653192172ab5f35",
-      "docs/blast-radius.md": "b86f4a57c02878a1df263af9c076cd519192a89ae2a7c306bd223578b0bf996c",
-      "docs/auth-flow.md": "d738deb7f00f53891d179963b8b16a75fdb41dca296787126c4c5fe463d52e9e",
-      "docs/architecture-overview.md": "13012aa83906c998978f3d1c6e91a0cc9aaad49b7cda6d2b578945ab52bea123",
+      "documentation/TRACE_CENTER.md": "b8cdf44f0e4c1dbcddfb119af01dc5dad8af01d17fa8c3dce75d89cee59bed1a",
+      "sql/setup_fresh.sql": "44e624e3d4f85fc39f5baf047664d00cf9fdbd4a8c0cd38bd6c72e3b23464b18",
+      "sql/migration_v2_scale100.sql": "fa55148c6bd49a43da43b649cf539b54dda3c184e13fb1591efaf042f94854e0",
       "config/database.php": "0a39ca999d36f902f80802f40663641255a2154caf82a1a2fe96d567017b08d6",
       "config/auth_helper.php": "4161052e98577ab9bdf51fe1643ea40cec8d6e8b7c7ec5ce77098a98dffb1b11",
+      "assets/style.css": "51ab32767bfe57a99800e27f2bfc8bf27807640034db923826ac96130dc436b3",
+      "docs/transaction-flow.md": "cd368720f2a1bb25829cd2c032ed91d9bdd97a5ddee4b074c65e3cf2a41fdaee",
+      "docs/README.md": "b1b53cd3ebd1f6dfa1b0b80ddb2053df5a9c72dc3150e91d59c20c24a945b40a",
+      "docs/python-bot.md": "c3e89a95b9536148d76ee54f2af93f5db67626e955a705e7f9a198bd32262616",
+      "docs/io-dependency.md": "75ec74165bf561a5cc9fc6731beaea44dba1f490985b435b6d2b1da97a01a3dd",
+      "docs/function-map.md": "27a705f532641a4c83375a8248b47004c2320d36c5f735bb3f34691966c66aeb",
+      "docs/blast-radius.md": "c36af0cc7324ee406d3ec02bdd169df1ab80bc116bdbbb3e1b97fe0bb4d5cf3b",
+      "docs/auth-flow.md": "d738deb7f00f53891d179963b8b16a75fdb41dca296787126c4c5fe463d52e9e",
+      "docs/architecture-overview.md": "11502dcaa261a258c38bbe686af29ed834b0e16ae682d18c8ffd4322f027b304",
+      "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php": "1e5604e4c61f3b29ffd6e798bf2eeec646433a42a35726928464719e9cb4b003",
+      "api/transactions.php": "9ead9c018a389390d777710801bc2f053b8a75d5e6ccc826c27a689ef6fbb8d8",
+      "api/settings.php": "610fa3d658b1c07500946630ab897719d482fea8a4d63a340480756d1550e4c1",
+      "api/photos.php": "8217cc936a41a1c2a8730b4ada57955b8e3e35d93ac490c7e93a7cd91e8e9b2e",
+      "api/migration_api.php": "3268bab9e694524fc7dcbff067e0247bcc5f2a7618a816ccb8d271fb3d4d212c",
+      "api/materials.php": "e411e1a153707b6002ca1cd5c26bbf423346ef86bbaf273d2e53e52a7e12ee03",
+      "api/init.php": "654e5ae32b6bd847aae3bf6fbe4865e26bd84e71e88f378b67f635d3eaa6addc",
+      "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php": "019ceb4565155b15b563e2a7eace340e5ad0fb2431bb3eb8c68410f2e924006f",
+      "api/history.php": "27d525f0947e3d50c52392b51d17fea93b585514a93fd98122584097683ed67e",
+      "api/conversions.php": "d9f1cd4a3731b8df6f141e8a9a2c80d731f8334f83407798228cee7ca82b6096",
+      "api/config.php": "f2dc8aa8ec96b77503605a3b7d7e2bf0d19f6ce08c39e681787af75f2999419a",
+      "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php": "b0c898fff169b72b1faf36472e831313adcf0d58fdb6c73949392122299ef0ce",
+      "api/auth.php": "4b7fb80b804fb991d9168611855fd5d6e101ffab9154ac39edec54f86aa63364",
+      "api/admin.php": "1f1f3332fd718e1953d2e948af3099dd4e9086f31ce8dc513ce1be389003f228",
       "python_bot/test_txn_py.py": "97a796fa34692dcfb9ca1309dde52f848dee747683ea5ac86bfca866493b790f",
       "python_bot/test_transactions_ASUSVIVO_May-26-130309-2026_Conflict.php": "7e7393de407d011f58d5c0258282cf79ee5ab6ab34074f83060115831666115c",
       "python_bot/test_transactions.php": "7a81e779bd3d03956b72c35a54d4e4eb16da484e60007f6429aa7666b5c3330d",
@@ -70,48 +87,33 @@
       "python_bot/setup.php": "20cd5f367145ea5291cfea98b71e4fd68b2dacc6c762b3d772a997f64a2c5157",
       "python_bot/rehash_users.php": "24fd78d966dde7e1873709969128a3848f0114f63be0f6918559dd2df8746cb4",
       "python_bot/migration_progress.json": "b4b0f771aaea8ae08825ba59e606591c2b8d2e31a227e1067e81c27b0179e17b",
-      "python_bot/langgraph_trace_center.py": "f2c29ead5603f82f715530af35ae81894f17e97bcd489352653fb9955cb51701",
+      "python_bot/langgraph_trace_center.py": "8851816a696183b17dc87a244fdb5aee7e49692ecf0938d77996d66a5c477c5b",
       "python_bot/langgraph_function_db_map.py": "efd3694e4ac0196ddc661b4c3373cf13143dfce6918b3fd3442c7fa96fe99f70",
-      "python_bot/langgraph_endpoint_ui_map.py": "a3a3d292dc9e9c4b8c940f53e7cbe855451f6791d436671f318820a544b58f1a",
+      "python_bot/langgraph_endpoint_ui_map.py": "fb120e583474e408ecd062143a869d5f8b958e1d32411fb756c41ed733b9147c",
       "python_bot/langgraph_dynamic_audit.py": "e1b097945a7a9e15640a24967cfcf6c02a0b3075db9e3ffb9c243586001c49c2",
-      "python_bot/langgraph_codebase_map.py": "b78928bf314efdb5e7b7bed776abdc573f9c30c02446a5f7a6663e609aea0c2d",
-      "python_bot/langgraph_audit_protocol.py": "efd5357130245f50e860decaf6e47af1fb413bd640c608aa7d07e8cad55e230a",
+      "python_bot/langgraph_codebase_map.py": "899f1c14297b3b2ab34c0136400fad9dc0a4ec1cae7975a1300fe0953ad07b07",
+      "python_bot/langgraph_audit_protocol.py": "488eb842074ce1caa6e1b96e3023df11155893f8af3ef7bb142c4a0450d15192",
       "python_bot/import_excel.py": "7a6f793aeeb10413e11052ecfb8f367f27b40533a7b867886975d88d128aade1",
       "python_bot/download_assets.sh": "70126700a2d6e6c89325b4db7934943c9c01fee918a008b6fd0d4e935f9a51c4",
       "python_bot/deploy_to_xampp.ps1": "e561aacf3fed2f1fe4957347617920472653dbd4f2439686da7fe10c04dbd746",
       "python_bot/db_config.py": "513de1c13c03e9c8a9961b00bfdcacc2f6e1e25b4ada1a34534823dd9529c8a6",
       "python_bot/character_audit.py": "4fcf582abc5f100276b2f7dc63b3579338996898a08e4d223594d985b5d711e1",
-      "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php": "1e5604e4c61f3b29ffd6e798bf2eeec646433a42a35726928464719e9cb4b003",
-      "api/transactions.php": "2c847c341e2184047c6da221790affaaecd8fd159df10c01b9a2e99cf0072cd2",
-      "api/settings.php": "610fa3d658b1c07500946630ab897719d482fea8a4d63a340480756d1550e4c1",
-      "api/photos.php": "91057dcdb247a4a3f75bc21b2a860858c9fb45ad008094c2066a5e8ffed0a7bd",
-      "api/migration_api.php": "3268bab9e694524fc7dcbff067e0247bcc5f2a7618a816ccb8d271fb3d4d212c",
-      "api/materials.php": "e411e1a153707b6002ca1cd5c26bbf423346ef86bbaf273d2e53e52a7e12ee03",
-      "api/init.php": "654e5ae32b6bd847aae3bf6fbe4865e26bd84e71e88f378b67f635d3eaa6addc",
-      "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php": "019ceb4565155b15b563e2a7eace340e5ad0fb2431bb3eb8c68410f2e924006f",
-      "api/history.php": "1e326f86e64b248d4395743d32df9b6fefdef28c4218c6f0811b4e19e5990135",
-      "api/conversions.php": "d9f1cd4a3731b8df6f141e8a9a2c80d731f8334f83407798228cee7ca82b6096",
-      "api/config.php": "f2dc8aa8ec96b77503605a3b7d7e2bf0d19f6ce08c39e681787af75f2999419a",
-      "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php": "b0c898fff169b72b1faf36472e831313adcf0d58fdb6c73949392122299ef0ce",
-      "api/auth.php": "984eec5b312f2127cc130e7a8795d3319db7c8234d6a953fb84b7a38cb4b241a",
-      "api/admin.php": "9ec48e90b33a926fb20c3c224e61ac2726a9cca9b264a2917fb8f57d4faa1234",
-      "assets/style.css": "87b3940a0f8cfef84716fee94510cae9e9bb7a2f5f41435a76a3284b0f304edf",
+      "assets/app/form.js": "32a1b8cc8d1d7fe54686cceb8b7da83331c4b7aa8f69d2bd4324a5861d160e11",
+      "assets/app/auth.js": "27598ab4b3fd3927768e94d66d742fdcd45ace3e2a9a77b030bded7202618572",
+      "assets/app/api.js": "f3cef0751a9ad4db3f8605b7f6b380240ba8d0505f6a023aef3a010e4700cc05",
+      "assets/app/admin.js": "3b8be64c398be6654af5ef2c28ec3b6dedb1f111a1d542a211aa105e510a3879",
       "docs/diagrams/transaction-flow.mmd": "21e81294117d0965b1af072cb0d1986921264c29ec19aa7b031994202bcfb99a",
       "docs/diagrams/python-bot.mmd": "a45ef9480ef07107dbda7b2e0efceb9cc8a335cb917e0e1c5462e7e3d20fb5ea",
       "docs/diagrams/io-dependency.mmd": "acc08cdb0f5bb98f2a9093df511f88b395b8d96a8e31dee39b3de362e0cc4387",
       "docs/diagrams/function-map.mmd": "ceefa0fddccfd54a0ff77d047327efb9fccab689fe5a1545b1f38c7bb6870cd3",
       "docs/diagrams/blast-radius.mmd": "f9a2af548d0bbadeba07752301a79106ac04ad4e0bd6c22f73d930dab92db9c3",
       "docs/diagrams/auth-flow.mmd": "f4ba4eb913fc86cba361e2ff3dceec40f56f052c82af066df063e61e5488eca8",
-      "docs/diagrams/architecture.mmd": "680817cf010101d8739888256b5e39976fad3307691b5ca249ede239e6f89692",
-      "assets/app/form.js": "c56ed43e92b38c4564dcb6f3b1713a1c2b7b706297a1f9de72d23ea8168d1347",
-      "assets/app/auth.js": "216669fb4286d62c1f61c7092a9548c4487dc74b7d1471095593610643265eb6",
-      "assets/app/api.js": "f3cef0751a9ad4db3f8605b7f6b380240ba8d0505f6a023aef3a010e4700cc05",
-      "assets/app/admin.js": "09ecb516c2c2d9ee73433d3865df899e9a910403542ade960e126825e88191d9"
+      "docs/diagrams/architecture.mmd": "680817cf010101d8739888256b5e39976fad3307691b5ca249ede239e6f89692"
     }
   },
   "counts": {
     "files": 85,
-    "lines": 21278,
+    "lines": 21503,
     "by_suffix": {
       ".htaccess": 1,
       ".json": 5,
@@ -127,11 +129,11 @@
     "by_bucket": {
       "root_runtime": {
         "file_count": 2,
-        "line_count": 729,
+        "line_count": 760,
         "largest_files": [
           {
             "path": "index.php",
-            "lines": 728
+            "lines": 759
           },
           {
             "path": ".htaccess",
@@ -141,7 +143,7 @@
       },
       "other": {
         "file_count": 34,
-        "line_count": 9250,
+        "line_count": 9258,
         "largest_files": [
           {
             "path": "python_bot/setup.php",
@@ -167,15 +169,15 @@
       },
       "project_docs": {
         "file_count": 2,
-        "line_count": 166,
+        "line_count": 180,
         "largest_files": [
           {
             "path": "documentation/TRACE_CENTER.md",
-            "lines": 123
+            "lines": 129
           },
           {
             "path": "CLAUDE.md",
-            "lines": 43
+            "lines": 51
           }
         ]
       },
@@ -247,7 +249,7 @@
       },
       "documentation": {
         "file_count": 10,
-        "line_count": 2004,
+        "line_count": 2057,
         "largest_files": [
           {
             "path": "docs/generated/CHARACTER_AUDIT.json",
@@ -255,15 +257,15 @@
           },
           {
             "path": "docs/blast-radius.md",
-            "lines": 258
+            "lines": 275
           },
           {
             "path": "docs/io-dependency.md",
-            "lines": 228
+            "lines": 230
           },
           {
             "path": "docs/function-map.md",
-            "lines": 181
+            "lines": 198
           },
           {
             "path": "docs/python-bot.md",
@@ -313,11 +315,11 @@
       },
       "frontend_app": {
         "file_count": 4,
-        "line_count": 2403,
+        "line_count": 2522,
         "largest_files": [
           {
             "path": "assets/app/form.js",
-            "lines": 1636
+            "lines": 1716
           },
           {
             "path": "assets/app/auth.js",
@@ -325,7 +327,7 @@
           },
           {
             "path": "assets/app/admin.js",
-            "lines": 239
+            "lines": 278
           },
           {
             "path": "assets/app/api.js",
@@ -429,7 +431,7 @@
   "top_files": [
     {
       "path": "assets/app/form.js",
-      "lines": 1636,
+      "lines": 1716,
       "bucket": "frontend_app"
     },
     {
@@ -453,14 +455,14 @@
       "bucket": "other"
     },
     {
+      "path": "index.php",
+      "lines": 759,
+      "bucket": "root_runtime"
+    },
+    {
       "path": "docs/generated/CHARACTER_AUDIT.json",
       "lines": 732,
       "bucket": "documentation"
-    },
-    {
-      "path": "index.php",
-      "lines": 728,
-      "bucket": "root_runtime"
     },
     {
       "path": "index_ASUSVIVO_May-26-130321-2026_Conflict.php",

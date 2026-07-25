@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-07-07T06:01:07.956019+00:00",
-    "function_node_count": 273,
-    "function_edge_count": 408,
-    "endpoint_contract_count": 23,
-    "io_db_contract_count": 23,
+    "generated_at": "2026-07-25T05:17:07.849903+00:00",
+    "function_node_count": 278,
+    "function_edge_count": 413,
+    "endpoint_contract_count": 24,
+    "io_db_contract_count": 24,
     "db_table_touch_count": 15,
     "db_tables_touched": [
       "audit_logs",
@@ -23,13 +23,14 @@
       "transactions",
       "users"
     ],
-    "risk_endpoint_count": 22,
+    "risk_endpoint_count": 24,
     "risk_endpoints": [
       "api/admin.php::logs::POST",
       "api/admin.php::photoProgress::GET",
       "api/admin.php::verifyAdmin::POST",
       "api/auth.php::changePassword::POST",
       "api/auth.php::logout::POST",
+      "api/auth.php::validate::GET",
       "api/config.php::get::GET",
       "api/config.php::save::POST",
       "api/conversions.php::delete::POST",
@@ -38,13 +39,12 @@
       "api/history.php::paged::GET",
       "api/init.php::__default__::GET",
       "api/materials.php::delete::POST",
+      "api/materials.php::list::GET",
       "api/materials.php::saveList::POST",
       "api/materials.php::update::POST",
       "api/photos.php::__default__::POST",
       "api/settings.php::__default__::GET",
-      "api/settings.php::__default__::POST",
-      "api/transactions.php::delete::POST",
-      "api/transactions.php::diff::GET"
+      "api/settings.php::__default__::POST"
     ],
     "trace_entrypoints": [
       {
@@ -209,9 +209,7 @@
       ],
       "backend_file": "api/auth.php",
       "backend_block": "actionValidate",
-      "backend_input_keys": [
-        "token"
-      ],
+      "backend_input_keys": [],
       "backend_response_keys": [
         "isAdmin",
         "username"
@@ -396,6 +394,28 @@
       ]
     },
     {
+      "endpoint_key": "api/materials.php::list::GET",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveMaterialEdit"
+      ],
+      "frontend_input_keys": [
+        "map",
+        "method",
+        "order"
+      ],
+      "backend_file": "api/materials.php",
+      "backend_block": "action:list",
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "map",
+        "order"
+      ],
+      "failure_examples": []
+    },
+    {
       "endpoint_key": "api/materials.php::saveList::POST",
       "endpoint_base": "api/materials.php",
       "endpoint_action": "saveList",
@@ -422,13 +442,16 @@
       "endpoint_action": "update",
       "method": "POST",
       "frontend_consumers": [
-        "assets/app/admin.js::addNewMaterial"
+        "assets/app/admin.js::addNewMaterial",
+        "assets/app/admin.js::saveMaterialEdit"
       ],
       "frontend_input_keys": [
         "body",
+        "map",
         "method",
         "newName",
         "oldName",
+        "order",
         "suppliers"
       ],
       "backend_file": "api/materials.php",

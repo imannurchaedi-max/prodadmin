@@ -1,10 +1,10 @@
 # Input Output Dependency Map
 
-Generated at: `2026-07-07T06:01:07.956019+00:00`
+Generated at: `2026-07-25T05:17:07.849903+00:00`
 
 ## Coverage
 
-- Endpoint contracts: `23`
+- Endpoint contracts: `24`
 
 ## Contracts
 
@@ -53,7 +53,7 @@ Generated at: `2026-07-07T06:01:07.956019+00:00`
 - Frontend input keys: `method`
 - Backend file: `api/auth.php`
 - Backend block: `actionValidate`
-- Backend input keys: `token`
+- Backend input keys: `-`
 - Backend response keys: `isAdmin`, `username`
 
 ### api/config.php::get::GET
@@ -120,6 +120,14 @@ Generated at: `2026-07-07T06:01:07.956019+00:00`
 - Backend input keys: `-`
 - Backend response keys: `-`
 
+### api/materials.php::list::GET
+- Frontend consumers: `assets/app/admin.js::saveMaterialEdit`
+- Frontend input keys: `map`, `method`, `order`
+- Backend file: `api/materials.php`
+- Backend block: `action:list`
+- Backend input keys: `-`
+- Backend response keys: `map`, `order`
+
 ### api/materials.php::saveList::POST
 - Frontend consumers: `assets/app/admin.js::saveMaterialChanges`
 - Frontend input keys: `body`, `method`
@@ -129,8 +137,8 @@ Generated at: `2026-07-07T06:01:07.956019+00:00`
 - Backend response keys: `-`
 
 ### api/materials.php::update::POST
-- Frontend consumers: `assets/app/admin.js::addNewMaterial`
-- Frontend input keys: `body`, `method`, `newName`, `oldName`, `suppliers`
+- Frontend consumers: `assets/app/admin.js::addNewMaterial`, `assets/app/admin.js::saveMaterialEdit`
+- Frontend input keys: `body`, `map`, `method`, `newName`, `oldName`, `order`, `suppliers`
 - Backend file: `api/materials.php`
 - Backend block: `action:update`
 - Backend input keys: `-`

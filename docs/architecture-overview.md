@@ -2,7 +2,7 @@
 
 **Jenis aplikasi:** Production Admin — sistem pencatatan produksi harian (shift, mesin, material, output)
 **Stack:** PHP 8 + PostgreSQL (backend) · Vanilla JS + Bootstrap 5 (frontend) · Python + LangGraph (tooling)
-**Last updated:** 2026-07-07 | **Index:** 1.812 nodes · 2.934 edges · 114 flows · 108 clusters
+**Last updated:** 2026-07-25 | **Index:** 1.851 nodes · 2.977 edges · 116 flows · 109 clusters
 
 ---
 
@@ -57,7 +57,7 @@ graph TB
 
 | Cluster | Symbols | Cohesion | Files | Catatan |
 |---------|---------|----------|-------|---------|
-| **App** | **53** | **76%** | `assets/app/api.js`, `auth.js`, `form.js`, `admin.js` | Naik dari 41→53 simbol setelah penambahan draft, fmtInt, parseIntField, refreshAnalysis, resetConversionModalBtn. Cohesion turun 93%→76% karena lebih banyak cross-function coupling |
+| **App** | **53+** | **76%** | `assets/app/api.js`, `auth.js`, `form.js`, `admin.js` | 2026-07-25: `computeMaterialAnalysis()` diekstrak dari `refreshAnalysis()` (dipakai bersama form live + laporan WA + modal detail riwayat); `triggerHandover()` sekarang berlaku semua role + sequence guard anti race condition; `resumeDraft()` di-rename `dismissDraftBanner()`; `openMaterialEditModal()`/`saveMaterialEdit()` baru (edit nama+supplier material dari admin panel) |
 | **Api** | 84 | 90% | `api/auth.php`, `api/transactions.php`, `api/history.php`, `api/settings.php`, `api/materials.php`, `api/admin.php`, `api/photos.php`, `api/init.php`, `api/conversions.php`, `api/config.php`, `config/database.php`, `config/auth_helper.php` | Stabil |
 | **Python_bot** | 91 | 97% | `python_bot/langgraph_*.py`, `character_audit.py`, `db_config.py`, `langgraph_dynamic_audit.py` | Stabil |
 
@@ -95,8 +95,10 @@ graph TB
 | Transactions | ActionSubmit→*, ActionRevise→*, ActionFinalize→*, ActionDelete→* | CRUD laporan |
 | History | RenderHistoryCards→* | Tampilkan & interaksi riwayat (incl. populateFormFromHistory) |
 | Takeover | WaitForTakeover→* | Session takeover flow |
-| Draft | RestoreDraft→*, CollectOutputs→*, SnapshotRows→* | Draft save/restore + analisa |
+| Draft | RestoreDraft→*, CollectOutputs→*, SnapshotRows→* | Draft auto-load saat login (non-blocking notice, bukan gate) |
+| Handover | ActionPreviousStock→* (via `triggerHandover`) | SISA shift lalu → STOK AWAL shift baru, semua role, sequence-guarded |
 | Conversion | RenderConversionTable→* | Admin master produk |
+| Material | (baru, admin.js) | Edit nama + daftar supplier material dari admin panel |
 | Submit payload | BuildSubmitPayload→* | Pengiriman data form |
 
 ## Status Lifecycle — Transactions

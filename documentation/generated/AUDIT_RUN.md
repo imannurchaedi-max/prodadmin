@@ -1,6 +1,6 @@
 # Audit Run
 
-Generated at: `2026-07-07T16:30:58.011177+00:00`
+Generated at: `2026-07-25T05:16:53.168167+00:00`
 Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ## phase_0 - Preflight & Index Integrity
@@ -12,7 +12,7 @@ Repo root: `C:\xampp\htdocs\ProdAdmin`
 ### gitnexus_status
 - Status: `PASS`
 - Details: GitNexus index must exist and be up-to-date.
-- Evidence: `{"stdout": "Repository: C:\\xampp\\htdocs\\ProdAdmin\nIndexed: 07/07/2026, 12.56.48\nIndexed commit: cf03123\nCurrent commit: cf03123\nStatus: ✅ up-to-date", "stderr": ""}`
+- Evidence: `{"stdout": "Repository: C:\\xampp\\htdocs\\ProdAdmin\nIndexed: 25/07/2026, 12.15.50\nIndexed commit: 8b8b3e9\nCurrent commit: 8b8b3e9\nStatus: ✅ up-to-date", "stderr": ""}`
 
 ### gitnexus_doctor
 - Status: `PASS`

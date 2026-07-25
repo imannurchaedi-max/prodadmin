@@ -12,854 +12,884 @@
 <!-- api/admin.php::logs::POST -->
 <g id="node1" class="node">
 <title>api/admin.php::logs::POST</title>
-<path fill="#fee2e2" stroke="black" d="M192.25,-738C192.25,-738 51,-738 51,-738 45,-738 39,-732 39,-726 39,-726 39,-714 39,-714 39,-708 45,-702 51,-702 51,-702 192.25,-702 192.25,-702 198.25,-702 204.25,-708 204.25,-714 204.25,-714 204.25,-726 204.25,-726 204.25,-732 198.25,-738 192.25,-738"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-714.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::logs::POST</text>
+<path fill="#fee2e2" stroke="black" d="M192.25,-792C192.25,-792 51,-792 51,-792 45,-792 39,-786 39,-780 39,-780 39,-768 39,-768 39,-762 45,-756 51,-756 51,-756 192.25,-756 192.25,-756 198.25,-756 204.25,-762 204.25,-768 204.25,-768 204.25,-780 204.25,-780 204.25,-786 198.25,-792 192.25,-792"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-768.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::logs::POST</text>
 </g>
 <!-- api/admin.php::action:logs -->
 <g id="node2" class="node">
 <title>api/admin.php::action:logs</title>
-<path fill="#dbeafe" stroke="black" d="M469.62,-738C469.62,-738 332.12,-738 332.12,-738 326.12,-738 320.12,-732 320.12,-726 320.12,-726 320.12,-714 320.12,-714 320.12,-708 326.12,-702 332.12,-702 332.12,-702 469.62,-702 469.62,-702 475.62,-702 481.62,-708 481.62,-714 481.62,-714 481.62,-726 481.62,-726 481.62,-732 475.62,-738 469.62,-738"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-714.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:logs</text>
+<path fill="#dbeafe" stroke="black" d="M469.62,-792C469.62,-792 332.12,-792 332.12,-792 326.12,-792 320.12,-786 320.12,-780 320.12,-780 320.12,-768 320.12,-768 320.12,-762 326.12,-756 332.12,-756 332.12,-756 469.62,-756 469.62,-756 475.62,-756 481.62,-762 481.62,-768 481.62,-768 481.62,-780 481.62,-780 481.62,-786 475.62,-792 469.62,-792"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-768.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:logs</text>
 </g>
 <!-- api/admin.php::logs::POST&#45;&gt;api/admin.php::action:logs -->
 <g id="edge1" class="edge">
 <title>api/admin.php::logs::POST&#45;&gt;api/admin.php::action:logs</title>
-<path fill="none" stroke="#dc2626" d="M204.68,-720C237.39,-720 275.17,-720 308.73,-720"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="308.42,-723.5 318.42,-720 308.42,-716.5 308.42,-723.5"/>
+<path fill="none" stroke="#dc2626" d="M204.68,-774C237.39,-774 275.17,-774 308.73,-774"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="308.42,-777.5 318.42,-774 308.42,-770.5 308.42,-777.5"/>
 </g>
 <!-- table::audit_logs -->
 <g id="node3" class="node">
 <title>table::audit_logs</title>
-<path fill="#fef3c7" stroke="black" d="M720,-576C720,-576 626,-576 626,-576 620,-576 614,-570 614,-564 614,-564 614,-552 614,-552 614,-546 620,-540 626,-540 626,-540 720,-540 720,-540 726,-540 732,-546 732,-552 732,-552 732,-564 732,-564 732,-570 726,-576 720,-576"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">audit_logs\nCALL</text>
+<path fill="#fef3c7" stroke="black" d="M720,-954C720,-954 626,-954 626,-954 620,-954 614,-948 614,-942 614,-942 614,-930 614,-930 614,-924 620,-918 626,-918 626,-918 720,-918 720,-918 726,-918 732,-924 732,-930 732,-930 732,-942 732,-942 732,-948 726,-954 720,-954"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-930.95" font-family="Times New Roman,serif" font-size="14.00">audit_logs\nCALL</text>
 </g>
 <!-- api/admin.php::action:logs&#45;&gt;table::audit_logs -->
 <g id="edge2" class="edge">
 <title>api/admin.php::action:logs&#45;&gt;table::audit_logs</title>
-<path fill="none" stroke="#2563eb" d="M482.02,-711.06C496.32,-707.03 510.47,-701.26 522.5,-693 546.28,-676.68 538.43,-659.72 558.5,-639 579.87,-616.94 607.94,-596.85 630.81,-582.2"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="632.38,-585.35 638.98,-577.06 628.65,-579.42 632.38,-585.35"/>
+<path fill="none" stroke="#2563eb" d="M482.1,-779.92C496.88,-784.16 511.19,-790.79 522.5,-801 560.05,-834.92 521.18,-874.84 558.5,-909 570.64,-920.11 586.51,-926.89 602.51,-930.97"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="601.57,-934.35 612.09,-933.05 603.06,-927.51 601.57,-934.35"/>
 </g>
 <!-- table::settings -->
 <g id="node4" class="node">
 <title>table::settings</title>
-<path fill="#fef3c7" stroke="black" d="M718.12,-792C718.12,-792 627.88,-792 627.88,-792 621.88,-792 615.88,-786 615.88,-780 615.88,-780 615.88,-768 615.88,-768 615.88,-762 621.88,-756 627.88,-756 627.88,-756 718.12,-756 718.12,-756 724.12,-756 730.12,-762 730.12,-768 730.12,-768 730.12,-780 730.12,-780 730.12,-786 724.12,-792 718.12,-792"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-768.95" font-family="Times New Roman,serif" font-size="14.00">settings\nINSERT</text>
+<path fill="#fef3c7" stroke="black" d="M718.12,-576C718.12,-576 627.88,-576 627.88,-576 621.88,-576 615.88,-570 615.88,-564 615.88,-564 615.88,-552 615.88,-552 615.88,-546 621.88,-540 627.88,-540 627.88,-540 718.12,-540 718.12,-540 724.12,-540 730.12,-546 730.12,-552 730.12,-552 730.12,-564 730.12,-564 730.12,-570 724.12,-576 718.12,-576"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">settings\nINSERT</text>
 </g>
 <!-- api/admin.php::action:logs&#45;&gt;table::settings -->
 <g id="edge3" class="edge">
 <title>api/admin.php::action:logs&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M481.83,-735.98C520.74,-743.76 567.02,-753.01 604.18,-760.44"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="603.42,-763.86 613.92,-762.39 604.8,-757 603.42,-763.86"/>
+<path fill="none" stroke="#2563eb" d="M482.01,-769.24C497.07,-764.95 511.51,-758.01 522.5,-747 574.61,-694.81 506.74,-637.54 558.5,-585 570.69,-572.63 587.44,-565.52 604.33,-561.53"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="604.79,-565.01 613.92,-559.63 603.43,-558.14 604.79,-565.01"/>
 </g>
 <!-- api/admin.php::photoProgress::GET -->
 <g id="node5" class="node">
 <title>api/admin.php::photoProgress::GET</title>
-<path fill="#fee2e2" stroke="black" d="M216.25,-117C216.25,-117 27,-117 27,-117 21,-117 15,-111 15,-105 15,-105 15,-93 15,-93 15,-87 21,-81 27,-81 27,-81 216.25,-81 216.25,-81 222.25,-81 228.25,-87 228.25,-93 228.25,-93 228.25,-105 228.25,-105 228.25,-111 222.25,-117 216.25,-117"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-93.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::photoProgress::GET</text>
+<path fill="#fee2e2" stroke="black" d="M216.25,-1251C216.25,-1251 27,-1251 27,-1251 21,-1251 15,-1245 15,-1239 15,-1239 15,-1227 15,-1227 15,-1221 21,-1215 27,-1215 27,-1215 216.25,-1215 216.25,-1215 222.25,-1215 228.25,-1221 228.25,-1227 228.25,-1227 228.25,-1239 228.25,-1239 228.25,-1245 222.25,-1251 216.25,-1251"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1227.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::photoProgress::GET</text>
 </g>
 <!-- api/admin.php::action:photoProgress -->
 <g id="node6" class="node">
 <title>api/admin.php::action:photoProgress</title>
-<path fill="#dbeafe" stroke="black" d="M497,-117C497,-117 304.75,-117 304.75,-117 298.75,-117 292.75,-111 292.75,-105 292.75,-105 292.75,-93 292.75,-93 292.75,-87 298.75,-81 304.75,-81 304.75,-81 497,-81 497,-81 503,-81 509,-87 509,-93 509,-93 509,-105 509,-105 509,-111 503,-117 497,-117"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-93.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:photoProgress</text>
+<path fill="#dbeafe" stroke="black" d="M497,-1251C497,-1251 304.75,-1251 304.75,-1251 298.75,-1251 292.75,-1245 292.75,-1239 292.75,-1239 292.75,-1227 292.75,-1227 292.75,-1221 298.75,-1215 304.75,-1215 304.75,-1215 497,-1215 497,-1215 503,-1215 509,-1221 509,-1227 509,-1227 509,-1239 509,-1239 509,-1245 503,-1251 497,-1251"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1227.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:photoProgress</text>
 </g>
 <!-- api/admin.php::photoProgress::GET&#45;&gt;api/admin.php::action:photoProgress -->
 <g id="edge4" class="edge">
 <title>api/admin.php::photoProgress::GET&#45;&gt;api/admin.php::action:photoProgress</title>
-<path fill="none" stroke="#dc2626" d="M228.63,-99C245.81,-99 263.7,-99 281.15,-99"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="281.04,-102.5 291.04,-99 281.04,-95.5 281.04,-102.5"/>
+<path fill="none" stroke="#dc2626" d="M228.63,-1233C245.81,-1233 263.7,-1233 281.15,-1233"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="281.04,-1236.5 291.04,-1233 281.04,-1229.5 281.04,-1236.5"/>
 </g>
 <!-- table::photo_migration -->
 <g id="node7" class="node">
 <title>table::photo_migration</title>
-<path fill="#fef3c7" stroke="black" d="M744.38,-36C744.38,-36 601.62,-36 601.62,-36 595.62,-36 589.62,-30 589.62,-24 589.62,-24 589.62,-12 589.62,-12 589.62,-6 595.62,0 601.62,0 601.62,0 744.38,0 744.38,0 750.38,0 756.38,-6 756.38,-12 756.38,-12 756.38,-24 756.38,-24 756.38,-30 750.38,-36 744.38,-36"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-12.95" font-family="Times New Roman,serif" font-size="14.00">photo_migration\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M744.38,-1278C744.38,-1278 601.62,-1278 601.62,-1278 595.62,-1278 589.62,-1272 589.62,-1266 589.62,-1266 589.62,-1254 589.62,-1254 589.62,-1248 595.62,-1242 601.62,-1242 601.62,-1242 744.38,-1242 744.38,-1242 750.38,-1242 756.38,-1248 756.38,-1254 756.38,-1254 756.38,-1266 756.38,-1266 756.38,-1272 750.38,-1278 744.38,-1278"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1254.95" font-family="Times New Roman,serif" font-size="14.00">photo_migration\nSELECT</text>
 </g>
 <!-- api/admin.php::action:photoProgress&#45;&gt;table::photo_migration -->
 <g id="edge5" class="edge">
 <title>api/admin.php::action:photoProgress&#45;&gt;table::photo_migration</title>
-<path fill="none" stroke="#2563eb" d="M451.21,-80.6C481.85,-69.51 522.18,-55.55 558.5,-45 565.2,-43.05 572.15,-41.14 579.17,-39.29"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="579.95,-42.7 588.75,-36.81 578.2,-35.93 579.95,-42.7"/>
+<path fill="none" stroke="#2563eb" d="M509.41,-1243.75C532.09,-1246.02 555.85,-1248.39 577.98,-1250.6"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="577.59,-1254.08 587.89,-1251.59 578.28,-1247.12 577.59,-1254.08"/>
 </g>
 <!-- table::photo_migration_map -->
 <g id="node8" class="node">
 <title>table::photo_migration_map</title>
-<path fill="#fef3c7" stroke="black" d="M749.62,-90C749.62,-90 596.38,-90 596.38,-90 590.38,-90 584.38,-84 584.38,-78 584.38,-78 584.38,-66 584.38,-66 584.38,-60 590.38,-54 596.38,-54 596.38,-54 749.62,-54 749.62,-54 755.62,-54 761.62,-60 761.62,-66 761.62,-66 761.62,-78 761.62,-78 761.62,-84 755.62,-90 749.62,-90"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-66.95" font-family="Times New Roman,serif" font-size="14.00">photo_migration_map\nJOIN</text>
+<path fill="#fef3c7" stroke="black" d="M749.62,-1332C749.62,-1332 596.38,-1332 596.38,-1332 590.38,-1332 584.38,-1326 584.38,-1320 584.38,-1320 584.38,-1308 584.38,-1308 584.38,-1302 590.38,-1296 596.38,-1296 596.38,-1296 749.62,-1296 749.62,-1296 755.62,-1296 761.62,-1302 761.62,-1308 761.62,-1308 761.62,-1320 761.62,-1320 761.62,-1326 755.62,-1332 749.62,-1332"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1308.95" font-family="Times New Roman,serif" font-size="14.00">photo_migration_map\nJOIN</text>
 </g>
 <!-- api/admin.php::action:photoProgress&#45;&gt;table::photo_migration_map -->
 <g id="edge6" class="edge">
 <title>api/admin.php::action:photoProgress&#45;&gt;table::photo_migration_map</title>
-<path fill="none" stroke="#2563eb" d="M509.41,-88.25C530.27,-86.17 552.04,-83.99 572.62,-81.93"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="572.8,-85.43 582.41,-80.96 572.11,-78.47 572.8,-85.43"/>
+<path fill="none" stroke="#2563eb" d="M500.79,-1251.49C508.26,-1253.99 515.58,-1256.81 522.5,-1260 540.66,-1268.37 540.39,-1278.51 558.5,-1287 563.29,-1289.25 568.29,-1291.32 573.39,-1293.22"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="571.98,-1296.44 582.58,-1296.41 574.28,-1289.82 571.98,-1296.44"/>
 </g>
 <!-- table::transaction_materials -->
 <g id="node9" class="node">
 <title>table::transaction_materials</title>
-<path fill="#fef3c7" stroke="black" d="M747,-198C747,-198 599,-198 599,-198 593,-198 587,-192 587,-186 587,-186 587,-174 587,-174 587,-168 593,-162 599,-162 599,-162 747,-162 747,-162 753,-162 759,-168 759,-174 759,-174 759,-186 759,-186 759,-192 753,-198 747,-198"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">transaction_materials\nJOIN</text>
+<path fill="#fef3c7" stroke="black" d="M747,-1170C747,-1170 599,-1170 599,-1170 593,-1170 587,-1164 587,-1158 587,-1158 587,-1146 587,-1146 587,-1140 593,-1134 599,-1134 599,-1134 747,-1134 747,-1134 753,-1134 759,-1140 759,-1146 759,-1146 759,-1158 759,-1158 759,-1164 753,-1170 747,-1170"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1146.95" font-family="Times New Roman,serif" font-size="14.00">transaction_materials\nJOIN</text>
 </g>
 <!-- api/admin.php::action:photoProgress&#45;&gt;table::transaction_materials -->
 <g id="edge7" class="edge">
 <title>api/admin.php::action:photoProgress&#45;&gt;table::transaction_materials</title>
-<path fill="none" stroke="#2563eb" d="M451.21,-117.4C481.85,-128.49 522.18,-142.45 558.5,-153 565.2,-154.95 572.15,-156.86 579.17,-158.71"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="578.2,-162.07 588.75,-161.19 579.95,-155.3 578.2,-162.07"/>
+<path fill="none" stroke="#2563eb" d="M451.21,-1214.6C481.85,-1203.51 522.18,-1189.55 558.5,-1179 565.2,-1177.05 572.15,-1175.14 579.17,-1173.29"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="579.95,-1176.7 588.75,-1170.81 578.2,-1169.93 579.95,-1176.7"/>
 </g>
 <!-- table::transactions -->
 <g id="node10" class="node">
 <title>table::transactions</title>
-<path fill="#fef3c7" stroke="black" d="M731.25,-360C731.25,-360 614.75,-360 614.75,-360 608.75,-360 602.75,-354 602.75,-348 602.75,-348 602.75,-336 602.75,-336 602.75,-330 608.75,-324 614.75,-324 614.75,-324 731.25,-324 731.25,-324 737.25,-324 743.25,-330 743.25,-336 743.25,-336 743.25,-348 743.25,-348 743.25,-354 737.25,-360 731.25,-360"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-336.95" font-family="Times New Roman,serif" font-size="14.00">transactions\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M731.25,-1008C731.25,-1008 614.75,-1008 614.75,-1008 608.75,-1008 602.75,-1002 602.75,-996 602.75,-996 602.75,-984 602.75,-984 602.75,-978 608.75,-972 614.75,-972 614.75,-972 731.25,-972 731.25,-972 737.25,-972 743.25,-978 743.25,-984 743.25,-984 743.25,-996 743.25,-996 743.25,-1002 737.25,-1008 731.25,-1008"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-984.95" font-family="Times New Roman,serif" font-size="14.00">transactions\nSELECT</text>
 </g>
 <!-- api/admin.php::action:photoProgress&#45;&gt;table::transactions -->
 <g id="edge8" class="edge">
 <title>api/admin.php::action:photoProgress&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M471.79,-117.49C490.66,-125.57 509.45,-137 522.5,-153 569.12,-210.15 506.74,-262.46 558.5,-315 567.57,-324.21 579.17,-330.5 591.48,-334.76"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.39,-338.09 600.97,-337.58 592.38,-331.38 590.39,-338.09"/>
+<path fill="none" stroke="#2563eb" d="M471.79,-1214.51C490.66,-1206.43 509.45,-1195 522.5,-1179 569.12,-1121.85 506.74,-1069.54 558.5,-1017 567.57,-1007.79 579.17,-1001.5 591.48,-997.24"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="592.38,-1000.62 600.97,-994.42 590.39,-993.91 592.38,-1000.62"/>
 </g>
 <!-- api/admin.php::verifyAdmin::POST -->
 <g id="node11" class="node">
 <title>api/admin.php::verifyAdmin::POST</title>
-<path fill="#fee2e2" stroke="black" d="M216.25,-900C216.25,-900 27,-900 27,-900 21,-900 15,-894 15,-888 15,-888 15,-876 15,-876 15,-870 21,-864 27,-864 27,-864 216.25,-864 216.25,-864 222.25,-864 228.25,-870 228.25,-876 228.25,-876 228.25,-888 228.25,-888 228.25,-894 222.25,-900 216.25,-900"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-876.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::verifyAdmin::POST</text>
+<path fill="#fee2e2" stroke="black" d="M216.25,-576C216.25,-576 27,-576 27,-576 21,-576 15,-570 15,-564 15,-564 15,-552 15,-552 15,-546 21,-540 27,-540 27,-540 216.25,-540 216.25,-540 222.25,-540 228.25,-546 228.25,-552 228.25,-552 228.25,-564 228.25,-564 228.25,-570 222.25,-576 216.25,-576"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::verifyAdmin::POST</text>
 </g>
 <!-- api/admin.php::action:verifyAdmin -->
 <g id="node12" class="node">
 <title>api/admin.php::action:verifyAdmin</title>
-<path fill="#dbeafe" stroke="black" d="M493.62,-900C493.62,-900 308.12,-900 308.12,-900 302.12,-900 296.12,-894 296.12,-888 296.12,-888 296.12,-876 296.12,-876 296.12,-870 302.12,-864 308.12,-864 308.12,-864 493.62,-864 493.62,-864 499.62,-864 505.62,-870 505.62,-876 505.62,-876 505.62,-888 505.62,-888 505.62,-894 499.62,-900 493.62,-900"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-876.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:verifyAdmin</text>
+<path fill="#dbeafe" stroke="black" d="M493.62,-576C493.62,-576 308.12,-576 308.12,-576 302.12,-576 296.12,-570 296.12,-564 296.12,-564 296.12,-552 296.12,-552 296.12,-546 302.12,-540 308.12,-540 308.12,-540 493.62,-540 493.62,-540 499.62,-540 505.62,-546 505.62,-552 505.62,-552 505.62,-564 505.62,-564 505.62,-570 499.62,-576 493.62,-576"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">api/admin.php::action:verifyAdmin</text>
 </g>
 <!-- api/admin.php::verifyAdmin::POST&#45;&gt;api/admin.php::action:verifyAdmin -->
 <g id="edge9" class="edge">
 <title>api/admin.php::verifyAdmin::POST&#45;&gt;api/admin.php::action:verifyAdmin</title>
-<path fill="none" stroke="#dc2626" d="M228.63,-882C246.86,-882 265.89,-882 284.35,-882"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="284.25,-885.5 294.25,-882 284.25,-878.5 284.25,-885.5"/>
+<path fill="none" stroke="#dc2626" d="M228.63,-558C246.86,-558 265.89,-558 284.35,-558"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="284.25,-561.5 294.25,-558 284.25,-554.5 284.25,-561.5"/>
 </g>
 <!-- api/admin.php::action:verifyAdmin&#45;&gt;table::settings -->
 <g id="edge10" class="edge">
 <title>api/admin.php::action:verifyAdmin&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M496.13,-863.57C505.14,-861.01 514.06,-858.16 522.5,-855 562.36,-840.07 604.75,-816.26 634.17,-798.31"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="635.67,-801.5 642.34,-793.26 632,-795.54 635.67,-801.5"/>
+<path fill="none" stroke="#2563eb" d="M505.93,-558C538.86,-558 574.39,-558 604.11,-558"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="604.1,-561.5 614.1,-558 604.1,-554.5 604.1,-561.5"/>
 </g>
 <!-- api/auth.php::changePassword::POST -->
 <g id="node13" class="node">
 <title>api/auth.php::changePassword::POST</title>
-<path fill="#fee2e2" stroke="black" d="M220.38,-414C220.38,-414 22.88,-414 22.88,-414 16.88,-414 10.88,-408 10.88,-402 10.88,-402 10.88,-390 10.88,-390 10.88,-384 16.88,-378 22.88,-378 22.88,-378 220.38,-378 220.38,-378 226.38,-378 232.38,-384 232.38,-390 232.38,-390 232.38,-402 232.38,-402 232.38,-408 226.38,-414 220.38,-414"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-390.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::changePassword::POST</text>
+<path fill="#fee2e2" stroke="black" d="M220.38,-900C220.38,-900 22.88,-900 22.88,-900 16.88,-900 10.88,-894 10.88,-888 10.88,-888 10.88,-876 10.88,-876 10.88,-870 16.88,-864 22.88,-864 22.88,-864 220.38,-864 220.38,-864 226.38,-864 232.38,-870 232.38,-876 232.38,-876 232.38,-888 232.38,-888 232.38,-894 226.38,-900 220.38,-900"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-876.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::changePassword::POST</text>
 </g>
 <!-- api/auth.php::actionChangePassword -->
 <g id="node14" class="node">
 <title>api/auth.php::actionChangePassword</title>
-<path fill="#dbeafe" stroke="black" d="M497.38,-414C497.38,-414 304.38,-414 304.38,-414 298.38,-414 292.38,-408 292.38,-402 292.38,-402 292.38,-390 292.38,-390 292.38,-384 298.38,-378 304.38,-378 304.38,-378 497.38,-378 497.38,-378 503.38,-378 509.38,-384 509.38,-390 509.38,-390 509.38,-402 509.38,-402 509.38,-408 503.38,-414 497.38,-414"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-390.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionChangePassword</text>
+<path fill="#dbeafe" stroke="black" d="M497.38,-900C497.38,-900 304.38,-900 304.38,-900 298.38,-900 292.38,-894 292.38,-888 292.38,-888 292.38,-876 292.38,-876 292.38,-870 298.38,-864 304.38,-864 304.38,-864 497.38,-864 497.38,-864 503.38,-864 509.38,-870 509.38,-876 509.38,-876 509.38,-888 509.38,-888 509.38,-894 503.38,-900 497.38,-900"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-876.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionChangePassword</text>
 </g>
 <!-- api/auth.php::changePassword::POST&#45;&gt;api/auth.php::actionChangePassword -->
 <g id="edge11" class="edge">
 <title>api/auth.php::changePassword::POST&#45;&gt;api/auth.php::actionChangePassword</title>
-<path fill="none" stroke="#dc2626" d="M232.6,-396C248.57,-396 265.07,-396 281.2,-396"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="280.78,-399.5 290.78,-396 280.78,-392.5 280.78,-399.5"/>
+<path fill="none" stroke="#dc2626" d="M232.6,-882C248.57,-882 265.07,-882 281.2,-882"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="280.78,-885.5 290.78,-882 280.78,-878.5 280.78,-885.5"/>
 </g>
 <!-- table::users -->
 <g id="node15" class="node">
 <title>table::users</title>
-<path fill="#fef3c7" stroke="black" d="M705.75,-468C705.75,-468 640.25,-468 640.25,-468 634.25,-468 628.25,-462 628.25,-456 628.25,-456 628.25,-444 628.25,-444 628.25,-438 634.25,-432 640.25,-432 640.25,-432 705.75,-432 705.75,-432 711.75,-432 717.75,-438 717.75,-444 717.75,-444 717.75,-456 717.75,-456 717.75,-462 711.75,-468 705.75,-468"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-444.95" font-family="Times New Roman,serif" font-size="14.00">users\nCALL</text>
+<path fill="#fef3c7" stroke="black" d="M705.75,-900C705.75,-900 640.25,-900 640.25,-900 634.25,-900 628.25,-894 628.25,-888 628.25,-888 628.25,-876 628.25,-876 628.25,-870 634.25,-864 640.25,-864 640.25,-864 705.75,-864 705.75,-864 711.75,-864 717.75,-870 717.75,-876 717.75,-876 717.75,-888 717.75,-888 717.75,-894 711.75,-900 705.75,-900"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-876.95" font-family="Times New Roman,serif" font-size="14.00">users\nCALL</text>
 </g>
 <!-- api/auth.php::actionChangePassword&#45;&gt;table::users -->
 <g id="edge12" class="edge">
 <title>api/auth.php::actionChangePassword&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-414.43C534.9,-422.59 581.55,-431.92 616.84,-438.97"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="615.9,-442.35 626.39,-440.88 617.27,-435.49 615.9,-442.35"/>
+<path fill="none" stroke="#2563eb" d="M509.8,-882C546.42,-882 585.81,-882 616.6,-882"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.45,-885.5 626.45,-882 616.45,-878.5 616.45,-885.5"/>
 </g>
 <!-- api/auth.php::logout::POST -->
 <g id="node16" class="node">
 <title>api/auth.php::logout::POST</title>
-<path fill="#fee2e2" stroke="black" d="M192.62,-684C192.62,-684 50.62,-684 50.62,-684 44.62,-684 38.62,-678 38.62,-672 38.62,-672 38.62,-660 38.62,-660 38.62,-654 44.62,-648 50.62,-648 50.62,-648 192.62,-648 192.62,-648 198.62,-648 204.62,-654 204.62,-660 204.62,-660 204.62,-672 204.62,-672 204.62,-678 198.62,-684 192.62,-684"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-660.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::logout::POST</text>
+<path fill="#fee2e2" stroke="black" d="M192.62,-630C192.62,-630 50.62,-630 50.62,-630 44.62,-630 38.62,-624 38.62,-618 38.62,-618 38.62,-606 38.62,-606 38.62,-600 44.62,-594 50.62,-594 50.62,-594 192.62,-594 192.62,-594 198.62,-594 204.62,-600 204.62,-606 204.62,-606 204.62,-618 204.62,-618 204.62,-624 198.62,-630 192.62,-630"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-606.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::logout::POST</text>
 </g>
 <!-- api/auth.php::actionLogout -->
 <g id="node17" class="node">
 <title>api/auth.php::actionLogout</title>
-<path fill="#dbeafe" stroke="black" d="M470.38,-684C470.38,-684 331.38,-684 331.38,-684 325.38,-684 319.38,-678 319.38,-672 319.38,-672 319.38,-660 319.38,-660 319.38,-654 325.38,-648 331.38,-648 331.38,-648 470.38,-648 470.38,-648 476.38,-648 482.38,-654 482.38,-660 482.38,-660 482.38,-672 482.38,-672 482.38,-678 476.38,-684 470.38,-684"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-660.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionLogout</text>
+<path fill="#dbeafe" stroke="black" d="M470.38,-630C470.38,-630 331.38,-630 331.38,-630 325.38,-630 319.38,-624 319.38,-618 319.38,-618 319.38,-606 319.38,-606 319.38,-600 325.38,-594 331.38,-594 331.38,-594 470.38,-594 470.38,-594 476.38,-594 482.38,-600 482.38,-606 482.38,-606 482.38,-618 482.38,-618 482.38,-624 476.38,-630 470.38,-630"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-606.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionLogout</text>
 </g>
 <!-- api/auth.php::logout::POST&#45;&gt;api/auth.php::actionLogout -->
 <g id="edge13" class="edge">
 <title>api/auth.php::logout::POST&#45;&gt;api/auth.php::actionLogout</title>
-<path fill="none" stroke="#dc2626" d="M205.06,-666C237.47,-666 274.81,-666 308.08,-666"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="307.68,-669.5 317.68,-666 307.68,-662.5 307.68,-669.5"/>
+<path fill="none" stroke="#dc2626" d="M205.06,-612C237.47,-612 274.81,-612 308.08,-612"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="307.68,-615.5 317.68,-612 307.68,-608.5 307.68,-615.5"/>
 </g>
 <!-- table::sessions -->
 <g id="node18" class="node">
 <title>table::sessions</title>
-<path fill="#fef3c7" stroke="black" d="M714,-522C714,-522 632,-522 632,-522 626,-522 620,-516 620,-510 620,-510 620,-498 620,-498 620,-492 626,-486 632,-486 632,-486 714,-486 714,-486 720,-486 726,-492 726,-498 726,-498 726,-510 726,-510 726,-516 720,-522 714,-522"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-498.95" font-family="Times New Roman,serif" font-size="14.00">sessions\nCALL</text>
+<path fill="#fef3c7" stroke="black" d="M714,-846C714,-846 632,-846 632,-846 626,-846 620,-840 620,-834 620,-834 620,-822 620,-822 620,-816 626,-810 632,-810 632,-810 714,-810 714,-810 720,-810 726,-816 726,-822 726,-822 726,-834 726,-834 726,-840 720,-846 714,-846"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-822.95" font-family="Times New Roman,serif" font-size="14.00">sessions\nCALL</text>
 </g>
 <!-- api/auth.php::actionLogout&#45;&gt;table::sessions -->
 <g id="edge14" class="edge">
 <title>api/auth.php::actionLogout&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M482.72,-659.9C497.28,-655.65 511.35,-649.07 522.5,-639 560.05,-605.08 521.18,-565.16 558.5,-531 572.17,-518.48 590.57,-511.47 608.57,-507.62"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="608.98,-511.1 618.19,-505.87 607.73,-504.21 608.98,-511.1"/>
+<path fill="none" stroke="#2563eb" d="M482.76,-622.09C496.68,-626.02 510.51,-631.47 522.5,-639 586.86,-679.43 635.17,-757.67 657.79,-799.69"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="654.65,-801.23 662.4,-808.45 660.84,-797.97 654.65,-801.23"/>
 </g>
 <!-- table::takeover_requests -->
 <g id="node19" class="node">
 <title>table::takeover_requests</title>
-<path fill="#fef3c7" stroke="black" d="M748.5,-684C748.5,-684 597.5,-684 597.5,-684 591.5,-684 585.5,-678 585.5,-672 585.5,-672 585.5,-660 585.5,-660 585.5,-654 591.5,-648 597.5,-648 597.5,-648 748.5,-648 748.5,-648 754.5,-648 760.5,-654 760.5,-660 760.5,-660 760.5,-672 760.5,-672 760.5,-678 754.5,-684 748.5,-684"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-660.95" font-family="Times New Roman,serif" font-size="14.00">takeover_requests\nDELETE</text>
+<path fill="#fef3c7" stroke="black" d="M748.5,-630C748.5,-630 597.5,-630 597.5,-630 591.5,-630 585.5,-624 585.5,-618 585.5,-618 585.5,-606 585.5,-606 585.5,-600 591.5,-594 597.5,-594 597.5,-594 748.5,-594 748.5,-594 754.5,-594 760.5,-600 760.5,-606 760.5,-606 760.5,-618 760.5,-618 760.5,-624 754.5,-630 748.5,-630"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-606.95" font-family="Times New Roman,serif" font-size="14.00">takeover_requests\nDELETE</text>
 </g>
 <!-- api/auth.php::actionLogout&#45;&gt;table::takeover_requests -->
 <g id="edge15" class="edge">
 <title>api/auth.php::actionLogout&#45;&gt;table::takeover_requests</title>
-<path fill="none" stroke="#2563eb" d="M482.56,-666C511.23,-666 543.83,-666 573.8,-666"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="573.64,-669.5 583.64,-666 573.64,-662.5 573.64,-669.5"/>
+<path fill="none" stroke="#2563eb" d="M482.56,-612C511.23,-612 543.83,-612 573.8,-612"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="573.64,-615.5 583.64,-612 573.64,-608.5 573.64,-615.5"/>
 </g>
 <!-- api/auth.php::validate::GET -->
 <g id="node20" class="node">
 <title>api/auth.php::validate::GET</title>
-<path fill="#fee2e2" stroke="black" d="M193.38,-522C193.38,-522 49.88,-522 49.88,-522 43.88,-522 37.88,-516 37.88,-510 37.88,-510 37.88,-498 37.88,-498 37.88,-492 43.88,-486 49.88,-486 49.88,-486 193.38,-486 193.38,-486 199.38,-486 205.38,-492 205.38,-498 205.38,-498 205.38,-510 205.38,-510 205.38,-516 199.38,-522 193.38,-522"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-498.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::validate::GET</text>
+<path fill="#fee2e2" stroke="black" d="M193.38,-846C193.38,-846 49.88,-846 49.88,-846 43.88,-846 37.88,-840 37.88,-834 37.88,-834 37.88,-822 37.88,-822 37.88,-816 43.88,-810 49.88,-810 49.88,-810 193.38,-810 193.38,-810 199.38,-810 205.38,-816 205.38,-822 205.38,-822 205.38,-834 205.38,-834 205.38,-840 199.38,-846 193.38,-846"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-822.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::validate::GET</text>
 </g>
 <!-- api/auth.php::actionValidate -->
 <g id="node21" class="node">
 <title>api/auth.php::actionValidate</title>
-<path fill="#dbeafe" stroke="black" d="M473,-522C473,-522 328.75,-522 328.75,-522 322.75,-522 316.75,-516 316.75,-510 316.75,-510 316.75,-498 316.75,-498 316.75,-492 322.75,-486 328.75,-486 328.75,-486 473,-486 473,-486 479,-486 485,-492 485,-498 485,-498 485,-510 485,-510 485,-516 479,-522 473,-522"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-498.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionValidate</text>
+<path fill="#dbeafe" stroke="black" d="M473,-846C473,-846 328.75,-846 328.75,-846 322.75,-846 316.75,-840 316.75,-834 316.75,-834 316.75,-822 316.75,-822 316.75,-816 322.75,-810 328.75,-810 328.75,-810 473,-810 473,-810 479,-810 485,-816 485,-822 485,-822 485,-834 485,-834 485,-840 479,-846 473,-846"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-822.95" font-family="Times New Roman,serif" font-size="14.00">api/auth.php::actionValidate</text>
 </g>
 <!-- api/auth.php::validate::GET&#45;&gt;api/auth.php::actionValidate -->
 <g id="edge16" class="edge">
 <title>api/auth.php::validate::GET&#45;&gt;api/auth.php::actionValidate</title>
-<path fill="none" stroke="#dc2626" d="M205.81,-504C237.06,-504 272.8,-504 305.03,-504"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="304.76,-507.5 314.76,-504 304.76,-500.5 304.76,-507.5"/>
+<path fill="none" stroke="#dc2626" d="M205.81,-828C237.06,-828 272.8,-828 305.03,-828"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="304.76,-831.5 314.76,-828 304.76,-824.5 304.76,-831.5"/>
 </g>
 <!-- api/auth.php::actionValidate&#45;&gt;table::users -->
 <g id="edge18" class="edge">
 <title>api/auth.php::actionValidate&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M485.49,-487.28C528.18,-478.75 578.93,-468.61 616.71,-461.05"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="617.39,-464.49 626.5,-459.09 616.01,-457.62 617.39,-464.49"/>
+<path fill="none" stroke="#2563eb" d="M485.49,-844.72C528.18,-853.25 578.93,-863.39 616.71,-870.95"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.01,-874.38 626.5,-872.91 617.39,-867.51 616.01,-874.38"/>
 </g>
 <!-- api/auth.php::actionValidate&#45;&gt;table::sessions -->
 <g id="edge17" class="edge">
 <title>api/auth.php::actionValidate&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M485.49,-504C525.23,-504 571.96,-504 608.7,-504"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="608.25,-507.5 618.25,-504 608.25,-500.5 608.25,-507.5"/>
+<path fill="none" stroke="#2563eb" d="M485.49,-828C525.23,-828 571.96,-828 608.7,-828"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="608.25,-831.5 618.25,-828 608.25,-824.5 608.25,-831.5"/>
 </g>
 <!-- api/config.php::get::GET -->
 <g id="node22" class="node">
 <title>api/config.php::get::GET</title>
-<path fill="#fee2e2" stroke="black" d="M185.88,-846C185.88,-846 57.38,-846 57.38,-846 51.38,-846 45.38,-840 45.38,-834 45.38,-834 45.38,-822 45.38,-822 45.38,-816 51.38,-810 57.38,-810 57.38,-810 185.88,-810 185.88,-810 191.88,-810 197.88,-816 197.88,-822 197.88,-822 197.88,-834 197.88,-834 197.88,-840 191.88,-846 185.88,-846"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-822.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::get::GET</text>
+<path fill="#fee2e2" stroke="black" d="M185.88,-522C185.88,-522 57.38,-522 57.38,-522 51.38,-522 45.38,-516 45.38,-510 45.38,-510 45.38,-498 45.38,-498 45.38,-492 51.38,-486 57.38,-486 57.38,-486 185.88,-486 185.88,-486 191.88,-486 197.88,-492 197.88,-498 197.88,-498 197.88,-510 197.88,-510 197.88,-516 191.88,-522 185.88,-522"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-498.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::get::GET</text>
 </g>
 <!-- api/config.php::action:get -->
 <g id="node23" class="node">
 <title>api/config.php::action:get</title>
-<path fill="#dbeafe" stroke="black" d="M466.62,-846C466.62,-846 335.12,-846 335.12,-846 329.12,-846 323.12,-840 323.12,-834 323.12,-834 323.12,-822 323.12,-822 323.12,-816 329.12,-810 335.12,-810 335.12,-810 466.62,-810 466.62,-810 472.62,-810 478.62,-816 478.62,-822 478.62,-822 478.62,-834 478.62,-834 478.62,-840 472.62,-846 466.62,-846"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-822.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::action:get</text>
+<path fill="#dbeafe" stroke="black" d="M466.62,-522C466.62,-522 335.12,-522 335.12,-522 329.12,-522 323.12,-516 323.12,-510 323.12,-510 323.12,-498 323.12,-498 323.12,-492 329.12,-486 335.12,-486 335.12,-486 466.62,-486 466.62,-486 472.62,-486 478.62,-492 478.62,-498 478.62,-498 478.62,-510 478.62,-510 478.62,-516 472.62,-522 466.62,-522"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-498.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::action:get</text>
 </g>
 <!-- api/config.php::get::GET&#45;&gt;api/config.php::action:get -->
 <g id="edge19" class="edge">
 <title>api/config.php::get::GET&#45;&gt;api/config.php::action:get</title>
-<path fill="none" stroke="#dc2626" d="M198.02,-828C233.19,-828 275.26,-828 311.88,-828"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="311.54,-831.5 321.54,-828 311.54,-824.5 311.54,-831.5"/>
+<path fill="none" stroke="#dc2626" d="M198.02,-504C233.19,-504 275.26,-504 311.88,-504"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="311.54,-507.5 321.54,-504 311.54,-500.5 311.54,-507.5"/>
 </g>
 <!-- api/config.php::action:get&#45;&gt;table::settings -->
 <g id="edge20" class="edge">
 <title>api/config.php::action:get&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M478.92,-812.6C518.52,-804.68 566.33,-795.12 604.47,-787.5"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="604.86,-790.99 613.98,-785.6 603.49,-784.13 604.86,-790.99"/>
+<path fill="none" stroke="#2563eb" d="M478.92,-519.4C518.52,-527.32 566.33,-536.88 604.47,-544.5"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="603.49,-547.87 613.98,-546.4 604.86,-541.01 603.49,-547.87"/>
 </g>
 <!-- api/config.php::save::POST -->
 <g id="node24" class="node">
 <title>api/config.php::save::POST</title>
-<path fill="#fee2e2" stroke="black" d="M193,-630C193,-630 50.25,-630 50.25,-630 44.25,-630 38.25,-624 38.25,-618 38.25,-618 38.25,-606 38.25,-606 38.25,-600 44.25,-594 50.25,-594 50.25,-594 193,-594 193,-594 199,-594 205,-600 205,-606 205,-606 205,-618 205,-618 205,-624 199,-630 193,-630"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-606.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::save::POST</text>
+<path fill="#fee2e2" stroke="black" d="M193,-684C193,-684 50.25,-684 50.25,-684 44.25,-684 38.25,-678 38.25,-672 38.25,-672 38.25,-660 38.25,-660 38.25,-654 44.25,-648 50.25,-648 50.25,-648 193,-648 193,-648 199,-648 205,-654 205,-660 205,-660 205,-672 205,-672 205,-678 199,-684 193,-684"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-660.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::save::POST</text>
 </g>
 <!-- api/config.php::action:save -->
 <g id="node25" class="node">
 <title>api/config.php::action:save</title>
-<path fill="#dbeafe" stroke="black" d="M470.38,-630C470.38,-630 331.38,-630 331.38,-630 325.38,-630 319.38,-624 319.38,-618 319.38,-618 319.38,-606 319.38,-606 319.38,-600 325.38,-594 331.38,-594 331.38,-594 470.38,-594 470.38,-594 476.38,-594 482.38,-600 482.38,-606 482.38,-606 482.38,-618 482.38,-618 482.38,-624 476.38,-630 470.38,-630"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-606.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::action:save</text>
+<path fill="#dbeafe" stroke="black" d="M470.38,-684C470.38,-684 331.38,-684 331.38,-684 325.38,-684 319.38,-678 319.38,-672 319.38,-672 319.38,-660 319.38,-660 319.38,-654 325.38,-648 331.38,-648 331.38,-648 470.38,-648 470.38,-648 476.38,-648 482.38,-654 482.38,-660 482.38,-660 482.38,-672 482.38,-672 482.38,-678 476.38,-684 470.38,-684"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-660.95" font-family="Times New Roman,serif" font-size="14.00">api/config.php::action:save</text>
 </g>
 <!-- api/config.php::save::POST&#45;&gt;api/config.php::action:save -->
 <g id="edge21" class="edge">
 <title>api/config.php::save::POST&#45;&gt;api/config.php::action:save</title>
-<path fill="none" stroke="#dc2626" d="M205.43,-612C237.55,-612 274.46,-612 307.44,-612"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="307.41,-615.5 317.41,-612 307.41,-608.5 307.41,-615.5"/>
+<path fill="none" stroke="#dc2626" d="M205.43,-666C237.55,-666 274.46,-666 307.44,-666"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="307.41,-669.5 317.41,-666 307.41,-662.5 307.41,-669.5"/>
 </g>
 <!-- api/config.php::action:save&#45;&gt;table::settings -->
 <g id="edge23" class="edge">
 <title>api/config.php::action:save&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M482.65,-621.12C496.73,-625.14 510.65,-630.86 522.5,-639 546.28,-655.32 538.43,-672.28 558.5,-693 579.87,-715.06 607.94,-735.15 630.81,-749.8"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="628.65,-752.58 638.98,-754.94 632.38,-746.65 628.65,-752.58"/>
+<path fill="none" stroke="#2563eb" d="M482.65,-656.88C496.73,-652.86 510.65,-647.14 522.5,-639 546.28,-622.68 534.83,-601.48 558.5,-585 572.01,-575.6 588.37,-569.44 604.42,-565.42"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="604.97,-568.89 613.97,-563.3 603.44,-562.05 604.97,-568.89"/>
 </g>
 <!-- api/config.php::action:save&#45;&gt;table::users -->
 <g id="edge24" class="edge">
 <title>api/config.php::action:save&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M482.72,-605.9C497.28,-601.65 511.35,-595.07 522.5,-585 560.05,-551.08 521.18,-511.16 558.5,-477 574.26,-462.58 596.3,-455.45 616.76,-452.07"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="616.99,-455.57 626.43,-450.75 616.04,-448.63 616.99,-455.57"/>
+<path fill="none" stroke="#2563eb" d="M482.63,-670.94C497.46,-675.24 511.66,-682.14 522.5,-693 574.61,-745.19 506.74,-802.46 558.5,-855 573.61,-870.34 595.75,-877.59 616.47,-880.83"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="615.92,-884.29 626.27,-882.06 616.79,-877.35 615.92,-884.29"/>
 </g>
 <!-- api/config.php::action:save&#45;&gt;table::sessions -->
 <g id="edge22" class="edge">
 <title>api/config.php::action:save&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M482.65,-602.88C496.73,-598.86 510.65,-593.14 522.5,-585 546.28,-568.68 534.83,-547.48 558.5,-531 573.16,-520.79 591.19,-514.42 608.52,-510.44"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="609.18,-513.88 618.29,-508.46 607.79,-507.02 609.18,-513.88"/>
+<path fill="none" stroke="#2563eb" d="M482.75,-678.05C496.45,-681.77 510.21,-686.64 522.5,-693 575.08,-720.2 623.5,-770.46 650.26,-801.39"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="647.41,-803.44 656.56,-808.79 652.74,-798.9 647.41,-803.44"/>
 </g>
 <!-- api/conversions.php::delete::POST -->
 <g id="node26" class="node">
 <title>api/conversions.php::delete::POST</title>
-<path fill="#fee2e2" stroke="black" d="M212.12,-1278C212.12,-1278 31.12,-1278 31.12,-1278 25.12,-1278 19.12,-1272 19.12,-1266 19.12,-1266 19.12,-1254 19.12,-1254 19.12,-1248 25.12,-1242 31.12,-1242 31.12,-1242 212.12,-1242 212.12,-1242 218.12,-1242 224.12,-1248 224.12,-1254 224.12,-1254 224.12,-1266 224.12,-1266 224.12,-1272 218.12,-1278 212.12,-1278"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1254.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::delete::POST</text>
+<path fill="#fee2e2" stroke="black" d="M212.12,-360C212.12,-360 31.12,-360 31.12,-360 25.12,-360 19.12,-354 19.12,-348 19.12,-348 19.12,-336 19.12,-336 19.12,-330 25.12,-324 31.12,-324 31.12,-324 212.12,-324 212.12,-324 218.12,-324 224.12,-330 224.12,-336 224.12,-336 224.12,-348 224.12,-348 224.12,-354 218.12,-360 212.12,-360"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-336.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::delete::POST</text>
 </g>
 <!-- api/conversions.php::action:delete -->
 <g id="node27" class="node">
 <title>api/conversions.php::action:delete</title>
-<path fill="#dbeafe" stroke="black" d="M489.5,-1278C489.5,-1278 312.25,-1278 312.25,-1278 306.25,-1278 300.25,-1272 300.25,-1266 300.25,-1266 300.25,-1254 300.25,-1254 300.25,-1248 306.25,-1242 312.25,-1242 312.25,-1242 489.5,-1242 489.5,-1242 495.5,-1242 501.5,-1248 501.5,-1254 501.5,-1254 501.5,-1266 501.5,-1266 501.5,-1272 495.5,-1278 489.5,-1278"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1254.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:delete</text>
+<path fill="#dbeafe" stroke="black" d="M489.5,-360C489.5,-360 312.25,-360 312.25,-360 306.25,-360 300.25,-354 300.25,-348 300.25,-348 300.25,-336 300.25,-336 300.25,-330 306.25,-324 312.25,-324 312.25,-324 489.5,-324 489.5,-324 495.5,-324 501.5,-330 501.5,-336 501.5,-336 501.5,-348 501.5,-348 501.5,-354 495.5,-360 489.5,-360"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-336.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:delete</text>
 </g>
 <!-- api/conversions.php::delete::POST&#45;&gt;api/conversions.php::action:delete -->
 <g id="edge25" class="edge">
 <title>api/conversions.php::delete::POST&#45;&gt;api/conversions.php::action:delete</title>
-<path fill="none" stroke="#dc2626" d="M224.29,-1260C245.25,-1260 267.42,-1260 288.7,-1260"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="288.56,-1263.5 298.56,-1260 288.56,-1256.5 288.56,-1263.5"/>
+<path fill="none" stroke="#dc2626" d="M224.29,-342C245.25,-342 267.42,-342 288.7,-342"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="288.56,-345.5 298.56,-342 288.56,-338.5 288.56,-345.5"/>
 </g>
 <!-- table::conversions -->
 <g id="node28" class="node">
 <title>table::conversions</title>
-<path fill="#fef3c7" stroke="black" d="M731.25,-1197C731.25,-1197 614.75,-1197 614.75,-1197 608.75,-1197 602.75,-1191 602.75,-1185 602.75,-1185 602.75,-1173 602.75,-1173 602.75,-1167 608.75,-1161 614.75,-1161 614.75,-1161 731.25,-1161 731.25,-1161 737.25,-1161 743.25,-1167 743.25,-1173 743.25,-1173 743.25,-1185 743.25,-1185 743.25,-1191 737.25,-1197 731.25,-1197"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-1173.95" font-family="Times New Roman,serif" font-size="14.00">conversions\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M731.25,-333C731.25,-333 614.75,-333 614.75,-333 608.75,-333 602.75,-327 602.75,-321 602.75,-321 602.75,-309 602.75,-309 602.75,-303 608.75,-297 614.75,-297 614.75,-297 731.25,-297 731.25,-297 737.25,-297 743.25,-303 743.25,-309 743.25,-309 743.25,-321 743.25,-321 743.25,-327 737.25,-333 731.25,-333"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-309.95" font-family="Times New Roman,serif" font-size="14.00">conversions\nSELECT</text>
 </g>
 <!-- api/conversions.php::action:delete&#45;&gt;table::conversions -->
 <g id="edge26" class="edge">
 <title>api/conversions.php::action:delete&#45;&gt;table::conversions</title>
-<path fill="none" stroke="#2563eb" d="M490.48,-1241.52C501.32,-1238.86 512.2,-1236 522.5,-1233 553.49,-1223.97 587.37,-1211.92 615.04,-1201.49"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="616.18,-1204.8 624.29,-1197.98 613.7,-1198.26 616.18,-1204.8"/>
+<path fill="none" stroke="#2563eb" d="M501.69,-332.02C531.15,-329.08 563.01,-325.89 591.12,-323.08"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="591.4,-326.57 601,-322.1 590.7,-319.61 591.4,-326.57"/>
 </g>
 <!-- api/conversions.php::list::GET -->
 <g id="node29" class="node">
 <title>api/conversions.php::list::GET</title>
-<path fill="#fee2e2" stroke="black" d="M200.88,-1224C200.88,-1224 42.38,-1224 42.38,-1224 36.38,-1224 30.38,-1218 30.38,-1212 30.38,-1212 30.38,-1200 30.38,-1200 30.38,-1194 36.38,-1188 42.38,-1188 42.38,-1188 200.88,-1188 200.88,-1188 206.88,-1188 212.88,-1194 212.88,-1200 212.88,-1200 212.88,-1212 212.88,-1212 212.88,-1218 206.88,-1224 200.88,-1224"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1200.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::list::GET</text>
+<path fill="#fee2e2" stroke="black" d="M200.88,-306C200.88,-306 42.38,-306 42.38,-306 36.38,-306 30.38,-300 30.38,-294 30.38,-294 30.38,-282 30.38,-282 30.38,-276 36.38,-270 42.38,-270 42.38,-270 200.88,-270 200.88,-270 206.88,-270 212.88,-276 212.88,-282 212.88,-282 212.88,-294 212.88,-294 212.88,-300 206.88,-306 200.88,-306"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-282.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::list::GET</text>
 </g>
 <!-- api/conversions.php::action:list -->
 <g id="node30" class="node">
 <title>api/conversions.php::action:list</title>
-<path fill="#dbeafe" stroke="black" d="M481.62,-1224C481.62,-1224 320.12,-1224 320.12,-1224 314.12,-1224 308.12,-1218 308.12,-1212 308.12,-1212 308.12,-1200 308.12,-1200 308.12,-1194 314.12,-1188 320.12,-1188 320.12,-1188 481.62,-1188 481.62,-1188 487.62,-1188 493.62,-1194 493.62,-1200 493.62,-1200 493.62,-1212 493.62,-1212 493.62,-1218 487.62,-1224 481.62,-1224"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1200.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:list</text>
+<path fill="#dbeafe" stroke="black" d="M481.62,-306C481.62,-306 320.12,-306 320.12,-306 314.12,-306 308.12,-300 308.12,-294 308.12,-294 308.12,-282 308.12,-282 308.12,-276 314.12,-270 320.12,-270 320.12,-270 481.62,-270 481.62,-270 487.62,-270 493.62,-276 493.62,-282 493.62,-282 493.62,-294 493.62,-294 493.62,-300 487.62,-306 481.62,-306"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-282.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:list</text>
 </g>
 <!-- api/conversions.php::list::GET&#45;&gt;api/conversions.php::action:list -->
 <g id="edge27" class="edge">
 <title>api/conversions.php::list::GET&#45;&gt;api/conversions.php::action:list</title>
-<path fill="none" stroke="#dc2626" d="M213.02,-1206C239.69,-1206 269.08,-1206 296.49,-1206"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="296.19,-1209.5 306.19,-1206 296.19,-1202.5 296.19,-1209.5"/>
+<path fill="none" stroke="#dc2626" d="M213.02,-288C239.69,-288 269.08,-288 296.49,-288"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="296.19,-291.5 306.19,-288 296.19,-284.5 296.19,-291.5"/>
 </g>
 <!-- api/conversions.php::action:list&#45;&gt;table::conversions -->
 <g id="edge28" class="edge">
 <title>api/conversions.php::action:list&#45;&gt;table::conversions</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-1196.78C525.66,-1193.63 560.73,-1190.12 591.33,-1187.06"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="591.27,-1190.59 600.88,-1186.11 590.58,-1183.62 591.27,-1190.59"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-297.22C525.66,-300.37 560.73,-303.88 591.33,-306.94"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="590.58,-310.38 600.88,-307.89 591.27,-303.41 590.58,-310.38"/>
 </g>
 <!-- api/conversions.php::save::POST -->
 <g id="node31" class="node">
 <title>api/conversions.php::save::POST</title>
-<path fill="#fee2e2" stroke="black" d="M208,-1170C208,-1170 35.25,-1170 35.25,-1170 29.25,-1170 23.25,-1164 23.25,-1158 23.25,-1158 23.25,-1146 23.25,-1146 23.25,-1140 29.25,-1134 35.25,-1134 35.25,-1134 208,-1134 208,-1134 214,-1134 220,-1140 220,-1146 220,-1146 220,-1158 220,-1158 220,-1164 214,-1170 208,-1170"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1146.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::save::POST</text>
+<path fill="#fee2e2" stroke="black" d="M208,-252C208,-252 35.25,-252 35.25,-252 29.25,-252 23.25,-246 23.25,-240 23.25,-240 23.25,-228 23.25,-228 23.25,-222 29.25,-216 35.25,-216 35.25,-216 208,-216 208,-216 214,-216 220,-222 220,-228 220,-228 220,-240 220,-240 220,-246 214,-252 208,-252"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-228.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::save::POST</text>
 </g>
 <!-- api/conversions.php::action:save -->
 <g id="node32" class="node">
 <title>api/conversions.php::action:save</title>
-<path fill="#dbeafe" stroke="black" d="M485.38,-1170C485.38,-1170 316.38,-1170 316.38,-1170 310.38,-1170 304.38,-1164 304.38,-1158 304.38,-1158 304.38,-1146 304.38,-1146 304.38,-1140 310.38,-1134 316.38,-1134 316.38,-1134 485.38,-1134 485.38,-1134 491.38,-1134 497.38,-1140 497.38,-1146 497.38,-1146 497.38,-1158 497.38,-1158 497.38,-1164 491.38,-1170 485.38,-1170"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1146.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:save</text>
+<path fill="#dbeafe" stroke="black" d="M485.38,-252C485.38,-252 316.38,-252 316.38,-252 310.38,-252 304.38,-246 304.38,-240 304.38,-240 304.38,-228 304.38,-228 304.38,-222 310.38,-216 316.38,-216 316.38,-216 485.38,-216 485.38,-216 491.38,-216 497.38,-222 497.38,-228 497.38,-228 497.38,-240 497.38,-240 497.38,-246 491.38,-252 485.38,-252"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-228.95" font-family="Times New Roman,serif" font-size="14.00">api/conversions.php::action:save</text>
 </g>
 <!-- api/conversions.php::save::POST&#45;&gt;api/conversions.php::action:save -->
 <g id="edge29" class="edge">
 <title>api/conversions.php::save::POST&#45;&gt;api/conversions.php::action:save</title>
-<path fill="none" stroke="#dc2626" d="M220.37,-1152C243.79,-1152 268.92,-1152 292.74,-1152"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="292.43,-1155.5 302.43,-1152 292.43,-1148.5 292.43,-1155.5"/>
+<path fill="none" stroke="#dc2626" d="M220.37,-234C243.79,-234 268.92,-234 292.74,-234"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="292.43,-237.5 302.43,-234 292.43,-230.5 292.43,-237.5"/>
 </g>
 <!-- api/conversions.php::action:save&#45;&gt;table::conversions -->
 <g id="edge30" class="edge">
 <title>api/conversions.php::action:save&#45;&gt;table::conversions</title>
-<path fill="none" stroke="#2563eb" d="M497.87,-1161.6C528.39,-1164.65 561.83,-1167.99 591.17,-1170.92"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.82,-1174.4 601.12,-1171.91 591.51,-1167.44 590.82,-1174.4"/>
+<path fill="none" stroke="#2563eb" d="M490.48,-252.48C501.32,-255.14 512.2,-258 522.5,-261 553.49,-270.03 587.37,-282.08 615.04,-292.51"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="613.7,-295.74 624.29,-296.02 616.18,-289.2 613.7,-295.74"/>
 </g>
 <!-- api/history.php::paged::GET -->
 <g id="node33" class="node">
 <title>api/history.php::paged::GET</title>
-<path fill="#fee2e2" stroke="black" d="M194.88,-198C194.88,-198 48.38,-198 48.38,-198 42.38,-198 36.38,-192 36.38,-186 36.38,-186 36.38,-174 36.38,-174 36.38,-168 42.38,-162 48.38,-162 48.38,-162 194.88,-162 194.88,-162 200.88,-162 206.88,-168 206.88,-174 206.88,-174 206.88,-186 206.88,-186 206.88,-192 200.88,-198 194.88,-198"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">api/history.php::paged::GET</text>
+<path fill="#fee2e2" stroke="black" d="M194.88,-1170C194.88,-1170 48.38,-1170 48.38,-1170 42.38,-1170 36.38,-1164 36.38,-1158 36.38,-1158 36.38,-1146 36.38,-1146 36.38,-1140 42.38,-1134 48.38,-1134 48.38,-1134 194.88,-1134 194.88,-1134 200.88,-1134 206.88,-1140 206.88,-1146 206.88,-1146 206.88,-1158 206.88,-1158 206.88,-1164 200.88,-1170 194.88,-1170"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1146.95" font-family="Times New Roman,serif" font-size="14.00">api/history.php::paged::GET</text>
 </g>
 <!-- api/history.php::action:paged -->
 <g id="node34" class="node">
 <title>api/history.php::action:paged</title>
-<path fill="#dbeafe" stroke="black" d="M475.62,-198C475.62,-198 326.12,-198 326.12,-198 320.12,-198 314.12,-192 314.12,-186 314.12,-186 314.12,-174 314.12,-174 314.12,-168 320.12,-162 326.12,-162 326.12,-162 475.62,-162 475.62,-162 481.62,-162 487.62,-168 487.62,-174 487.62,-174 487.62,-186 487.62,-186 487.62,-192 481.62,-198 475.62,-198"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">api/history.php::action:paged</text>
+<path fill="#dbeafe" stroke="black" d="M475.62,-1170C475.62,-1170 326.12,-1170 326.12,-1170 320.12,-1170 314.12,-1164 314.12,-1158 314.12,-1158 314.12,-1146 314.12,-1146 314.12,-1140 320.12,-1134 326.12,-1134 326.12,-1134 475.62,-1134 475.62,-1134 481.62,-1134 487.62,-1140 487.62,-1146 487.62,-1146 487.62,-1158 487.62,-1158 487.62,-1164 481.62,-1170 475.62,-1170"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1146.95" font-family="Times New Roman,serif" font-size="14.00">api/history.php::action:paged</text>
 </g>
 <!-- api/history.php::paged::GET&#45;&gt;api/history.php::action:paged -->
 <g id="edge31" class="edge">
 <title>api/history.php::paged::GET&#45;&gt;api/history.php::action:paged</title>
-<path fill="none" stroke="#dc2626" d="M207.32,-180C237.38,-180 271.46,-180 302.5,-180"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="302.28,-183.5 312.28,-180 302.28,-176.5 302.28,-183.5"/>
+<path fill="none" stroke="#dc2626" d="M207.32,-1152C237.38,-1152 271.46,-1152 302.5,-1152"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="302.28,-1155.5 312.28,-1152 302.28,-1148.5 302.28,-1155.5"/>
 </g>
 <!-- api/history.php::action:paged&#45;&gt;table::transaction_materials -->
 <g id="edge35" class="edge">
 <title>api/history.php::action:paged&#45;&gt;table::transaction_materials</title>
-<path fill="none" stroke="#2563eb" d="M488.09,-180C515.89,-180 546.89,-180 575.4,-180"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="575.09,-183.5 585.09,-180 575.09,-176.5 575.09,-183.5"/>
+<path fill="none" stroke="#2563eb" d="M488.09,-1152C515.89,-1152 546.89,-1152 575.4,-1152"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="575.09,-1155.5 585.09,-1152 575.09,-1148.5 575.09,-1155.5"/>
 </g>
 <!-- api/history.php::action:paged&#45;&gt;table::transactions -->
 <g id="edge36" class="edge">
 <title>api/history.php::action:paged&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M488,-187.75C500.66,-192 512.71,-198.15 522.5,-207 560.05,-240.92 521.18,-280.84 558.5,-315 567.86,-323.57 579.44,-329.56 591.58,-333.72"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.33,-337 600.91,-336.5 592.32,-330.29 590.33,-337"/>
+<path fill="none" stroke="#2563eb" d="M488,-1144.25C500.66,-1140 512.71,-1133.85 522.5,-1125 560.05,-1091.08 521.18,-1051.16 558.5,-1017 567.86,-1008.43 579.44,-1002.44 591.58,-998.28"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="592.32,-1001.71 600.91,-995.5 590.33,-995 592.32,-1001.71"/>
 </g>
 <!-- table::material_hourly_usage -->
 <g id="node35" class="node">
 <title>table::material_hourly_usage</title>
-<path fill="#fef3c7" stroke="black" d="M761.25,-144C761.25,-144 584.75,-144 584.75,-144 578.75,-144 572.75,-138 572.75,-132 572.75,-132 572.75,-120 572.75,-120 572.75,-114 578.75,-108 584.75,-108 584.75,-108 761.25,-108 761.25,-108 767.25,-108 773.25,-114 773.25,-120 773.25,-120 773.25,-132 773.25,-132 773.25,-138 767.25,-144 761.25,-144"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-120.95" font-family="Times New Roman,serif" font-size="14.00">material_hourly_usage\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M761.25,-1224C761.25,-1224 584.75,-1224 584.75,-1224 578.75,-1224 572.75,-1218 572.75,-1212 572.75,-1212 572.75,-1200 572.75,-1200 572.75,-1194 578.75,-1188 584.75,-1188 584.75,-1188 761.25,-1188 761.25,-1188 767.25,-1188 773.25,-1194 773.25,-1200 773.25,-1200 773.25,-1212 773.25,-1212 773.25,-1218 767.25,-1224 761.25,-1224"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1200.95" font-family="Times New Roman,serif" font-size="14.00">material_hourly_usage\nSELECT</text>
 </g>
 <!-- api/history.php::action:paged&#45;&gt;table::material_hourly_usage -->
 <g id="edge32" class="edge">
 <title>api/history.php::action:paged&#45;&gt;table::material_hourly_usage</title>
-<path fill="none" stroke="#2563eb" d="M488.09,-162.77C513.62,-157.66 541.85,-152.02 568.36,-146.72"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="569.01,-150.16 578.13,-144.77 567.63,-143.29 569.01,-150.16"/>
+<path fill="none" stroke="#2563eb" d="M488.09,-1169.23C513.62,-1174.34 541.85,-1179.98 568.36,-1185.28"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="567.63,-1188.71 578.13,-1187.23 569.01,-1181.84 567.63,-1188.71"/>
 </g>
 <!-- table::production_outputs -->
 <g id="node36" class="node">
 <title>table::production_outputs</title>
-<path fill="#fef3c7" stroke="black" d="M751.5,-306C751.5,-306 594.5,-306 594.5,-306 588.5,-306 582.5,-300 582.5,-294 582.5,-294 582.5,-282 582.5,-282 582.5,-276 588.5,-270 594.5,-270 594.5,-270 751.5,-270 751.5,-270 757.5,-270 763.5,-276 763.5,-282 763.5,-282 763.5,-294 763.5,-294 763.5,-300 757.5,-306 751.5,-306"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-282.95" font-family="Times New Roman,serif" font-size="14.00">production_outputs\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M751.5,-1062C751.5,-1062 594.5,-1062 594.5,-1062 588.5,-1062 582.5,-1056 582.5,-1050 582.5,-1050 582.5,-1038 582.5,-1038 582.5,-1032 588.5,-1026 594.5,-1026 594.5,-1026 751.5,-1026 751.5,-1026 757.5,-1026 763.5,-1032 763.5,-1038 763.5,-1038 763.5,-1050 763.5,-1050 763.5,-1056 757.5,-1062 751.5,-1062"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1038.95" font-family="Times New Roman,serif" font-size="14.00">production_outputs\nSELECT</text>
 </g>
 <!-- api/history.php::action:paged&#45;&gt;table::production_outputs -->
 <g id="edge33" class="edge">
 <title>api/history.php::action:paged&#45;&gt;table::production_outputs</title>
-<path fill="none" stroke="#2563eb" d="M488,-190.73C500.23,-194.63 512.15,-199.9 522.5,-207 546.28,-223.32 534.83,-244.52 558.5,-261 562.68,-263.91 567.13,-266.51 571.77,-268.83"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="570.23,-271.97 580.78,-272.86 573.08,-265.58 570.23,-271.97"/>
+<path fill="none" stroke="#2563eb" d="M488,-1141.27C500.23,-1137.37 512.15,-1132.1 522.5,-1125 546.28,-1108.68 534.83,-1087.48 558.5,-1071 562.68,-1068.09 567.13,-1065.49 571.77,-1063.17"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="573.08,-1066.42 580.78,-1059.14 570.23,-1060.03 573.08,-1066.42"/>
 </g>
 <!-- table::production_reports -->
 <g id="node37" class="node">
 <title>table::production_reports</title>
-<path fill="#fef3c7" stroke="black" d="M750.38,-252C750.38,-252 595.62,-252 595.62,-252 589.62,-252 583.62,-246 583.62,-240 583.62,-240 583.62,-228 583.62,-228 583.62,-222 589.62,-216 595.62,-216 595.62,-216 750.38,-216 750.38,-216 756.38,-216 762.38,-222 762.38,-228 762.38,-228 762.38,-240 762.38,-240 762.38,-246 756.38,-252 750.38,-252"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-228.95" font-family="Times New Roman,serif" font-size="14.00">production_reports\nSELECT</text>
+<path fill="#fef3c7" stroke="black" d="M750.38,-1116C750.38,-1116 595.62,-1116 595.62,-1116 589.62,-1116 583.62,-1110 583.62,-1104 583.62,-1104 583.62,-1092 583.62,-1092 583.62,-1086 589.62,-1080 595.62,-1080 595.62,-1080 750.38,-1080 750.38,-1080 756.38,-1080 762.38,-1086 762.38,-1092 762.38,-1092 762.38,-1104 762.38,-1104 762.38,-1110 756.38,-1116 750.38,-1116"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-1092.95" font-family="Times New Roman,serif" font-size="14.00">production_reports\nSELECT</text>
 </g>
 <!-- api/history.php::action:paged&#45;&gt;table::production_reports -->
 <g id="edge34" class="edge">
 <title>api/history.php::action:paged&#45;&gt;table::production_reports</title>
-<path fill="none" stroke="#2563eb" d="M488.09,-197.23C514.82,-202.58 544.51,-208.51 572.09,-214.03"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="571.38,-217.45 581.87,-215.98 572.75,-210.59 571.38,-217.45"/>
+<path fill="none" stroke="#2563eb" d="M488.09,-1134.77C514.82,-1129.42 544.51,-1123.49 572.09,-1117.97"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="572.75,-1121.41 581.87,-1116.02 571.38,-1114.55 572.75,-1121.41"/>
 </g>
 <!-- api/init.php::__default__::GET -->
 <g id="node38" class="node">
 <title>api/init.php::__default__::GET</title>
-<path fill="#fee2e2" stroke="black" d="M201.62,-954C201.62,-954 41.62,-954 41.62,-954 35.62,-954 29.62,-948 29.62,-942 29.62,-942 29.62,-930 29.62,-930 29.62,-924 35.62,-918 41.62,-918 41.62,-918 201.62,-918 201.62,-918 207.62,-918 213.62,-924 213.62,-930 213.62,-930 213.62,-942 213.62,-942 213.62,-948 207.62,-954 201.62,-954"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-930.95" font-family="Times New Roman,serif" font-size="14.00">api/init.php::__default__::GET</text>
+<path fill="#fee2e2" stroke="black" d="M201.62,-414C201.62,-414 41.62,-414 41.62,-414 35.62,-414 29.62,-408 29.62,-402 29.62,-402 29.62,-390 29.62,-390 29.62,-384 35.62,-378 41.62,-378 41.62,-378 201.62,-378 201.62,-378 207.62,-378 213.62,-384 213.62,-390 213.62,-390 213.62,-402 213.62,-402 213.62,-408 207.62,-414 201.62,-414"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-390.95" font-family="Times New Roman,serif" font-size="14.00">api/init.php::__default__::GET</text>
 </g>
 <!-- api/init.php::__file_scope__ -->
 <g id="node39" class="node">
 <title>api/init.php::__file_scope__</title>
-<path fill="#dbeafe" stroke="black" d="M473,-954C473,-954 328.75,-954 328.75,-954 322.75,-954 316.75,-948 316.75,-942 316.75,-942 316.75,-930 316.75,-930 316.75,-924 322.75,-918 328.75,-918 328.75,-918 473,-918 473,-918 479,-918 485,-924 485,-930 485,-930 485,-942 485,-942 485,-948 479,-954 473,-954"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-930.95" font-family="Times New Roman,serif" font-size="14.00">api/init.php::__file_scope__</text>
+<path fill="#dbeafe" stroke="black" d="M473,-414C473,-414 328.75,-414 328.75,-414 322.75,-414 316.75,-408 316.75,-402 316.75,-402 316.75,-390 316.75,-390 316.75,-384 322.75,-378 328.75,-378 328.75,-378 473,-378 473,-378 479,-378 485,-384 485,-390 485,-390 485,-402 485,-402 485,-408 479,-414 473,-414"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-390.95" font-family="Times New Roman,serif" font-size="14.00">api/init.php::__file_scope__</text>
 </g>
 <!-- api/init.php::__default__::GET&#45;&gt;api/init.php::__file_scope__ -->
 <g id="edge37" class="edge">
 <title>api/init.php::__default__::GET&#45;&gt;api/init.php::__file_scope__</title>
-<path fill="none" stroke="#dc2626" d="M213.79,-936C243.18,-936 275.81,-936 305.43,-936"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="305.11,-939.5 315.11,-936 305.11,-932.5 305.11,-939.5"/>
+<path fill="none" stroke="#dc2626" d="M213.79,-396C243.18,-396 275.81,-396 305.43,-396"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="305.11,-399.5 315.11,-396 305.11,-392.5 305.11,-399.5"/>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::settings -->
 <g id="edge41" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M485.3,-923.25C498.15,-919.62 510.97,-914.96 522.5,-909 575.08,-881.8 623.5,-831.54 650.26,-800.61"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="652.74,-803.1 656.56,-793.21 647.41,-798.56 652.74,-803.1"/>
+<path fill="none" stroke="#2563eb" d="M485.3,-408.75C498.15,-412.38 510.97,-417.04 522.5,-423 575.08,-450.2 623.5,-500.46 650.26,-531.39"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="647.41,-533.44 656.56,-538.79 652.74,-528.9 647.41,-533.44"/>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::users -->
 <g id="edge43" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M485.36,-931.7C499.52,-927.27 512.77,-920.16 522.5,-909 585.79,-836.38 495.69,-550.04 558.5,-477 572.83,-460.34 595.4,-452.95 616.65,-449.97"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="616.85,-453.46 626.42,-448.92 616.11,-446.5 616.85,-453.46"/>
+<path fill="none" stroke="#2563eb" d="M485.36,-400.3C499.52,-404.73 512.77,-411.84 522.5,-423 585.79,-495.62 495.69,-781.96 558.5,-855 572.83,-871.66 595.4,-879.05 616.65,-882.03"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.11,-885.5 626.42,-883.08 616.85,-878.54 616.11,-885.5"/>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::sessions -->
 <g id="edge40" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M485.26,-931.6C499.43,-927.19 512.71,-920.11 522.5,-909 578.31,-845.72 503.11,-594.65 558.5,-531 571.06,-516.57 589.79,-509.11 608.44,-505.45"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="608.85,-508.93 618.18,-503.9 607.76,-502.01 608.85,-508.93"/>
+<path fill="none" stroke="#2563eb" d="M485.26,-401.15C499.26,-405.53 512.47,-412.4 522.5,-423 589.4,-493.69 524.86,-547.68 558.5,-639 581.3,-700.88 624.82,-765.08 650.85,-800.45"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="648,-802.49 656.79,-808.42 653.62,-798.31 648,-802.49"/>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::conversions -->
 <g id="edge38" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::conversions</title>
-<path fill="none" stroke="#2563eb" d="M485.21,-943.3C498.8,-947.53 511.88,-953.79 522.5,-963 556.61,-992.58 534.6,-1019.69 558.5,-1058 581.55,-1094.94 616.96,-1130.45 642.09,-1153.33"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="639.6,-1155.8 649.38,-1159.87 644.27,-1150.59 639.6,-1155.8"/>
+<path fill="none" stroke="#2563eb" d="M485.28,-378.78C497.82,-375.77 510.55,-372.48 522.5,-369 553.49,-359.97 587.37,-347.92 615.04,-337.49"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.18,-340.8 624.29,-333.98 613.7,-334.26 616.18,-340.8"/>
 </g>
 <!-- table::material_suppliers -->
 <g id="node40" class="node">
 <title>table::material_suppliers</title>
-<path fill="#fef3c7" stroke="black" d="M775.12,-981C775.12,-981 570.88,-981 570.88,-981 564.88,-981 558.88,-975 558.88,-969 558.88,-969 558.88,-957 558.88,-957 558.88,-951 564.88,-945 570.88,-945 570.88,-945 775.12,-945 775.12,-945 781.12,-945 787.12,-951 787.12,-957 787.12,-957 787.12,-969 787.12,-969 787.12,-975 781.12,-981 775.12,-981"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-957.95" font-family="Times New Roman,serif" font-size="14.00">material_suppliers\nDELETE,INSERT</text>
+<path fill="#fef3c7" stroke="black" d="M775.12,-198C775.12,-198 570.88,-198 570.88,-198 564.88,-198 558.88,-192 558.88,-186 558.88,-186 558.88,-174 558.88,-174 558.88,-168 564.88,-162 570.88,-162 570.88,-162 775.12,-162 775.12,-162 781.12,-162 787.12,-168 787.12,-174 787.12,-174 787.12,-186 787.12,-186 787.12,-192 781.12,-198 775.12,-198"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">material_suppliers\nDELETE,INSERT</text>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::material_suppliers -->
 <g id="edge39" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::material_suppliers</title>
-<path fill="none" stroke="#2563eb" d="M485.49,-944.36C505.06,-946.31 526.33,-948.44 547.26,-950.53"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="546.7,-953.99 557,-951.5 547.39,-947.03 546.7,-953.99"/>
+<path fill="none" stroke="#2563eb" d="M485.41,-388C498.82,-383.84 511.79,-377.77 522.5,-369 552.97,-344.03 535.8,-320.19 558.5,-288 581.12,-255.93 614.29,-225.7 638.94,-205.43"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="640.85,-208.39 646.42,-199.38 636.45,-202.94 640.85,-208.39"/>
 </g>
 <!-- table::suppliers -->
 <g id="node41" class="node">
 <title>table::suppliers</title>
-<path fill="#fef3c7" stroke="black" d="M775.5,-1049C775.5,-1049 570.5,-1049 570.5,-1049 564.5,-1049 558.5,-1043 558.5,-1037 558.5,-1037 558.5,-1025 558.5,-1025 558.5,-1019 564.5,-1013 570.5,-1013 570.5,-1013 775.5,-1013 775.5,-1013 781.5,-1013 787.5,-1019 787.5,-1025 787.5,-1025 787.5,-1037 787.5,-1037 787.5,-1043 781.5,-1049 775.5,-1049"/>
-<text xml:space="preserve" text-anchor="middle" x="673" y="-1025.95" font-family="Times New Roman,serif" font-size="14.00">suppliers\nINSERT,SELECT,UPDATE</text>
+<path fill="#fef3c7" stroke="black" d="M775.5,-144C775.5,-144 570.5,-144 570.5,-144 564.5,-144 558.5,-138 558.5,-132 558.5,-132 558.5,-120 558.5,-120 558.5,-114 564.5,-108 570.5,-108 570.5,-108 775.5,-108 775.5,-108 781.5,-108 787.5,-114 787.5,-120 787.5,-120 787.5,-132 787.5,-132 787.5,-138 781.5,-144 775.5,-144"/>
+<text xml:space="preserve" text-anchor="middle" x="673" y="-120.95" font-family="Times New Roman,serif" font-size="14.00">suppliers\nINSERT,SELECT,UPDATE</text>
 </g>
 <!-- api/init.php::__file_scope__&#45;&gt;table::suppliers -->
 <g id="edge42" class="edge">
 <title>api/init.php::__file_scope__&#45;&gt;table::suppliers</title>
-<path fill="none" stroke="#2563eb" d="M485.48,-949.86C498.18,-953.34 510.9,-957.66 522.5,-963 540.66,-971.37 540.9,-980.5 558.5,-990 571.43,-996.98 585.79,-1003.21 599.83,-1008.58"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="598.46,-1011.81 609.06,-1012 600.89,-1005.24 598.46,-1011.81"/>
+<path fill="none" stroke="#2563eb" d="M485.26,-390.85C499.26,-386.47 512.47,-379.6 522.5,-369 589.4,-298.31 492.07,-224.13 558.5,-153 558.98,-152.49 559.46,-151.99 559.95,-151.5"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="561.96,-154.38 567.34,-145.25 557.44,-149.04 561.96,-154.38"/>
 </g>
 <!-- api/materials.php::delete::POST -->
 <g id="node42" class="node">
 <title>api/materials.php::delete::POST</title>
-<path fill="#fee2e2" stroke="black" d="M205,-1062C205,-1062 38.25,-1062 38.25,-1062 32.25,-1062 26.25,-1056 26.25,-1050 26.25,-1050 26.25,-1038 26.25,-1038 26.25,-1032 32.25,-1026 38.25,-1026 38.25,-1026 205,-1026 205,-1026 211,-1026 217,-1032 217,-1038 217,-1038 217,-1050 217,-1050 217,-1056 211,-1062 205,-1062"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1038.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::delete::POST</text>
+<path fill="#fee2e2" stroke="black" d="M205,-36C205,-36 38.25,-36 38.25,-36 32.25,-36 26.25,-30 26.25,-24 26.25,-24 26.25,-12 26.25,-12 26.25,-6 32.25,0 38.25,0 38.25,0 205,0 205,0 211,0 217,-6 217,-12 217,-12 217,-24 217,-24 217,-30 211,-36 205,-36"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-12.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::delete::POST</text>
 </g>
 <!-- api/materials.php::action:delete -->
 <g id="node43" class="node">
 <title>api/materials.php::action:delete</title>
-<path fill="#dbeafe" stroke="black" d="M482.38,-1062C482.38,-1062 319.38,-1062 319.38,-1062 313.38,-1062 307.38,-1056 307.38,-1050 307.38,-1050 307.38,-1038 307.38,-1038 307.38,-1032 313.38,-1026 319.38,-1026 319.38,-1026 482.38,-1026 482.38,-1026 488.38,-1026 494.38,-1032 494.38,-1038 494.38,-1038 494.38,-1050 494.38,-1050 494.38,-1056 488.38,-1062 482.38,-1062"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1038.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:delete</text>
+<path fill="#dbeafe" stroke="black" d="M482.38,-36C482.38,-36 319.38,-36 319.38,-36 313.38,-36 307.38,-30 307.38,-24 307.38,-24 307.38,-12 307.38,-12 307.38,-6 313.38,0 319.38,0 319.38,0 482.38,0 482.38,0 488.38,0 494.38,-6 494.38,-12 494.38,-12 494.38,-24 494.38,-24 494.38,-30 488.38,-36 482.38,-36"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-12.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:delete</text>
 </g>
 <!-- api/materials.php::delete::POST&#45;&gt;api/materials.php::action:delete -->
 <g id="edge44" class="edge">
 <title>api/materials.php::delete::POST&#45;&gt;api/materials.php::action:delete</title>
-<path fill="none" stroke="#dc2626" d="M217.26,-1044C242.54,-1044 270,-1044 295.76,-1044"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="295.56,-1047.5 305.56,-1044 295.56,-1040.5 295.56,-1047.5"/>
+<path fill="none" stroke="#dc2626" d="M217.26,-18C242.54,-18 270,-18 295.76,-18"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="295.56,-21.5 305.56,-18 295.56,-14.5 295.56,-21.5"/>
 </g>
 <!-- api/materials.php::action:delete&#45;&gt;table::suppliers -->
 <g id="edge45" class="edge">
 <title>api/materials.php::action:delete&#45;&gt;table::suppliers</title>
-<path fill="none" stroke="#2563eb" d="M494.84,-1039.53C511.61,-1038.72 529.35,-1037.87 546.86,-1037.02"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="547,-1040.52 556.82,-1036.54 546.66,-1033.53 547,-1040.52"/>
+<path fill="none" stroke="#2563eb" d="M494.84,-36.07C504.29,-38.72 513.66,-41.69 522.5,-45 562.36,-59.93 604.75,-83.74 634.17,-101.69"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="632,-104.46 642.34,-106.74 635.67,-98.5 632,-104.46"/>
+</g>
+<!-- api/materials.php::list::GET -->
+<g id="node44" class="node">
+<title>api/materials.php::list::GET</title>
+<path fill="#fee2e2" stroke="black" d="M193.75,-144C193.75,-144 49.5,-144 49.5,-144 43.5,-144 37.5,-138 37.5,-132 37.5,-132 37.5,-120 37.5,-120 37.5,-114 43.5,-108 49.5,-108 49.5,-108 193.75,-108 193.75,-108 199.75,-108 205.75,-114 205.75,-120 205.75,-120 205.75,-132 205.75,-132 205.75,-138 199.75,-144 193.75,-144"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-120.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::list::GET</text>
+</g>
+<!-- api/materials.php::action:list -->
+<g id="node45" class="node">
+<title>api/materials.php::action:list</title>
+<path fill="#dbeafe" stroke="black" d="M474.5,-144C474.5,-144 327.25,-144 327.25,-144 321.25,-144 315.25,-138 315.25,-132 315.25,-132 315.25,-120 315.25,-120 315.25,-114 321.25,-108 327.25,-108 327.25,-108 474.5,-108 474.5,-108 480.5,-108 486.5,-114 486.5,-120 486.5,-120 486.5,-132 486.5,-132 486.5,-138 480.5,-144 474.5,-144"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-120.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:list</text>
+</g>
+<!-- api/materials.php::list::GET&#45;&gt;api/materials.php::action:list -->
+<g id="edge46" class="edge">
+<title>api/materials.php::list::GET&#45;&gt;api/materials.php::action:list</title>
+<path fill="none" stroke="#dc2626" d="M206.19,-126C236.99,-126 272.13,-126 303.95,-126"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="303.54,-129.5 313.54,-126 303.54,-122.5 303.54,-129.5"/>
+</g>
+<!-- api/materials.php::action:list&#45;&gt;table::material_suppliers -->
+<g id="edge47" class="edge">
+<title>api/materials.php::action:list&#45;&gt;table::material_suppliers</title>
+<path fill="none" stroke="#2563eb" d="M486.97,-143.01C512.93,-148.2 541.76,-153.96 568.79,-159.37"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="567.86,-162.75 578.36,-161.28 569.24,-155.89 567.86,-162.75"/>
+</g>
+<!-- api/materials.php::action:list&#45;&gt;table::suppliers -->
+<g id="edge48" class="edge">
+<title>api/materials.php::action:list&#45;&gt;table::suppliers</title>
+<path fill="none" stroke="#2563eb" d="M486.97,-126C505.94,-126 526.43,-126 546.63,-126"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="546.63,-129.5 556.63,-126 546.63,-122.5 546.63,-129.5"/>
 </g>
 <!-- api/materials.php::saveList::POST -->
-<g id="node44" class="node">
+<g id="node46" class="node">
 <title>api/materials.php::saveList::POST</title>
-<path fill="#fee2e2" stroke="black" d="M211.38,-1116C211.38,-1116 31.88,-1116 31.88,-1116 25.88,-1116 19.88,-1110 19.88,-1104 19.88,-1104 19.88,-1092 19.88,-1092 19.88,-1086 25.88,-1080 31.88,-1080 31.88,-1080 211.38,-1080 211.38,-1080 217.38,-1080 223.38,-1086 223.38,-1092 223.38,-1092 223.38,-1104 223.38,-1104 223.38,-1110 217.38,-1116 211.38,-1116"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1092.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::saveList::POST</text>
+<path fill="#fee2e2" stroke="black" d="M211.38,-90C211.38,-90 31.88,-90 31.88,-90 25.88,-90 19.88,-84 19.88,-78 19.88,-78 19.88,-66 19.88,-66 19.88,-60 25.88,-54 31.88,-54 31.88,-54 211.38,-54 211.38,-54 217.38,-54 223.38,-60 223.38,-66 223.38,-66 223.38,-78 223.38,-78 223.38,-84 217.38,-90 211.38,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-66.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::saveList::POST</text>
 </g>
 <!-- api/materials.php::action:saveList -->
-<g id="node45" class="node">
+<g id="node47" class="node">
 <title>api/materials.php::action:saveList</title>
-<path fill="#dbeafe" stroke="black" d="M488.75,-1116C488.75,-1116 313,-1116 313,-1116 307,-1116 301,-1110 301,-1104 301,-1104 301,-1092 301,-1092 301,-1086 307,-1080 313,-1080 313,-1080 488.75,-1080 488.75,-1080 494.75,-1080 500.75,-1086 500.75,-1092 500.75,-1092 500.75,-1104 500.75,-1104 500.75,-1110 494.75,-1116 488.75,-1116"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1092.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:saveList</text>
+<path fill="#dbeafe" stroke="black" d="M488.75,-90C488.75,-90 313,-90 313,-90 307,-90 301,-84 301,-78 301,-78 301,-66 301,-66 301,-60 307,-54 313,-54 313,-54 488.75,-54 488.75,-54 494.75,-54 500.75,-60 500.75,-66 500.75,-66 500.75,-78 500.75,-78 500.75,-84 494.75,-90 488.75,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-66.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:saveList</text>
 </g>
 <!-- api/materials.php::saveList::POST&#45;&gt;api/materials.php::action:saveList -->
-<g id="edge46" class="edge">
+<g id="edge49" class="edge">
 <title>api/materials.php::saveList::POST&#45;&gt;api/materials.php::action:saveList</title>
-<path fill="none" stroke="#dc2626" d="M223.5,-1098C244.99,-1098 267.8,-1098 289.62,-1098"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="289.41,-1101.5 299.41,-1098 289.41,-1094.5 289.41,-1101.5"/>
+<path fill="none" stroke="#dc2626" d="M223.5,-72C244.99,-72 267.8,-72 289.62,-72"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="289.41,-75.5 299.41,-72 289.41,-68.5 289.41,-75.5"/>
 </g>
 <!-- api/materials.php::action:saveList&#45;&gt;table::suppliers -->
-<g id="edge47" class="edge">
+<g id="edge50" class="edge">
 <title>api/materials.php::action:saveList&#45;&gt;table::suppliers</title>
-<path fill="none" stroke="#2563eb" d="M486.34,-1079.56C498.49,-1076.77 510.83,-1073.87 522.5,-1071 546.04,-1065.22 571.55,-1058.55 594.73,-1052.33"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="595.34,-1055.79 604.08,-1049.8 593.52,-1049.03 595.34,-1055.79"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-90.43C518.07,-95.23 544.07,-100.43 568.6,-105.33"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="567.77,-108.73 578.27,-107.26 569.15,-101.87 567.77,-108.73"/>
 </g>
 <!-- api/materials.php::update::POST -->
-<g id="node46" class="node">
+<g id="node48" class="node">
 <title>api/materials.php::update::POST</title>
-<path fill="#fee2e2" stroke="black" d="M206.88,-1008C206.88,-1008 36.38,-1008 36.38,-1008 30.38,-1008 24.38,-1002 24.38,-996 24.38,-996 24.38,-984 24.38,-984 24.38,-978 30.38,-972 36.38,-972 36.38,-972 206.88,-972 206.88,-972 212.88,-972 218.88,-978 218.88,-984 218.88,-984 218.88,-996 218.88,-996 218.88,-1002 212.88,-1008 206.88,-1008"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-984.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::update::POST</text>
+<path fill="#fee2e2" stroke="black" d="M206.88,-198C206.88,-198 36.38,-198 36.38,-198 30.38,-198 24.38,-192 24.38,-186 24.38,-186 24.38,-174 24.38,-174 24.38,-168 30.38,-162 36.38,-162 36.38,-162 206.88,-162 206.88,-162 212.88,-162 218.88,-168 218.88,-174 218.88,-174 218.88,-186 218.88,-186 218.88,-192 212.88,-198 206.88,-198"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::update::POST</text>
 </g>
 <!-- api/materials.php::action:update -->
-<g id="node47" class="node">
+<g id="node49" class="node">
 <title>api/materials.php::action:update</title>
-<path fill="#dbeafe" stroke="black" d="M484.25,-1008C484.25,-1008 317.5,-1008 317.5,-1008 311.5,-1008 305.5,-1002 305.5,-996 305.5,-996 305.5,-984 305.5,-984 305.5,-978 311.5,-972 317.5,-972 317.5,-972 484.25,-972 484.25,-972 490.25,-972 496.25,-978 496.25,-984 496.25,-984 496.25,-996 496.25,-996 496.25,-1002 490.25,-1008 484.25,-1008"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-984.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:update</text>
+<path fill="#dbeafe" stroke="black" d="M484.25,-198C484.25,-198 317.5,-198 317.5,-198 311.5,-198 305.5,-192 305.5,-186 305.5,-186 305.5,-174 305.5,-174 305.5,-168 311.5,-162 317.5,-162 317.5,-162 484.25,-162 484.25,-162 490.25,-162 496.25,-168 496.25,-174 496.25,-174 496.25,-186 496.25,-186 496.25,-192 490.25,-198 484.25,-198"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-174.95" font-family="Times New Roman,serif" font-size="14.00">api/materials.php::action:update</text>
 </g>
 <!-- api/materials.php::update::POST&#45;&gt;api/materials.php::action:update -->
-<g id="edge48" class="edge">
+<g id="edge51" class="edge">
 <title>api/materials.php::update::POST&#45;&gt;api/materials.php::action:update</title>
-<path fill="none" stroke="#dc2626" d="M219.2,-990C243.22,-990 269.09,-990 293.55,-990"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="293.53,-993.5 303.53,-990 293.53,-986.5 293.53,-993.5"/>
+<path fill="none" stroke="#dc2626" d="M219.2,-180C243.22,-180 269.09,-180 293.55,-180"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="293.53,-183.5 303.53,-180 293.53,-176.5 293.53,-183.5"/>
 </g>
 <!-- api/materials.php::action:update&#45;&gt;table::material_suppliers -->
-<g id="edge49" class="edge">
+<g id="edge52" class="edge">
 <title>api/materials.php::action:update&#45;&gt;table::material_suppliers</title>
-<path fill="none" stroke="#2563eb" d="M496.73,-980.52C513.19,-978.87 530.53,-977.14 547.64,-975.43"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="547.73,-978.94 557.33,-974.46 547.03,-971.97 547.73,-978.94"/>
+<path fill="none" stroke="#2563eb" d="M496.73,-180C513.19,-180 530.53,-180 547.64,-180"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="547.32,-183.5 557.32,-180 547.32,-176.5 547.32,-183.5"/>
 </g>
 <!-- api/materials.php::action:update&#45;&gt;table::suppliers -->
-<g id="edge50" class="edge">
+<g id="edge53" class="edge">
 <title>api/materials.php::action:update&#45;&gt;table::suppliers</title>
-<path fill="none" stroke="#2563eb" d="M496.73,-1004.4C513.07,-1006.88 530.27,-1009.49 547.25,-1012.06"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="546.46,-1015.48 556.87,-1013.52 547.51,-1008.56 546.46,-1015.48"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-161.57C518.07,-156.77 544.07,-151.57 568.6,-146.67"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="569.15,-150.13 578.27,-144.74 567.77,-143.27 569.15,-150.13"/>
 </g>
 <!-- api/photos.php::__default__::POST -->
-<g id="node48" class="node">
+<g id="node50" class="node">
 <title>api/photos.php::__default__::POST</title>
-<path fill="#fee2e2" stroke="black" d="M214,-1332C214,-1332 29.25,-1332 29.25,-1332 23.25,-1332 17.25,-1326 17.25,-1320 17.25,-1320 17.25,-1308 17.25,-1308 17.25,-1302 23.25,-1296 29.25,-1296 29.25,-1296 214,-1296 214,-1296 220,-1296 226,-1302 226,-1308 226,-1308 226,-1320 226,-1320 226,-1326 220,-1332 214,-1332"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1308.95" font-family="Times New Roman,serif" font-size="14.00">api/photos.php::__default__::POST</text>
+<path fill="#fee2e2" stroke="black" d="M214,-1305C214,-1305 29.25,-1305 29.25,-1305 23.25,-1305 17.25,-1299 17.25,-1293 17.25,-1293 17.25,-1281 17.25,-1281 17.25,-1275 23.25,-1269 29.25,-1269 29.25,-1269 214,-1269 214,-1269 220,-1269 226,-1275 226,-1281 226,-1281 226,-1293 226,-1293 226,-1299 220,-1305 214,-1305"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1281.95" font-family="Times New Roman,serif" font-size="14.00">api/photos.php::__default__::POST</text>
 </g>
 <!-- api/photos.php::__file_scope__ -->
-<g id="node49" class="node">
+<g id="node51" class="node">
 <title>api/photos.php::__file_scope__</title>
-<path fill="#dbeafe" stroke="black" d="M482,-1332C482,-1332 319.75,-1332 319.75,-1332 313.75,-1332 307.75,-1326 307.75,-1320 307.75,-1320 307.75,-1308 307.75,-1308 307.75,-1302 313.75,-1296 319.75,-1296 319.75,-1296 482,-1296 482,-1296 488,-1296 494,-1302 494,-1308 494,-1308 494,-1320 494,-1320 494,-1326 488,-1332 482,-1332"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1308.95" font-family="Times New Roman,serif" font-size="14.00">api/photos.php::__file_scope__</text>
+<path fill="#dbeafe" stroke="black" d="M482,-1305C482,-1305 319.75,-1305 319.75,-1305 313.75,-1305 307.75,-1299 307.75,-1293 307.75,-1293 307.75,-1281 307.75,-1281 307.75,-1275 313.75,-1269 319.75,-1269 319.75,-1269 482,-1269 482,-1269 488,-1269 494,-1275 494,-1281 494,-1281 494,-1293 494,-1293 494,-1299 488,-1305 482,-1305"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1281.95" font-family="Times New Roman,serif" font-size="14.00">api/photos.php::__file_scope__</text>
 </g>
 <!-- api/photos.php::__default__::POST&#45;&gt;api/photos.php::__file_scope__ -->
-<g id="edge51" class="edge">
+<g id="edge54" class="edge">
 <title>api/photos.php::__default__::POST&#45;&gt;api/photos.php::__file_scope__</title>
-<path fill="none" stroke="#dc2626" d="M226.26,-1314C249.02,-1314 273.13,-1314 295.91,-1314"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="295.81,-1317.5 305.81,-1314 295.81,-1310.5 295.81,-1317.5"/>
+<path fill="none" stroke="#dc2626" d="M226.26,-1287C249.02,-1287 273.13,-1287 295.91,-1287"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="295.81,-1290.5 305.81,-1287 295.81,-1283.5 295.81,-1290.5"/>
 </g>
 <!-- api/settings.php::__default__::GET -->
-<g id="node50" class="node">
+<g id="node52" class="node">
 <title>api/settings.php::__default__::GET</title>
-<path fill="#fee2e2" stroke="black" d="M213.25,-792C213.25,-792 30,-792 30,-792 24,-792 18,-786 18,-780 18,-780 18,-768 18,-768 18,-762 24,-756 30,-756 30,-756 213.25,-756 213.25,-756 219.25,-756 225.25,-762 225.25,-768 225.25,-768 225.25,-780 225.25,-780 225.25,-786 219.25,-792 213.25,-792"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-768.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::__default__::GET</text>
+<path fill="#fee2e2" stroke="black" d="M213.25,-468C213.25,-468 30,-468 30,-468 24,-468 18,-462 18,-456 18,-456 18,-444 18,-444 18,-438 24,-432 30,-432 30,-432 213.25,-432 213.25,-432 219.25,-432 225.25,-438 225.25,-444 225.25,-444 225.25,-456 225.25,-456 225.25,-462 219.25,-468 213.25,-468"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-444.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::__default__::GET</text>
 </g>
 <!-- api/settings.php::method:GET -->
-<g id="node51" class="node">
+<g id="node53" class="node">
 <title>api/settings.php::method:GET</title>
-<path fill="#dbeafe" stroke="black" d="M479,-792C479,-792 322.75,-792 322.75,-792 316.75,-792 310.75,-786 310.75,-780 310.75,-780 310.75,-768 310.75,-768 310.75,-762 316.75,-756 322.75,-756 322.75,-756 479,-756 479,-756 485,-756 491,-762 491,-768 491,-768 491,-780 491,-780 491,-786 485,-792 479,-792"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-768.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::method:GET</text>
+<path fill="#dbeafe" stroke="black" d="M479,-468C479,-468 322.75,-468 322.75,-468 316.75,-468 310.75,-462 310.75,-456 310.75,-456 310.75,-444 310.75,-444 310.75,-438 316.75,-432 322.75,-432 322.75,-432 479,-432 479,-432 485,-432 491,-438 491,-444 491,-444 491,-456 491,-456 491,-462 485,-468 479,-468"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-444.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::method:GET</text>
 </g>
 <!-- api/settings.php::__default__::GET&#45;&gt;api/settings.php::method:GET -->
-<g id="edge52" class="edge">
+<g id="edge55" class="edge">
 <title>api/settings.php::__default__::GET&#45;&gt;api/settings.php::method:GET</title>
-<path fill="none" stroke="#dc2626" d="M225.47,-774C249.55,-774 275.17,-774 299.16,-774"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="298.91,-777.5 308.91,-774 298.91,-770.5 298.91,-777.5"/>
+<path fill="none" stroke="#dc2626" d="M225.47,-450C249.55,-450 275.17,-450 299.16,-450"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="298.91,-453.5 308.91,-450 298.91,-446.5 298.91,-453.5"/>
 </g>
 <!-- api/settings.php::method:GET&#45;&gt;table::settings -->
-<g id="edge53" class="edge">
+<g id="edge56" class="edge">
 <title>api/settings.php::method:GET&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M491.45,-774C528.29,-774 570.24,-774 604.43,-774"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="604.19,-777.5 614.19,-774 604.19,-770.5 604.19,-777.5"/>
+<path fill="none" stroke="#2563eb" d="M491.3,-467.09C501.94,-469.98 512.55,-473.27 522.5,-477 562.36,-491.93 604.75,-515.74 634.17,-533.69"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="632,-536.46 642.34,-538.74 635.67,-530.5 632,-536.46"/>
 </g>
 <!-- api/settings.php::__default__::POST -->
-<g id="node52" class="node">
+<g id="node54" class="node">
 <title>api/settings.php::__default__::POST</title>
-<path fill="#fee2e2" stroke="black" d="M216.62,-576C216.62,-576 26.62,-576 26.62,-576 20.62,-576 14.62,-570 14.62,-564 14.62,-564 14.62,-552 14.62,-552 14.62,-546 20.62,-540 26.62,-540 26.62,-540 216.62,-540 216.62,-540 222.62,-540 228.62,-546 228.62,-552 228.62,-552 228.62,-564 228.62,-564 228.62,-570 222.62,-576 216.62,-576"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::__default__::POST</text>
+<path fill="#fee2e2" stroke="black" d="M216.62,-738C216.62,-738 26.62,-738 26.62,-738 20.62,-738 14.62,-732 14.62,-726 14.62,-726 14.62,-714 14.62,-714 14.62,-708 20.62,-702 26.62,-702 26.62,-702 216.62,-702 216.62,-702 222.62,-702 228.62,-708 228.62,-714 228.62,-714 228.62,-726 228.62,-726 228.62,-732 222.62,-738 216.62,-738"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-714.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::__default__::POST</text>
 </g>
 <!-- api/settings.php::method:POST -->
-<g id="node53" class="node">
+<g id="node55" class="node">
 <title>api/settings.php::method:POST</title>
-<path fill="#dbeafe" stroke="black" d="M482.38,-576C482.38,-576 319.38,-576 319.38,-576 313.38,-576 307.38,-570 307.38,-564 307.38,-564 307.38,-552 307.38,-552 307.38,-546 313.38,-540 319.38,-540 319.38,-540 482.38,-540 482.38,-540 488.38,-540 494.38,-546 494.38,-552 494.38,-552 494.38,-564 494.38,-564 494.38,-570 488.38,-576 482.38,-576"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-552.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::method:POST</text>
+<path fill="#dbeafe" stroke="black" d="M482.38,-738C482.38,-738 319.38,-738 319.38,-738 313.38,-738 307.38,-732 307.38,-726 307.38,-726 307.38,-714 307.38,-714 307.38,-708 313.38,-702 319.38,-702 319.38,-702 482.38,-702 482.38,-702 488.38,-702 494.38,-708 494.38,-714 494.38,-714 494.38,-726 494.38,-726 494.38,-732 488.38,-738 482.38,-738"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-714.95" font-family="Times New Roman,serif" font-size="14.00">api/settings.php::method:POST</text>
 </g>
 <!-- api/settings.php::__default__::POST&#45;&gt;api/settings.php::method:POST -->
-<g id="edge54" class="edge">
+<g id="edge57" class="edge">
 <title>api/settings.php::__default__::POST&#45;&gt;api/settings.php::method:POST</title>
-<path fill="none" stroke="#dc2626" d="M229.02,-558C250.87,-558 273.85,-558 295.62,-558"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="295.37,-561.5 305.37,-558 295.37,-554.5 295.37,-561.5"/>
+<path fill="none" stroke="#dc2626" d="M229.02,-720C250.87,-720 273.85,-720 295.62,-720"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="295.37,-723.5 305.37,-720 295.37,-716.5 295.37,-723.5"/>
 </g>
 <!-- api/settings.php::method:POST&#45;&gt;table::settings -->
-<g id="edge56" class="edge">
+<g id="edge59" class="edge">
 <title>api/settings.php::method:POST&#45;&gt;table::settings</title>
-<path fill="none" stroke="#2563eb" d="M494.72,-568.22C504.89,-572.29 514.46,-577.74 522.5,-585 560.05,-618.92 528.43,-652.31 558.5,-693 575.86,-716.49 602.06,-735.83 624.92,-749.71"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="623.11,-752.71 633.5,-754.75 626.65,-746.67 623.11,-752.71"/>
+<path fill="none" stroke="#2563eb" d="M494.72,-709.78C504.89,-705.71 514.46,-700.26 522.5,-693 560.05,-659.08 521.18,-619.16 558.5,-585 571.18,-573.39 587.94,-566.51 604.67,-562.5"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="605.04,-566 614.13,-560.56 603.64,-559.14 605.04,-566"/>
 </g>
 <!-- api/settings.php::method:POST&#45;&gt;table::users -->
-<g id="edge57" class="edge">
+<g id="edge60" class="edge">
 <title>api/settings.php::method:POST&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M494.86,-544.92C504.66,-541.33 514.1,-536.77 522.5,-531 546.28,-514.68 534.83,-493.48 558.5,-477 575.45,-465.2 596.91,-458.51 616.6,-454.74"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="617.16,-458.2 626.44,-453.09 616,-451.29 617.16,-458.2"/>
+<path fill="none" stroke="#2563eb" d="M494.72,-730.22C504.89,-734.29 514.46,-739.74 522.5,-747 560.05,-780.92 521.18,-820.84 558.5,-855 574.26,-869.42 596.3,-876.55 616.76,-879.93"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.04,-883.37 626.43,-881.25 616.99,-876.43 616.04,-883.37"/>
 </g>
 <!-- api/settings.php::method:POST&#45;&gt;table::sessions -->
-<g id="edge55" class="edge">
+<g id="edge58" class="edge">
 <title>api/settings.php::method:POST&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-539.57C531.71,-532.05 574.28,-523.53 608.35,-516.72"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="608.95,-520.17 618.07,-514.78 607.58,-513.31 608.95,-520.17"/>
+<path fill="none" stroke="#2563eb" d="M494.84,-738.07C504.29,-740.72 513.66,-743.69 522.5,-747 562.36,-761.93 604.75,-785.74 634.17,-803.69"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="632,-806.46 642.34,-808.74 635.67,-800.5 632,-806.46"/>
 </g>
 <!-- api/transactions.php::delete::POST -->
-<g id="node54" class="node">
+<g id="node56" class="node">
 <title>api/transactions.php::delete::POST</title>
-<path fill="#fee2e2" stroke="black" d="M212.12,-360C212.12,-360 31.12,-360 31.12,-360 25.12,-360 19.12,-354 19.12,-348 19.12,-348 19.12,-336 19.12,-336 19.12,-330 25.12,-324 31.12,-324 31.12,-324 212.12,-324 212.12,-324 218.12,-324 224.12,-330 224.12,-336 224.12,-336 224.12,-348 224.12,-348 224.12,-354 218.12,-360 212.12,-360"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-336.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::delete::POST</text>
+<path fill="#fee2e2" stroke="black" d="M212.12,-1062C212.12,-1062 31.12,-1062 31.12,-1062 25.12,-1062 19.12,-1056 19.12,-1050 19.12,-1050 19.12,-1038 19.12,-1038 19.12,-1032 25.12,-1026 31.12,-1026 31.12,-1026 212.12,-1026 212.12,-1026 218.12,-1026 224.12,-1032 224.12,-1038 224.12,-1038 224.12,-1050 224.12,-1050 224.12,-1056 218.12,-1062 212.12,-1062"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1038.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::delete::POST</text>
 </g>
 <!-- api/transactions.php::actionDelete -->
-<g id="node55" class="node">
+<g id="node57" class="node">
 <title>api/transactions.php::actionDelete</title>
-<path fill="#dbeafe" stroke="black" d="M489.12,-360C489.12,-360 312.62,-360 312.62,-360 306.62,-360 300.62,-354 300.62,-348 300.62,-348 300.62,-336 300.62,-336 300.62,-330 306.62,-324 312.62,-324 312.62,-324 489.12,-324 489.12,-324 495.12,-324 501.12,-330 501.12,-336 501.12,-336 501.12,-348 501.12,-348 501.12,-354 495.12,-360 489.12,-360"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-336.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionDelete</text>
+<path fill="#dbeafe" stroke="black" d="M489.12,-1062C489.12,-1062 312.62,-1062 312.62,-1062 306.62,-1062 300.62,-1056 300.62,-1050 300.62,-1050 300.62,-1038 300.62,-1038 300.62,-1032 306.62,-1026 312.62,-1026 312.62,-1026 489.12,-1026 489.12,-1026 495.12,-1026 501.12,-1032 501.12,-1038 501.12,-1038 501.12,-1050 501.12,-1050 501.12,-1056 495.12,-1062 489.12,-1062"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1038.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionDelete</text>
 </g>
 <!-- api/transactions.php::delete::POST&#45;&gt;api/transactions.php::actionDelete -->
-<g id="edge58" class="edge">
+<g id="edge61" class="edge">
 <title>api/transactions.php::delete::POST&#45;&gt;api/transactions.php::actionDelete</title>
-<path fill="none" stroke="#dc2626" d="M224.29,-342C245.38,-342 267.7,-342 289.1,-342"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="289.02,-345.5 299.02,-342 289.02,-338.5 289.02,-345.5"/>
+<path fill="none" stroke="#dc2626" d="M224.29,-1044C245.38,-1044 267.7,-1044 289.1,-1044"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="289.02,-1047.5 299.02,-1044 289.02,-1040.5 289.02,-1047.5"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::audit_logs -->
-<g id="edge59" class="edge">
+<g id="edge62" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::audit_logs</title>
-<path fill="none" stroke="#2563eb" d="M501.34,-354.11C509.14,-357.97 516.36,-362.85 522.5,-369 574.61,-421.19 506.74,-478.46 558.5,-531 570.22,-542.9 586.17,-549.93 602.41,-554"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="601.66,-557.42 612.16,-556.06 603.1,-550.57 601.66,-557.42"/>
+<path fill="none" stroke="#2563eb" d="M501.6,-1028.27C508.97,-1025.15 516.04,-1021.43 522.5,-1017 546.28,-1000.68 534.83,-979.48 558.5,-963 571.48,-953.97 587.09,-947.93 602.53,-943.91"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="603.27,-947.33 612.22,-941.66 601.69,-940.51 603.27,-947.33"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::transactions -->
-<g id="edge63" class="edge">
+<g id="edge66" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M501.31,-342C530.79,-342 562.72,-342 590.89,-342"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.79,-345.5 600.79,-342 590.79,-338.5 590.79,-345.5"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-1025.57C525.66,-1019.25 560.73,-1012.24 591.33,-1006.13"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="591.78,-1009.61 600.9,-1004.21 590.4,-1002.74 591.78,-1009.61"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::users -->
-<g id="edge64" class="edge">
+<g id="edge67" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M496.13,-360.43C505.14,-362.99 514.06,-365.84 522.5,-369 562.36,-383.93 604.75,-407.74 634.17,-425.69"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="632,-428.46 642.34,-430.74 635.67,-422.5 632,-428.46"/>
+<path fill="none" stroke="#2563eb" d="M501.57,-1030.78C509.17,-1027.14 516.29,-1022.61 522.5,-1017 560.05,-983.08 521.18,-943.16 558.5,-909 574.26,-894.58 596.3,-887.45 616.76,-884.07"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.99,-887.57 626.43,-882.75 616.04,-880.63 616.99,-887.57"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::sessions -->
-<g id="edge62" class="edge">
+<g id="edge65" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M501.57,-355.22C509.17,-358.86 516.29,-363.39 522.5,-369 560.05,-402.92 521.18,-442.84 558.5,-477 572.17,-489.52 590.57,-496.53 608.57,-500.38"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="607.73,-503.79 618.19,-502.13 608.98,-496.9 607.73,-503.79"/>
+<path fill="none" stroke="#2563eb" d="M501.34,-1031.89C509.14,-1028.03 516.36,-1023.15 522.5,-1017 574.61,-964.81 506.74,-907.54 558.5,-855 571.68,-841.62 590.21,-834.39 608.48,-830.61"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="609.02,-834.07 618.29,-828.93 607.84,-827.17 609.02,-834.07"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::production_outputs -->
-<g id="edge60" class="edge">
+<g id="edge63" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::production_outputs</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-323.57C518.84,-318.62 545.75,-313.24 570.97,-308.2"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="571.43,-311.67 580.55,-306.28 570.06,-304.81 571.43,-311.67"/>
+<path fill="none" stroke="#2563eb" d="M501.31,-1044C523.96,-1044 548.05,-1044 570.77,-1044"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="570.64,-1047.5 580.64,-1044 570.64,-1040.5 570.64,-1047.5"/>
 </g>
 <!-- api/transactions.php::actionDelete&#45;&gt;table::production_reports -->
-<g id="edge61" class="edge">
+<g id="edge64" class="edge">
 <title>api/transactions.php::actionDelete&#45;&gt;table::production_reports</title>
-<path fill="none" stroke="#2563eb" d="M501.6,-326.27C508.97,-323.15 516.04,-319.43 522.5,-315 546.28,-298.68 534.83,-277.48 558.5,-261 562.99,-257.87 567.8,-255.11 572.8,-252.66"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="574.17,-255.88 581.94,-248.67 571.37,-249.46 574.17,-255.88"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-1062.43C519.24,-1067.46 546.62,-1072.94 572.19,-1078.05"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="571.43,-1081.46 581.92,-1079.99 572.8,-1074.6 571.43,-1081.46"/>
 </g>
 <!-- api/transactions.php::diff::GET -->
-<g id="node56" class="node">
+<g id="node58" class="node">
 <title>api/transactions.php::diff::GET</title>
-<path fill="#fee2e2" stroke="black" d="M202.38,-252C202.38,-252 40.88,-252 40.88,-252 34.88,-252 28.88,-246 28.88,-240 28.88,-240 28.88,-228 28.88,-228 28.88,-222 34.88,-216 40.88,-216 40.88,-216 202.38,-216 202.38,-216 208.38,-216 214.38,-222 214.38,-228 214.38,-228 214.38,-240 214.38,-240 214.38,-246 208.38,-252 202.38,-252"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-228.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::diff::GET</text>
+<path fill="#fee2e2" stroke="black" d="M202.38,-1116C202.38,-1116 40.88,-1116 40.88,-1116 34.88,-1116 28.88,-1110 28.88,-1104 28.88,-1104 28.88,-1092 28.88,-1092 28.88,-1086 34.88,-1080 40.88,-1080 40.88,-1080 202.38,-1080 202.38,-1080 208.38,-1080 214.38,-1086 214.38,-1092 214.38,-1092 214.38,-1104 214.38,-1104 214.38,-1110 208.38,-1116 202.38,-1116"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-1092.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::diff::GET</text>
 </g>
 <!-- api/transactions.php::actionDiff -->
-<g id="node57" class="node">
+<g id="node59" class="node">
 <title>api/transactions.php::actionDiff</title>
-<path fill="#dbeafe" stroke="black" d="M482.75,-252C482.75,-252 319,-252 319,-252 313,-252 307,-246 307,-240 307,-240 307,-228 307,-228 307,-222 313,-216 319,-216 319,-216 482.75,-216 482.75,-216 488.75,-216 494.75,-222 494.75,-228 494.75,-228 494.75,-240 494.75,-240 494.75,-246 488.75,-252 482.75,-252"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-228.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionDiff</text>
+<path fill="#dbeafe" stroke="black" d="M482.75,-1116C482.75,-1116 319,-1116 319,-1116 313,-1116 307,-1110 307,-1104 307,-1104 307,-1092 307,-1092 307,-1086 313,-1080 319,-1080 319,-1080 482.75,-1080 482.75,-1080 488.75,-1080 494.75,-1086 494.75,-1092 494.75,-1092 494.75,-1104 494.75,-1104 494.75,-1110 488.75,-1116 482.75,-1116"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-1092.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionDiff</text>
 </g>
 <!-- api/transactions.php::diff::GET&#45;&gt;api/transactions.php::actionDiff -->
-<g id="edge65" class="edge">
+<g id="edge68" class="edge">
 <title>api/transactions.php::diff::GET&#45;&gt;api/transactions.php::actionDiff</title>
-<path fill="none" stroke="#dc2626" d="M214.56,-234C240.49,-234 268.89,-234 295.49,-234"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="295.25,-237.5 305.25,-234 295.25,-230.5 295.25,-237.5"/>
+<path fill="none" stroke="#dc2626" d="M214.56,-1098C240.49,-1098 268.89,-1098 295.49,-1098"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="295.25,-1101.5 305.25,-1098 295.25,-1094.5 295.25,-1101.5"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::transaction_materials -->
-<g id="edge69" class="edge">
+<g id="edge72" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::transaction_materials</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-215.57C520.29,-210.33 548.91,-204.61 575.37,-199.32"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="575.97,-202.77 585.09,-197.37 574.6,-195.9 575.97,-202.77"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-1116.43C520.29,-1121.67 548.91,-1127.39 575.37,-1132.68"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="574.6,-1136.1 585.09,-1134.63 575.97,-1129.23 574.6,-1136.1"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::transactions -->
-<g id="edge70" class="edge">
+<g id="edge73" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M495.17,-247.19C504.86,-250.77 514.18,-255.29 522.5,-261 546.28,-277.32 534.83,-298.52 558.5,-315 568.43,-321.91 579.9,-327.07 591.65,-330.91"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.46,-334.21 601.04,-333.66 592.43,-327.49 590.46,-334.21"/>
+<path fill="none" stroke="#2563eb" d="M495.17,-1084.81C504.86,-1081.23 514.18,-1076.71 522.5,-1071 546.28,-1054.68 534.83,-1033.48 558.5,-1017 568.43,-1010.09 579.9,-1004.93 591.65,-1001.09"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="592.43,-1004.51 601.04,-998.34 590.46,-997.79 592.43,-1004.51"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::users -->
-<g id="edge71" class="edge">
+<g id="edge74" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M495.03,-244.34C505.08,-248.39 514.54,-253.81 522.5,-261 560.05,-294.92 528.43,-328.31 558.5,-369 575.86,-392.49 602.06,-411.83 624.92,-425.71"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="623.11,-428.71 633.5,-430.75 626.65,-422.67 623.11,-428.71"/>
+<path fill="none" stroke="#2563eb" d="M495.17,-1088.69C505.33,-1084.48 514.77,-1078.74 522.5,-1071 574.61,-1018.81 506.74,-961.54 558.5,-909 573.61,-893.66 595.75,-886.41 616.47,-883.17"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="616.79,-886.65 626.27,-881.94 615.92,-879.71 616.79,-886.65"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::sessions -->
-<g id="edge68" class="edge">
+<g id="edge71" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M494.98,-242.67C505.3,-246.97 514.83,-252.9 522.5,-261 589.4,-331.69 492.07,-405.87 558.5,-477 571.44,-490.86 590.09,-498.19 608.55,-501.92"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="607.72,-505.33 618.16,-503.51 608.87,-498.42 607.72,-505.33"/>
+<path fill="none" stroke="#2563eb" d="M494.98,-1089.33C505.3,-1085.03 514.83,-1079.1 522.5,-1071 589.4,-1000.31 492.07,-926.13 558.5,-855 571.44,-841.14 590.09,-833.81 608.55,-830.08"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="608.87,-833.58 618.16,-828.49 607.72,-826.67 608.87,-833.58"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::production_outputs -->
-<g id="edge66" class="edge">
+<g id="edge69" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::production_outputs</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-252.43C518.84,-257.38 545.75,-262.76 570.97,-267.8"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="570.06,-271.19 580.55,-269.72 571.43,-264.33 570.06,-271.19"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-1079.57C518.84,-1074.62 545.75,-1069.24 570.97,-1064.2"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="571.43,-1067.67 580.55,-1062.28 570.06,-1060.81 571.43,-1067.67"/>
 </g>
 <!-- api/transactions.php::actionDiff&#45;&gt;table::production_reports -->
-<g id="edge67" class="edge">
+<g id="edge70" class="edge">
 <title>api/transactions.php::actionDiff&#45;&gt;table::production_reports</title>
-<path fill="none" stroke="#2563eb" d="M495.21,-234C519.94,-234 546.74,-234 571.82,-234"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="571.69,-237.5 581.69,-234 571.69,-230.5 571.69,-237.5"/>
+<path fill="none" stroke="#2563eb" d="M495.21,-1098C519.94,-1098 546.74,-1098 571.82,-1098"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="571.69,-1101.5 581.69,-1098 571.69,-1094.5 571.69,-1101.5"/>
 </g>
 <!-- api/transactions.php::finalize::POST -->
-<g id="node58" class="node">
+<g id="node60" class="node">
 <title>api/transactions.php::finalize::POST</title>
-<path fill="#fee2e2" stroke="black" d="M216.25,-468C216.25,-468 27,-468 27,-468 21,-468 15,-462 15,-456 15,-456 15,-444 15,-444 15,-438 21,-432 27,-432 27,-432 216.25,-432 216.25,-432 222.25,-432 228.25,-438 228.25,-444 228.25,-444 228.25,-456 228.25,-456 228.25,-462 222.25,-468 216.25,-468"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-444.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::finalize::POST</text>
+<path fill="#fee2e2" stroke="black" d="M216.25,-954C216.25,-954 27,-954 27,-954 21,-954 15,-948 15,-942 15,-942 15,-930 15,-930 15,-924 21,-918 27,-918 27,-918 216.25,-918 216.25,-918 222.25,-918 228.25,-924 228.25,-930 228.25,-930 228.25,-942 228.25,-942 228.25,-948 222.25,-954 216.25,-954"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-930.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::finalize::POST</text>
 </g>
 <!-- api/transactions.php::actionFinalize -->
-<g id="node59" class="node">
+<g id="node61" class="node">
 <title>api/transactions.php::actionFinalize</title>
-<path fill="#dbeafe" stroke="black" d="M493.25,-468C493.25,-468 308.5,-468 308.5,-468 302.5,-468 296.5,-462 296.5,-456 296.5,-456 296.5,-444 296.5,-444 296.5,-438 302.5,-432 308.5,-432 308.5,-432 493.25,-432 493.25,-432 499.25,-432 505.25,-438 505.25,-444 505.25,-444 505.25,-456 505.25,-456 505.25,-462 499.25,-468 493.25,-468"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-444.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionFinalize</text>
+<path fill="#dbeafe" stroke="black" d="M493.25,-954C493.25,-954 308.5,-954 308.5,-954 302.5,-954 296.5,-948 296.5,-942 296.5,-942 296.5,-930 296.5,-930 296.5,-924 302.5,-918 308.5,-918 308.5,-918 493.25,-918 493.25,-918 499.25,-918 505.25,-924 505.25,-930 505.25,-930 505.25,-942 505.25,-942 505.25,-948 499.25,-954 493.25,-954"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-930.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionFinalize</text>
 </g>
 <!-- api/transactions.php::finalize::POST&#45;&gt;api/transactions.php::actionFinalize -->
-<g id="edge72" class="edge">
+<g id="edge75" class="edge">
 <title>api/transactions.php::finalize::POST&#45;&gt;api/transactions.php::actionFinalize</title>
-<path fill="none" stroke="#dc2626" d="M228.63,-450C246.98,-450 266.15,-450 284.73,-450"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="284.71,-453.5 294.71,-450 284.71,-446.5 284.71,-453.5"/>
+<path fill="none" stroke="#dc2626" d="M228.63,-936C246.98,-936 266.15,-936 284.73,-936"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="284.71,-939.5 294.71,-936 284.71,-932.5 284.71,-939.5"/>
 </g>
 <!-- api/transactions.php::actionFinalize&#45;&gt;table::audit_logs -->
-<g id="edge73" class="edge">
+<g id="edge76" class="edge">
 <title>api/transactions.php::actionFinalize&#45;&gt;table::audit_logs</title>
-<path fill="none" stroke="#2563eb" d="M505.51,-467.46C511.47,-470.2 517.19,-473.36 522.5,-477 546.28,-493.32 534.83,-514.52 558.5,-531 571.48,-540.03 587.09,-546.07 602.53,-550.09"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="601.69,-553.49 612.22,-552.34 603.27,-546.67 601.69,-553.49"/>
+<path fill="none" stroke="#2563eb" d="M505.54,-936C537.85,-936 572.7,-936 602.12,-936"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="602.02,-939.5 612.02,-936 602.02,-932.5 602.02,-939.5"/>
 </g>
 <!-- api/transactions.php::actionFinalize&#45;&gt;table::transactions -->
-<g id="edge75" class="edge">
+<g id="edge78" class="edge">
 <title>api/transactions.php::actionFinalize&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M496.13,-431.57C505.14,-429.01 514.06,-426.16 522.5,-423 562.36,-408.07 604.75,-384.26 634.17,-366.31"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="635.67,-369.5 642.34,-361.26 632,-363.54 635.67,-369.5"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-954.43C525.66,-960.75 560.73,-967.76 591.33,-973.87"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="590.4,-977.26 600.9,-975.79 591.78,-970.39 590.4,-977.26"/>
 </g>
 <!-- api/transactions.php::actionFinalize&#45;&gt;table::users -->
-<g id="edge76" class="edge">
+<g id="edge79" class="edge">
 <title>api/transactions.php::actionFinalize&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M505.54,-450C543.31,-450 584.54,-450 616.52,-450"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="616.34,-453.5 626.34,-450 616.34,-446.5 616.34,-453.5"/>
+<path fill="none" stroke="#2563eb" d="M494.08,-917.57C534.9,-909.41 581.55,-900.08 616.84,-893.03"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="617.27,-896.51 626.39,-891.12 615.9,-889.65 617.27,-896.51"/>
 </g>
 <!-- api/transactions.php::actionFinalize&#45;&gt;table::sessions -->
-<g id="edge74" class="edge">
+<g id="edge77" class="edge">
 <title>api/transactions.php::actionFinalize&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-468.43C531.71,-475.95 574.28,-484.47 608.35,-491.28"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="607.58,-494.69 618.07,-493.22 608.95,-487.83 607.58,-494.69"/>
+<path fill="none" stroke="#2563eb" d="M505.51,-918.54C511.47,-915.8 517.19,-912.64 522.5,-909 546.28,-892.68 534.83,-871.48 558.5,-855 573.16,-844.79 591.19,-838.42 608.52,-834.44"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="609.18,-837.88 618.29,-832.46 607.79,-831.02 609.18,-837.88"/>
 </g>
 <!-- api/transactions.php::previousStock::GET -->
-<g id="node60" class="node">
+<g id="node62" class="node">
 <title>api/transactions.php::previousStock::GET</title>
-<path fill="#fee2e2" stroke="black" d="M231.25,-306C231.25,-306 12,-306 12,-306 6,-306 0,-300 0,-294 0,-294 0,-282 0,-282 0,-276 6,-270 12,-270 12,-270 231.25,-270 231.25,-270 237.25,-270 243.25,-276 243.25,-282 243.25,-282 243.25,-294 243.25,-294 243.25,-300 237.25,-306 231.25,-306"/>
-<text xml:space="preserve" text-anchor="middle" x="121.62" y="-282.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::previousStock::GET</text>
+<path fill="#fee2e2" stroke="black" d="M231.25,-1008C231.25,-1008 12,-1008 12,-1008 6,-1008 0,-1002 0,-996 0,-996 0,-984 0,-984 0,-978 6,-972 12,-972 12,-972 231.25,-972 231.25,-972 237.25,-972 243.25,-978 243.25,-984 243.25,-984 243.25,-996 243.25,-996 243.25,-1002 237.25,-1008 231.25,-1008"/>
+<text xml:space="preserve" text-anchor="middle" x="121.62" y="-984.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::previousStock::GET</text>
 </g>
 <!-- api/transactions.php::actionPreviousStock -->
-<g id="node61" class="node">
+<g id="node63" class="node">
 <title>api/transactions.php::actionPreviousStock</title>
-<path fill="#dbeafe" stroke="black" d="M510.5,-306C510.5,-306 291.25,-306 291.25,-306 285.25,-306 279.25,-300 279.25,-294 279.25,-294 279.25,-282 279.25,-282 279.25,-276 285.25,-270 291.25,-270 291.25,-270 510.5,-270 510.5,-270 516.5,-270 522.5,-276 522.5,-282 522.5,-282 522.5,-294 522.5,-294 522.5,-300 516.5,-306 510.5,-306"/>
-<text xml:space="preserve" text-anchor="middle" x="400.88" y="-282.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionPreviousStock</text>
+<path fill="#dbeafe" stroke="black" d="M510.5,-1008C510.5,-1008 291.25,-1008 291.25,-1008 285.25,-1008 279.25,-1002 279.25,-996 279.25,-996 279.25,-984 279.25,-984 279.25,-978 285.25,-972 291.25,-972 291.25,-972 510.5,-972 510.5,-972 516.5,-972 522.5,-978 522.5,-984 522.5,-984 522.5,-996 522.5,-996 522.5,-1002 516.5,-1008 510.5,-1008"/>
+<text xml:space="preserve" text-anchor="middle" x="400.88" y="-984.95" font-family="Times New Roman,serif" font-size="14.00">api/transactions.php::actionPreviousStock</text>
 </g>
 <!-- api/transactions.php::previousStock::GET&#45;&gt;api/transactions.php::actionPreviousStock -->
-<g id="edge77" class="edge">
+<g id="edge80" class="edge">
 <title>api/transactions.php::previousStock::GET&#45;&gt;api/transactions.php::actionPreviousStock</title>
-<path fill="none" stroke="#dc2626" d="M243.42,-288C251.46,-288 259.57,-288 267.66,-288"/>
-<polygon fill="#dc2626" stroke="#dc2626" points="267.55,-291.5 277.55,-288 267.55,-284.5 267.55,-291.5"/>
+<path fill="none" stroke="#dc2626" d="M243.42,-990C251.46,-990 259.57,-990 267.66,-990"/>
+<polygon fill="#dc2626" stroke="#dc2626" points="267.55,-993.5 277.55,-990 267.55,-986.5 267.55,-993.5"/>
 </g>
 <!-- api/transactions.php::actionPreviousStock&#45;&gt;table::transaction_materials -->
-<g id="edge79" class="edge">
+<g id="edge82" class="edge">
 <title>api/transactions.php::actionPreviousStock&#45;&gt;table::transaction_materials</title>
-<path fill="none" stroke="#2563eb" d="M507.59,-269.57C512.8,-267.06 517.81,-264.22 522.5,-261 546.28,-244.68 534.83,-223.48 558.5,-207 563.93,-203.22 569.82,-199.96 575.97,-197.16"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="577.19,-200.45 585.13,-193.43 574.55,-193.96 577.19,-200.45"/>
+<path fill="none" stroke="#2563eb" d="M510.93,-1008.33C515.03,-1010.89 518.92,-1013.76 522.5,-1017 560.05,-1050.92 521.18,-1090.84 558.5,-1125 563.79,-1129.85 569.8,-1133.87 576.21,-1137.2"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="574.66,-1140.34 585.21,-1141.27 577.54,-1133.96 574.66,-1140.34"/>
 </g>
 <!-- api/transactions.php::actionPreviousStock&#45;&gt;table::transactions -->
-<g id="edge80" class="edge">
+<g id="edge83" class="edge">
 <title>api/transactions.php::actionPreviousStock&#45;&gt;table::transactions</title>
-<path fill="none" stroke="#2563eb" d="M494.08,-306.43C525.66,-312.75 560.73,-319.76 591.33,-325.87"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="590.4,-329.26 600.9,-327.79 591.78,-322.39 590.4,-329.26"/>
+<path fill="none" stroke="#2563eb" d="M522.72,-990C545.82,-990 569.48,-990 590.96,-990"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="590.8,-993.5 600.8,-990 590.8,-986.5 590.8,-993.5"/>
 </g>
 <!-- api/transactions.php::actionPreviousStock&#45;&gt;table::users -->
-<g id="edge81" class="edge">
+<g id="edge84" class="edge">
 <title>api/transactions.php::actionPreviousStock&#45;&gt;table::users</title>
-<path fill="none" stroke="#2563eb" d="M507.59,-306.43C512.8,-308.94 517.81,-311.78 522.5,-315 546.28,-331.32 538.43,-348.28 558.5,-369 579.87,-391.06 607.94,-411.15 630.81,-425.8"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="628.65,-428.58 638.98,-430.94 632.38,-422.65 628.65,-428.58"/>
+<path fill="none" stroke="#2563eb" d="M507.59,-971.57C512.8,-969.06 517.81,-966.22 522.5,-963 546.28,-946.68 534.83,-925.48 558.5,-909 575.45,-897.2 596.91,-890.51 616.6,-886.74"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="617.16,-890.2 626.44,-885.09 616,-883.29 617.16,-890.2"/>
 </g>
 <!-- api/transactions.php::actionPreviousStock&#45;&gt;table::sessions -->
-<g id="edge78" class="edge">
+<g id="edge81" class="edge">
 <title>api/transactions.php::actionPreviousStock&#45;&gt;table::sessions</title>
-<path fill="none" stroke="#2563eb" d="M512.15,-306.42C515.84,-308.96 519.32,-311.81 522.5,-315 574.61,-367.19 506.74,-424.46 558.5,-477 571.68,-490.38 590.21,-497.61 608.48,-501.39"/>
-<polygon fill="#2563eb" stroke="#2563eb" points="607.84,-504.83 618.29,-503.07 609.02,-497.93 607.84,-504.83"/>
+<path fill="none" stroke="#2563eb" d="M510.93,-971.67C515.03,-969.11 518.92,-966.24 522.5,-963 560.05,-929.08 521.18,-889.16 558.5,-855 572.17,-842.48 590.57,-835.47 608.57,-831.62"/>
+<polygon fill="#2563eb" stroke="#2563eb" points="608.98,-835.1 618.19,-829.87 607.73,-828.21 608.98,-835.1"/>
 </g>
 </g>
 </svg>

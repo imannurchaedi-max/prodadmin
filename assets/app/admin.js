@@ -215,7 +215,7 @@
 
   window.loadAuditLogs = async function loadAuditLogs() {
     const pin = document.getElementById("adminPinForLogs").value;
-    // H6: send PIN in POST body — never in URL query params (prevents server log exposure)
+    // Send PIN in POST body -- never in URL query params (prevents server log exposure)
     const res = await App.api("api/admin.php?action=logs", { method: "POST", body: JSON.stringify({ pin }) });
     const tbody = document.querySelector("#auditLogTable tbody");
     tbody.innerHTML = (res.data || []).map((item) => `<tr><td>${App.esc(item.time)}</td><td>${App.esc(item.actor)}</td><td>${App.esc(item.action)}</td><td class="text-break-all">${App.esc(item.details)}</td></tr>`).join("") || '<tr><td colspan="4" class="text-center text-muted">Tidak ada log / PIN salah.</td></tr>';

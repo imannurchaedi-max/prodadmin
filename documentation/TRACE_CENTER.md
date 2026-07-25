@@ -2,8 +2,8 @@
 
 Dokumen ini adalah titik masuk utama untuk error tracing PROD3. Pakai ini dulu sebelum baca file satu-satu.
 
-Generated at: `2026-07-07T06:01:07.956019+00:00`
-Refreshed after: `2026-06-30 13:01` local scan baseline
+Generated at: `2026-07-25T05:17:07.849903+00:00`
+Refreshed after: `2026-07-18 12:17` local scan baseline
 
 ## Canonical Artifacts
 
@@ -46,6 +46,7 @@ Refreshed after: `2026-06-30 13:01` local scan baseline
 - `api/admin.php::verifyAdmin::POST`
 - `api/auth.php::changePassword::POST`
 - `api/auth.php::logout::POST`
+- `api/auth.php::validate::GET`
 - `api/config.php::get::GET`
 - `api/config.php::save::POST`
 - `api/conversions.php::delete::POST`
@@ -54,13 +55,12 @@ Refreshed after: `2026-06-30 13:01` local scan baseline
 - `api/history.php::paged::GET`
 - `api/init.php::__default__::GET`
 - `api/materials.php::delete::POST`
+- `api/materials.php::list::GET`
 - `api/materials.php::saveList::POST`
 - `api/materials.php::update::POST`
 - `api/photos.php::__default__::POST`
 - `api/settings.php::__default__::GET`
 - `api/settings.php::__default__::POST`
-- `api/transactions.php::delete::POST`
-- `api/transactions.php::diff::GET`
 
 ## GitNexus Impact Snapshots
 
@@ -68,7 +68,7 @@ Refreshed after: `2026-06-30 13:01` local scan baseline
 ```text
 {
   "status": "ambiguous",
-  "message": "Found 2 symbols matching 'actionLogin'. Use target_uid, file_path, or kind to disambiguate.",
+  "message": "Found 3 symbols matching 'actionLogin'. Use target_uid, file_path, or kind to disambiguate.",
   "target": {
     "name": "actionLogin"
   },
@@ -84,7 +84,7 @@ Refreshed after: `2026-06-30 13:01` local scan baseline
 ```text
 {
   "status": "ambiguous",
-  "message": "Found 2 symbols matching 'actionSubmit'. Use target_uid, file_path, or kind to disambiguate.",
+  "message": "Found 3 symbols matching 'actionSubmit'. Use target_uid, file_path, or kind to disambiguate.",
   "target": {
     "name": "actionSubmit"
   },
@@ -99,25 +99,31 @@ Refreshed after: `2026-06-30 13:01` local scan baseline
 ### loadHistory
 ```text
 {
-  "error": "Target 'loadHistory' not found",
   "target": {
-    "name": "loadHistory"
+    "id": "Section:documentation/TRACE_CENTER.md:L99:loadHistory",
+    "name": "loadHistory",
+    "type": "",
+    "filePath": "documentation/TRACE_CENTER.md"
   },
   "direction": "upstream",
   "impactedCount": 0,
-  "risk": "UNKNOWN"
-}
+  "risk": "LOW",
+  "summary": {
+    "direct": 0,
 ```
 
 ### loadInitialData
 ```text
 {
-  "error": "Target 'loadInitialData' not found",
   "target": {
-    "name": "loadInitialData"
+    "id": "Section:documentation/TRACE_CENTER.md:L115:loadInitialData",
+    "name": "loadInitialData",
+    "type": "",
+    "filePath": "documentation/TRACE_CENTER.md"
   },
   "direction": "upstream",
   "impactedCount": 0,
-  "risk": "UNKNOWN"
-}
+  "risk": "LOW",
+  "summary": {
+    "direct": 0,
 ```

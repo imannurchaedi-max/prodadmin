@@ -111,7 +111,7 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    // M3: check HTTP status before parsing — server errors can return HTML, crashing response.json()
+    // Check HTTP status before parsing -- server errors can return HTML, crashing response.json()
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return response.json();
   }
@@ -161,11 +161,11 @@
             });
             await approveTakeover(result.isConfirmed);
           } finally {
-            requestPromptOpen = false;  // C5: always reset, even if approveTakeover() throws
+            requestPromptOpen = false;  // Always reset, even if approveTakeover() throws
           }
         }
       } catch (error) {
-        // M2: log polling failures so devs can see when the monitor breaks (was silently swallowed)
+        // Log polling failures so devs can see when the monitor breaks (was silently swallowed)
         console.warn("[takeoverMonitor]", error.message);
       }
     }, 5000);
@@ -192,7 +192,7 @@
     try {
       while (true) {
         const res = await poll();
-        // C1: if server returns an error response, stop polling instead of looping forever
+        // If server returns an error response, stop polling instead of looping forever
         if (res.success === false) {
           throw new Error(res.message || "Takeover poll error dari server.");
         }
@@ -225,7 +225,7 @@
         await new Promise((resolve) => window.setTimeout(resolve, 2000));
       }
     } finally {
-      // H3: guarantee Swal is always closed regardless of how the loop exits
+      // Guarantee Swal is always closed regardless of how the loop exits
       if (SwalInstance) Swal.close();
     }
   }
@@ -260,7 +260,7 @@
       }
       return;
     }
-    // M4: guard against infinite recursion — only show force prompt if we have NOT already sent force=true
+    // Guard against infinite recursion -- only show force prompt if we have NOT already sent force=true
     if (res.status === "FORCE_TAKEOVER_PROMPT" && !force) {
       const confirm = await Swal.fire({
         title: "Sesi Menggantung",

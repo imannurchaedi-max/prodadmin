@@ -110,9 +110,24 @@ Reset form setelah submit berhasil atau cancel edit. Clears: `state.editUuid`, `
 
 ### Draft Auto-save — [assets/app/form.js](../assets/app/form.js)
 - `saveDraft()` — serialize form ke localStorage dengan debounce 3s
-- `loadInitialData()` — deteksi draft **sebelum** `renderMaterialTable()`, pre-load `state.formRows` + semua field → nilai tampil langsung saat banner muncul
-- `resumeDraft()` — hanya hide banner (state sudah di-load)
-- `discardDraft()` — hapus localStorage + reset form ke kosong
+- `loadInitialData()` — deteksi draft **sebelum** `renderMaterialTable()`, pre-load `state.formRows` + semua field → nilai tampil langsung, TIDAK menunggu klik apapun
+- `dismissDraftBanner()` — hanya hide notice info (draft SUDAH aktif sejak sebelum notice ini muncul; bukan gate). Rename dari `resumeDraft()` 2026-07-25
+- `discardDraft()` — hapus localStorage + reset form ke kosong, dipicu tombol "Mulai Baru" di notice
+
+---
+
+## Stock Handover — SISA → STOK AWAL
+
+Saat shift berganti, `SISA` material dari shift sebelumnya otomatis mengisi `STOK AWAL` shift baru — tanpa input manual.
+
+### `triggerHandover()` — [assets/app/form.js](../assets/app/form.js)
+GET `actionPreviousStock()` untuk kombinasi mesin/shift/tanggal saat ini, lalu isi `stockAwal` tiap material dari `SISA` shift sebelumnya (shift1←shift3 kemarin, shift2←shift1, shift3←shift2).
+
+**Dipicu oleh:**
+- `loadInitialData()` saat login (jika `ENABLE_HANDOVER=TRUE` di settings) — berlaku untuk **semua role termasuk admin** (gate `!state.isAdmin` dihapus 2026-07-25)
+- `change` listener pada `inputMesin` / `inputShift` / `inputTanggal`
+
+**Race-condition guard (2026-07-25):** kalau Mesin/Shift/Tanggal diganti cepat berturut-turut, beberapa request `previousStock` bisa overlap. Sequence counter (`_handoverSeq`) memastikan hanya response dari trigger **terbaru** yang boleh menulis ke form — response yang telat (dari trigger lama) otomatis dibuang.
 
 ---
 

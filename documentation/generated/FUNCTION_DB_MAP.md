@@ -1,18 +1,18 @@
 # Function vs DB Map
 
-Generated at: `2026-07-07T05:56:17.808809+00:00`
+Generated at: `2026-07-25T05:16:43.682344+00:00`
 Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ## Coverage
 
 - Tables in schema: `15`
-- PHP/tool blocks scanned: `180`
+- PHP/tool blocks scanned: `179`
 - Blocks with DB links: `80`
-- Blocks without DB links: `100`
+- Blocks without DB links: `99`
 - Direct function-to-table links: `142`
 - Inherited function-to-table links: `72`
 - Effective function-to-table links: `214`
-- Call edges analyzed: `285`
+- Call edges analyzed: `283`
 
 ## Critical Backend Files
 

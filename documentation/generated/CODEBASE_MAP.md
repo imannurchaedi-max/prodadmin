@@ -1,15 +1,15 @@
 # Codebase Map
 
-Generated at: `2026-07-07T16:30:29.351820+00:00`
+Generated at: `2026-07-25T05:16:30.915909+00:00`
 Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ## GitNexus Snapshot
 
-- Files: `74`
-- Nodes: `1812`
-- Edges: `2934`
-- Communities: `108`
-- Processes: `114`
+- Files: `75`
+- Nodes: `1851`
+- Edges: `2977`
+- Communities: `109`
+- Processes: `116`
 - Embeddings: `0`
 - Vector mode: `unavailable` via `exact-scan`
 
@@ -17,18 +17,18 @@ Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ### root_runtime
 - Files: `2`
-- Total lines: `729`
-- Largest files: `index.php` (728 lines), `.htaccess` (1 lines)
+- Total lines: `760`
+- Largest files: `index.php` (759 lines), `.htaccess` (1 lines)
 
 ### other
 - Files: `34`
-- Total lines: `9250`
+- Total lines: `9258`
 - Largest files: `python_bot/setup.php` (969 lines), `python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php` (959 lines), `python_bot/langgraph_trace_center.py` (767 lines)
 
 ### project_docs
 - Files: `2`
-- Total lines: `166`
-- Largest files: `documentation/TRACE_CENTER.md` (123 lines), `CLAUDE.md` (43 lines)
+- Total lines: `180`
+- Largest files: `documentation/TRACE_CENTER.md` (129 lines), `CLAUDE.md` (51 lines)
 
 ### backend_api
 - Files: `14`
@@ -47,8 +47,8 @@ Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ### documentation
 - Files: `10`
-- Total lines: `2004`
-- Largest files: `docs/generated/CHARACTER_AUDIT.json` (732 lines), `docs/blast-radius.md` (258 lines), `docs/io-dependency.md` (228 lines)
+- Total lines: `2057`
+- Largest files: `docs/generated/CHARACTER_AUDIT.json` (732 lines), `docs/blast-radius.md` (275 lines), `docs/io-dependency.md` (230 lines)
 
 ### database_sql
 - Files: `2`
@@ -62,8 +62,8 @@ Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ### frontend_app
 - Files: `4`
-- Total lines: `2403`
-- Largest files: `assets/app/form.js` (1636 lines), `assets/app/auth.js` (395 lines), `assets/app/admin.js` (239 lines)
+- Total lines: `2522`
+- Largest files: `assets/app/form.js` (1716 lines), `assets/app/auth.js` (395 lines), `assets/app/admin.js` (278 lines)
 
 ## API Surface
 
@@ -92,13 +92,13 @@ Repo root: `C:\xampp\htdocs\ProdAdmin`
 
 ## Top Files
 
-- `assets/app/form.js` - 1636 lines (frontend_app)
+- `assets/app/form.js` - 1716 lines (frontend_app)
 - `python_bot/setup.php` - 969 lines (other)
 - `python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php` - 959 lines (other)
 - `tools/setup.php` - 948 lines (operations_tools)
 - `python_bot/langgraph_trace_center.py` - 767 lines (other)
+- `index.php` - 759 lines (root_runtime)
 - `docs/generated/CHARACTER_AUDIT.json` - 732 lines (documentation)
-- `index.php` - 728 lines (root_runtime)
 - `index_ASUSVIVO_May-26-130321-2026_Conflict.php` - 695 lines (other)
 - `python_bot/langgraph_function_db_map.py` - 610 lines (other)
 - `api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php` - 579 lines (backend_api)

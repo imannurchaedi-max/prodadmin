@@ -1,10 +1,10 @@
 # IO to DB Connection Map
 
-Generated at: `2026-07-07T06:01:07.956019+00:00`
+Generated at: `2026-07-25T05:17:07.849903+00:00`
 
 ## Coverage
 
-- IO->DB contracts: `23`
+- IO->DB contracts: `24`
 - DB tables touched: `15`
 
 ### api/admin.php::logs::POST
@@ -44,7 +44,7 @@ Generated at: `2026-07-07T06:01:07.956019+00:00`
 
 ### api/auth.php::validate::GET
 - Backend: `api/auth.php::actionValidate`
-- Input keys: `token`
+- Input keys: `-`
 - Response keys: `isAdmin`, `username`
 - Table `sessions` ops `CALL` via `api/auth.php::validateToken`
 - Table `users` ops `CALL` via `api/auth.php::validateToken`
@@ -107,6 +107,13 @@ Generated at: `2026-07-07T06:01:07.956019+00:00`
 - Input keys: `-`
 - Response keys: `-`
 - Table `suppliers` ops `DELETE`
+
+### api/materials.php::list::GET
+- Backend: `api/materials.php::action:list`
+- Input keys: `-`
+- Response keys: `map`, `order`
+- Table `material_suppliers` ops `JOIN`
+- Table `suppliers` ops `SELECT`
 
 ### api/materials.php::saveList::POST
 - Backend: `api/materials.php::action:saveList`
