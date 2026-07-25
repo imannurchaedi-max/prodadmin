@@ -1,7 +1,7 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **ProdAdmin** (1830 symbols, 2946 relationships, 113 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **ProdAdmin** (1838 symbols, 2964 relationships, 116 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 
@@ -41,3 +41,11 @@ This project is indexed by GitNexus as **ProdAdmin** (1830 symbols, 2946 relatio
 | Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
 
 <!-- gitnexus:end -->
+
+## Git Workflow (project convention)
+
+- **After finishing a change (a task, a bug fix, a feature), always commit and push to `origin/main`** — don't wait for the user to ask each time. This project has a remote configured at `https://github.com/imannurchaedi-max/prodadmin`.
+- Order: run `gitnexus_detect_changes()` → review the diff for anything unexpected → `git add` the relevant files (never blanket `-A` without checking `git status`) → commit with a descriptive message → `git push`.
+- Don't auto-commit mid-task or half-finished work — only when a clearly-scoped change is complete and verified (syntax check / test / detect_changes all clean).
+- Still never commit `.htaccess` or anything containing `PRODADMIN_DB_PASS` or other secrets — double-check `git status` output before staging.
+- Destructive git operations (force-push, reset --hard, history rewrite) are NOT covered by this standing authorization — still confirm with the user first.

@@ -882,8 +882,35 @@
             });
             outHtml += `</tbody></table></div>`;
 
+            const analysisBadgeMap = {
+                no_output:  ['text-bg-secondary',        'No Output'],
+                no_laporan: ['text-bg-warning text-dark', 'No Laporan'],
+                pas:        ['text-bg-success',           '✔ PERFECT'],
+                boros:      ['text-bg-danger',            '↑ BOROS'],
+                hemat:      ['text-bg-primary',           '↓ HEMAT'],
+            };
+            const analysisRows = computeMaterialAnalysis(item.outputs, item.items);
+            let outAnalHtml = '';
+            if (analysisRows.length) {
+                outAnalHtml = `<div class="table-responsive mb-3"><h6 class="small fw-bold text-primary border-bottom pb-1">3. Analisis Output</h6><table class="table table-bordered table-sm small">
+                    <thead class="table-light"><tr><th>Kategori</th><th class="text-end">Target</th><th class="text-end">Aktual</th><th class="text-end">Selisih</th><th class="text-center">Status</th></tr></thead><tbody>`;
+                analysisRows.forEach(r => {
+                    const [badge, badgeText] = analysisBadgeMap[r.status];
+                    const diffText = r.hasAct && r.hasTheo ? (r.isOk ? '0' : (r.diff > 0 ? '+' : '') + App.fmt(r.diff, 0)) : '-';
+                    const diffClr  = r.isOk ? 'text-success' : r.diff > 0 ? 'text-danger' : 'text-primary';
+                    outAnalHtml += `<tr>
+                        <td class="fw-bold small">${App.esc(r.name)}</td>
+                        <td class="text-end small">${r.hasTheo ? App.fmt(r.targetAdj, 0) : '-'}</td>
+                        <td class="text-end small fw-bold">${r.hasAct ? App.fmt(r.grand, 0) : '-'}</td>
+                        <td class="text-end small fw-bold ${r.hasAct && r.hasTheo ? diffClr : ''}">${diffText}</td>
+                        <td class="text-center"><span class="badge ${badge}">${badgeText}</span></td>
+                    </tr>`;
+                });
+                outAnalHtml += `</tbody></table></div>`;
+            }
+
             const rep = item.logs || {};
-            let analHtml = `<h6 class="small fw-bold text-danger border-bottom pb-1">3. Analisis & Catatan</h6>
+            let analHtml = `<h6 class="small fw-bold text-danger border-bottom pb-1">4. Analisis & Catatan</h6>
             <div class="row g-2 small bg-light p-2 rounded border text-start">
                 <div class="col-6">Loss Ratio: <b>${rep.lossPct != null ? App.fmt(rep.lossPct) + '%' : '0%'}</b></div>
                 <div class="col-6">Downtime: <b>${App.esc(rep.downtimeMin)} Min</b></div>
@@ -903,6 +930,7 @@
                         </div>
                         ${matHtml}
                         ${outHtml}
+                        ${outAnalHtml}
                         ${analHtml}
                        </div>`,
                 width: 'min(900px, 96vw)',
