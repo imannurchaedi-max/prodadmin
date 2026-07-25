@@ -151,15 +151,16 @@
                 <!-- --- VIEW INPUT ------------------------------------------- -->
                 <div id="viewInput" class="animate__animated animate__fadeIn">
 
-                    <!-- Draft resume banner -->
+                    <!-- Draft auto-resume notice: data is already loaded into the form below;
+                         this is informational only, not a gate the user must click through. -->
                     <div id="draftBanner" class="alert alert-info border-0 shadow-sm d-none mb-3 d-flex align-items-center justify-content-between">
                         <div>
-                            <strong class="text-info-emphasis"><i class="fa-solid fa-clock-rotate-left me-2"></i>Draft Tersedia</strong>
+                            <strong class="text-info-emphasis"><i class="fa-solid fa-clock-rotate-left me-2"></i>Draft dilanjutkan otomatis</strong>
                             <div class="small text-muted">Terakhir disimpan <span id="draftBannerAge"></span></div>
                         </div>
                         <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-info text-white fw-bold" onclick="resumeDraft()">Lanjutkan</button>
-                            <button class="btn btn-sm btn-outline-secondary" onclick="discardDraft()">Abaikan</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="discardDraft()">Mulai Baru</button>
+                            <button class="btn-close" aria-label="Tutup" onclick="dismissDraftBanner()"></button>
                         </div>
                     </div>
 

@@ -190,17 +190,14 @@
     }
   };
 
-  window.resumeDraft = function resumeDraft() {
-    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
-    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
-    window._pendingDraft = null;
+  // The draft's values are already loaded into the form by the time this banner is
+  // visible (see loadInitialData's pre-load block) -- this only hides the notice.
+  // It intentionally leaves window._pendingDraft set so discardDraft() still knows
+  // to reset the form if the user later clicks "Mulai Baru".
+  window.dismissDraftBanner = function dismissDraftBanner() {
     const banner = document.getElementById("draftBanner");
     if (banner) banner.classList.add("d-none");
-    window.switchView("input");
-    App.toast("success", "Draft dilanjutkan");
   };
-    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
-    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
 
   function setDefaults() {
     const today = new Date().toISOString().slice(0, 10);
@@ -1188,8 +1185,6 @@
                 width: 'min(680px, 96vw)',
                 didOpen: (modal) => {
                   modal.querySelector('#btnKirimWa')?.addEventListener('click', function () {
-    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
-    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
                     try {
                       if (navigator.clipboard && window.isSecureContext) {
                         navigator.clipboard.writeText(waText).catch(() => {});
@@ -1601,6 +1596,7 @@
           const ageEl   = document.getElementById("draftBannerAge");
           if (banner) { if (ageEl) ageEl.textContent = ageText; banner.classList.remove("d-none"); }
           window._pendingDraft = draft;
+          App.toast("success", "Draft dilanjutkan otomatis");
         }
       } catch (e) {}
     }
@@ -1637,7 +1633,7 @@
       document.getElementById("broadcastBanner").classList.add("d-none");
     }
     
-    if (state.settings.enableHandover && !state.isAdmin) {
+    if (state.settings.enableHandover) {
       await window.triggerHandover();
     }
 
@@ -1647,7 +1643,7 @@
     if (!state.materialPhotos) state.materialPhotos = {};
 
     const triggerIfHandover = () => {
-      if (state.settings && state.settings.enableHandover && !state.isAdmin) {
+      if (state.settings && state.settings.enableHandover) {
         window.triggerHandover();
       }
     };
