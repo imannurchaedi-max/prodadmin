@@ -251,7 +251,7 @@
       </tr>
     `;
     tbody.innerHTML = materials.map((material) => {
-      const existing = (state.formRows && state.formRows[material]) || defaultMaterialRow(material, state.suppliers.map[material]?.[0] || "");
+      const existing = (state.formRows && state.formRows[material]) || defaultMaterialRow(material);
       const totProd = existing.hours.reduce((a, b) => a + Number(b || 0), 0);
       const total = totProd + Number(existing.reject || 0);
       const sisa = Number(existing.stockAwal || 0) + Number(existing.masuk || 0) - Number(existing.retur || 0) - total;

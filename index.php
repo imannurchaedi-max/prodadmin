@@ -514,6 +514,9 @@
                             <h6 class="fw-bold m-0"><i class="fa-solid fa-layer-group me-2 text-primary"></i>Daftar Material</h6>
                             <button class="btn btn-sm btn-success fw-bold" onclick="saveMaterialChanges()"><i class="fa-solid fa-floppy-disk me-1"></i>Simpan Urutan</button>
                         </div>
+                        <div class="alert alert-light border small text-muted mb-3 py-2">
+                            <i class="fa-solid fa-circle-info me-1"></i>Geser <i class="fa-solid fa-grip-vertical mx-1"></i> untuk mengurutkan. Klik <i class="fa-solid fa-pen mx-1"></i> untuk edit nama/supplier.
+                        </div>
                         <ul class="list-group mb-3" id="materialSortableList"></ul>
                         <div class="input-group input-group-sm">
                             <input type="text" id="newMaterialInput" class="form-control fw-bold" placeholder="Nama material baru (HURUF BESAR)...">
@@ -714,6 +717,33 @@
                 <div class="modal-footer border-top">
                     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
                     <button id="btnSaveConversion" class="btn btn-primary fw-bold" onclick="saveConversionData()"><i class="fa-solid fa-floppy-disk me-1"></i>Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -- Modal: Edit Material (nama + daftar supplier) -- -->
+    <div class="modal fade" id="modalMaterial" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-custom border-0 shadow-lg">
+                <div class="modal-header border-bottom">
+                    <h6 class="modal-title fw-bold">Edit Material</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <input type="hidden" id="matOldName">
+                    <div class="mb-3">
+                        <label class="small fw-bold text-muted">Nama</label>
+                        <input type="text" id="matName" class="form-control fw-bold">
+                    </div>
+                    <div>
+                        <label class="small fw-bold text-muted">Supplier (Per baris)</label>
+                        <textarea id="matSuppliers" class="form-control" rows="6" placeholder="Satu nama supplier per baris..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-top">
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button id="btnSaveMaterial" class="btn btn-primary fw-bold" onclick="saveMaterialEdit()"><i class="fa-solid fa-floppy-disk me-1"></i>Simpan</button>
                 </div>
             </div>
         </div>

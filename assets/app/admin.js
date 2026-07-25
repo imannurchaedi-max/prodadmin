@@ -14,19 +14,58 @@
     if (!list) return;
     list.innerHTML = state.materials.map((material) => `
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>${App.esc(material)}</span>
-        <button class="btn btn-sm btn-outline-danger" data-del-material="${App.esc(material)}"><i class="fa-solid fa-trash"></i></button>
+        <span class="material-name"><i class="fa-solid fa-grip-vertical text-muted me-2" style="cursor:grab"></i>${App.esc(material)}</span>
+        <span>
+          <button class="btn btn-sm btn-outline-primary me-1" data-edit-material="${App.esc(material)}"><i class="fa-solid fa-pen"></i></button>
+          <button class="btn btn-sm btn-outline-danger" data-del-material="${App.esc(material)}"><i class="fa-solid fa-trash"></i></button>
+        </span>
       </li>
     `).join("");
     activeSortable();
+    list.querySelectorAll("[data-edit-material]").forEach((btn) => btn.addEventListener("click", function () {
+      window.openMaterialEditModal(this.getAttribute("data-edit-material"));
+    }));
     list.querySelectorAll("[data-del-material]").forEach((btn) => btn.addEventListener("click", async function () {
       const name = this.getAttribute("data-del-material");
       await App.api("api/materials.php?action=delete", { method: "POST", body: JSON.stringify({ name }) });
       state.materials = state.materials.filter((item) => item !== name);
+      if (state.suppliers?.map) delete state.suppliers.map[name];
+      if (state.suppliers?.order) state.suppliers.order = state.suppliers.order.filter((item) => item !== name);
       renderMaterialList();
       window.renderTable();
     }));
   }
+
+  window.openMaterialEditModal = function openMaterialEditModal(name) {
+    document.getElementById("matOldName").value = name;
+    document.getElementById("matName").value = name;
+    document.getElementById("matSuppliers").value = (state.suppliers?.map?.[name] || []).join("\n");
+    bootstrap.Modal.getOrCreateInstance(document.getElementById("modalMaterial")).show();
+  };
+
+  window.saveMaterialEdit = async function saveMaterialEdit() {
+    const btn = document.getElementById("btnSaveMaterial");
+    const oldName = document.getElementById("matOldName").value;
+    const newName = document.getElementById("matName").value.trim().toUpperCase();
+    const suppliers = document.getElementById("matSuppliers").value
+      .split("\n").map((s) => s.trim()).filter(Boolean);
+    if (!newName) { App.toast("error", "Nama material wajib diisi."); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Menyimpan...'; }
+    try {
+      await App.api("api/materials.php?action=update", { method: "POST", body: JSON.stringify({ oldName, newName, suppliers }) });
+      const res = await App.api("api/materials.php?action=list", { method: "GET" });
+      state.suppliers = res.data || { map: {}, order: [] };
+      state.materials = [...(state.suppliers.order || [])];
+      renderMaterialList();
+      window.renderTable();
+      bootstrap.Modal.getOrCreateInstance(document.getElementById("modalMaterial")).hide();
+      App.toast("success", "Material tersimpan");
+    } catch (e) {
+      App.toast("error", "Gagal menyimpan material", e.message);
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk me-1"></i>Simpan'; }
+    }
+  };
 
   function renderConversionTable() {
     const tbody = document.querySelector("#tableConversion tbody");
@@ -137,7 +176,7 @@
   };
 
   window.saveMaterialChanges = async function saveMaterialChanges() {
-    const order = Array.from(document.querySelectorAll("#materialSortableList li span")).map((el) => el.textContent.trim());
+    const order = Array.from(document.querySelectorAll("#materialSortableList li .material-name")).map((el) => el.textContent.trim());
     await App.api("api/materials.php?action=saveList", { method: "POST", body: JSON.stringify({ order }) });
     state.materials = order;
     App.toast("success", "Urutan material tersimpan");
