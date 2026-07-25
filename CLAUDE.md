@@ -1,7 +1,7 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **ProdAdmin** (1838 symbols, 2964 relationships, 116 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **prodadmin** (1842 symbols, 2968 relationships, 116 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 
@@ -24,10 +24,10 @@ This project is indexed by GitNexus as **ProdAdmin** (1838 symbols, 2964 relatio
 
 | Resource | Use for |
 |----------|---------|
-| `gitnexus://repo/ProdAdmin/context` | Codebase overview, check index freshness |
-| `gitnexus://repo/ProdAdmin/clusters` | All functional areas |
-| `gitnexus://repo/ProdAdmin/processes` | All execution flows |
-| `gitnexus://repo/ProdAdmin/process/{name}` | Step-by-step execution trace |
+| `gitnexus://repo/prodadmin/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/prodadmin/clusters` | All functional areas |
+| `gitnexus://repo/prodadmin/processes` | All execution flows |
+| `gitnexus://repo/prodadmin/process/{name}` | Step-by-step execution trace |
 
 ## CLI
 
