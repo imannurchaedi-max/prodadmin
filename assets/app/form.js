@@ -1534,12 +1534,19 @@
     });
   }
 
+  // Guards against out-of-order responses: if the user changes Mesin/Shift/Tanggal
+  // again before an in-flight previousStock request resolves, a stale response
+  // must not overwrite the result of a newer request (or blank the form to 0).
+  let _handoverSeq = 0;
   window.triggerHandover = async function triggerHandover() {
+    const seq = ++_handoverSeq;
     try {
       const mesin = document.getElementById("inputMesin")?.value || "";
       const shift = document.getElementById("inputShift")?.value || "1";
       const date = document.getElementById("inputTanggal")?.value || "";
+      if (!mesin || !date) return; // incomplete selection, nothing to pull yet
       const res = await App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: "GET" });
+      if (seq !== _handoverSeq) return; // a newer trigger superseded this one; discard
       snapshotRows();
       Object.entries(res.data || {}).forEach(([material, stock]) => {
         if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);
@@ -1548,6 +1555,7 @@
       renderMaterialTable();
       App.toast("success", "Stok shift lalu dimuat");
     } catch (error) {
+      if (seq !== _handoverSeq) return;
       App.toast("error", "Gagal tarik stok", error.message);
     }
   };
