@@ -1,0 +1,244 @@
+{
+  "repo_root": "C:\\xampp\\htdocs\\ProdAdmin",
+  "generated_at": "2026-07-07T16:30:58.011177+00:00",
+  "phases": [
+    {
+      "phase_id": "phase_0",
+      "title": "Preflight & Index Integrity",
+      "status": "PASS",
+      "objective": "Validate audit tooling, graph index, and baseline architecture artifacts.",
+      "checks": [
+        {
+          "name": "gitnexus_status",
+          "status": "PASS",
+          "details": "GitNexus index must exist and be up-to-date.",
+          "evidence": {
+            "stdout": "Repository: C:\\xampp\\htdocs\\ProdAdmin\nIndexed: 07/07/2026, 12.56.48\nIndexed commit: cf03123\nCurrent commit: cf03123\nStatus: ✅ up-to-date",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "gitnexus_doctor",
+          "status": "PASS",
+          "details": "GitNexus doctor must confirm graph and full-text search availability.",
+          "evidence": {
+            "stdout": "GitNexus Doctor\n\nRuntime\n  OS:        win32/x64\n  Node:      v24.14.0\n  GitNexus:  1.6.5\n  LadybugDB: unknown\n  ONNX:      1.26.0\n\nCapabilities\n  Graph store:     available\n  Full-text search: available\n  VECTOR index:    unavailable\n  Semantic mode:   exact-scan\n  Exact scan limit:    10000 chunks\n  Note:            LadybugDB VECTOR is disabled on this platform; semantic search uses exact scan when embeddings exist.\n\nEmbeddings\n  Backend:   local\n  Device:    auto\n  Threads:   4\n  Batch:     16 nodes\n  Sub-batch: 8 chunks",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "audit_artifacts_present",
+          "status": "PASS",
+          "details": "Meta index and codebase map must exist before the audit advances.",
+          "evidence": {
+            "meta_json": "C:\\xampp\\htdocs\\ProdAdmin\\.gitnexus\\meta.json",
+            "codebase_map": "C:\\xampp\\htdocs\\ProdAdmin\\documentation\\generated\\CODEBASE_MAP.md"
+          }
+        }
+      ],
+      "next_step": "Advance to architecture audit only if all preflight checks pass."
+    },
+    {
+      "phase_id": "phase_1",
+      "title": "Architecture Conformance",
+      "status": "PASS",
+      "objective": "Confirm that runtime boundaries, major layers, and critical symbols align with the documented architecture.",
+      "checks": [
+        {
+          "name": "required_architecture_layers",
+          "status": "PASS",
+          "details": "All architecture layers required by the runtime model must be discoverable.",
+          "evidence": {
+            "missing_layers": [],
+            "present_layers": [
+              "backend_api",
+              "backend_config",
+              "database_sql",
+              "documentation",
+              "frontend_app",
+              "frontend_assets",
+              "operations_tools",
+              "other",
+              "project_docs",
+              "root_runtime"
+            ]
+          }
+        },
+        {
+          "name": "context_actionSubmit",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:api/transactions.php:actionSubmit` must be traceable in the graph.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:api/transactions.php:actionSubmit\",\n    \"name\": \"actionSubmit\",\n    \"kind\": \"Function\",\n    \"filePath\": \"api/transactions.php\",\n    \"startLine\": 222,\n    \"endLine\": 287\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"File:api/transactions.php\",\n        \"name\": \"transactions.php\",\n        \"filePath\": \"api/transactions.php\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:api/transactions.php:ok\",\n        \"name\": \"ok\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:fail\",\n        \"name\": \"fail\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:body\",\n        \"name\": \"body\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:getLockDate\",\n        \"name\": \"getLockDate\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:genUuid\",\n        \"name\": \"genUuid\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:logAction\",\n        \"name\": \"logAction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:insertTransaction\",\n        \"name\": \"insertTransaction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:config/auth_helper.php:requireSession\",\n        \"name\": \"requireSession\",\n        \"filePath\": \"config/auth_helper.php\"\n      },\n      {\n        \"uid\": \"Function:config/database.php:getDb\",\n        \"name\": \"getDb\",\n        \"filePath\": \"config/database.php\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_31_actionsubmit\",\n      \"name\": \"ActionSubmit → GetBearerToken\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_32_actionsubmit\",\n      \"name\": \"ActionSubmit → AuthFail\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_30_actionsubmit\",\n      \"name\": \"ActionSubmit → ProdAdminDbConfig\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "context_doLogin",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:assets/app/auth.js:doLogin` must be traceable in the graph.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:assets/app/auth.js:doLogin\",\n    \"name\": \"doLogin\",\n    \"kind\": \"Function\",\n    \"filePath\": \"assets/app/auth.js\",\n    \"startLine\": 232,\n    \"endLine\": 283\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:assets/app/auth.js:doLogin\",\n        \"name\": \"doLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:submitLogin\",\n        \"name\": \"submitLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:assets/app/api.js:saveSession\",\n        \"name\": \"saveSession\",\n        \"filePath\": \"assets/app/api.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/api.js:toast\",\n        \"name\": \"toast\",\n        \"filePath\": \"assets/app/api.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:afterLogin\",\n        \"name\": \"afterLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:rawJson\",\n        \"name\": \"rawJson\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:waitForTakeover\",\n        \"name\": \"waitForTakeover\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:doLogin\",\n        \"name\": \"doLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_23_submitlogin\",\n      \"name\": \"SubmitLogin → SetAppVisible\",\n      \"step_index\": 2,\n      \"step_count\": 4\n    },\n    {\n      \"id\": \"proc_104_submitlogin\",\n      \"name\": \"SubmitLogin → SaveSession\",\n      \"step_index\": 2,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_9_submitlogin\",\n      \"name\": \"SubmitLogin → Toast\",\n      \"step_index\": 2,\n      \"step_count\": 5\n    },\n    {\n      \"id\": \"proc_22_submitlogin\",\n      \"name\": \"SubmitLogin → UpdateUserBadge\",\n      \"step_index\": 2,\n      \"step_count\": 4\n    },\n    {\n      \"id\": \"proc_0_submitlogin\",\n      \"name\": \"SubmitLogin → RawJson\",\n      \"step_index\": 2,\n      \"step_count\": 6\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        }
+      ],
+      "next_step": "Advance to dependency audit only if runtime layers and critical symbols are visible."
+    },
+    {
+      "phase_id": "phase_2",
+      "title": "Dependency & Runtime Audit",
+      "status": "PASS",
+      "objective": "Validate interpreter/tool availability and syntax health for critical runtime files.",
+      "checks": [
+        {
+          "name": "python_version",
+          "status": "PASS",
+          "details": "python_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "Python 3.14.5",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "node_version",
+          "status": "PASS",
+          "details": "node_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "v24.14.0",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "npm_version",
+          "status": "PASS",
+          "details": "npm_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "11.9.0",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "gitnexus_version",
+          "status": "PASS",
+          "details": "gitnexus_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "1.6.5",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "langgraph_stack",
+          "status": "PASS",
+          "details": "LangGraph core and required checkpoint/prebuilt packages must import cleanly.",
+          "evidence": {
+            "stdout": "LANGGRAPH_STACK_OK",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "php_lint",
+          "status": "PASS",
+          "details": "All PHP files must pass syntax linting.",
+          "evidence": {
+            "files_checked": 30,
+            "failures": []
+          }
+        }
+      ],
+      "next_step": "Advance to contract audit only if runtime dependencies are present and syntax checks are clean."
+    },
+    {
+      "phase_id": "phase_3",
+      "title": "Function Contract Audit",
+      "status": "PASS",
+      "objective": "Validate that core function entrypoints and documented API contracts remain visible and consistent.",
+      "checks": [
+        {
+          "name": "contract_docs_present",
+          "status": "PASS",
+          "details": "Function map and endpoint contract must exist before I/O audit.",
+          "evidence": {
+            "endpoint_contract": "C:\\xampp\\htdocs\\ProdAdmin\\documentation\\generated\\ENDPOINT_UI_MAP.md",
+            "function_map": "C:\\xampp\\htdocs\\ProdAdmin\\documentation\\generated\\FUNCTION_DB_MAP.md"
+          }
+        },
+        {
+          "name": "core_action_coverage",
+          "status": "PASS",
+          "details": "Core auth and transaction actions must be discoverable from the current codebase map.",
+          "evidence": {
+            "missing_actions": {},
+            "detected_actions": {
+              "api/auth.php": [
+                "changePassword",
+                "checkTakeover",
+                "forceLogin",
+                "login",
+                "logout",
+                "takeoverDecision",
+                "takeoverStatus",
+                "validate"
+              ],
+              "api/transactions.php": [
+                "delete",
+                "diff",
+                "finalize",
+                "previousStock",
+                "revise",
+                "submit"
+              ],
+              "api/migration_api.php": [
+                "photo_batch",
+                "photo_retry",
+                "photo_stats",
+                "progress",
+                "reset_progress",
+                "run_import",
+                "run_setup_photos",
+                "upload"
+              ]
+            }
+          }
+        },
+        {
+          "name": "function_trace_actionSubmit",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:api/transactions.php:actionSubmit` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:api/transactions.php:actionSubmit\",\n    \"name\": \"actionSubmit\",\n    \"kind\": \"Function\",\n    \"filePath\": \"api/transactions.php\",\n    \"startLine\": 222,\n    \"endLine\": 287\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"File:api/transactions.php\",\n        \"name\": \"transactions.php\",\n        \"filePath\": \"api/transactions.php\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:api/transactions.php:ok\",\n        \"name\": \"ok\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:fail\",\n        \"name\": \"fail\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:body\",\n        \"name\": \"body\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:getLockDate\",\n        \"name\": \"getLockDate\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:genUuid\",\n        \"name\": \"genUuid\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:logAction\",\n        \"name\": \"logAction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:insertTransaction\",\n        \"name\": \"insertTransaction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:config/auth_helper.php:requireSession\",\n        \"name\": \"requireSession\",\n        \"filePath\": \"config/auth_helper.php\"\n      },\n      {\n        \"uid\": \"Function:config/database.php:getDb\",\n        \"name\": \"getDb\",\n        \"filePath\": \"config/database.php\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_32_actionsubmit\",\n      \"name\": \"ActionSubmit → AuthFail\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_31_actionsubmit\",\n      \"name\": \"ActionSubmit → GetBearerToken\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_30_actionsubmit\",\n      \"name\": \"ActionSubmit → ProdAdminDbConfig\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "function_trace_actionRevise",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:api/transactions.php:actionRevise` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:api/transactions.php:actionRevise\",\n    \"name\": \"actionRevise\",\n    \"kind\": \"Function\",\n    \"filePath\": \"api/transactions.php\",\n    \"startLine\": 290,\n    \"endLine\": 383\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"File:api/transactions.php\",\n        \"name\": \"transactions.php\",\n        \"filePath\": \"api/transactions.php\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:api/transactions.php:ok\",\n        \"name\": \"ok\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:fail\",\n        \"name\": \"fail\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:body\",\n        \"name\": \"body\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:getLockDate\",\n        \"name\": \"getLockDate\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:logAction\",\n        \"name\": \"logAction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:insertTransaction\",\n        \"name\": \"insertTransaction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:config/auth_helper.php:requireSession\",\n        \"name\": \"requireSession\",\n        \"filePath\": \"config/auth_helper.php\"\n      },\n      {\n        \"uid\": \"Function:config/database.php:getDb\",\n        \"name\": \"getDb\",\n        \"filePath\": \"config/database.php\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_37_actionrevise\",\n      \"name\": \"ActionRevise → AuthFail\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_36_actionrevise\",\n      \"name\": \"ActionRevise → GetBearerToken\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_35_actionrevise\",\n      \"name\": \"ActionRevise → ProdAdminDbConfig\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "function_trace_actionFinalize",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:api/transactions.php:actionFinalize` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:api/transactions.php:actionFinalize\",\n    \"name\": \"actionFinalize\",\n    \"kind\": \"Function\",\n    \"filePath\": \"api/transactions.php\",\n    \"startLine\": 386,\n    \"endLine\": 413\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"File:api/transactions.php\",\n        \"name\": \"transactions.php\",\n        \"filePath\": \"api/transactions.php\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:api/transactions.php:ok\",\n        \"name\": \"ok\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:fail\",\n        \"name\": \"fail\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:body\",\n        \"name\": \"body\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:api/transactions.php:logAction\",\n        \"name\": \"logAction\",\n        \"filePath\": \"api/transactions.php\"\n      },\n      {\n        \"uid\": \"Function:config/auth_helper.php:requireSession\",\n        \"name\": \"requireSession\",\n        \"filePath\": \"config/auth_helper.php\"\n      },\n      {\n        \"uid\": \"Function:config/database.php:getDb\",\n        \"name\": \"getDb\",\n        \"filePath\": \"config/database.php\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_58_actionfinalize\",\n      \"name\": \"ActionFinalize → AuthFail\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_57_actionfinalize\",\n      \"name\": \"ActionFinalize → GetBearerToken\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    },\n    {\n      \"id\": \"proc_56_actionfinalize\",\n      \"name\": \"ActionFinalize → ProdAdminDbConfig\",\n      \"step_index\": 1,\n      \"step_count\": 3\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "function_trace_doLogin",
+          "status": "PASS",
+          "details": "Critical workflow symbol `Function:assets/app/auth.js:doLogin` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "{\n  \"status\": \"found\",\n  \"symbol\": {\n    \"uid\": \"Function:assets/app/auth.js:doLogin\",\n    \"name\": \"doLogin\",\n    \"kind\": \"Function\",\n    \"filePath\": \"assets/app/auth.js\",\n    \"startLine\": 232,\n    \"endLine\": 283\n  },\n  \"incoming\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:assets/app/auth.js:doLogin\",\n        \"name\": \"doLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:submitLogin\",\n        \"name\": \"submitLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      }\n    ]\n  },\n  \"outgoing\": {\n    \"calls\": [\n      {\n        \"uid\": \"Function:assets/app/api.js:saveSession\",\n        \"name\": \"saveSession\",\n        \"filePath\": \"assets/app/api.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/api.js:toast\",\n        \"name\": \"toast\",\n        \"filePath\": \"assets/app/api.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:afterLogin\",\n        \"name\": \"afterLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:rawJson\",\n        \"name\": \"rawJson\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:waitForTakeover\",\n        \"name\": \"waitForTakeover\",\n        \"filePath\": \"assets/app/auth.js\"\n      },\n      {\n        \"uid\": \"Function:assets/app/auth.js:doLogin\",\n        \"name\": \"doLogin\",\n        \"filePath\": \"assets/app/auth.js\"\n      }\n    ]\n  },\n  \"processes\": [\n    {\n      \"id\": \"proc_22_submitlogin\",\n      \"name\": \"SubmitLogin → UpdateUserBadge\",\n      \"step_index\": 2,\n      \"step_count\": 4\n    },\n    {\n      \"id\": \"proc_9_submitlogin\",\n      \"name\": \"SubmitLogin → Toast\",\n      \"step_index\": 2,\n      \"step_count\": 5\n    },\n    {\n      \"id\": \"proc_0_submitlogin\",\n      \"name\": \"SubmitLogin → RawJson\",\n      \"step_index\": 2,\n      \"step_count\": 6\n    },\n    {\n      \"id\": \"proc_23_submitlogin\",\n      \"name\": \"SubmitLogin → SetAppVisible\",\n      \"step_index\": 2,\n      \"step_count\": 4\n    },\n    {\n      \"id\": \"proc_104_submitlogin\",\n      \"name\": \"SubmitLogin → SaveSession\",\n      \"step_index\": 2,\n      \"step_count\": 3\n    }\n  ]\n}",
+            "stderr": ""
+          }
+        }
+      ],
+      "next_step": "Advance to dynamic workflow audit once core function contracts are intact."
+    }
+  ]
+}

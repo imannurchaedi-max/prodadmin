@@ -1,0 +1,2298 @@
+{
+  "summary": {
+    "generated_at": "2026-07-07T16:30:43.164313+00:00",
+    "frontend_call_count": 47,
+    "endpoint_count": 23,
+    "silent_fail_consumer_count": 0,
+    "silent_catch_consumer_count": 7,
+    "blank_state_consumer_count": 0,
+    "endpoint_map": [
+      {
+        "endpoint_key": "api/admin.php::logs::POST",
+        "endpoint_base": "api/admin.php",
+        "endpoint_action": "logs",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::loadAuditLogs",
+          "assets/app/admin.js::loadAuditLogs"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/admin.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/admin.php::photoProgress::GET",
+        "endpoint_base": "api/admin.php",
+        "endpoint_action": "photoProgress",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::loadPhotoMigrationProgress",
+          "assets/app/admin.js::loadPhotoMigrationProgress"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/admin.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "doneCount",
+          "failedCount",
+          "firstAnyDone",
+          "firstFullyDone",
+          "fullDays",
+          "lastAnyDone",
+          "lastFullyDone",
+          "latestDays",
+          "partialDays",
+          "pendingCount",
+          "progressPct",
+          "range",
+          "summary",
+          "totalCount"
+        ],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/admin.php::verifyAdmin::POST",
+        "endpoint_base": "api/admin.php",
+        "endpoint_action": "verifyAdmin",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/auth.js::showAdminLogin",
+          "assets/app/auth.js::showAdminLogin"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/admin.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/auth.php::changePassword::POST",
+        "endpoint_base": "api/auth.php",
+        "endpoint_action": "changePassword",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::openChangePassword",
+          "assets/app/admin.js::openChangePassword"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/auth.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/auth.php::logout::POST",
+        "endpoint_base": "api/auth.php",
+        "endpoint_action": "logout",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/auth.js::handleLogout",
+          "assets/app/auth.js::handleLogout"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/auth.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/auth.php::validate::GET",
+        "endpoint_base": "api/auth.php",
+        "endpoint_action": "validate",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/auth.js::validateExistingSession",
+          "assets/app/auth.js::validateExistingSession"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/auth.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "isAdmin",
+          "username"
+        ],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/config.php::get::GET",
+        "endpoint_base": "api/config.php",
+        "endpoint_action": "get",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/auth.js::loadLoginMachines",
+          "assets/app/auth.js::loadLoginMachines"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/config.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "aliases",
+          "aliasesRaw",
+          "mesin",
+          "mesinRaw",
+          "size",
+          "sizeRaw"
+        ],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/config.php::save::POST",
+        "endpoint_base": "api/config.php",
+        "endpoint_action": "save",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::saveMachineSizeConfig",
+          "assets/app/admin.js::saveMachineSizeConfig"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/config.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/conversions.php::delete::POST",
+        "endpoint_base": "api/conversions.php",
+        "endpoint_action": "delete",
+        "method": "POST",
+        "consumer_count": 1,
+        "consumer_functions": [
+          "assets/app/admin.js::renderConversionTable"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/conversions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/conversions.php::list::GET",
+        "endpoint_base": "api/conversions.php",
+        "endpoint_action": "list",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::saveConversionData",
+          "assets/app/admin.js::saveConversionData"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/conversions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/conversions.php::save::POST",
+        "endpoint_base": "api/conversions.php",
+        "endpoint_action": "save",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::saveConversionData",
+          "assets/app/admin.js::saveConversionData"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/conversions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/history.php::paged::GET",
+        "endpoint_base": "api/history.php",
+        "endpoint_action": "paged",
+        "method": "GET",
+        "consumer_count": 4,
+        "consumer_functions": [
+          "assets/app/form.js::loadHistory",
+          "assets/app/form.js::loadHistory",
+          "assets/app/form.js::loadMoreHistory",
+          "assets/app/form.js::loadMoreHistory"
+        ],
+        "has_dynamic_consumer": true,
+        "backend_file": "api/history.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "data",
+          "page",
+          "total",
+          "totalPages"
+        ],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/init.php::__default__::GET",
+        "endpoint_base": "api/init.php",
+        "endpoint_action": "__default__",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/form.js::loadInitialData",
+          "assets/app/form.js::loadInitialData"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/init.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "suppliers",
+          "conversion",
+          "config"
+        ],
+        "silent_consumer_count": 2,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/materials.php::delete::POST",
+        "endpoint_base": "api/materials.php",
+        "endpoint_action": "delete",
+        "method": "POST",
+        "consumer_count": 1,
+        "consumer_functions": [
+          "assets/app/admin.js::renderMaterialList"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/materials.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/materials.php::saveList::POST",
+        "endpoint_base": "api/materials.php",
+        "endpoint_action": "saveList",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::saveMaterialChanges",
+          "assets/app/admin.js::saveMaterialChanges"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/materials.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/materials.php::update::POST",
+        "endpoint_base": "api/materials.php",
+        "endpoint_action": "update",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/admin.js::addNewMaterial",
+          "assets/app/admin.js::addNewMaterial"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/materials.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/photos.php::__default__::POST",
+        "endpoint_base": "api/photos.php",
+        "endpoint_action": "__default__",
+        "method": "POST",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/form.js::openPhotoModal",
+          "assets/app/form.js::openPhotoModal"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/photos.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/settings.php::__default__::GET",
+        "endpoint_base": "api/settings.php",
+        "endpoint_action": "__default__",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/form.js::loadInitialData",
+          "assets/app/form.js::loadInitialData"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/settings.php",
+        "backend_found": true,
+        "backend_response_keys": [
+          "broadcastActive",
+          "broadcastMsg",
+          "enableHandover",
+          "lockDate"
+        ],
+        "silent_consumer_count": 2,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/settings.php::__default__::POST",
+        "endpoint_base": "api/settings.php",
+        "endpoint_action": "__default__",
+        "method": "POST",
+        "consumer_count": 6,
+        "consumer_functions": [
+          "assets/app/admin.js::saveLockDate",
+          "assets/app/admin.js::saveLockDate",
+          "assets/app/admin.js::saveBroadcast",
+          "assets/app/admin.js::saveBroadcast",
+          "assets/app/admin.js::saveAppSettings",
+          "assets/app/admin.js::saveAppSettings"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/settings.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/transactions.php::delete::POST",
+        "endpoint_base": "api/transactions.php",
+        "endpoint_action": "delete",
+        "method": "POST",
+        "consumer_count": 1,
+        "consumer_functions": [
+          "assets/app/form.js::renderHistoryCards"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/transactions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 1,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/transactions.php::diff::GET",
+        "endpoint_base": "api/transactions.php",
+        "endpoint_action": "diff",
+        "method": "GET",
+        "consumer_count": 1,
+        "consumer_functions": [
+          "assets/app/form.js::renderHistoryCards"
+        ],
+        "has_dynamic_consumer": true,
+        "backend_file": "api/transactions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 1,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/transactions.php::finalize::POST",
+        "endpoint_base": "api/transactions.php",
+        "endpoint_action": "finalize",
+        "method": "POST",
+        "consumer_count": 1,
+        "consumer_functions": [
+          "assets/app/form.js::renderHistoryCards"
+        ],
+        "has_dynamic_consumer": false,
+        "backend_file": "api/transactions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 1,
+        "blank_state_consumer_count": 0
+      },
+      {
+        "endpoint_key": "api/transactions.php::previousStock::GET",
+        "endpoint_base": "api/transactions.php",
+        "endpoint_action": "previousStock",
+        "method": "GET",
+        "consumer_count": 2,
+        "consumer_functions": [
+          "assets/app/form.js::triggerHandover",
+          "assets/app/form.js::triggerHandover"
+        ],
+        "has_dynamic_consumer": true,
+        "backend_file": "api/transactions.php",
+        "backend_found": true,
+        "backend_response_keys": [],
+        "silent_consumer_count": 0,
+        "blank_state_consumer_count": 0
+      }
+    ],
+    "findings": [
+      {
+        "severity": "medium",
+        "endpoint_key": "api/history.php::paged::GET",
+        "title": "Endpoint dipanggil via template/dynamic expression dan perlu review manual shape response",
+        "evidence": [
+          "assets/app/form.js::loadHistory",
+          "assets/app/form.js::loadHistory",
+          "assets/app/form.js::loadMoreHistory",
+          "assets/app/form.js::loadMoreHistory"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/init.php::__default__::GET",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::loadInitialData line 1477"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/init.php::__default__::GET",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::loadInitialData line 1477"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/settings.php::__default__::GET",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::loadInitialData line 1477"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/settings.php::__default__::GET",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::loadInitialData line 1477"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/transactions.php::delete::POST",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::renderHistoryCards line 694"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/transactions.php::diff::GET",
+        "title": "Endpoint dipanggil via template/dynamic expression dan perlu review manual shape response",
+        "evidence": [
+          "assets/app/form.js::renderHistoryCards"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/transactions.php::diff::GET",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::renderHistoryCards line 694"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/transactions.php::finalize::POST",
+        "title": "Consumer memiliki catch silent yang bisa menyembunyikan failed data call",
+        "evidence": [
+          "assets/app/form.js::renderHistoryCards line 694"
+        ]
+      },
+      {
+        "severity": "medium",
+        "endpoint_key": "api/transactions.php::previousStock::GET",
+        "title": "Endpoint dipanggil via template/dynamic expression dan perlu review manual shape response",
+        "evidence": [
+          "assets/app/form.js::triggerHandover",
+          "assets/app/form.js::triggerHandover"
+        ]
+      }
+    ],
+    "priority_endpoints": []
+  },
+  "consumers": [
+    {
+      "endpoint": "api/materials.php?action=delete",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "renderMaterialList",
+      "start_line": 12,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=delete\", { method: \"POST\", body: JSON.stringify({ name }) });\n      state.materials = state.materials.filter((item) => item !== name);\n      renderMaterialList();\n      window.renderTable();\n    }));\n  }"
+    },
+    {
+      "endpoint": "api/conversions.php?action=delete",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "renderConversionTable",
+      "start_line": 31,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/conversions.php?action=delete\", { method: \"POST\", body: JSON.stringify({ mid }) });\n      state.conversions = state.conversions.filter((item) => item.mid !== mid);\n      renderConversionTable();\n    }));\n  }"
+    },
+    {
+      "endpoint": "api/conversions.php?action=save",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveConversionData",
+      "start_line": 100,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/conversions.php?action=save\", { method: \"POST\", body: JSON.stringify(payload) });\n      const res = await App.api(\"api/conversions.php?action=list\", { method: \"GET\" });\n      state.conversions = res.data || [];\n      renderConversionTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalConversion\")).hide();\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n      App.toast(\"success\", \"Produk tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan produk\", e.message);\n      if (b"
+    },
+    {
+      "endpoint": "api/conversions.php?action=list",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveConversionData",
+      "start_line": 100,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/conversions.php?action=list\", { method: \"GET\" });\n      state.conversions = res.data || [];\n      renderConversionTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalConversion\")).hide();\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n      App.toast(\"success\", \"Produk tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan produk\", e.message);\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n    }\n  }"
+    },
+    {
+      "endpoint": "api/conversions.php?action=save",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveConversionData",
+      "start_line": 100,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/conversions.php?action=save\", { method: \"POST\", body: JSON.stringify(payload) });\n      const res = await App.api(\"api/conversions.php?action=list\", { method: \"GET\" });\n      state.conversions = res.data || [];\n      renderConversionTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalConversion\")).hide();\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n      App.toast(\"success\", \"Produk tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan produk\", e.message);\n      if (b"
+    },
+    {
+      "endpoint": "api/conversions.php?action=list",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveConversionData",
+      "start_line": 100,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/conversions.php?action=list\", { method: \"GET\" });\n      state.conversions = res.data || [];\n      renderConversionTable();\n      bootstrap.Modal.getOrCreateInstance(document.getElementById(\"modalConversion\")).hide();\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n      App.toast(\"success\", \"Produk tersimpan\");\n    } catch (e) {\n      App.toast(\"error\", \"Gagal menyimpan produk\", e.message);\n      if (btn) { btn.disabled = false; btn.innerHTML = '<i class=\"fa-solid fa-floppy-disk me-1\"></i>Simpan'; }\n    }\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=update",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "update",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "addNewMaterial",
+      "start_line": 128,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=update\", { method: \"POST\", body: JSON.stringify({ oldName: \"\", newName: name, suppliers: [] }) });\n    state.materials.push(name);\n    state.materials.sort();\n    document.getElementById(\"newMaterialInput\").value = \"\";\n    renderMaterialList();\n    window.renderTable();\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=update",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "update",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "addNewMaterial",
+      "start_line": 128,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=update\", { method: \"POST\", body: JSON.stringify({ oldName: \"\", newName: name, suppliers: [] }) });\n    state.materials.push(name);\n    state.materials.sort();\n    document.getElementById(\"newMaterialInput\").value = \"\";\n    renderMaterialList();\n    window.renderTable();\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=saveList",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "saveList",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialChanges",
+      "start_line": 139,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=saveList\", { method: \"POST\", body: JSON.stringify({ order }) });\n    state.materials = order;\n    App.toast(\"success\", \"Urutan material tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/materials.php?action=saveList",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "saveList",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMaterialChanges",
+      "start_line": 139,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/materials.php?action=saveList\", { method: \"POST\", body: JSON.stringify({ order }) });\n    state.materials = order;\n    App.toast(\"success\", \"Urutan material tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/config.php?action=save",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMachineSizeConfig",
+      "start_line": 146,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/config.php?action=save\", { method: \"POST\", body: JSON.stringify(payload) });\n    App.toast(\"success\", \"Config mesin/size tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/config.php?action=save",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveMachineSizeConfig",
+      "start_line": 146,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/config.php?action=save\", { method: \"POST\", body: JSON.stringify(payload) });\n    App.toast(\"success\", \"Config mesin/size tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveLockDate",
+      "start_line": 156,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"POST\", body: JSON.stringify({ lockDate: document.getElementById(\"adminLockDate\").value }) });\n    App.toast(\"success\", \"Lock date tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveLockDate",
+      "start_line": 156,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"POST\", body: JSON.stringify({ lockDate: document.getElementById(\"adminLockDate\").value }) });\n    App.toast(\"success\", \"Lock date tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveBroadcast",
+      "start_line": 161,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", {\n      method: \"POST\",\n      body: JSON.stringify({\n        broadcastMsg: document.getElementById(\"adminBroadcastMsg\").value || \"\",\n        broadcastActive: document.getElementById(\"switchBroadcast\").checked,\n      }),\n    });\n    App.toast(\"success\", \"Broadcast tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveBroadcast",
+      "start_line": 161,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", {\n      method: \"POST\",\n      body: JSON.stringify({\n        broadcastMsg: document.getElementById(\"adminBroadcastMsg\").value || \"\",\n        broadcastActive: document.getElementById(\"switchBroadcast\").checked,\n      }),\n    });\n    App.toast(\"success\", \"Broadcast tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveAppSettings",
+      "start_line": 172,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"POST\", body: JSON.stringify({ handover: document.getElementById(\"switchHandover\").checked }) });\n    App.toast(\"success\", \"Setting tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "saveAppSettings",
+      "start_line": 172,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"POST\", body: JSON.stringify({ handover: document.getElementById(\"switchHandover\").checked }) });\n    App.toast(\"success\", \"Setting tersimpan\");\n  }"
+    },
+    {
+      "endpoint": "api/admin.php?action=logs",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "logs",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "loadAuditLogs",
+      "start_line": 177,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=logs\", { method: \"POST\", body: JSON.stringify({ pin }) });\n    const tbody = document.querySelector(\"#auditLogTable tbody\");\n    tbody.innerHTML = (res.data || []).map((item) => `<tr><td>${App.esc(item.time)}</td><td>${App.esc(item.actor)}</td><td>${App.esc(item.action)}</td><td class=\"text-break-all\">${App.esc(item.details)}</td></tr>`).join(\"\") || '<tr><td colspan=\"4\" class=\"text-center text-muted\">Tidak ada log / PIN salah.</td></tr>';\n  }"
+    },
+    {
+      "endpoint": "api/admin.php?action=logs",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "logs",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "loadAuditLogs",
+      "start_line": 177,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=logs\", { method: \"POST\", body: JSON.stringify({ pin }) });\n    const tbody = document.querySelector(\"#auditLogTable tbody\");\n    tbody.innerHTML = (res.data || []).map((item) => `<tr><td>${App.esc(item.time)}</td><td>${App.esc(item.actor)}</td><td>${App.esc(item.action)}</td><td class=\"text-break-all\">${App.esc(item.details)}</td></tr>`).join(\"\") || '<tr><td colspan=\"4\" class=\"text-center text-muted\">Tidak ada log / PIN salah.</td></tr>';\n  }"
+    },
+    {
+      "endpoint": "api/auth.php?action=changePassword",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "changePassword",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "openChangePassword",
+      "start_line": 185,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=changePassword\", {\n      method: \"POST\",\n      body: JSON.stringify({ username: state.username, oldPass: result.value.oldPass, newPass: result.value.newPass }),\n    });\n    App.toast(\"success\", \"Password berubah\");\n  }"
+    },
+    {
+      "endpoint": "api/auth.php?action=changePassword",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "changePassword",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "openChangePassword",
+      "start_line": 185,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=changePassword\", {\n      method: \"POST\",\n      body: JSON.stringify({ username: state.username, oldPass: result.value.oldPass, newPass: result.value.newPass }),\n    });\n    App.toast(\"success\", \"Password berubah\");\n  }"
+    },
+    {
+      "endpoint": "api/admin.php?action=photoProgress",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "photoProgress",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "loadPhotoMigrationProgress",
+      "start_line": 204,
+      "data_paths": [
+        ".latestDays",
+        ".range",
+        ".summary"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=photoProgress\", { method: \"GET\" });\n    const summary = res.data.summary || {};\n    const range = res.data.range || {};\n    document.getElementById(\"photoProgressStatus\").textContent = `Done ${summary.doneCount || 0} / ${summary.totalCount || 0} (${summary.progressPct || 0}%)`;\n    document.getElementById(\"photoProgressRange\").textContent = `${range.firstAnyDone || \"-\"} s/d ${range.lastAnyDone || \"-\"}`;\n    document.getElementById(\"photoProgressSummary\").textContent = `Pending ${summary.pendingCount || 0} | Failed ${summary.failedCount || 0}`;\n    const tbody = do"
+    },
+    {
+      "endpoint": "api/admin.php?action=photoProgress",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "photoProgress",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/admin.js",
+      "consumer_function": "loadPhotoMigrationProgress",
+      "start_line": 204,
+      "data_paths": [
+        ".latestDays",
+        ".range",
+        ".summary"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=photoProgress\", { method: \"GET\" });\n    const summary = res.data.summary || {};\n    const range = res.data.range || {};\n    document.getElementById(\"photoProgressStatus\").textContent = `Done ${summary.doneCount || 0} / ${summary.totalCount || 0} (${summary.progressPct || 0}%)`;\n    document.getElementById(\"photoProgressRange\").textContent = `${range.firstAnyDone || \"-\"} s/d ${range.lastAnyDone || \"-\"}`;\n    document.getElementById(\"photoProgressSummary\").textContent = `Pending ${summary.pendingCount || 0} | Failed ${summary.failedCount || 0}`;\n    const tbody = do"
+    },
+    {
+      "endpoint": "api/config.php?action=get",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "get",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "loadLoginMachines",
+      "start_line": 68,
+      "data_paths": [
+        "res.data?.mesin"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/config.php?action=get\", { headers: {} });\n      const machines = res.data?.mesin || [];\n      const select = document.getElementById(\"loginMachineSelect\");\n      if (!select) return;\n      select.innerHTML = machines.map((item, index) => `<option value=\"${App.esc(item)}\" ${index === 0 ? \"selected\" : \"\"}>${App.esc(item)}</option>`).join(\"\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal memuat mesin\", error.message);\n    }\n  }"
+    },
+    {
+      "endpoint": "api/config.php?action=get",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "get",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "loadLoginMachines",
+      "start_line": 68,
+      "data_paths": [
+        "res.data?.mesin"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/config.php?action=get\", { headers: {} });\n      const machines = res.data?.mesin || [];\n      const select = document.getElementById(\"loginMachineSelect\");\n      if (!select) return;\n      select.innerHTML = machines.map((item, index) => `<option value=\"${App.esc(item)}\" ${index === 0 ? \"selected\" : \"\"}>${App.esc(item)}</option>`).join(\"\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal memuat mesin\", error.message);\n    }\n  }"
+    },
+    {
+      "endpoint": "api/auth.php?action=logout",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "logout",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "handleLogout",
+      "start_line": 302,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=logout\", {\n          method: \"POST\",\n          body: JSON.stringify({ username: App.state.username, machine: App.state.machine }),\n        });\n      }\n    } catch (error) {\n      console.warn(\"[handleLogout]\", error);\n    }\n    if (takeoverMonitor) window.clearInterval(takeoverMonitor);\n    App.clearSession();\n    if (typeof window.resetData === \"function\") window.resetData();\n    setAppVisible(false);\n  }"
+    },
+    {
+      "endpoint": "api/auth.php?action=logout",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "logout",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "handleLogout",
+      "start_line": 302,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=logout\", {\n          method: \"POST\",\n          body: JSON.stringify({ username: App.state.username, machine: App.state.machine }),\n        });\n      }\n    } catch (error) {\n      console.warn(\"[handleLogout]\", error);\n    }\n    if (takeoverMonitor) window.clearInterval(takeoverMonitor);\n    App.clearSession();\n    if (typeof window.resetData === \"function\") window.resetData();\n    setAppVisible(false);\n  }"
+    },
+    {
+      "endpoint": "api/admin.php?action=verifyAdmin",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "verifyAdmin",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "showAdminLogin",
+      "start_line": 323,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=verifyAdmin\", {\n            method: \"POST\",\n            headers: { Authorization: \"\" },\n            body: JSON.stringify({ pin }),\n          });\n          if (!res.data) {\n            Swal.showValidationMessage(\"Password admin salah.\");\n            return false;\n          }\n          return pin;\n        } catch (error) {\n          Swal.showValidationMessage(error.message || \"Verifikasi admin gagal.\");\n          return false;\n        }\n      },\n    });\n    if (!result.isConfirmed) return;\n    if (!App.state.token) {\n      const machine = document.getElementById(\"lo"
+    },
+    {
+      "endpoint": "api/admin.php?action=verifyAdmin",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "verifyAdmin",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "showAdminLogin",
+      "start_line": 323,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/admin.php?action=verifyAdmin\", {\n            method: \"POST\",\n            headers: { Authorization: \"\" },\n            body: JSON.stringify({ pin }),\n          });\n          if (!res.data) {\n            Swal.showValidationMessage(\"Password admin salah.\");\n            return false;\n          }\n          return pin;\n        } catch (error) {\n          Swal.showValidationMessage(error.message || \"Verifikasi admin gagal.\");\n          return false;\n        }\n      },\n    });\n    if (!result.isConfirmed) return;\n    if (!App.state.token) {\n      const machine = document.getElementById(\"lo"
+    },
+    {
+      "endpoint": "api/auth.php?action=validate",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "validate",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "validateExistingSession",
+      "start_line": 366,
+      "data_paths": [
+        ".isAdmin",
+        ".username"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=validate\", { method: \"GET\" });\n      App.state.username = res.data.username || App.state.username;\n      App.state.isAdmin = App.state.isAdmin || !!res.data.isAdmin;\n      App.saveSession();\n      await afterLogin();\n      return true;\n    } catch (error) {\n      App.clearSession();\n      return false;\n    }\n  }"
+    },
+    {
+      "endpoint": "api/auth.php?action=validate",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "validate",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/auth.js",
+      "consumer_function": "validateExistingSession",
+      "start_line": 366,
+      "data_paths": [
+        ".isAdmin",
+        ".username"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/auth.php?action=validate\", { method: \"GET\" });\n      App.state.username = res.data.username || App.state.username;\n      App.state.isAdmin = App.state.isAdmin || !!res.data.isAdmin;\n      App.saveSession();\n      await afterLogin();\n      return true;\n    } catch (error) {\n      App.clearSession();\n      return false;\n    }\n  }"
+    },
+    {
+      "endpoint": "api/photos.php",
+      "endpoint_base": "api/photos.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "openPhotoModal",
+      "start_line": 319,
+      "data_paths": [
+        ".fileIds"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api('api/photos.php', {\n                method: 'POST',\n                body: JSON.stringify({ files: fileData.slice(i, i + 10) })\n              });\n              if (res.success) newIds.push(...res.data.fileIds);\n            }\n\n            const newUrls = await Promise.all(newIds.map(fetchThumb));\n            photoIds.push(...newIds);\n            thumbUrls.push(...newUrls);\n            grid.innerHTML = buildGrid();\n            count.textContent = `${photoIds.length} / ${MAX} foto`;\n            status.textContent = `${newIds.length} foto berhasil diupload.`;\n            setTimeout(() => { "
+    },
+    {
+      "endpoint": "api/photos.php",
+      "endpoint_base": "api/photos.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "openPhotoModal",
+      "start_line": 319,
+      "data_paths": [
+        ".fileIds"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api('api/photos.php', {\n                method: 'POST',\n                body: JSON.stringify({ files: fileData.slice(i, i + 10) })\n              });\n              if (res.success) newIds.push(...res.data.fileIds);\n            }\n\n            const newUrls = await Promise.all(newIds.map(fetchThumb));\n            photoIds.push(...newIds);\n            thumbUrls.push(...newUrls);\n            grid.innerHTML = buildGrid();\n            count.textContent = `${photoIds.length} / ${MAX} foto`;\n            status.textContent = `${newIds.length} foto berhasil diupload.`;\n            setTimeout(() => { "
+    },
+    {
+      "endpoint": "api/transactions.php?action=finalize",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "finalize",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "renderHistoryCards",
+      "start_line": 694,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/transactions.php?action=finalize\", { method: \"POST\", body: JSON.stringify({ uuid: id }) });\n            App.toast(\"success\", \"Finalized\");\n            await (isAdmin ? window.loadAdminHistory() : window.loadHistory());\n            return;\n          }\n          if (action === \"delete\") {\n            if (window.Swal) {\n              const confirm = await Swal.fire({\n                title: \"Hapus Laporan?\",\n                text: \"Apakah Anda yakin ingin menghapus data ini?\",\n                icon: \"warning\",\n                showCancelButton: true,\n                confirmButtonColor: \""
+    },
+    {
+      "endpoint": "api/transactions.php?action=delete",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "renderHistoryCards",
+      "start_line": 694,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/transactions.php?action=delete\", { method: \"POST\", body: JSON.stringify({ uuid: id }) });\n            App.toast(\"success\", \"Deleted\");\n            await (isAdmin ? window.loadAdminHistory() : window.loadHistory());\n            return;\n          }\n          if (action === \"diff\") {\n            const res = await App.api(`api/transactions.php?action=diff&uuid=${encodeURIComponent(id)}`, { method: \"GET\" });\n            const versions = res.data;\n            if (!versions || typeof versions !== 'object' || Object.keys(versions).length === 0) {\n                App.toast('info', 'Data re"
+    },
+    {
+      "endpoint": "api/transactions.php?action=diff&uuid=${encodeURIComponent(id)}",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "diff",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "renderHistoryCards",
+      "start_line": 694,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(`api/transactions.php?action=diff&uuid=${encodeURIComponent(id)}`, { method: \"GET\" });\n            const versions = res.data;\n            if (!versions || typeof versions !== 'object' || Object.keys(versions).length === 0) {\n                App.toast('info', 'Data revisi tidak ditemukan.');\n                return;\n            }\n            \n            const keys = Object.keys(versions).sort((a,b)=>a-b);\n            if(keys.length === 0) return;\n\n            const latestKey = keys[keys.length-1];\n            const prevKey = keys.length > 1 ? keys[keys.length-2] : keys[0];\n            c"
+    },
+    {
+      "endpoint": "api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=1",
+      "endpoint_base": "api/history.php",
+      "endpoint_action": "paged",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadHistory",
+      "start_line": 1384,
+      "data_paths": [
+        ".data",
+        ".totalPages"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\n      `api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=1` +\n      `&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,\n      { method: \"GET\" }\n    );\n    historyTotalPages  = res.data.totalPages || 1;\n    state.history      = res.data.data || [];\n    renderHistoryCards(\"reportGrid\", state.history, false);\n    setLoadMoreVisible(historyCurrentPage < historyTotalPages);\n  }"
+    },
+    {
+      "endpoint": "api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=1",
+      "endpoint_base": "api/history.php",
+      "endpoint_action": "paged",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadHistory",
+      "start_line": 1384,
+      "data_paths": [
+        ".data",
+        ".totalPages"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\n      `api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=1` +\n      `&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,\n      { method: \"GET\" }\n    );\n    historyTotalPages  = res.data.totalPages || 1;\n    state.history      = res.data.data || [];\n    renderHistoryCards(\"reportGrid\", state.history, false);\n    setLoadMoreVisible(historyCurrentPage < historyTotalPages);\n  }"
+    },
+    {
+      "endpoint": "api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=${historyCurrentPage}",
+      "endpoint_base": "api/history.php",
+      "endpoint_action": "paged",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadMoreHistory",
+      "start_line": 1402,
+      "data_paths": [
+        ".data"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\n      `api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=${historyCurrentPage}` +\n      `&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,\n      { method: \"GET\" }\n    );\n    const newRows = res.data.data || [];\n    state.history = state.history.concat(newRows);\n    // re-render full accumulated list (simpler than partial DOM append given card complexity)\n    renderHistoryCards(\"reportGrid\", state.history, false);\n    setLoadMoreVisible(historyCurrentPage < historyTotalPages);\n  }"
+    },
+    {
+      "endpoint": "api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=${historyCurrentPage}",
+      "endpoint_base": "api/history.php",
+      "endpoint_action": "paged",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadMoreHistory",
+      "start_line": 1402,
+      "data_paths": [
+        ".data"
+      ],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\n      `api/history.php?action=paged&limit=${HISTORY_PAGE_SIZE}&page=${historyCurrentPage}` +\n      `&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,\n      { method: \"GET\" }\n    );\n    const newRows = res.data.data || [];\n    state.history = state.history.concat(newRows);\n    // re-render full accumulated list (simpler than partial DOM append given card complexity)\n    renderHistoryCards(\"reportGrid\", state.history, false);\n    setLoadMoreVisible(historyCurrentPage < historyTotalPages);\n  }"
+    },
+    {
+      "endpoint": "api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "previousStock",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "triggerHandover",
+      "start_line": 1459,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu dimuat\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal tarik stok\", error.messa"
+    },
+    {
+      "endpoint": "api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "previousStock",
+      "method": "GET",
+      "is_dynamic": true,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "triggerHandover",
+      "start_line": 1459,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": false,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(`api/transactions.php?action=previousStock&mesin=${encodeURIComponent(mesin)}&shift=${encodeURIComponent(shift)}&date=${encodeURIComponent(date)}`, { method: \"GET\" });\n      snapshotRows();\n      Object.entries(res.data || {}).forEach(([material, stock]) => {\n        if (!state.formRows[material]) state.formRows[material] = defaultMaterialRow(material);\n        state.formRows[material].stockAwal = Number(stock || 0);\n      });\n      renderMaterialTable();\n      App.toast(\"success\", \"Stok shift lalu dimuat\");\n    } catch (error) {\n      App.toast(\"error\", \"Gagal tarik stok\", error.messa"
+    },
+    {
+      "endpoint": "api/init.php",
+      "endpoint_base": "api/init.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadInitialData",
+      "start_line": 1477,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/init.php\", { method: \"GET\" });\n    state.suppliers = init.data.suppliers || { map: {}, order: [] };\n    state.conversions = init.data.conversion || [];\n    state.config = init.data.config || {};\n    state.materials = [...(state.suppliers.order || [])];\n    populateSelect(\"inputMesin\", state.config.mesin || [], state.machine);\n    populateSelect(\"inputSize\", state.config.size || [], \"\");\n    state.machine = document.getElementById(\"inputMesin\")?.value || state.machine;\n    App.saveSession();\n    setDefaults();\n\n    // Pre-load draft state BEFORE renderMaterialTable so values appear"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadInitialData",
+      "start_line": 1477,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover && !state.isAdmin) {\n      await window.triggerHandover();\n    }\n\n  }"
+    },
+    {
+      "endpoint": "api/init.php",
+      "endpoint_base": "api/init.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadInitialData",
+      "start_line": 1477,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/init.php\", { method: \"GET\" });\n    state.suppliers = init.data.suppliers || { map: {}, order: [] };\n    state.conversions = init.data.conversion || [];\n    state.config = init.data.config || {};\n    state.materials = [...(state.suppliers.order || [])];\n    populateSelect(\"inputMesin\", state.config.mesin || [], state.machine);\n    populateSelect(\"inputSize\", state.config.size || [], \"\");\n    state.machine = document.getElementById(\"inputMesin\")?.value || state.machine;\n    App.saveSession();\n    setDefaults();\n\n    // Pre-load draft state BEFORE renderMaterialTable so values appear"
+    },
+    {
+      "endpoint": "api/settings.php",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "is_dynamic": false,
+      "consumer_file": "assets/app/form.js",
+      "consumer_function": "loadInitialData",
+      "start_line": 1477,
+      "data_paths": [],
+      "silent_fail_pattern": false,
+      "silent_catch_pattern": true,
+      "renders_blank_state": false,
+      "auth_recovery": false,
+      "snippet": "App.api(\"api/settings.php\", { method: \"GET\" });\n    state.settings = settings.data;\n    if (settings.data.broadcastActive && settings.data.broadcastMsg) {\n      document.getElementById(\"broadcastText\").textContent = settings.data.broadcastMsg;\n      document.getElementById(\"broadcastBanner\").classList.remove(\"d-none\");\n    } else {\n      document.getElementById(\"broadcastBanner\").classList.add(\"d-none\");\n    }\n    \n    if (state.settings.enableHandover && !state.isAdmin) {\n      await window.triggerHandover();\n    }\n\n  }"
+    }
+  ],
+  "backend": {
+    "api/admin.php": {
+      "actions": {
+        "verifyAdmin": {
+          "block_kind": "action",
+          "start_line": 32,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$ok"
+          ],
+          "fail_examples": [
+            "'Terlalu banyak percobaan. Coba lagi dalam 5 menit.', 429"
+          ]
+        },
+        "stats": {
+          "block_kind": "action",
+          "start_line": 55,
+          "response_keys": [
+            "alertCount",
+            "chartData",
+            "dateRange",
+            "isToday",
+            "labels",
+            "rejects",
+            "shifts",
+            "topMaterial",
+            "topMats",
+            "totalToday",
+            "values"
+          ],
+          "ok_payload_examples": [
+            "[\n        'totalToday'  => $totalToday,\n        'alertCount'  => $alertCount,\n        'topMaterial' => $topMats ? array_key_first($topMats) : '-',\n        'isToday'     => ($startDate === $today && $endDate === $today),\n"
+          ],
+          "fail_examples": []
+        },
+        "logs": {
+          "block_kind": "action",
+          "start_line": 127,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "[]",
+            "$logs"
+          ],
+          "fail_examples": []
+        },
+        "photoProgress": {
+          "block_kind": "action",
+          "start_line": 141,
+          "response_keys": [
+            "doneCount",
+            "failedCount",
+            "firstAnyDone",
+            "firstFullyDone",
+            "fullDays",
+            "lastAnyDone",
+            "lastFullyDone",
+            "latestDays",
+            "partialDays",
+            "pendingCount",
+            "progressPct",
+            "range",
+            "summary",
+            "totalCount"
+          ],
+          "ok_payload_examples": [
+            "[\n        'summary' => [\n            'doneCount' => $doneCount,\n            'pendingCount' => $pendingCount,\n            'failedCount' => $failedCount,\n            'totalCount' => $totalCount,\n            'progressPct' ="
+          ],
+          "fail_examples": []
+        },
+        "changePassword": {
+          "block_kind": "action",
+          "start_line": 240,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'username, oldPass, newPass wajib.'",
+            "'User tidak ditemukan.'",
+            "'Password lama salah.'"
+          ]
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/auth.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 16,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "login": {
+          "block_kind": "function_router",
+          "start_line": 179,
+          "response_keys": [
+            "takeoverDirect",
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['token' => $token, 'username' => $username, 'takeoverDirect' => $force]"
+          ],
+          "fail_examples": [
+            "'username, password, dan machine wajib diisi.'",
+            "'Terlalu banyak percobaan login. Coba lagi dalam 5 menit.', 429",
+            "'Password salah atau User tidak ditemukan.'"
+          ]
+        },
+        "logout": {
+          "block_kind": "function_router",
+          "start_line": 295,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": []
+        },
+        "forceLogin": {
+          "block_kind": "function_router",
+          "start_line": 314,
+          "response_keys": [
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['token' => $token, 'username' => $username]"
+          ],
+          "fail_examples": [
+            "'username dan machine wajib diisi.'",
+            "'PIN admin salah.', 403"
+          ]
+        },
+        "changePassword": {
+          "block_kind": "function_router",
+          "start_line": 339,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'Wajib diisi.'",
+            "'Password lama salah.'"
+          ]
+        },
+        "validate": {
+          "block_kind": "function_router",
+          "start_line": 360,
+          "response_keys": [
+            "isAdmin",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['username' => $result['username'], 'isAdmin' => $result['role'] === 'admin']"
+          ],
+          "fail_examples": [
+            "'Token tidak diberikan.', 401",
+            "'Sesi tidak valid atau telah berakhir.', 401"
+          ]
+        },
+        "checkTakeover": {
+          "block_kind": "function_router",
+          "start_line": 370,
+          "response_keys": [
+            "hasRequest",
+            "logout",
+            "reason"
+          ],
+          "ok_payload_examples": [
+            "['logout' => true, 'reason' => 'Session expired on server']",
+            "['logout' => true, 'reason' => 'Session taken over']",
+            "['hasRequest' => false]"
+          ],
+          "fail_examples": [
+            "'username dan machine wajib diisi.'"
+          ]
+        },
+        "takeoverDecision": {
+          "block_kind": "function_router",
+          "start_line": 401,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'username, machine, dan approved wajib diisi.'",
+            "'Request sudah kadaluarsa atau tidak ada.'",
+            "'Gagal memproses. Coba lagi.'"
+          ]
+        },
+        "takeoverStatus": {
+          "block_kind": "function_router",
+          "start_line": 451,
+          "response_keys": [
+            "attempts",
+            "canDirectTakeover",
+            "status",
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['status' => 'SUCCESS', 'token' => $tempToken, 'username' => $username]",
+            "['status' => 'REJECTED']",
+            "[\n            'status' => 'TIMEOUT',\n            'attempts' => $cnt,\n            'canDirectTakeover' => $cnt >= 2,\n        ]"
+          ],
+          "fail_examples": [
+            "'username, tempToken, dan machine wajib diisi.'"
+          ]
+        }
+      }
+    },
+    "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 16,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "login": {
+          "block_kind": "function_router",
+          "start_line": 135,
+          "response_keys": [
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['token' => $token, 'username' => $username]"
+          ],
+          "fail_examples": [
+            "'username, password, dan machine wajib diisi.'",
+            "'Password salah atau User tidak ditemukan.'"
+          ]
+        },
+        "logout": {
+          "block_kind": "function_router",
+          "start_line": 190,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": []
+        },
+        "forceLogin": {
+          "block_kind": "function_router",
+          "start_line": 200,
+          "response_keys": [
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['token' => $token, 'username' => $username]"
+          ],
+          "fail_examples": [
+            "'username dan machine wajib diisi.'",
+            "'PIN admin salah.', 403"
+          ]
+        },
+        "changePassword": {
+          "block_kind": "function_router",
+          "start_line": 225,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'username, oldPass, dan newPass wajib diisi.'",
+            "'Password lama salah.'"
+          ]
+        },
+        "validate": {
+          "block_kind": "function_router",
+          "start_line": 250,
+          "response_keys": [
+            "isAdmin",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['username' => $result['username'], 'isAdmin' => $result['role'] === 'admin']"
+          ],
+          "fail_examples": [
+            "'Token tidak diberikan.', 401",
+            "'Sesi tidak valid atau telah berakhir.', 401"
+          ]
+        },
+        "checkTakeover": {
+          "block_kind": "function_router",
+          "start_line": 260,
+          "response_keys": [
+            "hasRequest",
+            "logout",
+            "reason"
+          ],
+          "ok_payload_examples": [
+            "['logout' => true, 'reason' => 'Session expired on server']",
+            "['logout' => true, 'reason' => 'Session taken over']",
+            "['hasRequest' => false]"
+          ],
+          "fail_examples": [
+            "'username dan machine wajib diisi.'"
+          ]
+        },
+        "takeoverDecision": {
+          "block_kind": "function_router",
+          "start_line": 298,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'username, machine, dan approved wajib diisi.'",
+            "'Request sudah kadaluarsa atau tidak ada.'",
+            "'Gagal memproses keputusan: ' . $e->getMessage()"
+          ]
+        },
+        "takeoverStatus": {
+          "block_kind": "function_router",
+          "start_line": 344,
+          "response_keys": [
+            "attempts",
+            "status",
+            "token",
+            "username"
+          ],
+          "ok_payload_examples": [
+            "['status' => 'SUCCESS', 'token' => $tempToken, 'username' => $username]",
+            "['status' => 'REJECTED']",
+            "['status' => 'TIMEOUT', 'attempts' => $cnt]"
+          ],
+          "fail_examples": [
+            "'username, tempToken, dan machine wajib diisi.'"
+          ]
+        }
+      }
+    },
+    "api/config.php": {
+      "actions": {
+        "get": {
+          "block_kind": "action",
+          "start_line": 31,
+          "response_keys": [
+            "aliases",
+            "aliasesRaw",
+            "mesin",
+            "mesinRaw",
+            "size",
+            "sizeRaw"
+          ],
+          "ok_payload_examples": [
+            "[\n        'mesin'   => array_map('trim', explode(',', $mesinStr)),\n        'size'    => array_map('trim', explode(',', $sizeStr)),\n        'aliases' => json_decode($aliases, true) ?? [],\n        // Raw strings juga dikem"
+          ],
+          "fail_examples": []
+        },
+        "save": {
+          "block_kind": "action",
+          "start_line": 53,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'mesin dan size tidak boleh kosong.'"
+          ]
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/conversions.php": {
+      "actions": {
+        "list": {
+          "block_kind": "action",
+          "start_line": 32,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$rows"
+          ],
+          "fail_examples": []
+        },
+        "save": {
+          "block_kind": "action",
+          "start_line": 42,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'MID dan Nama wajib diisi.'",
+            "'MID sudah terdaftar!'",
+            "'Gagal menyimpan: ' . $e->getMessage()"
+          ]
+        },
+        "delete": {
+          "block_kind": "action",
+          "start_line": 85,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'mid wajib diisi.'",
+            "'Data tidak ditemukan.'"
+          ]
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "__default__": {
+          "block_kind": "action",
+          "start_line": 32,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$rows"
+          ],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/history.php": {
+      "actions": {
+        "paged": {
+          "block_kind": "action",
+          "start_line": 34,
+          "response_keys": [
+            "data",
+            "page",
+            "total",
+            "totalPages"
+          ],
+          "ok_payload_examples": [
+            "['data' => [], 'total' => $total, 'page' => $page, 'totalPages' => $pages]",
+            "['data' => $data, 'total' => $total, 'page' => $page, 'totalPages' => $pages]"
+          ],
+          "fail_examples": []
+        },
+        "admin": {
+          "block_kind": "action",
+          "start_line": 38,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php": {
+      "actions": {
+        "paged": {
+          "block_kind": "action",
+          "start_line": 47,
+          "response_keys": [
+            "data",
+            "page",
+            "total",
+            "totalPages"
+          ],
+          "ok_payload_examples": [
+            "['data' => [], 'total' => $total, 'page' => $page, 'totalPages' => $pages]",
+            "['data' => $data, 'total' => $total, 'page' => $page, 'totalPages' => $pages]"
+          ],
+          "fail_examples": []
+        },
+        "admin": {
+          "block_kind": "action",
+          "start_line": 52,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/init.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "__default__": {
+          "block_kind": "file_scope",
+          "start_line": 1,
+          "response_keys": [
+            "suppliers",
+            "conversion",
+            "config"
+          ],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/materials.php": {
+      "actions": {
+        "list": {
+          "block_kind": "action",
+          "start_line": 32,
+          "response_keys": [
+            "map",
+            "order"
+          ],
+          "ok_payload_examples": [
+            "['map' => $map, 'order' => $order]"
+          ],
+          "fail_examples": []
+        },
+        "saveList": {
+          "block_kind": "action",
+          "start_line": 50,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'order harus array.'",
+            "'Gagal menyimpan urutan: ' . $e->getMessage()"
+          ]
+        },
+        "delete": {
+          "block_kind": "action",
+          "start_line": 71,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'name wajib diisi.'",
+            "'Material tidak ditemukan.'"
+          ]
+        },
+        "update": {
+          "block_kind": "action",
+          "start_line": 82,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'newName wajib diisi.'",
+            "'Gagal update: ' . $e->getMessage()"
+          ]
+        },
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/migration_api.php": {
+      "actions": {
+        "upload": {
+          "block_kind": "action",
+          "start_line": 16,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "progress": {
+          "block_kind": "action",
+          "start_line": 31,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "reset_progress": {
+          "block_kind": "action",
+          "start_line": 44,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "run_import": {
+          "block_kind": "action",
+          "start_line": 53,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "run_setup_photos": {
+          "block_kind": "action",
+          "start_line": 65,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "photo_stats": {
+          "block_kind": "action",
+          "start_line": 137,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "photo_retry": {
+          "block_kind": "action",
+          "start_line": 149,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "photo_batch": {
+          "block_kind": "action",
+          "start_line": 155,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/photos.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "GET": {
+          "block_kind": "method",
+          "start_line": 33,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": [
+            "'file param diperlukan.'"
+          ]
+        },
+        "__default__": {
+          "block_kind": "method",
+          "start_line": 1,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "__upload__": {
+          "block_kind": "method",
+          "start_line": 1,
+          "response_keys": [
+            "fileIds"
+          ],
+          "ok_payload_examples": [
+            "['fileIds' => $fileIds]"
+          ],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/settings.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "GET": {
+          "block_kind": "method",
+          "start_line": 22,
+          "response_keys": [
+            "broadcastActive",
+            "broadcastMsg",
+            "enableHandover",
+            "lockDate"
+          ],
+          "ok_payload_examples": [
+            "[\n        'enableHandover'  => ($s['ENABLE_HANDOVER']  ?? '') === 'TRUE',\n        'lockDate'        => $s['LOCK_DATE']        ?? '',\n        'broadcastMsg'    => $s['BROADCAST_MSG']    ?? '',\n        'broadcastActive' =>"
+          ],
+          "fail_examples": []
+        },
+        "POST": {
+          "block_kind": "method",
+          "start_line": 38,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": []
+        }
+      }
+    },
+    "api/transactions.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "submit": {
+          "block_kind": "function_router",
+          "start_line": 223,
+          "response_keys": [
+            "count",
+            "rev",
+            "uuid"
+          ],
+          "ok_payload_examples": [
+            "['uuid' => $uuid, 'count' => count($materials), 'rev' => 0]"
+          ],
+          "fail_examples": [
+            "'tanggal, shift, dan mesin wajib diisi.'",
+            "'shift tidak valid.'",
+            "\"Data terkunci. Tidak bisa input tanggal <= {$lockDate}\""
+          ]
+        },
+        "revise": {
+          "block_kind": "function_router",
+          "start_line": 291,
+          "response_keys": [
+            "count",
+            "rev",
+            "uuid"
+          ],
+          "ok_payload_examples": [
+            "['uuid' => $oldUuid, 'count' => count($materials), 'rev' => $nextRev]"
+          ],
+          "fail_examples": [
+            "'uuid, tanggal, shift, mesin wajib diisi.'",
+            "'shift tidak valid.'",
+            "\"Data terkunci. Tidak bisa edit tanggal <= {$lockDate}\""
+          ]
+        },
+        "finalize": {
+          "block_kind": "function_router",
+          "start_line": 387,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'uuid wajib diisi.'",
+            "'Data tidak ditemukan.'",
+            "'Anda tidak berhak memfinalisasi data grup lain.'"
+          ]
+        },
+        "delete": {
+          "block_kind": "function_router",
+          "start_line": 417,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'Aksi ini hanya untuk admin.', 403",
+            "'uuid wajib diisi.'",
+            "'Data tidak ditemukan.'"
+          ]
+        },
+        "previousStock": {
+          "block_kind": "function_router",
+          "start_line": 448,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$result"
+          ],
+          "fail_examples": []
+        },
+        "diff": {
+          "block_kind": "function_router",
+          "start_line": 491,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "(object)$versions"
+          ],
+          "fail_examples": [
+            "'uuid wajib diisi.'"
+          ]
+        }
+      }
+    },
+    "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php": {
+      "actions": {
+        "OPTIONS": {
+          "block_kind": "method",
+          "start_line": 15,
+          "response_keys": [],
+          "ok_payload_examples": [],
+          "fail_examples": []
+        },
+        "submit": {
+          "block_kind": "function_router",
+          "start_line": 243,
+          "response_keys": [
+            "count",
+            "rev",
+            "uuid"
+          ],
+          "ok_payload_examples": [
+            "['uuid' => $uuid, 'count' => count($materials), 'rev' => 0]"
+          ],
+          "fail_examples": [
+            "'tanggal, shift, dan mesin wajib diisi.'",
+            "'shift tidak valid.'",
+            "\"Data terkunci. Tidak bisa input tanggal <= {$lockDate}\""
+          ]
+        },
+        "revise": {
+          "block_kind": "function_router",
+          "start_line": 312,
+          "response_keys": [
+            "count",
+            "rev",
+            "uuid"
+          ],
+          "ok_payload_examples": [
+            "['uuid' => $oldUuid, 'count' => count($materials), 'rev' => $nextRev]"
+          ],
+          "fail_examples": [
+            "'uuid, tanggal, shift, mesin wajib diisi.'",
+            "'shift tidak valid.'",
+            "\"Data terkunci. Tidak bisa edit tanggal <= {$lockDate}\""
+          ]
+        },
+        "finalize": {
+          "block_kind": "function_router",
+          "start_line": 408,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'uuid wajib diisi.'",
+            "'Data tidak ditemukan.'",
+            "'Anda tidak berhak memfinalisasi data grup lain.'"
+          ]
+        },
+        "delete": {
+          "block_kind": "function_router",
+          "start_line": 438,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "true"
+          ],
+          "fail_examples": [
+            "'id wajib diisi.'",
+            "'Data tidak ditemukan.'",
+            "'Gagal menghapus: ' . $e->getMessage()"
+          ]
+        },
+        "previousStock": {
+          "block_kind": "function_router",
+          "start_line": 465,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$result"
+          ],
+          "fail_examples": [
+            "'mesin, shift, date wajib diisi.'"
+          ]
+        },
+        "diff": {
+          "block_kind": "function_router",
+          "start_line": 511,
+          "response_keys": [],
+          "ok_payload_examples": [
+            "$versions"
+          ],
+          "fail_examples": [
+            "'uuid wajib diisi.'"
+          ]
+        }
+      }
+    }
+  },
+  "gitnexus_context": {
+    "loadAppData": {
+      "symbol": "loadAppData",
+      "context": {
+        "error": "Symbol 'loadAppData' not found"
+      }
+    },
+    "loadHistory": {
+      "symbol": "loadHistory",
+      "context": {
+        "error": "Symbol 'loadHistory' not found"
+      }
+    },
+    "loadAdminHistory": {
+      "symbol": "loadAdminHistory",
+      "context": {
+        "error": "Symbol 'loadAdminHistory' not found"
+      }
+    },
+    "loadAdminScorecard": {
+      "symbol": "loadAdminScorecard",
+      "context": {
+        "error": "Symbol 'loadAdminScorecard' not found"
+      }
+    },
+    "callApi": {
+      "symbol": "callApi",
+      "context": {
+        "error": "Symbol 'callApi' not found"
+      }
+    },
+    "actionSubmit": {
+      "symbol": "actionSubmit",
+      "context": {
+        "status": "ambiguous",
+        "message": "Found 2 symbols matching 'actionSubmit'. Use uid, file_path, or kind to disambiguate.",
+        "candidates": [
+          {
+            "uid": "Function:api/transactions.php:actionSubmit",
+            "name": "actionSubmit",
+            "kind": "Function",
+            "filePath": "api/transactions.php",
+            "line": 222,
+            "score": 0.56
+          },
+          {
+            "uid": "Function:api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php:actionSubmit",
+            "name": "actionSubmit",
+            "kind": "Function",
+            "filePath": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+            "line": 242,
+            "score": 0.56
+          }
+        ]
+      }
+    },
+    "actionValidate": {
+      "symbol": "actionValidate",
+      "context": {
+        "status": "ambiguous",
+        "message": "Found 2 symbols matching 'actionValidate'. Use uid, file_path, or kind to disambiguate.",
+        "candidates": [
+          {
+            "uid": "Function:api/auth.php:actionValidate",
+            "name": "actionValidate",
+            "kind": "Function",
+            "filePath": "api/auth.php",
+            "line": 368,
+            "score": 0.56
+          },
+          {
+            "uid": "Function:api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php:actionValidate",
+            "name": "actionValidate",
+            "kind": "Function",
+            "filePath": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+            "line": 249,
+            "score": 0.56
+          }
+        ]
+      }
+    }
+  }
+}

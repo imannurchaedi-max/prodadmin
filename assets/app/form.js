@@ -1,18 +1,67 @@
-(function () {
+﻿(function () {
   const App = window.ProdApp;
   const state = App.state;
 
   /**
-   * C4: Parse an Indonesian-locale number string to a plain JS float.
-   * Handles: "2,50%" -> 2.5   "1.234,56" -> 1234.56   "0,63" -> 0.63
-   * Thousands separator is "." and decimal separator is "," in id-ID locale.
+   * Parse a number string that may be in Indonesian (id-ID) OR US (en-US) locale format.
+   *
+   * Detection rules (auto-senses which locale the keyboard used):
+   *   Both '.' and ',':  last one wins as decimal separator
+   *     "1.234,56" → 1234.56  (ID: dot=thousands, comma=decimal)
+   *     "1,234.56" → 1234.56  (US: comma=thousands, dot=decimal)
+   *   Comma only:  comma is decimal UNLESS exactly 3 digits follow it (then thousands)
+   *     "11,1"  → 11.1   |  "11,12"  → 11.12  |  "11,000" → 11000
+   *   Dot only:   dot is decimal UNLESS exactly 3 digits follow it (then thousands)
+   *     "11.1"  → 11.1   |  "11.12"  → 11.12  |  "11.000" → 11000
+   *   Also strips: trailing %, invisible unicode (NBSP, zero-width, BOM, etc.)
    */
   function parseLocalizedFloat(str) {
     if (str === null || str === undefined) return 0;
-    const s = String(str).trim().replace(/%$/, ""); // strip trailing percent sign
-    const normalized = s.replace(/\./g, "").replace(",", "."); // remove thousands dots, swap decimal comma
+    // Strips invisible unicode that can appear via paste or Android IMEs:
+    //   \u00A0 NBSP  \u00AD soft-hyphen  \u200B-D zero-width  \u202F narrow-NBSP
+    //   \u2018-9 curly-quotes  \uFEFF BOM  \u2028-9 line/para-sep
+    let s = String(str)
+      .replace(/[\u00A0\u00AD\u200B-\u200D\u202F\u2018\u2019\uFEFF\u2028\u2029]/g, "")
+      .trim()
+      .replace(/%$/, "");
+    if (!s) return 0;
+
+    const hasDot   = s.includes(".");
+    const hasComma = s.includes(",");
+    let normalized;
+
+    if (hasDot && hasComma) {
+      // Both present: whichever appears LAST is the decimal separator
+      if (s.lastIndexOf(".") > s.lastIndexOf(",")) {
+        normalized = s.replace(/,/g, "");                     // US: "1,234.56"
+      } else {
+        normalized = s.replace(/\./g, "").replace(",", "."); // ID: "1.234,56"
+      }
+    } else if (hasComma) {
+      // Comma only: 3 digits at end = thousands ("11,000"->11000) else decimal ("11,1"->11.1)
+      normalized = /,\d{3}$/.test(s) ? s.replace(/,/g, "") : s.replace(",", ".");
+    } else if (hasDot) {
+      // Dot only: 3 digits at end = thousands ("11.000"->11000) else decimal ("11.1"->11.1)
+      normalized = /\.\d{3}$/.test(s) ? s.replace(/\./g, "") : s;
+    } else {
+      normalized = s;
+    }
+
+    // Safety: strip remaining non-numeric chars except decimal point
+    normalized = normalized.replace(/[^\d.]/g, "");
     const v = parseFloat(normalized);
     return isNaN(v) ? 0 : v;
+  }
+
+  function fmtInt(n) {
+    return Number(n || 0).toLocaleString("id-ID", { maximumFractionDigits: 0 });
+  }
+  function fmtMat(n) {
+    const v = Number(n || 0);
+    return v.toLocaleString("id-ID", { maximumFractionDigits: 4, minimumFractionDigits: 0 });
+  }
+  function parseIntField(s) {
+    return parseInt(String(s || "").replace(/\D/g, ""), 10) || 0;
   }
 
   function ensureOutputRows() {
@@ -39,20 +88,119 @@
     document.querySelectorAll("#tableBody tr[data-material-row]").forEach((tr) => {
       const material = tr.getAttribute("data-material");
       const supplier = tr.querySelector('[data-field="supplier"]')?.value || "";
-      const hours = Array.from(tr.querySelectorAll('[data-hour]')).map((input) => Number(input.value || 0));
+      const hours = Array.from(tr.querySelectorAll('[data-hour]')).map((input) => parseLocalizedFloat(input.value));
       rows.push({
         material,
         supplier,
-        stockAwal: Number(tr.querySelector('[data-field="stockAwal"]')?.value || 0),
-        masuk: Number(tr.querySelector('[data-field="masuk"]')?.value || 0),
-        retur: Number(tr.querySelector('[data-field="retur"]')?.value || 0),
-        reject: Number(tr.querySelector('[data-field="reject"]')?.value || 0),
+        stockAwal: parseLocalizedFloat(tr.querySelector('[data-field="stockAwal"]')?.value),
+        masuk: parseLocalizedFloat(tr.querySelector('[data-field="masuk"]')?.value),
+        retur: parseLocalizedFloat(tr.querySelector('[data-field="retur"]')?.value),
+        reject: parseLocalizedFloat(tr.querySelector('[data-field="reject"]')?.value),
         hours,
-        photos: [],
+        photos: (state.materialPhotos && state.materialPhotos[material]) || [],
       });
     });
     return rows;
   }
+
+  function draftKey() {
+    return `prodadmin_draft_${state.username || 'user'}_${state.machine || 'mesin'}`;
+  }
+
+  let _draftTimer = null;
+  window.saveDraft = function saveDraft() {
+    if (state.editUuid) return; // jangan overwrite draft saat mode revisi
+    snapshotRows();
+    collectOutputs();
+    try {
+      const draft = {
+        v: 1,
+        savedAt: Date.now(),
+        tanggal: document.getElementById("inputTanggal")?.value || "",
+        shift: document.getElementById("inputShift")?.value || "1",
+        mesin: document.getElementById("inputMesin")?.value || "",
+        size: document.getElementById("inputSize")?.value || "",
+        formRows: JSON.parse(JSON.stringify(state.formRows)),
+        outputs: JSON.parse(JSON.stringify(state.outputs)),
+        rpt: {
+          downtimeMin: document.getElementById("rptDowntimeMin")?.value || 0,
+          speed: document.getElementById("rptSpeed")?.value || 0,
+          trouble: document.getElementById("rptTrouble")?.value || "",
+          nearMiss: document.getElementById("rptNearMiss")?.value || "",
+          notes: document.getElementById("rptNotes")?.value || "",
+          rejectPrinting: document.getElementById("rptRejectPrinting")?.value || 0,
+        },
+      };
+      localStorage.setItem(draftKey(), JSON.stringify(draft));
+      const indicator = document.getElementById("draftSavedAt");
+      if (indicator) {
+        const t = new Date(draft.savedAt);
+        indicator.textContent = `Draft disimpan ${t.getHours().toString().padStart(2,'0')}:${t.getMinutes().toString().padStart(2,'0')}`;
+        indicator.classList.remove("d-none");
+      }
+    } catch (e) {}
+  };
+
+  function autoSaveDraft() {
+    if (state.editUuid) return;
+    clearTimeout(_draftTimer);
+    _draftTimer = setTimeout(window.saveDraft, 3000);
+  }
+
+  function restoreDraft(draft) {
+    if (draft.tanggal) document.getElementById("inputTanggal").value = draft.tanggal;
+    if (draft.shift) document.getElementById("inputShift").value = draft.shift;
+    if (draft.mesin) document.getElementById("inputMesin").value = draft.mesin;
+    if (draft.size) document.getElementById("inputSize").value = draft.size;
+    state.formRows = draft.formRows || {};
+    state.outputs = draft.outputs || [];
+    const rpt = draft.rpt || {};
+    if (document.getElementById("rptDowntimeMin")) document.getElementById("rptDowntimeMin").value = rpt.downtimeMin || 0;
+    if (document.getElementById("rptSpeed")) document.getElementById("rptSpeed").value = rpt.speed || 0;
+    if (document.getElementById("rptTrouble")) document.getElementById("rptTrouble").value = rpt.trouble || "";
+    if (document.getElementById("rptNearMiss")) document.getElementById("rptNearMiss").value = rpt.nearMiss || "";
+    if (document.getElementById("rptNotes")) document.getElementById("rptNotes").value = rpt.notes || "";
+    if (document.getElementById("rptRejectPrinting")) document.getElementById("rptRejectPrinting").value = rpt.rejectPrinting || 0;
+    renderMaterialTable();
+    renderOutputs();
+    refreshAnalysis();
+  }
+
+  window.discardDraft = function discardDraft() {
+    localStorage.removeItem(draftKey());
+    clearTimeout(_draftTimer);
+    _draftTimer = null;
+    const wasBannerVisible = !!window._pendingDraft;
+    window._pendingDraft = null;
+    const banner = document.getElementById("draftBanner");
+    if (banner) banner.classList.add("d-none");
+    const indicator = document.getElementById("draftSavedAt");
+    if (indicator) indicator.classList.add("d-none");
+    // Reset form hanya jika user klik "Abaikan" (banner masih showing saat dipanggil)
+    if (wasBannerVisible && !state.editUuid) {
+      state.formRows = {};
+      state.outputs  = [];
+      state.materialPhotos = {};
+      ["rptDowntimeMin","rptDowntimePct","rptSpeed","rptTrouble","rptNearMiss","rptNotes","rptRejectPrinting"].forEach((id) => {
+        const el = document.getElementById(id); if (el) el.value = "";
+      });
+      renderMaterialTable();
+      renderOutputs();
+      refreshAnalysis();
+    }
+  };
+
+  window.resumeDraft = function resumeDraft() {
+    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
+    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
+    window._pendingDraft = null;
+    const banner = document.getElementById("draftBanner");
+    if (banner) banner.classList.add("d-none");
+    window.switchView("input");
+    App.toast("success", "Draft dilanjutkan");
+  };
+    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
+    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
 
   function setDefaults() {
     const today = new Date().toISOString().slice(0, 10);
@@ -90,38 +238,50 @@
     const head = document.querySelector("#mainTable thead");
     if (!tbody || !head) return;
     const materials = state.materials.filter((item) => item.toLowerCase().includes(filterText.toLowerCase()));
+    const stickyTh = 'position:sticky;top:0;z-index:2;background:var(--bs-body-bg,#fff);box-shadow:inset 0 -1px 0 #dee2e6;';
     head.innerHTML = `
       <tr class="text-secondary small text-uppercase">
-        <th style="width: 18%; padding-left: 20px;">Material Name</th>
-        <th style="width: 12%;">Supplier</th>
-        <th class="text-center" style="width: 4.8%;">Stk Awal</th>
-        <th class="text-center" style="width: 4.8%;">Masuk</th>
-        <th class="text-center text-danger" style="width: 4.8%;">Retur</th>
-        <th class="text-center text-danger" style="width: 4.8%;">Reject</th>
-        ${hours.map((hour) => `<th class="text-center text-primary" style="width: 4.8%; font-size:0.7rem; padding:0;">${hour}</th>`).join("")}
-        <th class="text-center bg-prod-subtle" style="width: 6%;">Total</th>
-        <th class="text-center bg-sisa-subtle" style="width: 6%;">Sisa</th>
+        <th style="${stickyTh}width:16%;padding-left:20px;">Material Name</th>
+        <th style="${stickyTh}width:10%;">Supplier</th>
+        <th class="text-center" style="${stickyTh}width:4.5%;">Stk Awal</th>
+        <th class="text-center" style="${stickyTh}width:4.5%;">Masuk</th>
+        <th class="text-center text-danger" style="${stickyTh}width:4.5%;">Retur</th>
+        <th class="text-center text-danger" style="${stickyTh}width:4.5%;">Reject</th>
+        ${hours.map((hour) => `<th class="text-center text-primary" style="${stickyTh}width:4.5%;font-size:0.7rem;padding:0;">${hour}</th>`).join("")}
+        <th class="text-center bg-prod-subtle" style="${stickyTh}width:5.5%;">Tot. Prod</th>
+        <th class="text-center bg-prod-subtle" style="${stickyTh}width:5.5%;">Grand Total</th>
+        <th class="text-center bg-sisa-subtle" style="${stickyTh}width:5.5%;">Sisa</th>
       </tr>
     `;
     tbody.innerHTML = materials.map((material) => {
       const existing = (state.formRows && state.formRows[material]) || defaultMaterialRow(material, state.suppliers.map[material]?.[0] || "");
-      const total = existing.hours.reduce((a, b) => a + Number(b || 0), 0) + Number(existing.reject || 0);
+      const totProd = existing.hours.reduce((a, b) => a + Number(b || 0), 0);
+      const total = totProd + Number(existing.reject || 0);
       const sisa = Number(existing.stockAwal || 0) + Number(existing.masuk || 0) - Number(existing.retur || 0) - total;
+      const photoCount = state.materialPhotos?.[material]?.length || 0;
       return `
         <tr data-material-row="1" data-material="${App.esc(material)}">
-          <td class="fw-bold ps-4 text-muted">${App.esc(material)}</td>
+          <td class="fw-bold ps-4 text-muted" style="cursor:pointer;user-select:none;" data-photo-cell="${App.esc(material)}" title="Klik untuk upload foto label">
+            ${App.esc(material)}
+            <span data-photo-badge="${App.esc(material)}" class="ms-1">
+              ${photoCount > 0
+                ? `<span class="badge bg-primary rounded-pill" style="font-size:0.6rem">${photoCount}</span>`
+                : `<i class="fa-regular fa-image" style="font-size:0.75rem;color:#ced4da;"></i>`}
+            </span>
+          </td>
           <td>
             <select class="form-select form-select-sm table-input text-start" data-field="supplier" style="font-size:0.85rem; min-width:130px;">
               <option value="">- Pilih -</option>
               ${(state.suppliers.map[material] || []).map((supplier) => `<option value="${App.esc(supplier)}" ${supplier === existing.supplier ? "selected" : ""}>${App.esc(supplier)}</option>`).join("")}
             </select>
           </td>
-          <td><input class="table-input" data-field="stockAwal" type="number" min="0" value="${existing.stockAwal || 0}"></td>
-          <td><input class="table-input" data-field="masuk" type="number" min="0" value="${existing.masuk || 0}"></td>
-          <td><input class="table-input" data-field="retur" type="number" min="0" value="${existing.retur || 0}"></td>
-          <td><input class="table-input text-danger fw-bold" data-field="reject" type="number" min="0" value="${existing.reject || 0}"></td>
-          ${existing.hours.map((value, index) => `<td><input class="table-input" data-hour="${index}" type="number" min="0" value="${value || 0}"></td>`).join("")}
-          <td class="text-center bg-prod-subtle"><span class="calc-cell fw-bold text-primary">${App.fmt(total)}</span></td>
+          <td><input class="table-input" data-field="stockAwal" type="text" inputmode="decimal" value="${fmtMat(existing.stockAwal)}"></td>
+          <td><input class="table-input" data-field="masuk" type="text" inputmode="decimal" value="${fmtMat(existing.masuk)}"></td>
+          <td><input class="table-input" data-field="retur" type="text" inputmode="decimal" value="${fmtMat(existing.retur)}"></td>
+          <td><input class="table-input text-danger fw-bold" data-field="reject" type="text" inputmode="decimal" value="${fmtMat(existing.reject)}"></td>
+          ${existing.hours.map((value, index) => `<td><input class="table-input" data-hour="${index}" type="text" inputmode="decimal" value="${fmtMat(value)}"></td>`).join("")}
+          <td class="text-center bg-prod-subtle"><span class="calc-cell fw-bold text-primary">${App.fmt(totProd)}</span></td>
+          <td class="text-center bg-prod-subtle"><span class="calc-cell fw-bold text-secondary">${App.fmt(total)}</span></td>
           <td class="text-center bg-sisa-subtle"><span class="calc-cell fw-bold ${sisa < 0 ? "text-danger" : ""}">${App.fmt(sisa)}</span></td>
         </tr>
       `;
@@ -131,18 +291,20 @@
 
   function refreshMaterialRowCalculations() {
     document.querySelectorAll("#tableBody tr[data-material-row]").forEach((tr) => {
-      const stockAwal = Number(tr.querySelector('[data-field="stockAwal"]')?.value || 0);
-      const masuk = Number(tr.querySelector('[data-field="masuk"]')?.value || 0);
-      const retur = Number(tr.querySelector('[data-field="retur"]')?.value || 0);
-      const reject = Number(tr.querySelector('[data-field="reject"]')?.value || 0);
-      const hours = Array.from(tr.querySelectorAll('[data-hour]')).map((input) => Number(input.value || 0));
-      const total = hours.reduce((sum, value) => sum + value, 0) + reject;
+      const stockAwal = parseLocalizedFloat(tr.querySelector('[data-field="stockAwal"]')?.value);
+      const masuk = parseLocalizedFloat(tr.querySelector('[data-field="masuk"]')?.value);
+      const retur = parseLocalizedFloat(tr.querySelector('[data-field="retur"]')?.value);
+      const reject = parseLocalizedFloat(tr.querySelector('[data-field="reject"]')?.value);
+      const hours = Array.from(tr.querySelectorAll('[data-hour]')).map((input) => parseLocalizedFloat(input.value));
+      const totProd = hours.reduce((sum, value) => sum + value, 0);
+      const total = totProd + reject;
       const sisa = stockAwal + masuk - retur - total;
       const cells = tr.querySelectorAll(".calc-cell");
-      if (cells[0]) cells[0].textContent = App.fmt(total);
-      if (cells[1]) {
-        cells[1].textContent = App.fmt(sisa);
-        cells[1].classList.toggle("text-danger", sisa < 0);
+      if (cells[0]) cells[0].textContent = App.fmt(totProd);
+      if (cells[1]) cells[1].textContent = App.fmt(total);
+      if (cells[2]) {
+        cells[2].textContent = App.fmt(sisa);
+        cells[2].classList.toggle("text-danger", sisa < 0);
       }
     });
   }
@@ -150,6 +312,132 @@
   function snapshotRows() {
     state.formRows = {};
     getActiveMaterials().forEach((row) => { state.formRows[row.material] = row; });
+  }
+
+  async function openPhotoModal(material) {
+    if (!state.materialPhotos) state.materialPhotos = {};
+    const MAX = 20;
+    let photoIds = [...(state.materialPhotos[material] || [])];
+    const allBlobUrls = [];
+
+    const fetchThumb = async (photoId) => {
+      try {
+        const r = await fetch('api/photos.php?file=' + encodeURIComponent(photoId), {
+          headers: { 'Authorization': 'Bearer ' + (App.state.token || '') }
+        });
+        if (!r.ok) return null;
+        const blob = await r.blob();
+        const url = URL.createObjectURL(blob);
+        allBlobUrls.push(url);
+        return url;
+      } catch (_) { return null; }
+    };
+
+    const thumbUrls = await Promise.all(photoIds.map(fetchThumb));
+
+    const buildGrid = () => {
+      if (!photoIds.length) {
+        return '<div class="text-center text-muted small py-4">Belum ada foto. Klik "Tambah Foto" untuk upload.</div>';
+      }
+      return '<div class="d-flex flex-wrap gap-2">' + photoIds.map((id, i) => {
+        const url = thumbUrls[i];
+        if (!url) return '';
+        return `<div style="position:relative;width:90px;height:90px;flex-shrink:0;">
+          <img src="${url}" style="width:90px;height:90px;object-fit:cover;border-radius:8px;border:1px solid #dee2e6;">
+          <button type="button" class="pm-del" data-idx="${i}" style="position:absolute;top:-7px;right:-7px;width:22px;height:22px;background:#dc3545;color:white;border:none;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&times;</button>
+        </div>`;
+      }).join('') + '</div>';
+    };
+
+    const updateBadge = () => {
+      const badge = document.querySelector(`[data-photo-badge="${CSS.escape(material)}"]`);
+      if (!badge) return;
+      badge.innerHTML = photoIds.length > 0
+        ? `<span class="badge bg-primary rounded-pill" style="font-size:0.6rem">${photoIds.length}</span>`
+        : '<i class="fa-regular fa-image" style="font-size:0.75rem;color:#ced4da;"></i>';
+    };
+
+    await Swal.fire({
+      title: `<span style="font-size:1rem"><i class="fa-solid fa-camera me-2 text-primary"></i>Foto Label &mdash; ${App.esc(material)}</span>`,
+      html: `<div class="text-start">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span id="pmCount" class="small text-muted">${photoIds.length} / ${MAX} foto</span>
+          <label class="btn btn-sm btn-primary" for="pmFileInput" id="pmAddLabel">
+            <i class="fa-solid fa-plus me-1"></i>Tambah Foto
+          </label>
+          <input type="file" id="pmFileInput" accept="image/*" multiple style="display:none">
+        </div>
+        <div id="pmGrid">${buildGrid()}</div>
+        <div id="pmStatus" class="mt-2 small text-primary" style="min-height:1.2em"></div>
+      </div>`,
+      width: 'min(520px, 96vw)',
+      showCancelButton: false,
+      confirmButtonText: 'Selesai',
+      showCloseButton: true,
+      didOpen: () => {
+        const grid    = document.getElementById('pmGrid');
+        const status  = document.getElementById('pmStatus');
+        const count   = document.getElementById('pmCount');
+        const addLabel = document.getElementById('pmAddLabel');
+
+        grid.addEventListener('click', (e) => {
+          const btn = e.target.closest('.pm-del');
+          if (!btn) return;
+          const idx = parseInt(btn.getAttribute('data-idx'));
+          photoIds.splice(idx, 1);
+          thumbUrls.splice(idx, 1);
+          grid.innerHTML = buildGrid();
+          count.textContent = `${photoIds.length} / ${MAX} foto`;
+        });
+
+        document.getElementById('pmFileInput').addEventListener('change', async (e) => {
+          const files = Array.from(e.target.files);
+          e.target.value = '';
+          if (!files.length) return;
+          const remaining = MAX - photoIds.length;
+          if (remaining <= 0) { App.toast('warning', `Maksimal ${MAX} foto per material.`); return; }
+          const toUpload = files.slice(0, remaining);
+          if (files.length > remaining) App.toast('warning', `Hanya ${remaining} slot tersisa, ${files.length - remaining} foto dilewati.`);
+
+          status.textContent = `Mengupload ${toUpload.length} foto…`;
+          addLabel.classList.add('disabled', 'pe-none');
+          try {
+            const fileData = await Promise.all(toUpload.map(f => new Promise((res, rej) => {
+              const reader = new FileReader();
+              reader.onload = ev => res({ base64: ev.target.result, name: f.name });
+              reader.onerror = rej;
+              reader.readAsDataURL(f);
+            })));
+
+            const newIds = [];
+            for (let i = 0; i < fileData.length; i += 10) {
+              const res = await App.api('api/photos.php', {
+                method: 'POST',
+                body: JSON.stringify({ files: fileData.slice(i, i + 10) })
+              });
+              if (res.success) newIds.push(...res.data.fileIds);
+            }
+
+            const newUrls = await Promise.all(newIds.map(fetchThumb));
+            photoIds.push(...newIds);
+            thumbUrls.push(...newUrls);
+            grid.innerHTML = buildGrid();
+            count.textContent = `${photoIds.length} / ${MAX} foto`;
+            status.textContent = `${newIds.length} foto berhasil diupload.`;
+            setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+          } catch (err) {
+            status.textContent = 'Gagal upload: ' + (err.message || 'error');
+          } finally {
+            addLabel.classList.remove('disabled', 'pe-none');
+          }
+        });
+      },
+      willClose: () => {
+        state.materialPhotos[material] = [...photoIds];
+        updateBadge();
+        allBlobUrls.forEach(u => URL.revokeObjectURL(u));
+      }
+    });
   }
 
   function renderOutputs() {
@@ -161,18 +449,18 @@
       const product = state.conversions.find((item) => item.mid === output.mid) || {};
       return `
         <div class="row g-2 align-items-end mb-3 output-row" data-output-row="${index}">
-          <div class="col-md-3">
+          <div class="col-12 col-md-3">
             <label class="small fw-bold text-muted">Produk</label>
             <select class="form-select output-mid">
               <option value="">Pilih produk...</option>
               ${state.conversions.map((item) => `<option value="${App.esc(item.mid)}" ${item.mid === output.mid ? "selected" : ""}>${App.esc(item.mid)} - ${App.esc(item.name)}</option>`).join("")}
             </select>
           </div>
-          <div class="col-md-2"><label class="small fw-bold text-muted">Qty Box</label><input class="form-control output-qty" type="number" value="${output.qtyBox || 0}"></div>
-          <div class="col-md-2"><label class="small fw-bold text-muted">Counter PCS</label><input class="form-control output-counter" type="number" value="${output.counterPcs || 0}"></div>
-          <div class="col-md-2"><label class="small fw-bold text-muted">Total Kg</label><input class="form-control output-kg" type="number" step="0.01" value="${output.totalKg || 0}"></div>
-          <div class="col-md-2"><label class="small fw-bold text-muted">Loss Kg</label><input class="form-control output-loss" type="number" step="0.01" value="${output.lossKg || 0}"></div>
-          <div class="col-md-1"><button class="btn btn-outline-danger w-100 btn-remove-output"><i class="fa-solid fa-trash"></i></button></div>
+          <div class="col-6 col-md-2"><label class="small fw-bold text-muted">Qty Box</label><input class="form-control output-qty" type="number" value="${output.qtyBox || 0}"></div>
+          <div class="col-6 col-md-2"><label class="small fw-bold text-muted">Counter PCS</label><input class="form-control output-counter" type="number" value="${output.counterPcs || 0}"></div>
+          <div class="col-6 col-md-2"><label class="small fw-bold text-muted">Total Kg${product.weight ? ' <span class="badge text-bg-secondary ms-1" style="font-size:0.6rem;vertical-align:middle;">auto</span>' : ""}</label><input class="form-control output-kg" type="number" step="0.01" value="${output.totalKg || 0}"></div>
+          <div class="col-6 col-md-2"><label class="small fw-bold text-muted">Loss Kg</label><input class="form-control output-loss" type="number" step="0.01" value="${output.lossKg || 0}"></div>
+          <div class="col-12 col-md-1"><button class="btn btn-outline-danger w-100 btn-remove-output"><i class="fa-solid fa-trash"></i></button></div>
           <div class="col-12 small text-muted">${App.esc(product.catBag || "-")} / ${App.esc(product.catBox || "-")} ${product.weight ? `| ${App.fmt(product.weight)} g` : ""}</div>
         </div>
       `;
@@ -192,40 +480,118 @@
     }).join("") : '<div class="text-center text-muted py-5 border rounded">Belum ada output.</div>';
   }
 
+  // Shared by refreshAnalysis() (live form) and the history "detail"/"whatsapp" export,
+  // so the Boros/Hemat/Pas verdict is computed identically everywhere it's shown.
+  // outputs: [{mid, qtyBox|qty}]  materials: [{material, reject, prod?|hours?}]
+  function computeMaterialAnalysis(outputs, materials) {
+    // Build theoretical & linked count keyed by UPPERCASE material name
+    const theoretical = {};
+    const linkedCount = {};
+    (outputs || []).forEach((output) => {
+      const product = state.conversions.find((p) => p.mid === output.mid);
+      if (!product) return;
+      const qty = Number(output.qtyBox ?? output.qty ?? 0);
+      if (product.catBag) {
+        const k = product.catBag.toUpperCase();
+        theoretical[k] = (theoretical[k] || 0) + qty * Number(product.ratio || 0);
+        linkedCount[k] = (linkedCount[k] || 0) + 1;
+      }
+      if (product.catBox) {
+        const k = product.catBox.toUpperCase();
+        theoretical[k] = (theoretical[k] || 0) + qty;
+        linkedCount[k] = (linkedCount[k] || 0) + 1;
+      }
+    });
+
+    // Build actual from material rows (live table gives `hours`, history gives `prod` directly)
+    const actualProd = {};
+    const actualReject = {};
+    const displayName = {};
+    (materials || []).forEach((row) => {
+      const k = (row.material || "").toUpperCase();
+      if (!k) return;
+      actualProd[k] = row.prod != null
+        ? Number(row.prod)
+        : Array.isArray(row.hours) ? row.hours.reduce((a, b) => a + Number(b || 0), 0) : 0;
+      actualReject[k] = Number(row.reject || 0);
+      displayName[k]  = row.material;
+    });
+
+    return Object.keys(theoretical).filter(k => (theoretical[k] || 0) > 0).map((k) => {
+      const name      = displayName[k] || k;
+      const stdTarget = Number(theoretical[k] || 0);
+      const totProd   = Number(actualProd[k]  || 0);
+      const reject    = Number(actualReject[k] || 0);
+      const grand     = totProd + reject;
+      // Target = STD + Reject (pemakaian yang dibenarkan)
+      const targetAdj = stdTarget + reject;
+      const linked    = linkedCount[k] || 0;
+      const hasTheo   = stdTarget > 0;
+      const hasAct    = grand > 0 || reject > 0;
+      // Selisih = Grand Total vs (STD + Reject)
+      const diff      = grand - targetAdj;
+      const isOk      = Math.abs(diff) < 0.0001;
+      let status;
+      if (!hasTheo)      status = 'no_output';
+      else if (!hasAct)  status = 'no_laporan';
+      else if (isOk)     status = 'pas';
+      else if (diff > 0) status = 'boros';
+      else               status = 'hemat';
+      return { name, stdTarget, totProd, reject, grand, targetAdj, linked, hasTheo, hasAct, diff, isOk, status };
+    });
+  }
+
   function refreshAnalysis() {
-    const outputs = state.outputs;
     const body = document.getElementById("analysisBody");
     if (!body) return;
-    const theoretical = {};
-    outputs.forEach((output) => {
-      const product = state.conversions.find((item) => item.mid === output.mid);
-      if (!product) return;
-      if (product.catBag) theoretical[product.catBag] = (theoretical[product.catBag] || 0) + (Number(output.qtyBox || 0) * Number(product.ratio || 0));
-      if (product.catBox) theoretical[product.catBox] = (theoretical[product.catBox] || 0) + Number(output.qtyBox || 0);
-    });
-    const actual = {};
-    getActiveMaterials().forEach((row) => {
-      actual[row.material] = row.hours.reduce((a, b) => a + Number(b || 0), 0);
-    });
-    const mats = Object.keys(theoretical);
-    if (!mats.length) {
-      body.innerHTML = '<tr><td colspan="5" class="text-muted fst-italic py-3">Belum ada data output.</td></tr>';
+    const rows = computeMaterialAnalysis(state.outputs, getActiveMaterials());
+
+    if (!rows.length) {
+      body.innerHTML = '<tr><td colspan="5" class="text-muted fst-italic py-3">Belum ada data output atau laporan pemakaian.</td></tr>';
     } else {
-      body.innerHTML = mats.map((material) => {
-        const target = Number(theoretical[material] || 0);
-        const actualVal = Number(actual[material] || 0);
-        const diff = actualVal - target;
+      body.innerHTML = rows.map((r) => {
+        const diffText  = r.isOk ? '0' : (r.diff > 0 ? '+' : '') + App.fmt(r.diff, 0);
+        const diffClr   = r.isOk ? 'text-success' : r.diff > 0 ? 'text-danger' : 'text-primary';
+        const pct       = r.targetAdj > 0 ? (r.grand / r.targetAdj) * 100 : 0;
+        const barColor  = r.isOk ? '#198754' : r.diff > 0 ? '#dc3545' : '#0d6efd';
+        const barWidth  = Math.min(pct, 100);
+        const badgeMap = {
+          no_output:  ['text-bg-secondary',         'No Output'],
+          no_laporan: ['text-bg-warning text-dark',  'No Laporan'],
+          pas:        ['text-bg-success',            '✔ PERFECT'],
+          boros:      ['text-bg-danger',              '↑ BOROS'],
+          hemat:      ['text-bg-primary',              '↓ HEMAT'],
+        };
+        const [badge, badgeText] = badgeMap[r.status];
         return `<tr>
-          <td class="fw-bold">${App.esc(material)}</td>
-          <td class="text-center">${App.fmt(target)}</td>
-          <td class="text-center">${App.fmt(actualVal)}</td>
-          <td class="text-center ${diff !== 0 ? "text-danger" : "text-success"}">${App.fmt(diff)}</td>
-          <td class="text-center"><span class="badge ${Math.abs(diff) < 0.0001 ? "text-bg-success" : "text-bg-warning"}">${Math.abs(diff) < 0.0001 ? "OK" : "CHECK"}</span></td>
+          <td class="fw-bold ps-3">
+            ${App.esc(r.name)}
+            ${r.linked > 0 ? `<div class="text-muted mt-1" style="font-size:0.7rem"><i class="fa-solid fa-link me-1"></i>${r.linked} Linked</div>` : ''}
+          </td>
+          <td class="text-center">
+            ${r.hasTheo
+              ? `<div class="fw-bold">${App.fmt(r.targetAdj, 0)}</div>
+                 <div class="text-muted" style="font-size:0.7rem">(Std:${App.fmt(r.stdTarget,0)} + Rj:${App.fmt(r.reject,0)})</div>`
+              : '<span class="text-muted">-</span>'}
+          </td>
+          <td class="text-center">
+            ${r.hasAct
+              ? `<div class="fw-bold">${App.fmt(r.grand, 0)}</div>
+                 <div class="text-muted" style="font-size:0.7rem">${r.targetAdj > 0 ? App.fmt(pct) + '%' : ''}</div>
+                 <div style="height:4px;background:#e9ecef;border-radius:2px;margin-top:3px;overflow:hidden">
+                   <div style="height:100%;width:${barWidth}%;background:${barColor};border-radius:2px;transition:width 0.3s"></div>
+                 </div>`
+              : '<span class="text-muted">-</span>'}
+          </td>
+          <td class="text-center fw-bold ${r.hasAct && r.hasTheo ? diffClr : ''}">
+            ${r.hasAct && r.hasTheo ? diffText : '<span class="text-muted">-</span>'}
+          </td>
+          <td class="text-center"><span class="badge ${badge}">${badgeText}</span></td>
         </tr>`;
       }).join("");
     }
-    const totalKg = outputs.reduce((sum, item) => sum + Number(item.totalKg || 0), 0);
-    const totalLoss = outputs.reduce((sum, item) => sum + Number(item.lossKg || 0), 0);
+    const totalKg = state.outputs.reduce((sum, item) => sum + Number(item.totalKg || 0), 0);
+    const totalLoss = state.outputs.reduce((sum, item) => sum + Number(item.lossKg || 0), 0);
     document.getElementById("grandTotalKg").textContent = App.fmt(totalKg);
     document.getElementById("grandTotalLoss").textContent = App.fmt(totalLoss);
     document.getElementById("grandTotalLossPct").textContent = totalKg > 0 ? `${App.fmt((totalLoss / totalKg) * 100)}%` : "0.00%";
@@ -236,12 +602,11 @@
   function collectOutputs() {
     state.outputs = Array.from(document.querySelectorAll("[data-output-row]")).map((row) => ({
       mid: row.querySelector(".output-mid")?.value || "",
-      qtyBox: Number(row.querySelector(".output-qty")?.value || 0),
-      counterPcs: Number(row.querySelector(".output-counter")?.value || 0),
+      qtyBox: parseIntField(row.querySelector(".output-qty")?.value),
+      counterPcs: parseIntField(row.querySelector(".output-counter")?.value),
       totalKg: Number(row.querySelector(".output-kg")?.value || 0),
       lossKg: Number(row.querySelector(".output-loss")?.value || 0),
     })).filter((item) => item.mid);
-    renderOutputs();
     refreshAnalysis();
   }
 
@@ -302,8 +667,10 @@
     document.getElementById("inputMesin").value = entry.mesin || "";
     document.getElementById("inputSize").value = entry.size || "";
     state.formRows = {};
+    state.materialPhotos = {};
     const start = App.getShiftStartIndex(String(entry.shift || "1"));
     (entry.items || []).forEach((item) => {
+      if (item.photos && item.photos.length) state.materialPhotos[item.material] = [...item.photos];
       state.formRows[item.material] = {
         material: item.material,
         supplier: item.supplier || "",
@@ -377,7 +744,7 @@
         
         const rptReport = rpt.logs || {};
         const counterKg = rptReport.counterKg || 0;
-        const lossPct = rptReport.lossPct || '0%';
+        const lossPct = rptReport.lossPct != null && rptReport.lossPct !== '' ? `${App.fmt(rptReport.lossPct)}%` : '0%';
         const speed = rptReport.speed || '-';
         const downtimeMin = rptReport.downtimeMin || '0';
 
@@ -387,9 +754,12 @@
 
         let mainAction = '';
         if (isAdmin) {
+            const editOrDetail = isFinal
+                ? `<button class="btn btn-sm btn-light border fw-bold text-muted px-3 rounded-pill" style="font-size:0.75rem" data-action="detail" data-id="${App.esc(rpt.id)}">Detail</button>`
+                : `<button class="btn btn-sm btn-warning text-dark fw-bold px-3 rounded-pill" style="font-size:0.75rem" data-action="edit" data-id="${App.esc(rpt.id)}">Revisi</button>`;
             mainAction = `
                 <button class="btn btn-sm btn-outline-danger border-0 me-1" data-action="delete" data-id="${App.esc(rpt.id)}" title="Hapus"><i class="fa-solid fa-trash"></i></button>
-                <button class="btn btn-sm btn-warning text-dark fw-bold px-3 rounded-pill" style="font-size:0.75rem" data-action="edit" data-id="${App.esc(rpt.id)}">Revisi</button>
+                ${editOrDetail}
             `;
         } else {
             if (!isFinal) {
@@ -471,7 +841,7 @@
             let matHtml = `<div class="table-responsive mb-3"><h6 class="small fw-bold text-secondary border-bottom pb-1">1. Detail Material</h6><table class="table table-bordered table-sm small">
                 <thead class="table-light"><tr><th style="min-width:150px">Material</th><th>Awal</th><th>In</th>`;
             timeHeaders.forEach(t => matHtml += `<th class="text-center text-muted" style="font-size:0.7rem">${t}</th>`);
-            matHtml += `<th>Retur</th><th class="text-danger">Reject</th><th class="text-primary fw-bold">Total</th><th>Sisa</th></tr></thead><tbody>`;
+            matHtml += `<th>Retur</th><th class="text-danger">Reject</th><th class="text-primary">Tot. Prod</th><th class="text-primary fw-bold">Grand Total</th><th>Sisa</th></tr></thead><tbody>`;
             
             (item.items || []).forEach(mat => {
                 const mapIdx = { "1": 0, "2": 8, "3": 16 };
@@ -484,6 +854,7 @@
                     hoursCells += `<td class="text-center ${style}" style="font-size:0.8rem">${val > 0 ? val : '-'}</td>`;
                 });
 
+                const matTotProd = mat.prod ?? (mat.total - (mat.reject || 0));
                 matHtml += `<tr>
                     <td class="fw-bold text-secondary small text-start text-truncate" style="max-width: 150px;" title="${App.esc(mat.material)}">${App.esc(mat.material)}</td>
                     <td class="text-center small">${mat.stock}</td>
@@ -491,6 +862,7 @@
                     ${hoursCells}
                     <td class="text-center small">${mat.retur}</td>
                     <td class="text-center small text-danger fw-bold">${mat.reject || 0}</td>
+                    <td class="text-center fw-bold text-primary">${matTotProd}</td>
                     <td class="text-center fw-bold text-primary bg-primary bg-opacity-10">${mat.total}</td>
                     <td class="text-center small fw-bold ${mat.sisa < 0 ? 'text-danger' : 'text-success'}">${mat.sisa}</td>
                 </tr>`;
@@ -513,7 +885,7 @@
             const rep = item.logs || {};
             let analHtml = `<h6 class="small fw-bold text-danger border-bottom pb-1">3. Analisis & Catatan</h6>
             <div class="row g-2 small bg-light p-2 rounded border text-start">
-                <div class="col-6">Loss Ratio: <b>${App.esc(rep.lossPct)}</b></div>
+                <div class="col-6">Loss Ratio: <b>${rep.lossPct != null ? App.fmt(rep.lossPct) + '%' : '0%'}</b></div>
                 <div class="col-6">Downtime: <b>${App.esc(rep.downtimeMin)} Min</b></div>
                 <div class="col-6">Speed: <b>${App.esc(rep.speed)} ppm</b></div>
                 <div class="col-6">Reject Print: <b>${App.esc(rep.rejectPrintingKg)} Kg</b></div>
@@ -533,7 +905,7 @@
                         ${outHtml}
                         ${analHtml}
                        </div>`,
-                width: '900px',
+                width: 'min(900px, 96vw)',
                 showConfirmButton: true,
                 confirmButtonText: 'Tutup',
                 showCloseButton: true
@@ -541,67 +913,285 @@
             return;
           }
           if (action === "gallery") {
-            let galleryHTML = '<div class="d-flex flex-wrap gap-2 justify-content-center mt-2">';
-            let hasPhotos = false;
+            const photoItems = [];
             (item.items || []).forEach(mat => {
               if (mat.photos && mat.photos.length > 0) {
                 mat.photos.forEach(photoId => {
                   if (!photoId.trim()) return;
-                  hasPhotos = true;
-                  // H4: include token in URL so requireSession() can auth the GET request
-                  const url = 'api/photos.php?file=' + encodeURIComponent(photoId.trim()) + '&token=' + encodeURIComponent(App.state.token || '');
-                  galleryHTML += `
-                    <a href="${url}" target="_blank" class="text-decoration-none" title="Klik untuk perbesar" style="width: 140px; display: block; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative;">
-                      <img src="${url}" alt="Foto" style="width: 100%; height: 140px; object-fit: cover; display: block;">
-                      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 0.65rem; padding: 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${App.esc(mat.material)}</div>
-                    </a>`;
+                  photoItems.push({ photoId: photoId.trim(), material: mat.material });
                 });
               }
             });
-            galleryHTML += '</div>';
 
-            if (!hasPhotos) {
+            if (!photoItems.length) {
               App.toast("info", "Tidak ada foto untuk record ini.");
               return;
             }
 
-            Swal.fire({
+            const objectUrls = [];
+            const parts = await Promise.all(photoItems.map(async ({ photoId, material }) => {
+              try {
+                const resp = await fetch('api/photos.php?file=' + encodeURIComponent(photoId), {
+                  headers: { 'Authorization': 'Bearer ' + (App.state.token || '') }
+                });
+                if (!resp.ok) return '';
+                const blob = await resp.blob();
+                const objUrl = URL.createObjectURL(blob);
+                objectUrls.push(objUrl);
+                return `<a href="${objUrl}" target="_blank" class="text-decoration-none" title="Klik untuk perbesar" style="width: 140px; display: block; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative;">
+                  <img src="${objUrl}" alt="Foto" style="width: 100%; height: 140px; object-fit: cover; display: block;">
+                  <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 0.65rem; padding: 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${App.esc(material)}</div>
+                </a>`;
+              } catch (e) { return ''; }
+            }));
+
+            const galleryHTML = '<div class="d-flex flex-wrap gap-2 justify-content-center mt-2">' + parts.join('') + '</div>';
+            await Swal.fire({
               title: `Galeri Foto - Shift ${item.shift}`,
               html: galleryHTML,
               width: '600px',
               showCloseButton: true,
               showConfirmButton: false
             });
+            objectUrls.forEach(u => URL.revokeObjectURL(u));
             return;
           }
           if (action === "whatsapp") {
             const l = item.logs || {};
-            let itemDetails = "";
-            if (item.outputs && item.outputs.length > 0) {
-                item.outputs.forEach(o => {
-                    const kg = parseFloat(o.kg) || 0;
-                    const loss = parseFloat(o.loss) || 0;
-                    let lp = "0%";
-                    if(kg > 0) lp = ((loss/kg)*100).toFixed(2) + "%";
-                    itemDetails += `> *${o.name}*\n   Output : *${o.qty} Box*\n   Prod   : ${App.fmt(o.counter)} pcs (${App.fmt(kg)} Kg) | Loss: ${App.fmt(loss)} Kg (${lp})\n\n`;
-                });
-            } else {
-                itemDetails = "> Belum ada input produksi\n";
+
+            // --- WA text ---
+            const totalOutKg  = (item.outputs || []).reduce((s, o) => s + Number(o.kg   || 0), 0);
+            const totalLossKg = (item.outputs || []).reduce((s, o) => s + Number(o.loss || 0), 0);
+            const totalLossPct = totalOutKg > 0 ? (totalLossKg / totalOutKg) * 100 : 0;
+            const prodDetail = (item.outputs || []).map(o => {
+              const pct = Number(o.kg) > 0 ? (Number(o.loss) / Number(o.kg)) * 100 : 0;
+              return `> *${o.name}*\n   Output : *${o.qty} Box*\n   Prod   : ${App.fmt(o.counter, 0)} pcs (${App.fmt(o.kg)} Kg) | Loss: ${App.fmt(o.loss)} Kg (${App.fmt(pct)}%)`;
+            }).join('\n\n');
+            const rejectLines = (item.items || [])
+              .filter(m => Number(m.reject || 0) > 0)
+              .map(m => `  ${m.material} : ${m.reject}`)
+              .join('\n');
+            const fmtBullets = (text) => {
+              if (!text || text === '-') return '-';
+              return text.trim().split('\n').map(ln => { const t = ln.trim(); return t ? (t.startsWith('-') ? t : `- ${t}`) : ''; }).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+            };
+            const waText = [
+              '*Info Hasil Produksi*',
+              '',
+              `~Mesin ${item.mesin} Shift ${item.shift} (${item.date})`,
+              `~User: ${item.owner || '-'}`,
+              '',
+              '*DETAIL PRODUK:*',
+              prodDetail || '(tidak ada output)',
+              '',
+              '------------------',
+              `~Total Output : ${App.fmt(totalOutKg)} Kg`,
+              `~Total Loss : ${App.fmt(totalLossKg)} Kg (${App.fmt(totalLossPct)}%)`,
+              `~Reject Printing : ${l.rejectPrintingKg || 0} Kg`,
+              '',
+              '~Reject Material :',
+              rejectLines || '  (tidak ada)',
+              '',
+              '',
+              `~Speed : ${l.speed || '-'} ppm`,
+              `~Downtime : ${l.downtimeMin || 0} Min (${App.fmt(l.downtimePct || 0)}%)`,
+              '',
+              '~Trouble :',
+              fmtBullets(l.trouble),
+              '',
+              `~Near Miss : ${l.nearMiss && l.nearMiss !== '-' ? l.nearMiss : '-'}`,
+              '~Note : ',
+              fmtBullets(l.notes),
+            ].join('\n');
+
+            // --- Screenshot HTML ---
+            const thC = 'padding:6px;font-size:11px;text-align:center;border:1px solid #dee2e6;text-transform:uppercase;color:#6c757d;background:#f8f9fa;font-weight:600';
+            const thL = 'padding:6px 8px;font-size:11px;text-align:left;border:1px solid #dee2e6;text-transform:uppercase;color:#6c757d;background:#f8f9fa;font-weight:600';
+            const tdC = 'text-align:center;padding:5px 6px;font-size:12px;border:1px solid #dee2e6';
+            const tdL = 'padding:5px 8px;font-size:12px;border:1px solid #dee2e6;font-weight:600';
+            const matRows = (item.items || []).map(mat => {
+              const tp = mat.prod ?? (mat.total - (mat.reject || 0));
+              const sc = mat.sisa < 0 ? '#dc3545' : '#198754';
+              return `<tr>
+                <td style="${tdL}">${App.esc(mat.material)}</td>
+                <td style="${tdC}">${mat.stock}</td>
+                <td style="${tdC}">${mat.in}</td>
+                <td style="${tdC};color:#dc3545;font-weight:600">${mat.reject || 0}</td>
+                <td style="${tdC}">${mat.retur}</td>
+                <td style="${tdC};color:#0d6efd;font-weight:600">${tp}</td>
+                <td style="${tdC};background:#e7f1ff;color:#0d6efd;font-weight:700">${mat.total}</td>
+                <td style="${tdC};font-weight:600;color:${sc}">${mat.sisa}</td>
+              </tr>`;
+            }).join('');
+            const outRows = (item.outputs || []).map(o =>
+              `<tr>
+                <td style="${tdL}">${App.esc(o.name)}</td>
+                <td style="${tdC};color:#198754;font-weight:700;font-size:13px">${o.qty}</td>
+                <td style="${tdC}">${App.fmt(o.counter, 0)}</td>
+                <td style="${tdC}">${App.fmt(o.kg)}</td>
+                <td style="${tdC};color:#dc3545">${App.fmt(o.loss)}</td>
+              </tr>`
+            ).join('');
+            const analysisStatusStyle = {
+              boros:      { bg: '#f8d7da', fg: '#842029', text: 'BOROS' },
+              hemat:      { bg: '#cfe2ff', fg: '#084298', text: 'HEMAT' },
+              pas:        { bg: '#d1e7dd', fg: '#0f5132', text: 'PAS' },
+              no_output:  { bg: '#e9ecef', fg: '#495057', text: 'No Output' },
+              no_laporan: { bg: '#fff3cd', fg: '#664d03', text: 'No Laporan' },
+            };
+            const analysisRows = computeMaterialAnalysis(item.outputs, item.items).map(r => {
+              const st = analysisStatusStyle[r.status];
+              const diffText  = r.hasAct && r.hasTheo ? (r.isOk ? '0' : (r.diff > 0 ? '+' : '') + App.fmt(r.diff, 0)) : '-';
+              const diffColor = r.isOk ? '#198754' : r.diff > 0 ? '#dc3545' : '#0d6efd';
+              return `<tr>
+                <td style="${tdL}">${App.esc(r.name)}</td>
+                <td style="${tdC}">${r.hasTheo ? App.fmt(r.targetAdj, 0) : '-'}</td>
+                <td style="${tdC};color:#0d6efd;font-weight:700">${r.hasAct ? App.fmt(r.grand, 0) : '-'}</td>
+                <td style="${tdC};font-weight:700;color:${r.hasAct && r.hasTheo ? diffColor : '#6c757d'}">${diffText}</td>
+                <td style="text-align:center;padding:5px 6px;border:1px solid #dee2e6">
+                  <span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:10px;font-weight:700;background:${st.bg};color:${st.fg}">${st.text}</span>
+                </td>
+              </tr>`;
+            }).join('');
+            const analysisBlock = analysisRows ? `
+              <div style="font-size:12px;font-weight:700;color:#495057;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Analisis Output</div>
+              <table style="width:100%;border-collapse:collapse;margin-bottom:14px;">
+                <thead><tr>
+                  <th style="${thL}">Kategori</th>
+                  <th style="${thC}">Target</th>
+                  <th style="${thC}">Aktual</th>
+                  <th style="${thC}">Selisih</th>
+                  <th style="${thC}">Status</th>
+                </tr></thead>
+                <tbody>${analysisRows}</tbody>
+              </table>` : '';
+            const lossNum = parseFloat(l.lossPct) || 0;
+            const lossColor = lossNum > 2 ? '#dc3545' : '#198754';
+            const troubleBlock = (l.trouble && l.trouble !== '-')
+              ? `<div style="margin-top:10px;padding:8px 12px;background:#fff3cd;border-radius:6px;border-left:3px solid #ffc107;"><div style="font-size:10px;font-weight:700;color:#856404;text-transform:uppercase;margin-bottom:3px">Trouble / Kendala</div><div style="font-size:12px;color:#212529;white-space:pre-wrap">${App.esc(l.trouble)}</div></div>` : '';
+            const notesBlock = (l.notes && l.notes !== '-')
+              ? `<div style="margin-top:8px;padding:8px 12px;background:#e7f5ff;border-radius:6px;border-left:3px solid #0d6efd;"><div style="font-size:10px;font-weight:700;color:#0a4e96;text-transform:uppercase;margin-bottom:3px">Catatan</div><div style="font-size:12px;color:#212529;white-space:pre-wrap">${App.esc(l.notes)}</div></div>` : '';
+            const el = document.createElement('div');
+            el.style.cssText = 'position:absolute;top:-9999px;left:0;width:740px;background:#ffffff;padding:22px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;';
+            el.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid #0d6efd;">
+                <div>
+                  <div style="font-size:18px;font-weight:800;color:#0d6efd;letter-spacing:0.5px;line-height:1">LAPORAN PRODUKSI</div>
+                  <div style="font-size:13px;color:#6c757d;margin-top:4px">Shift ${App.esc(item.shift)} &bull; ${App.esc(item.mesin)} &bull; ${App.esc(item.owner || '-')}</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-size:20px;font-weight:800;color:#212529;line-height:1">${App.esc(item.date)}</div>
+                  <div style="font-size:11px;color:#adb5bd;text-transform:uppercase;letter-spacing:0.5px;margin-top:3px">${App.esc(item.status)}</div>
+                </div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:#495057;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Pemakaian Material</div>
+              <table style="width:100%;border-collapse:collapse;margin-bottom:14px;">
+                <thead><tr>
+                  <th style="${thL}">Material</th>
+                  <th style="${thC}">Awal</th><th style="${thC}">Masuk</th>
+                  <th style="${thC};color:#dc3545">Reject</th><th style="${thC}">Retur</th>
+                  <th style="${thC};color:#0d6efd">Tot.Prod</th>
+                  <th style="${thC};background:#e7f1ff;color:#0d6efd">G.Total</th>
+                  <th style="${thC}">Sisa</th>
+                </tr></thead>
+                <tbody>${matRows || `<tr><td colspan="8" style="text-align:center;padding:8px;color:#6c757d;font-size:12px;border:1px solid #dee2e6">Tidak ada data material</td></tr>`}</tbody>
+              </table>
+              <div style="font-size:12px;font-weight:700;color:#495057;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Output Produksi</div>
+              <table style="width:100%;border-collapse:collapse;margin-bottom:14px;">
+                <thead><tr>
+                  <th style="${thL}">Produk</th>
+                  <th style="${thC};color:#198754">Box</th>
+                  <th style="${thC}">Counter PCS</th>
+                  <th style="${thC}">Berat (Kg)</th>
+                  <th style="${thC};color:#dc3545">Loss (Kg)</th>
+                </tr></thead>
+                <tbody>${outRows || `<tr><td colspan="5" style="text-align:center;padding:8px;color:#6c757d;font-size:12px;border:1px solid #dee2e6">Belum ada output</td></tr>`}</tbody>
+              </table>
+              ${analysisBlock}
+              <div style="background:#f8f9fa;border-radius:8px;padding:12px;display:flex;gap:0;">
+                <div style="flex:1;text-align:center;border-right:1px solid #dee2e6;padding:0 8px">
+                  <div style="font-size:10px;color:#6c757d;text-transform:uppercase;margin-bottom:2px">Loss Ratio</div>
+                  <div style="font-size:17px;font-weight:800;color:${lossColor}">${l.lossPct != null && l.lossPct !== '' ? App.fmt(l.lossPct) + '%' : '0%'}</div>
+                </div>
+                <div style="flex:1;text-align:center;border-right:1px solid #dee2e6;padding:0 8px">
+                  <div style="font-size:10px;color:#6c757d;text-transform:uppercase;margin-bottom:2px">Speed</div>
+                  <div style="font-size:17px;font-weight:800;color:#212529">${l.speed || '-'} <span style="font-size:11px;font-weight:400">ppm</span></div>
+                </div>
+                <div style="flex:1;text-align:center;border-right:1px solid #dee2e6;padding:0 8px">
+                  <div style="font-size:10px;color:#6c757d;text-transform:uppercase;margin-bottom:2px">Downtime</div>
+                  <div style="font-size:17px;font-weight:800;color:#212529">${l.downtimeMin || 0} <span style="font-size:11px;font-weight:400">min</span></div>
+                </div>
+                <div style="flex:1;text-align:center;padding:0 8px">
+                  <div style="font-size:10px;color:#6c757d;text-transform:uppercase;margin-bottom:2px">Reject Print</div>
+                  <div style="font-size:17px;font-weight:800;color:#212529">${l.rejectPrintingKg || 0} <span style="font-size:11px;font-weight:400">Kg</span></div>
+                </div>
+              </div>
+              ${troubleBlock}${notesBlock}
+              <div style="margin-top:12px;padding-top:8px;border-top:1px solid #f0f0f0;font-size:10px;color:#ced4da;display:flex;justify-content:space-between;align-items:center">
+                <span style="color:#0d6efd;font-weight:700;font-size:11px">ProdAdmin</span>
+                <span>${new Date().toLocaleString('id-ID', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
+              </div>`;
+            document.body.appendChild(el);
+            try {
+              const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false });
+              document.body.removeChild(el);
+              const imgUrl = canvas.toDataURL('image/png');
+              const filename = `laporan-${item.date.replace(/\//g, '-')}-shift${item.shift}-${item.mesin}.png`;
+
+              await Swal.fire({
+                title: 'Laporan WhatsApp',
+                html: `<div class="text-start">
+                  <img src="${imgUrl}" style="max-width:100%;border-radius:8px;border:1px solid #dee2e6;box-shadow:0 2px 8px rgba(0,0,0,0.08);display:block;margin-bottom:12px" alt="Screenshot Laporan">
+                  <button id="btnKirimWa" class="btn btn-success w-100 py-2 fw-bold fs-6">
+                    <i class="fa-brands fa-whatsapp me-2"></i>Salin Teks &amp; Unduh Gambar
+                  </button>
+                  <div id="waInstruction" class="d-none alert alert-success mt-2 py-2 small mb-0">
+                    <i class="fa-solid fa-circle-check me-1"></i><b>Siap!</b> Buka WhatsApp &rarr; tempel teks (Ctrl+V) &rarr; lampirkan gambar dari Downloads
+                  </div>
+                  <details class="mt-2">
+                    <summary class="small text-muted" style="cursor:pointer;user-select:none">Lihat / salin teks laporan</summary>
+                    <textarea readonly style="width:100%;height:150px;font-family:monospace;font-size:11px;background:#f8f9fa;border:1px solid #dee2e6;border-radius:8px;padding:10px;resize:none;line-height:1.45;white-space:pre;overflow:auto;margin-top:8px">${App.esc(waText)}</textarea>
+                  </details>
+                </div>`,
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonText: 'Tutup',
+                showCloseButton: true,
+                width: 'min(680px, 96vw)',
+                didOpen: (modal) => {
+                  modal.querySelector('#btnKirimWa')?.addEventListener('click', function () {
+    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
+    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
+                    try {
+                      if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(waText).catch(() => {});
+                      } else {
+                        const ta = document.createElement('textarea');
+                        ta.value = waText;
+                        ta.style.cssText = 'position:fixed;opacity:0';
+                        document.body.appendChild(ta);
+                        ta.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(ta);
+                      }
+                    } catch (_) {}
+                    // Download image
+                    const a = document.createElement('a');
+                    a.href = imgUrl;
+                    a.download = filename;
+                    a.click();
+                    // Update UI
+                    this.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Teks tersalin &amp; Gambar diunduh!';
+                    this.classList.replace('btn-success', 'btn-outline-success');
+                    this.disabled = true;
+                    modal.querySelector('#waInstruction')?.classList.remove('d-none');
+                  });
+                },
+              });
+            } catch (err) {
+              if (document.body.contains(el)) document.body.removeChild(el);
+              App.toast('error', 'Gagal membuat screenshot: ' + (err && err.message ? err.message : String(err)));
             }
-            const text = `*LAPORAN PRODUKSI*\n` +
-                `*Tanggal:* ${item.date}\n` +
-                `*Mesin:* ${item.mesin}\n` +
-                `*Shift:* ${item.shift}\n\n` +
-                `*Rincian Hasil Produk:*\n${itemDetails}` +
-                `*Summary Report:*\n` +
-                `- Loss : *${l.lossPct || '0%'}*\n` +
-                `- Speed : *${l.speed || '0'} ppm*\n` +
-                `- Downtime : *${l.downtimeMin || '0'} Menit*\n` +
-                `- Reject Print : *${l.rejectPrintingKg || '0'} Kg*\n\n` +
-                `*Trouble/Kendala:*\n${l.trouble || '-'}\n\n` +
-                `*Catatan/Pesan:*\n${l.notes || '-'}`;
-            
-            navigator.clipboard.writeText(text).then(() => App.toast('success', 'Teks WA di-copy ke Clipboard!')).catch(() => App.toast('error', 'Gagal copy teks!'));
             return;
           }
           if (action === "finalize") {
@@ -707,7 +1297,7 @@
                       ${outHtml}
                       ${analHtml}
                      </div>`,
-              width: '700px',
+              width: 'min(700px, 96vw)',
               showConfirmButton: false,
               showCloseButton: true
           });
@@ -748,11 +1338,24 @@
   window.calcShiftMetrics = refreshAnalysis;
   window.autoResize = function autoResize(el) { if (el) { el.style.height = "auto"; el.style.height = `${el.scrollHeight}px`; } };
   window.addSmartBullet = function addSmartBullet(id) { const el = document.getElementById(id); if (el) el.value += (el.value.trim() ? "\n- " : "- "); };
+  window.handleSmartEnter = function handleSmartEnter(event) {
+    if (event.key !== 'Enter') return;
+    const el = event.target;
+    const start = el.selectionStart;
+    const currentLine = el.value.substring(0, start).split('\n').pop();
+    if (currentLine.match(/^-\s+\S/)) {
+      event.preventDefault();
+      const ins = '\n- ';
+      el.value = el.value.substring(0, start) + ins + el.value.substring(el.selectionEnd);
+      el.selectionStart = el.selectionEnd = start + ins.length;
+    }
+  };
 
   window.resetData = function resetData() {
     state.editUuid = "";
     state.editRevision = 0;
     state.formRows = {};
+    state.materialPhotos = {};
     state.outputs = [];
     document.getElementById("editModeBanner").classList.add("d-none");
     ["rptDowntimeMin", "rptDowntimePct", "rptSpeed", "rptTrouble", "rptNearMiss", "rptNotes", "rptRejectPrinting"].forEach((id) => {
@@ -774,14 +1377,19 @@
   };
 
   window.submitData = async function submitData() {
+    const btn = document.getElementById("btnSubmit");
+    if (btn?.disabled) return;
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Menyimpan...'; }
     collectOutputs();
     const payload = buildSubmitPayload();
-    const action = state.editUuid ? "revise" : "submit";
+    const isRevise = !!state.editUuid;
     try {
-      const endpoint = state.editUuid ? "api/transactions.php?action=revise" : "api/transactions.php?action=submit";
+      const endpoint = isRevise ? "api/transactions.php?action=revise" : "api/transactions.php?action=submit";
       await App.api(endpoint, { method: "POST", body: JSON.stringify(payload) });
-      App.toast("success", state.editUuid ? "Revisi tersimpan" : "Data tersimpan");
+      App.toast("success", isRevise ? "Revisi tersimpan" : "Data tersimpan");
+      window.discardDraft();
       window.resetData();
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>SUBMIT LAPORAN'; }
       if (state.isAdmin) {
         document.getElementById("adminView")?.classList.remove("d-none");
         document.getElementById("userView")?.classList.add("d-none");
@@ -792,6 +1400,7 @@
       }
     } catch (error) {
       App.toast("error", "Gagal menyimpan", error.message);
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>SUBMIT LAPORAN'; }
     }
   };
 
@@ -820,7 +1429,8 @@
     if (btn) btn.classList.toggle("d-none", !visible);
   }
 
-  // Fresh search — resets to page 1 and replaces results
+    // strips: NBSP(\u00A0), soft-hyphen(\u00AD), zero-width(\u200B-D),
+    //          narrow-NBSP(\u202F), curly-quotes(\u2018-9), BOM(\uFEFF), line/para-sep(\u2028-9)
   window.loadHistory = async function loadHistory() {
     historyCurrentPage = 1;
     const today     = new Date().toISOString().slice(0, 10);
@@ -925,6 +1535,40 @@
     state.machine = document.getElementById("inputMesin")?.value || state.machine;
     App.saveSession();
     setDefaults();
+
+    // Pre-load draft state BEFORE renderMaterialTable so values appear immediately
+    if (!state.isAdmin) {
+      try {
+        const raw = localStorage.getItem(draftKey());
+        if (raw) {
+          const draft = JSON.parse(raw);
+          state.formRows    = draft.formRows  || {};
+          state.outputs     = draft.outputs   || [];
+          state.materialPhotos = {};
+          (Object.entries(draft.formRows || {})).forEach(([mat, row]) => {
+            if (row.photos && row.photos.length) state.materialPhotos[mat] = [...row.photos];
+          });
+          if (draft.tanggal && document.getElementById("inputTanggal")) document.getElementById("inputTanggal").value = draft.tanggal;
+          if (draft.shift   && document.getElementById("inputShift"))   document.getElementById("inputShift").value   = draft.shift;
+          if (draft.mesin   && document.getElementById("inputMesin"))   document.getElementById("inputMesin").value   = draft.mesin;
+          if (draft.size    && document.getElementById("inputSize"))     document.getElementById("inputSize").value     = draft.size;
+          const rpt = draft.rpt || {};
+          if (document.getElementById("rptDowntimeMin"))   document.getElementById("rptDowntimeMin").value   = rpt.downtimeMin   || 0;
+          if (document.getElementById("rptSpeed"))         document.getElementById("rptSpeed").value         = rpt.speed         || 0;
+          if (document.getElementById("rptTrouble"))       document.getElementById("rptTrouble").value       = rpt.trouble       || "";
+          if (document.getElementById("rptNearMiss"))      document.getElementById("rptNearMiss").value      = rpt.nearMiss      || "";
+          if (document.getElementById("rptNotes"))         document.getElementById("rptNotes").value         = rpt.notes         || "";
+          if (document.getElementById("rptRejectPrinting")) document.getElementById("rptRejectPrinting").value = rpt.rejectPrinting || 0;
+          const ageMin  = Math.floor((Date.now() - (draft.savedAt || 0)) / 60000);
+          const ageText = ageMin < 60 ? `${ageMin} menit lalu` : `${Math.floor(ageMin / 60)} jam lalu`;
+          const banner  = document.getElementById("draftBanner");
+          const ageEl   = document.getElementById("draftBannerAge");
+          if (banner) { if (ageEl) ageEl.textContent = ageText; banner.classList.remove("d-none"); }
+          window._pendingDraft = draft;
+        }
+      } catch (e) {}
+    }
+
     renderMaterialTable();
     renderOutputs();
     refreshAnalysis();
@@ -957,14 +1601,17 @@
       document.getElementById("broadcastBanner").classList.add("d-none");
     }
     
-    if (state.settings.handover && !state.isAdmin) {
+    if (state.settings.enableHandover && !state.isAdmin) {
       await window.triggerHandover();
     }
+
   };
 
   document.addEventListener("DOMContentLoaded", function () {
+    if (!state.materialPhotos) state.materialPhotos = {};
+
     const triggerIfHandover = () => {
-      if (state.settings && state.settings.handover && !state.isAdmin) {
+      if (state.settings && state.settings.enableHandover && !state.isAdmin) {
         window.triggerHandover();
       }
     };
@@ -976,23 +1623,64 @@
     });
     document.getElementById("inputMesin")?.addEventListener("change", triggerIfHandover);
     document.getElementById("inputTanggal")?.addEventListener("change", triggerIfHandover);
-    document.getElementById("outputRowsContainer")?.addEventListener("input", collectOutputs);
-    document.getElementById("outputRowsContainer")?.addEventListener("change", collectOutputs);
+    const autoCalcOutputKg = (e) => {
+      const row = e.target.closest("[data-output-row]");
+      if (!row) return;
+      if (!e.target.classList.contains("output-mid") && !e.target.classList.contains("output-counter")) return;
+      const mid = row.querySelector(".output-mid")?.value || "";
+      const product = state.conversions.find((p) => p.mid === mid);
+      if (!product?.weight) return;
+      const counter = Number(row.querySelector(".output-counter")?.value || 0);
+      const kgInput = row.querySelector(".output-kg");
+      if (kgInput) kgInput.value = ((counter * product.weight) / 1000).toFixed(2);
+    };
+    document.getElementById("outputRowsContainer")?.addEventListener("input", (e) => {
+      autoCalcOutputKg(e);
+      collectOutputs();
+      autoSaveDraft();
+    });
+    document.getElementById("outputRowsContainer")?.addEventListener("change", (e) => {
+      autoCalcOutputKg(e);
+      if (e.target.classList.contains("output-mid")) {
+        collectOutputs();
+        renderOutputs();
+      } else {
+        collectOutputs();
+      }
+      autoSaveDraft();
+    });
     document.getElementById("outputRowsContainer")?.addEventListener("click", function (event) {
       if (event.target.closest(".btn-remove-output")) {
         const row = event.target.closest("[data-output-row]");
+        collectOutputs(); // sync state sebelum splice agar index akurat
         state.outputs.splice(Number(row.getAttribute("data-output-row")), 1);
         renderOutputs();
         refreshAnalysis();
+        autoSaveDraft();
       }
+    });
+    document.getElementById("tableBody")?.addEventListener("focus", function (e) {
+      if (e.target.tagName === "INPUT" && e.target.classList.contains("table-input")) e.target.select();
+    }, true);
+    document.getElementById("tableBody")?.addEventListener("blur", function (e) {
+      if (e.target.tagName === "INPUT" && e.target.classList.contains("table-input")) {
+        e.target.value = fmtMat(parseLocalizedFloat(e.target.value));
+      }
+    }, true);
+    document.getElementById("tableBody")?.addEventListener("click", function (e) {
+      const cell = e.target.closest("[data-photo-cell]");
+      if (cell) openPhotoModal(cell.getAttribute("data-photo-cell"));
     });
     document.getElementById("tableBody")?.addEventListener("input", function () {
       snapshotRows();
       refreshMaterialRowCalculations();
       refreshAnalysis();
+      autoSaveDraft();
     });
     document.getElementById("btnSubmit")?.addEventListener("click", window.submitData);
     document.getElementById("btnReset")?.addEventListener("click", window.resetData);
-    ["rptDowntimeMin", "rptRejectPrinting", "rptSpeed"].forEach((id) => document.getElementById(id)?.addEventListener("input", refreshAnalysis));
+    ["rptDowntimeMin", "rptRejectPrinting", "rptSpeed", "rptTrouble", "rptNearMiss", "rptNotes"].forEach((id) =>
+      document.getElementById(id)?.addEventListener("input", () => { refreshAnalysis(); autoSaveDraft(); })
+    );
   });
 })();

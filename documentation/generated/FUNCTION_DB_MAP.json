@@ -1,0 +1,3721 @@
+{
+  "summary": {
+    "repo_root": "C:\\xampp\\htdocs\\ProdAdmin",
+    "generated_at": "2026-07-07T05:56:17.808809+00:00",
+    "table_count": 15,
+    "function_count": 180,
+    "link_count": 214,
+    "direct_link_count": 142,
+    "inherited_link_count": 72,
+    "db_block_count": 80,
+    "zero_link_block_count": 100,
+    "call_edge_count": 285,
+    "orphan_tables": [],
+    "db_heavy_functions": [
+      {
+        "file_path": "python_bot/setup.php",
+        "function_name": "__file_scope__",
+        "block_kind": "file_scope",
+        "start_line": 1,
+        "db_table_count": 11,
+        "direct_db_table_count": 11,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "conversions",
+          "material_hourly_usage",
+          "material_suppliers",
+          "photo_migration",
+          "photo_migration_map",
+          "production_outputs",
+          "production_reports",
+          "suppliers",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionSubmit",
+        "block_kind": "function",
+        "start_line": 223,
+        "db_table_count": 9,
+        "direct_db_table_count": 0,
+        "inherited_db_table_count": 9,
+        "tables": [
+          "audit_logs",
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "settings",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionRevise",
+        "block_kind": "function",
+        "start_line": 291,
+        "db_table_count": 9,
+        "direct_db_table_count": 3,
+        "inherited_db_table_count": 6,
+        "tables": [
+          "audit_logs",
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "settings",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionSubmit",
+        "block_kind": "function",
+        "start_line": 243,
+        "db_table_count": 9,
+        "direct_db_table_count": 0,
+        "inherited_db_table_count": 9,
+        "tables": [
+          "audit_logs",
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "settings",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionRevise",
+        "block_kind": "function",
+        "start_line": 312,
+        "db_table_count": 9,
+        "direct_db_table_count": 3,
+        "inherited_db_table_count": 6,
+        "tables": [
+          "audit_logs",
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "settings",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionDelete",
+        "block_kind": "function",
+        "start_line": 438,
+        "db_table_count": 7,
+        "direct_db_table_count": 4,
+        "inherited_db_table_count": 3,
+        "tables": [
+          "audit_logs",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/init.php",
+        "function_name": "__file_scope__",
+        "block_kind": "file_scope",
+        "start_line": 1,
+        "db_table_count": 6,
+        "direct_db_table_count": 4,
+        "inherited_db_table_count": 2,
+        "tables": [
+          "conversions",
+          "material_suppliers",
+          "sessions",
+          "settings",
+          "suppliers",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionDelete",
+        "block_kind": "function",
+        "start_line": 417,
+        "db_table_count": 6,
+        "direct_db_table_count": 3,
+        "inherited_db_table_count": 3,
+        "tables": [
+          "audit_logs",
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionDiff",
+        "block_kind": "function",
+        "start_line": 491,
+        "db_table_count": 6,
+        "direct_db_table_count": 4,
+        "inherited_db_table_count": 2,
+        "tables": [
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionDiff",
+        "block_kind": "function",
+        "start_line": 511,
+        "db_table_count": 6,
+        "direct_db_table_count": 4,
+        "inherited_db_table_count": 2,
+        "tables": [
+          "production_outputs",
+          "production_reports",
+          "sessions",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/history.php",
+        "function_name": "action:paged",
+        "block_kind": "action",
+        "start_line": 34,
+        "db_table_count": 5,
+        "direct_db_table_count": 5,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "transaction_materials",
+          "transactions"
+        ]
+      },
+      {
+        "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+        "function_name": "action:paged",
+        "block_kind": "action",
+        "start_line": 47,
+        "db_table_count": 5,
+        "direct_db_table_count": 5,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "transaction_materials",
+          "transactions"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "insertTransaction",
+        "block_kind": "function",
+        "start_line": 99,
+        "db_table_count": 5,
+        "direct_db_table_count": 5,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "transaction_materials",
+          "transactions"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "insertTransaction",
+        "block_kind": "function",
+        "start_line": 119,
+        "db_table_count": 5,
+        "direct_db_table_count": 5,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "material_hourly_usage",
+          "production_outputs",
+          "production_reports",
+          "transaction_materials",
+          "transactions"
+        ]
+      },
+      {
+        "file_path": "api/admin.php",
+        "function_name": "action:photoProgress",
+        "block_kind": "action",
+        "start_line": 141,
+        "db_table_count": 4,
+        "direct_db_table_count": 4,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "photo_migration",
+          "photo_migration_map",
+          "transaction_materials",
+          "transactions"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionFinalize",
+        "block_kind": "function",
+        "start_line": 387,
+        "db_table_count": 4,
+        "direct_db_table_count": 1,
+        "inherited_db_table_count": 3,
+        "tables": [
+          "audit_logs",
+          "sessions",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions.php",
+        "function_name": "actionPreviousStock",
+        "block_kind": "function",
+        "start_line": 448,
+        "db_table_count": 4,
+        "direct_db_table_count": 2,
+        "inherited_db_table_count": 2,
+        "tables": [
+          "sessions",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionFinalize",
+        "block_kind": "function",
+        "start_line": 408,
+        "db_table_count": 4,
+        "direct_db_table_count": 1,
+        "inherited_db_table_count": 3,
+        "tables": [
+          "audit_logs",
+          "sessions",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+        "function_name": "actionPreviousStock",
+        "block_kind": "function",
+        "start_line": 465,
+        "db_table_count": 4,
+        "direct_db_table_count": 2,
+        "inherited_db_table_count": 2,
+        "tables": [
+          "sessions",
+          "transaction_materials",
+          "transactions",
+          "users"
+        ]
+      },
+      {
+        "file_path": "api/auth.php",
+        "function_name": "actionLogin",
+        "block_kind": "function",
+        "start_line": 188,
+        "db_table_count": 3,
+        "direct_db_table_count": 3,
+        "inherited_db_table_count": 0,
+        "tables": [
+          "sessions",
+          "takeover_requests",
+          "users"
+        ]
+      }
+    ],
+    "critical_file_view": {
+      "active/api/auth.php": [],
+      "active/api/transactions.php": [],
+      "active/api/history.php": [],
+      "active/api/admin.php": [],
+      "active/api/materials.php": [],
+      "active/api/settings.php": [],
+      "active/api/conversions.php": [],
+      "active/api/init.php": [],
+      "active/api/photos.php": [],
+      "active/config/auth_helper.php": [],
+      "python_bot/setup.php": [
+        {
+          "function_name": "__file_scope__",
+          "block_kind": "file_scope",
+          "tables": [
+            "conversions",
+            "material_hourly_usage",
+            "material_suppliers",
+            "photo_migration",
+            "photo_migration_map",
+            "production_outputs",
+            "production_reports",
+            "suppliers",
+            "transaction_materials",
+            "transactions",
+            "users"
+          ],
+          "db_table_count": 11,
+          "direct_db_table_count": 11,
+          "inherited_db_table_count": 0
+        },
+        {
+          "function_name": "act",
+          "block_kind": "function",
+          "tables": [
+            "users"
+          ],
+          "db_table_count": 1,
+          "direct_db_table_count": 1,
+          "inherited_db_table_count": 0
+        }
+      ],
+      "python_bot/migrate_photos.php": []
+    },
+    "table_coverage": {
+      "audit_logs": [
+        "api/admin.php::action:logs",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionFinalize",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::logAction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionFinalize",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::logAction"
+      ],
+      "conversions": [
+        "api/conversions.php::action:delete",
+        "api/conversions.php::action:list",
+        "api/conversions.php::action:save",
+        "api/init.php::__file_scope__",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "material_hourly_usage": [
+        "api/history.php::action:paged",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::action:paged",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::insertTransaction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "material_suppliers": [
+        "api/init.php::__file_scope__",
+        "api/materials.php::action:list",
+        "api/materials.php::action:update",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "photo_migration": [
+        "api/admin.php::action:photoProgress",
+        "api/migration_api.php::action:photo_batch",
+        "api/migration_api.php::action:photo_retry",
+        "api/migration_api.php::action:photo_stats",
+        "api/migration_api.php::action:run_setup_photos",
+        "api/photos.php::method:GET",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "photo_migration_map": [
+        "api/admin.php::action:photoProgress",
+        "api/migration_api.php::action:photo_batch",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "production_outputs": [
+        "api/history.php::action:paged",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::action:paged",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::insertTransaction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "production_reports": [
+        "api/history.php::action:paged",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::action:paged",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::insertTransaction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "sessions": [
+        "api/auth.php::actionCheckTakeover",
+        "api/auth.php::actionForceLogin",
+        "api/auth.php::actionLogin",
+        "api/auth.php::actionLogout",
+        "api/auth.php::actionTakeoverDecision",
+        "api/auth.php::actionTakeoverStatus",
+        "api/auth.php::actionValidate",
+        "api/auth.php::createSession",
+        "api/auth.php::deleteSession",
+        "api/auth.php::getActiveSession",
+        "api/auth.php::promoteTakeover",
+        "api/auth.php::validateToken",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionCheckTakeover",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionForceLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionLogout",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionTakeoverDecision",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionTakeoverStatus",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionValidate",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::createSession",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::deleteSession",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getActiveSession",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::validateToken",
+        "api/config.php::action:save",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::requireAuth",
+        "api/init.php::__file_scope__",
+        "api/photos.php::method:GET",
+        "api/settings.php::method:POST",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionFinalize",
+        "api/transactions.php::actionPreviousStock",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionFinalize",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionPreviousStock",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth",
+        "config/auth_helper.php::requireSession"
+      ],
+      "settings": [
+        "api/admin.php::action:logs",
+        "api/admin.php::action:verifyAdmin",
+        "api/auth.php::actionForceLogin",
+        "api/auth.php::getAdminPin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionForceLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getAdminPin",
+        "api/config.php::action:get",
+        "api/config.php::action:save",
+        "api/config.php::getSettingValues",
+        "api/init.php::__file_scope__",
+        "api/settings.php::method:GET",
+        "api/settings.php::method:POST",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::getLockDate",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::getLockDate"
+      ],
+      "suppliers": [
+        "api/init.php::__file_scope__",
+        "api/materials.php::action:delete",
+        "api/materials.php::action:list",
+        "api/materials.php::action:saveList",
+        "api/materials.php::action:update",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "takeover_requests": [
+        "api/auth.php::actionCheckTakeover",
+        "api/auth.php::actionForceLogin",
+        "api/auth.php::actionLogin",
+        "api/auth.php::actionLogout",
+        "api/auth.php::actionTakeoverDecision",
+        "api/auth.php::actionTakeoverStatus",
+        "api/auth.php::clearTakeoverHistory",
+        "api/auth.php::clearTakeoverRequests",
+        "api/auth.php::createSession",
+        "api/auth.php::getPendingTakeover",
+        "api/auth.php::getTakeoverTimeoutCount",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionCheckTakeover",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionForceLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionTakeoverDecision",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionTakeoverStatus",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getPendingTakeover"
+      ],
+      "transaction_materials": [
+        "api/admin.php::action:photoProgress",
+        "api/admin.php::action:stats",
+        "api/history.php::action:paged",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::action:paged",
+        "api/migration_api.php::action:photo_batch",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionPreviousStock",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::insertTransaction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionPreviousStock",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "transactions": [
+        "api/admin.php::action:photoProgress",
+        "api/admin.php::action:stats",
+        "api/history.php::action:paged",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::action:paged",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionFinalize",
+        "api/transactions.php::actionPreviousStock",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions.php::insertTransaction",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionFinalize",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionPreviousStock",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction",
+        "python_bot/setup.php::__file_scope__"
+      ],
+      "users": [
+        "api/admin.php::action:changePassword",
+        "api/auth.php::actionChangePassword",
+        "api/auth.php::actionLogin",
+        "api/auth.php::actionValidate",
+        "api/auth.php::validateToken",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionChangePassword",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionLogin",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::actionValidate",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::validateToken",
+        "api/config.php::action:save",
+        "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php::requireAuth",
+        "api/init.php::__file_scope__",
+        "api/photos.php::method:GET",
+        "api/settings.php::method:POST",
+        "api/transactions.php::actionDelete",
+        "api/transactions.php::actionDiff",
+        "api/transactions.php::actionFinalize",
+        "api/transactions.php::actionPreviousStock",
+        "api/transactions.php::actionRevise",
+        "api/transactions.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDelete",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionDiff",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionFinalize",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionPreviousStock",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionRevise",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::actionSubmit",
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth",
+        "config/auth_helper.php::requireSession",
+        "python_bot/setup.php::__file_scope__",
+        "python_bot/setup.php::act"
+      ]
+    },
+    "confidence_notes": [
+      "High confidence berarti ada pola SQL eksplisit seperti SELECT/INSERT/UPDATE/DELETE/JOIN yang mengarah ke tabel schema final.",
+      "Medium confidence berarti fungsi mereferensikan nama tabel tanpa operasi SQL eksplisit, biasanya pada helper, flow migrasi, atau query yang dibangun dinamis.",
+      "Inherited berarti blok tidak men-query tabel secara langsung, tetapi memanggil function lain yang memiliki link DB.",
+      "Mapper ini fokus pada file PHP runtime dan tools setup/migration. Frontend JS tidak dihitung sebagai pemilik akses DB langsung."
+    ]
+  },
+  "links": [
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:verifyAdmin",
+      "block_kind": "action",
+      "start_line": 32,
+      "end_line": 49,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:stats",
+      "block_kind": "action",
+      "start_line": 55,
+      "end_line": 124,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:stats",
+      "block_kind": "action",
+      "start_line": 55,
+      "end_line": 124,
+      "table": "transactions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:logs",
+      "block_kind": "action",
+      "start_line": 127,
+      "end_line": 138,
+      "table": "audit_logs",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:logs",
+      "block_kind": "action",
+      "start_line": 127,
+      "end_line": 138,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:photoProgress",
+      "block_kind": "action",
+      "start_line": 141,
+      "end_line": 237,
+      "table": "photo_migration",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:photoProgress",
+      "block_kind": "action",
+      "start_line": 141,
+      "end_line": 237,
+      "table": "photo_migration_map",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:photoProgress",
+      "block_kind": "action",
+      "start_line": 141,
+      "end_line": 237,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:photoProgress",
+      "block_kind": "action",
+      "start_line": 141,
+      "end_line": 237,
+      "table": "transactions",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/admin.php",
+      "function_name": "action:changePassword",
+      "block_kind": "action",
+      "start_line": 240,
+      "end_line": 263,
+      "table": "users",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "getAdminPin",
+      "block_kind": "function",
+      "start_line": 60,
+      "end_line": 66,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "validateToken",
+      "block_kind": "function",
+      "start_line": 69,
+      "end_line": 83,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "validateToken",
+      "block_kind": "function",
+      "start_line": 69,
+      "end_line": 83,
+      "table": "users",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "createSession",
+      "block_kind": "function",
+      "start_line": 89,
+      "end_line": 108,
+      "table": "sessions",
+      "operations": [
+        "DELETE",
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "createSession",
+      "block_kind": "function",
+      "start_line": 89,
+      "end_line": 108,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "deleteSession",
+      "block_kind": "function",
+      "start_line": 110,
+      "end_line": 115,
+      "table": "sessions",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "getActiveSession",
+      "block_kind": "function",
+      "start_line": 117,
+      "end_line": 125,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "getPendingTakeover",
+      "block_kind": "function",
+      "start_line": 127,
+      "end_line": 137,
+      "table": "takeover_requests",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "clearTakeoverHistory",
+      "block_kind": "function",
+      "start_line": 139,
+      "end_line": 144,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "clearTakeoverRequests",
+      "block_kind": "function",
+      "start_line": 146,
+      "end_line": 152,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "getTakeoverTimeoutCount",
+      "block_kind": "function",
+      "start_line": 154,
+      "end_line": 162,
+      "table": "takeover_requests",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "promoteTakeover",
+      "block_kind": "function",
+      "start_line": 164,
+      "end_line": 184,
+      "table": "sessions",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 188,
+      "end_line": 302,
+      "table": "sessions",
+      "operations": [
+        "DELETE",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 188,
+      "end_line": 302,
+      "table": "takeover_requests",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 188,
+      "end_line": 302,
+      "table": "users",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionLogout",
+      "block_kind": "function",
+      "start_line": 304,
+      "end_line": 321,
+      "table": "sessions",
+      "operations": [
+        "DELETE",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionLogout",
+      "block_kind": "function",
+      "start_line": 304,
+      "end_line": 321,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 323,
+      "end_line": 346,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionChangePassword",
+      "block_kind": "function",
+      "start_line": 348,
+      "end_line": 367,
+      "table": "users",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionCheckTakeover",
+      "block_kind": "function",
+      "start_line": 379,
+      "end_line": 409,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionTakeoverDecision",
+      "block_kind": "function",
+      "start_line": 410,
+      "end_line": 458,
+      "table": "sessions",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionTakeoverDecision",
+      "block_kind": "function",
+      "start_line": 410,
+      "end_line": 458,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionTakeoverStatus",
+      "block_kind": "function",
+      "start_line": 460,
+      "end_line": 549,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE",
+        "INSERT",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "getAdminPin",
+      "block_kind": "function",
+      "start_line": 60,
+      "end_line": 66,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "validateToken",
+      "block_kind": "function",
+      "start_line": 69,
+      "end_line": 83,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "validateToken",
+      "block_kind": "function",
+      "start_line": 69,
+      "end_line": 83,
+      "table": "users",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "createSession",
+      "block_kind": "function",
+      "start_line": 85,
+      "end_line": 102,
+      "table": "sessions",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "deleteSession",
+      "block_kind": "function",
+      "start_line": 104,
+      "end_line": 109,
+      "table": "sessions",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "getActiveSession",
+      "block_kind": "function",
+      "start_line": 111,
+      "end_line": 119,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "getPendingTakeover",
+      "block_kind": "function",
+      "start_line": 121,
+      "end_line": 131,
+      "table": "takeover_requests",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 135,
+      "end_line": 188,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE",
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 135,
+      "end_line": 188,
+      "table": "users",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 200,
+      "end_line": 223,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionChangePassword",
+      "block_kind": "function",
+      "start_line": 225,
+      "end_line": 248,
+      "table": "users",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionCheckTakeover",
+      "block_kind": "function",
+      "start_line": 260,
+      "end_line": 296,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionTakeoverDecision",
+      "block_kind": "function",
+      "start_line": 298,
+      "end_line": 342,
+      "table": "sessions",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionTakeoverDecision",
+      "block_kind": "function",
+      "start_line": 298,
+      "end_line": 342,
+      "table": "takeover_requests",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionTakeoverStatus",
+      "block_kind": "function",
+      "start_line": 344,
+      "end_line": 418,
+      "table": "takeover_requests",
+      "operations": [
+        "DELETE",
+        "INSERT",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/config.php",
+      "function_name": "getSettingValues",
+      "block_kind": "function",
+      "start_line": 20,
+      "end_line": 27,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/config.php",
+      "function_name": "action:get",
+      "block_kind": "action",
+      "start_line": 31,
+      "end_line": 51,
+      "table": "settings",
+      "operations": [
+        "REFERENCE"
+      ],
+      "confidence": "medium",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/config.php",
+      "function_name": "action:save",
+      "block_kind": "action",
+      "start_line": 53,
+      "end_line": 79,
+      "table": "settings",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/conversions.php",
+      "function_name": "action:list",
+      "block_kind": "action",
+      "start_line": 32,
+      "end_line": 39,
+      "table": "conversions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/conversions.php",
+      "function_name": "action:save",
+      "block_kind": "action",
+      "start_line": 42,
+      "end_line": 82,
+      "table": "conversions",
+      "operations": [
+        "DELETE",
+        "INSERT",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/conversions.php",
+      "function_name": "action:delete",
+      "block_kind": "action",
+      "start_line": 85,
+      "end_line": 92,
+      "table": "conversions",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 34,
+      "end_line": 193,
+      "table": "material_hourly_usage",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 34,
+      "end_line": 193,
+      "table": "production_outputs",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 34,
+      "end_line": 193,
+      "table": "production_reports",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 34,
+      "end_line": 193,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 34,
+      "end_line": 193,
+      "table": "transactions",
+      "operations": [
+        "JOIN",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "requireAuth",
+      "block_kind": "function",
+      "start_line": 30,
+      "end_line": 41,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "requireAuth",
+      "block_kind": "function",
+      "start_line": 30,
+      "end_line": 41,
+      "table": "users",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 47,
+      "end_line": 205,
+      "table": "material_hourly_usage",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 47,
+      "end_line": 205,
+      "table": "production_outputs",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 47,
+      "end_line": 205,
+      "table": "production_reports",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 47,
+      "end_line": 205,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "function_name": "action:paged",
+      "block_kind": "action",
+      "start_line": 47,
+      "end_line": 205,
+      "table": "transactions",
+      "operations": [
+        "JOIN",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "conversions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "material_suppliers",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "suppliers",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:list",
+      "block_kind": "action",
+      "start_line": 32,
+      "end_line": 47,
+      "table": "material_suppliers",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:list",
+      "block_kind": "action",
+      "start_line": 32,
+      "end_line": 47,
+      "table": "suppliers",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:saveList",
+      "block_kind": "action",
+      "start_line": 50,
+      "end_line": 68,
+      "table": "suppliers",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:delete",
+      "block_kind": "action",
+      "start_line": 71,
+      "end_line": 79,
+      "table": "suppliers",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:update",
+      "block_kind": "action",
+      "start_line": 82,
+      "end_line": 113,
+      "table": "material_suppliers",
+      "operations": [
+        "DELETE",
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/materials.php",
+      "function_name": "action:update",
+      "block_kind": "action",
+      "start_line": 82,
+      "end_line": 113,
+      "table": "suppliers",
+      "operations": [
+        "INSERT",
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:run_setup_photos",
+      "block_kind": "action",
+      "start_line": 65,
+      "end_line": 75,
+      "table": "photo_migration",
+      "operations": [
+        "REFERENCE"
+      ],
+      "confidence": "medium",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:photo_stats",
+      "block_kind": "action",
+      "start_line": 137,
+      "end_line": 147,
+      "table": "photo_migration",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:photo_retry",
+      "block_kind": "action",
+      "start_line": 149,
+      "end_line": 153,
+      "table": "photo_migration",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:photo_batch",
+      "block_kind": "action",
+      "start_line": 155,
+      "end_line": 216,
+      "table": "photo_migration",
+      "operations": [
+        "JOIN",
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:photo_batch",
+      "block_kind": "action",
+      "start_line": 155,
+      "end_line": 216,
+      "table": "photo_migration_map",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/migration_api.php",
+      "function_name": "action:photo_batch",
+      "block_kind": "action",
+      "start_line": 155,
+      "end_line": 216,
+      "table": "transaction_materials",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/photos.php",
+      "function_name": "method:GET",
+      "block_kind": "method",
+      "start_line": 33,
+      "end_line": 62,
+      "table": "photo_migration",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/settings.php",
+      "function_name": "method:GET",
+      "block_kind": "method",
+      "start_line": 22,
+      "end_line": 36,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/settings.php",
+      "function_name": "method:POST",
+      "block_kind": "method",
+      "start_line": 38,
+      "end_line": 61,
+      "table": "settings",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "getLockDate",
+      "block_kind": "function",
+      "start_line": 42,
+      "end_line": 45,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "logAction",
+      "block_kind": "function",
+      "start_line": 58,
+      "end_line": 64,
+      "table": "audit_logs",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 99,
+      "end_line": 220,
+      "table": "material_hourly_usage",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 99,
+      "end_line": 220,
+      "table": "production_outputs",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 99,
+      "end_line": 220,
+      "table": "production_reports",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 99,
+      "end_line": 220,
+      "table": "transaction_materials",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 99,
+      "end_line": 220,
+      "table": "transactions",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "production_outputs",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "production_reports",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "transactions",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 387,
+      "end_line": 414,
+      "table": "transactions",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "production_outputs",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "production_reports",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "transactions",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 448,
+      "end_line": 488,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 448,
+      "end_line": 488,
+      "table": "transactions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "production_outputs",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "production_reports",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "transactions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "requireAuth",
+      "block_kind": "function",
+      "start_line": 49,
+      "end_line": 60,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "requireAuth",
+      "block_kind": "function",
+      "start_line": 49,
+      "end_line": 60,
+      "table": "users",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "getLockDate",
+      "block_kind": "function",
+      "start_line": 62,
+      "end_line": 65,
+      "table": "settings",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "logAction",
+      "block_kind": "function",
+      "start_line": 78,
+      "end_line": 84,
+      "table": "audit_logs",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 119,
+      "end_line": 240,
+      "table": "material_hourly_usage",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 119,
+      "end_line": 240,
+      "table": "production_outputs",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 119,
+      "end_line": 240,
+      "table": "production_reports",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 119,
+      "end_line": 240,
+      "table": "transaction_materials",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "insertTransaction",
+      "block_kind": "function",
+      "start_line": 119,
+      "end_line": 240,
+      "table": "transactions",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "production_outputs",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "production_reports",
+      "operations": [
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "transactions",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 408,
+      "end_line": 435,
+      "table": "transactions",
+      "operations": [
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "production_outputs",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "production_reports",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "transaction_materials",
+      "operations": [
+        "REFERENCE"
+      ],
+      "confidence": "medium",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "transactions",
+      "operations": [
+        "DELETE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 465,
+      "end_line": 508,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 465,
+      "end_line": 508,
+      "table": "transactions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "production_outputs",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "production_reports",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "transaction_materials",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "transactions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "config/auth_helper.php",
+      "function_name": "requireSession",
+      "block_kind": "function",
+      "start_line": 50,
+      "end_line": 92,
+      "table": "sessions",
+      "operations": [
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "config/auth_helper.php",
+      "function_name": "requireSession",
+      "block_kind": "function",
+      "start_line": 50,
+      "end_line": 92,
+      "table": "users",
+      "operations": [
+        "JOIN"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "conversions",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "material_hourly_usage",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "material_suppliers",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "photo_migration",
+      "operations": [
+        "DELETE",
+        "INSERT",
+        "JOIN",
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "photo_migration_map",
+      "operations": [
+        "DELETE",
+        "INSERT",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "production_outputs",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "production_reports",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "suppliers",
+      "operations": [
+        "INSERT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "transaction_materials",
+      "operations": [
+        "INSERT",
+        "SELECT",
+        "UPDATE"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "transactions",
+      "operations": [
+        "INSERT",
+        "JOIN",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 970,
+      "table": "users",
+      "operations": [
+        "INSERT",
+        "SELECT"
+      ],
+      "confidence": "high",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "python_bot/setup.php",
+      "function_name": "act",
+      "block_kind": "function",
+      "start_line": 853,
+      "end_line": 866,
+      "table": "users",
+      "operations": [
+        "REFERENCE"
+      ],
+      "confidence": "medium",
+      "link_type": "direct"
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 323,
+      "end_line": 346,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::getAdminPin"
+      ]
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 323,
+      "end_line": 346,
+      "table": "takeover_requests",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::clearTakeoverHistory",
+        "api/auth.php::createSession"
+      ]
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionCheckTakeover",
+      "block_kind": "function",
+      "start_line": 379,
+      "end_line": 409,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::getActiveSession"
+      ]
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionTakeoverStatus",
+      "block_kind": "function",
+      "start_line": 460,
+      "end_line": 549,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::getActiveSession"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionLogin",
+      "block_kind": "function",
+      "start_line": 135,
+      "end_line": 188,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::createSession",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getActiveSession"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 200,
+      "end_line": 223,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::createSession",
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::deleteSession"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionForceLogin",
+      "block_kind": "function",
+      "start_line": 200,
+      "end_line": 223,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getAdminPin"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionCheckTakeover",
+      "block_kind": "function",
+      "start_line": 260,
+      "end_line": 296,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getActiveSession"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionTakeoverStatus",
+      "block_kind": "function",
+      "start_line": 344,
+      "end_line": 418,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::getActiveSession"
+      ]
+    },
+    {
+      "file_path": "api/config.php",
+      "function_name": "action:save",
+      "block_kind": "action",
+      "start_line": 53,
+      "end_line": 79,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/config.php",
+      "function_name": "action:save",
+      "block_kind": "action",
+      "start_line": 53,
+      "end_line": 79,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/init.php",
+      "function_name": "__file_scope__",
+      "block_kind": "file_scope",
+      "start_line": 1,
+      "end_line": 82,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/photos.php",
+      "function_name": "method:GET",
+      "block_kind": "method",
+      "start_line": 33,
+      "end_line": 62,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/photos.php",
+      "function_name": "method:GET",
+      "block_kind": "method",
+      "start_line": 33,
+      "end_line": 62,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/settings.php",
+      "function_name": "method:POST",
+      "block_kind": "method",
+      "start_line": 38,
+      "end_line": 61,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/settings.php",
+      "function_name": "method:POST",
+      "block_kind": "method",
+      "start_line": 38,
+      "end_line": 61,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "material_hourly_usage",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::getLockDate"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "transaction_materials",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 291,
+      "end_line": 384,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 387,
+      "end_line": 414,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 387,
+      "end_line": 414,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 387,
+      "end_line": 414,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 417,
+      "end_line": 445,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 448,
+      "end_line": 488,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 448,
+      "end_line": 488,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 491,
+      "end_line": 542,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "material_hourly_usage",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::getLockDate"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "transaction_materials",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionRevise",
+      "block_kind": "function",
+      "start_line": 312,
+      "end_line": 405,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 408,
+      "end_line": 435,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 408,
+      "end_line": 435,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionFinalize",
+      "block_kind": "function",
+      "start_line": 408,
+      "end_line": 435,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDelete",
+      "block_kind": "function",
+      "start_line": 438,
+      "end_line": 462,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 465,
+      "end_line": 508,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionPreviousStock",
+      "block_kind": "function",
+      "start_line": 465,
+      "end_line": 508,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionDiff",
+      "block_kind": "function",
+      "start_line": 511,
+      "end_line": 562,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionValidate",
+      "block_kind": "function",
+      "start_line": 369,
+      "end_line": 377,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::validateToken"
+      ]
+    },
+    {
+      "file_path": "api/auth.php",
+      "function_name": "actionValidate",
+      "block_kind": "function",
+      "start_line": 369,
+      "end_line": 377,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth.php::validateToken"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionLogout",
+      "block_kind": "function",
+      "start_line": 190,
+      "end_line": 198,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::deleteSession"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionValidate",
+      "block_kind": "function",
+      "start_line": 250,
+      "end_line": 258,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::validateToken"
+      ]
+    },
+    {
+      "file_path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "function_name": "actionValidate",
+      "block_kind": "function",
+      "start_line": 250,
+      "end_line": 258,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php::validateToken"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "material_hourly_usage",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "production_outputs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "production_reports",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::getLockDate"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "transaction_materials",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "transactions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 223,
+      "end_line": 288,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "config/auth_helper.php::requireSession"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "audit_logs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::logAction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "material_hourly_usage",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "production_outputs",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "production_reports",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "sessions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "settings",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::getLockDate"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "transaction_materials",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "transactions",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::insertTransaction"
+      ]
+    },
+    {
+      "file_path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "function_name": "actionSubmit",
+      "block_kind": "function",
+      "start_line": 243,
+      "end_line": 309,
+      "table": "users",
+      "operations": [
+        "CALL"
+      ],
+      "confidence": "inherited",
+      "link_type": "inherited",
+      "via": [
+        "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php::requireAuth"
+      ]
+    }
+  ],
+  "gitnexus_context": {
+    "actionSubmit": {
+      "symbol": "actionSubmit",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    },
+    "actionRevise": {
+      "symbol": "actionRevise",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    },
+    "actionFinalize": {
+      "symbol": "actionFinalize",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    },
+    "actionLogin": {
+      "symbol": "actionLogin",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    },
+    "loadAdminScorecard": {
+      "symbol": "loadAdminScorecard",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    },
+    "renderAdminCharts": {
+      "symbol": "renderAdminCharts",
+      "error": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+    }
+  }
+}

@@ -151,6 +151,18 @@
                 <!-- --- VIEW INPUT ------------------------------------------- -->
                 <div id="viewInput" class="animate__animated animate__fadeIn">
 
+                    <!-- Draft resume banner -->
+                    <div id="draftBanner" class="alert alert-info border-0 shadow-sm d-none mb-3 d-flex align-items-center justify-content-between">
+                        <div>
+                            <strong class="text-info-emphasis"><i class="fa-solid fa-clock-rotate-left me-2"></i>Draft Tersedia</strong>
+                            <div class="small text-muted">Terakhir disimpan <span id="draftBannerAge"></span></div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-info text-white fw-bold" onclick="resumeDraft()">Lanjutkan</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="discardDraft()">Abaikan</button>
+                        </div>
+                    </div>
+
                     <!-- Edit mode banner -->
                     <div id="editModeBanner" class="alert alert-warning border-0 shadow-sm d-none mb-3 d-flex align-items-center justify-content-between">
                         <div>
@@ -211,7 +223,7 @@
                                 <input type="text" id="inputSearchMaterial" class="form-control border-start-0" placeholder="Cari material..." onkeyup="filterMaterialTable()">
                             </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="max-height: 68vh; overflow-y: auto;">
                             <table class="table table-custom align-middle mb-0" id="mainTable">
                                 <thead><tr></tr></thead>
                                 <tbody id="tableBody"></tbody>
@@ -246,7 +258,10 @@
                                 <table class="table table-sm table-striped mb-0" id="analysisTable">
                                     <thead class="table-light fw-bold text-secondary small text-uppercase text-center"><tr>
                                         <th class="text-start ps-3">Kategori Material</th>
-                                        <th>Target (Std)</th><th>Aktual (Input)</th><th>Selisih</th><th>Status</th>
+                                        <th>Target (STD)</th>
+                                        <th>Aktual (Input)</th>
+                                        <th>Selisih</th>
+                                        <th>Status</th>
                                     </tr></thead>
                                     <tbody id="analysisBody">
                                         <tr><td colspan="5" class="text-muted fst-italic py-3">Belum ada data output.</td></tr>
@@ -373,13 +388,19 @@
                     </div>
 
                     <!-- Tombol submit -->
-                    <div class="d-flex gap-2 mb-5">
+                    <div class="d-flex gap-2 mb-2">
                         <button class="btn btn-primary flex-grow-1 fw-bold py-3 shadow-sm" onclick="submitData()" id="btnSubmit">
                             <i class="fa-solid fa-paper-plane me-2"></i>SUBMIT LAPORAN
+                        </button>
+                        <button class="btn btn-outline-secondary fw-bold py-3" onclick="saveDraft()" title="Simpan Draft">
+                            <i class="fa-solid fa-floppy-disk"></i>
                         </button>
                         <button class="btn btn-outline-primary fw-bold py-3" onclick="resetData()" id="btnReset">
                             <i class="fa-solid fa-rotate-left me-2"></i>RESET
                         </button>
+                    </div>
+                    <div class="text-end mb-4">
+                        <small id="draftSavedAt" class="text-muted d-none"></small>
                     </div>
 
                 </div><!-- /viewInput -->
@@ -666,7 +687,7 @@
     <script src="assets/bootstrap.bundle.min.js"></script>
     <script src="assets/sweetalert2.all.min.js"></script>
     <script src="assets/chart.min.js"></script>
-    <script src="assets/html2canvas.min.js"></script>
+    <script src="assets/html2canvas.min.js?v=1.4.1"></script>
     <script src="assets/Sortable.min.js"></script>
 
     <!-- -- Modal: Conversion CRUD -------------------------------------------- -->
@@ -682,15 +703,16 @@
                     <div class="row g-3">
                         <div class="col-6"><label class="small fw-bold text-muted">MID *</label><input type="text" id="convMid" class="form-control fw-bold" placeholder="M001"></div>
                         <div class="col-6"><label class="small fw-bold text-muted">Nama Produk *</label><input type="text" id="convName" class="form-control fw-bold" placeholder="PRODUK A"></div>
-                        <div class="col-6"><label class="small fw-bold text-muted">Berat (gram)</label><input type="number" id="convWeight" class="form-control fw-bold" placeholder="0"></div>
-                        <div class="col-6"><label class="small fw-bold text-muted">Ratio (kg/box)</label><input type="number" id="convRatio" class="form-control fw-bold" placeholder="0" step="0.0001"></div>
-                        <div class="col-6"><label class="small fw-bold text-muted">Cat Bag</label><input type="text" id="convCatBag" class="form-control" placeholder="Nama material bag"></div>
-                        <div class="col-6"><label class="small fw-bold text-muted">Cat Box</label><input type="text" id="convCatBox" class="form-control" placeholder="Nama material box"></div>
+                        <div class="col-6"><label class="small fw-bold text-muted">Berat/pcs (gram)</label><input type="number" id="convWeight" class="form-control fw-bold" placeholder="0"></div>
+                        <div class="col-6"><label class="small fw-bold text-muted">Ratio <span class="text-muted fw-normal">(pcs kantong/box)</span></label><input type="number" id="convRatio" class="form-control fw-bold" placeholder="0" step="0.0001"></div>
+                        <div class="col-6"><label class="small fw-bold text-muted">Cat Bag <span class="text-muted fw-normal">(material kantong)</span></label><input type="text" id="convCatBag" class="form-control" list="materialDatalistConv" placeholder="Pilih nama material kantong..." onfocus="this.select()"></div>
+                        <div class="col-6"><label class="small fw-bold text-muted">Cat Box <span class="text-muted fw-normal">(material kardus)</span></label><input type="text" id="convCatBox" class="form-control" list="materialDatalistConv" placeholder="Pilih nama material kardus..." onfocus="this.select()"></div>
+                        <datalist id="materialDatalistConv"></datalist>
                     </div>
                 </div>
                 <div class="modal-footer border-top">
                     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button class="btn btn-primary fw-bold" onclick="saveConversionData()"><i class="fa-solid fa-floppy-disk me-1"></i>Simpan</button>
+                    <button id="btnSaveConversion" class="btn btn-primary fw-bold" onclick="saveConversionData()"><i class="fa-solid fa-floppy-disk me-1"></i>Simpan</button>
                 </div>
             </div>
         </div>

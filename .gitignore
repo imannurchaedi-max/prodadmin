@@ -4,6 +4,7 @@
 *.key
 *.pem
 *.p12
+.htaccess
 
 # Large data files
 *.xlsx

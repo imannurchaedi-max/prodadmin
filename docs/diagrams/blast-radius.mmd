@@ -1,0 +1,46 @@
+graph TD
+    subgraph CRITICAL["🔴 CRITICAL RISK — JANGAN ubah tanpa koordinasi penuh"]
+        subgraph GETDB["getDb() — config/database.php"]
+            GDB(["getDb()"])
+            GDB --> |"d=1 WILL BREAK"| GDB_AUTH_ACTIONS(["actionLogin · actionLogout\nactionForceLogin · actionValidate\nactionChangePassword · actionCheckTakeover\nactionTakeoverDecision · actionTakeoverStatus\ngetAdminPin · validateToken"])
+            GDB --> |"d=1 WILL BREAK"| GDB_TXN_ACTIONS(["actionSubmit · actionRevise\nactionFinalize · actionDelete\nactionPreviousStock · actionDiff"])
+            GDB --> |"d=1 WILL BREAK"| GDB_FILES(["settings.php · history.php\nmaterials.php · admin.php\nphotos.php · init.php\nconversions.php · migration_api.php\nrehash_users.php"])
+            GDB --> |"d=2 LIKELY"| GDB_D2(["actionValidate (via validateToken)\nFile: auth.php · transactions.php"])
+        end
+
+        subgraph REQSESS["requireSession() — config/auth_helper.php"]
+            RS(["requireSession()"])
+            RS --> |"d=1 WILL BREAK"| RS_FILES(["settings.php · history.php\nmaterials.php · admin.php\nphotos.php · init.php\nconversions.php"])
+            RS --> |"d=1 WILL BREAK"| RS_ACTIONS(["actionSubmit · actionRevise\nactionFinalize · actionDelete\nactionPreviousStock · actionDiff"])
+            RS --> |"d=2 LIKELY"| RS_D2(["File: transactions.php"])
+        end
+    end
+
+    subgraph LOW["🟢 LOW RISK"]
+        subgraph INSERT_TXN["insertTransaction() — api/transactions.php"]
+            IT(["insertTransaction()"])
+            IT --> |"d=1 WILL BREAK"| IT_CALLERS(["actionSubmit()\nactionRevise()"])
+            IT --> |"d=2 LIKELY"| IT_D2(["File: transactions.php"])
+        end
+
+        subgraph DO_LOGIN["doLogin() — assets/app/auth.js"]
+            DL(["doLogin()"])
+            DL --> |"d=1 WILL BREAK"| DL_CALLER(["submitLogin()"])
+            DL_CALLER --> |"d=2 LIKELY"| DL_D2(["File: auth.js\n5 execution flows broken"])
+        end
+
+        subgraph SUBMIT_LOGIN["submitLogin() — assets/app/auth.js"]
+            SL(["submitLogin()"])
+            SL --> |"d=1 WILL BREAK"| SL_FILE(["File: auth.js"])
+        end
+    end
+
+    subgraph SUMMARY_TABLE["📊 Blast Radius Summary"]
+        T1(["Symbol | Risk | Direct | Processes | Modules\n────────────────────────────────────────────\ngetDb() | CRITICAL | 41 | 28 | 1\nrequireSession() | CRITICAL | 14 | 6 | 1\ninsertTransaction() | LOW | 2 | 2 | 1\ndoLogin() | LOW | 1 | 1 | 1\nsubmitLogin() | LOW | 1 | 0 | 0"])
+    end
+
+    style GDB fill:#ffcdd2,stroke:#d32f2f
+    style RS fill:#ffcdd2,stroke:#d32f2f
+    style IT fill:#c8e6c9,stroke:#388e3c
+    style DL fill:#c8e6c9,stroke:#388e3c
+    style SL fill:#c8e6c9,stroke:#388e3c

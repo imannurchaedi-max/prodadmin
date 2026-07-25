@@ -1,0 +1,85 @@
+sequenceDiagram
+    actor User
+    participant UI as auth.js (Browser)
+    participant API as api/auth.php
+    participant DB as PostgreSQL
+
+    Note over UI: DOMContentLoaded
+    UI->>UI: validateExistingSession()
+    alt token exists in localStorage
+        UI->>API: GET api/auth.php?action=validate
+        API->>DB: SELECT sessions WHERE token=?
+        alt token valid
+            API-->>UI: {success:true, username, isAdmin}
+            UI->>UI: saveSession() → afterLogin()
+            UI->>UI: setAppVisible(true)
+        else token expired
+            API-->>UI: 401 Unauthorized
+            UI->>UI: clearSession()
+            UI->>UI: show login screen
+        end
+    else no token
+        UI->>UI: show login screen
+    end
+
+    Note over User,DB: === Normal Login ===
+    User->>UI: input username + password + mesin
+    UI->>UI: submitLogin()
+    UI->>UI: doLogin(username, password, machine, force=false)
+    UI->>API: POST api/auth.php?action=login {username,password,machine,force}
+    API->>DB: SELECT users WHERE username=?
+    API->>DB: password_verify(hash)
+    alt credentials OK & machine free
+        API->>DB: INSERT sessions (token, username, machine_id, expires_at)
+        API->>DB: DELETE expired sessions (GC)
+        API-->>UI: {success:true, token, username}
+        UI->>UI: state.token = token, saveSession()
+        UI->>UI: afterLogin() → load config, materials, history
+        UI->>UI: setAppVisible(true), updateUserBadge()
+    else MACHINE_IN_USE
+        API-->>UI: {status:"MACHINE_IN_USE", activeUser}
+        UI->>User: SweetAlert confirm takeover
+        alt User confirms
+            UI->>UI: doLogin(..., force=true)
+            UI->>API: POST action=login {force:true}
+            API->>DB: DELETE session mesin lama (takeover direct)
+            API->>DB: INSERT sessions baru
+            API-->>UI: {success:true, takeoverDirect:true}
+        end
+    else FORCE_TAKEOVER_PROMPT (session hanging)
+        API-->>UI: {status:"FORCE_TAKEOVER_PROMPT"}
+        UI->>User: SweetAlert "Sesi Menggantung"
+        alt User confirms
+            UI->>UI: doLogin(..., force=true)
+        end
+    else WAITING_APPROVAL
+        API-->>UI: {status:"WAITING_APPROVAL", tempToken}
+        UI->>UI: waitForTakeover(username, tempToken, machine)
+        loop poll setiap 2s
+            UI->>API: GET action=check_takeover&tempToken=?
+            API->>DB: SELECT takeover_requests
+            alt approved
+                API-->>UI: {approved:true, token}
+                UI->>UI: saveSession(), afterLogin()
+            else rejected / timeout
+                UI->>User: toast "Takeover ditolak"
+            end
+        end
+    else invalid credentials
+        API-->>UI: {success:false, message}
+        UI->>User: toast "Login gagal"
+    end
+
+    Note over User,DB: === Admin Mode ===
+    User->>UI: enterAdminMode() — PIN prompt
+    UI->>API: POST action=validate_admin_pin {pin}
+    API->>DB: SELECT settings WHERE key='ADMIN_PIN'
+    API-->>UI: {success:true}
+    UI->>UI: state.isAdmin=true, updateUserBadge()
+
+    Note over User,DB: === Logout ===
+    User->>UI: handleLogout()
+    UI->>API: POST action=logout
+    API->>DB: DELETE sessions WHERE token=?
+    API-->>UI: {success:true}
+    UI->>UI: clearSession(), setAppVisible(false)

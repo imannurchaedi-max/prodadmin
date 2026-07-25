@@ -134,7 +134,7 @@ def phase_architecture(state: AuditState) -> AuditState:
             "backend_config",
             "database_sql",
             "operations_tools",
-            "legacy_gas_reference",
+            # legacy_gas_reference intentionally removed — ProdAdmin does not use Google Apps Script
         ]
         missing = [name for name in required if name not in buckets]
         checks.append(
@@ -154,8 +154,8 @@ def phase_architecture(state: AuditState) -> AuditState:
             )
         )
 
-    for symbol in ("Function:active/api/transactions.php:actionSubmit", "Function:active/assets/app/auth.js:doLogin"):
-        rc, out, err = run_cmd(f'gitnexus context "{symbol}"', repo, timeout=90)
+    for symbol in ("Function:api/transactions.php:actionSubmit", "Function:assets/app/auth.js:doLogin"):
+        rc, out, err = run_cmd(f'gitnexus context -r ProdAdmin "{symbol}"', repo, timeout=90)
         ok = rc == 0 and '"status": "found"' in out
         checks.append(
             CheckResult(
@@ -254,8 +254,8 @@ def phase_contracts(state: AuditState) -> AuditState:
     repo = Path(state["repo_root"])
     checks: list[CheckResult] = []
 
-    contract_path = repo / "documentation" / "ENDPOINT_CONTRACT.md"
-    function_map_path = repo / "documentation" / "GAS_VS_PHP_MAPPING.md"
+    contract_path = repo / "documentation" / "generated" / "ENDPOINT_UI_MAP.md"
+    function_map_path = repo / "documentation" / "generated" / "FUNCTION_DB_MAP.md"
     checks.append(
         CheckResult(
             name="contract_docs_present",
@@ -267,9 +267,9 @@ def phase_contracts(state: AuditState) -> AuditState:
 
     codebase_map = repo / "documentation" / "generated" / "CODEBASE_MAP.json"
     expected_actions = {
-        "active/api/auth.php": {"login", "logout", "validate", "changePassword", "checkTakeover", "takeoverDecision", "takeoverStatus", "forceLogin"},
-        "active/api/transactions.php": {"submit", "revise", "finalize", "delete", "diff", "previousStock"},
-        "active/api/migration_api.php": {"upload", "progress", "reset_progress", "run_import", "run_setup_photos", "photo_stats", "photo_retry", "photo_batch"},
+        "api/auth.php": {"login", "logout", "validate", "changePassword", "checkTakeover", "takeoverDecision", "takeoverStatus", "forceLogin"},
+        "api/transactions.php": {"submit", "revise", "finalize", "delete", "diff", "previousStock"},
+        "api/migration_api.php": {"upload", "progress", "reset_progress", "run_import", "run_setup_photos", "photo_stats", "photo_retry", "photo_batch"},
     }
     if codebase_map.exists():
         data = json.loads(codebase_map.read_text(encoding="utf-8"))
@@ -297,8 +297,8 @@ def phase_contracts(state: AuditState) -> AuditState:
             )
         )
 
-    for symbol in ("Function:active/api/transactions.php:actionSubmit", "Function:active/api/transactions.php:actionRevise", "Function:active/api/transactions.php:actionFinalize", "Function:active/assets/app/auth.js:doLogin"):
-        rc, out, err = run_cmd(f'gitnexus context "{symbol}"', repo, timeout=90)
+    for symbol in ("Function:api/transactions.php:actionSubmit", "Function:api/transactions.php:actionRevise", "Function:api/transactions.php:actionFinalize", "Function:assets/app/auth.js:doLogin"):
+        rc, out, err = run_cmd(f'gitnexus context -r ProdAdmin "{symbol}"', repo, timeout=90)
         ok = rc == 0 and '"status": "found"' in out
         checks.append(
             CheckResult(
@@ -379,7 +379,7 @@ def build_graph():
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the structured static audit protocol.")
-    parser.add_argument("--repo", default=".", help="Repository root.")
+    parser.add_argument("--repo", default=str(ROOT), help="Repository root.")
     parser.add_argument("--reports-dir", default="documentation/generated", help="Directory to write audit reports.")
     return parser.parse_args()
 

@@ -80,6 +80,7 @@ body{
 #mainTable {
   table-layout: fixed;
   width: 100%;
+  min-width: 960px;
 }
 #mainTable td:first-child,#mainTable th:first-child{
   font-size:0.75rem;line-height:1.2;white-space:normal;word-break:break-word;
@@ -91,7 +92,7 @@ body{
   background:var(--bg-card)!important;color:var(--text-main)!important;border:1px solid var(--border-color)!important;border-radius:4px;transition:all .2s;
 }
 .table-input{
-  width:100%!important;min-width:0!important;height:28px;
+  width:100%!important;min-width:40px!important;height:28px;
   font-size:.75rem;font-weight:600;text-align:center;padding:0 2px;
 }
 .table-input:hover{border-color:var(--border-color)!important}
@@ -280,3 +281,35 @@ td select.form-select-sm:hover{border-color:var(--border-color)!important}
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type=number] { -moz-appearance: textfield; }
+
+/* CALC COLUMN HIGHLIGHTS */
+.bg-prod-subtle { background: rgba(13,110,253,.06) !important; }
+.bg-sisa-subtle { background: rgba(25,135,84,.06) !important; }
+[data-theme="dark"] .bg-prod-subtle { background: rgba(13,110,253,.12) !important; }
+[data-theme="dark"] .bg-sisa-subtle { background: rgba(25,135,84,.12) !important; }
+
+/* STICKY MATERIAL SEARCH HEADER */
+.sticky-card-header {
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  background: var(--bg-card);
+}
+
+/* SMART TEXTAREA & TOOLBAR */
+.smart-input-group { position: relative; }
+.smart-toolbar { display: flex; gap: 6px; margin-bottom: 4px; }
+.smart-textarea { font-size: .85rem; line-height: 1.5; }
+.btn-toolbar-action { padding: 2px 8px; font-size: .75rem; }
+.unit-text { font-size: .75rem; }
+.input-group-text-custom { font-size: .8rem; padding: 4px 10px; }
+.form-control-plaintext-custom { border: none !important; background: transparent !important; box-shadow: none !important; }
+
+/* 7-INCH TABLET TOUCH TARGETS */
+@media (max-width: 767px) {
+  .table-input { height: 38px !important; font-size: .8rem !important; }
+  td select.form-select-sm { height: 38px !important; font-size: .75rem !important; }
+  .sticky-card-header { top: 56px; }
+  .swal2-popup { font-size: .85rem !important; }
+  .swal2-title { font-size: 1.1rem !important; }
+}

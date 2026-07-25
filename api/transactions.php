@@ -36,7 +36,7 @@ function param(string $key, mixed $default = null): mixed {
     return $GLOBALS['_B'][$key] ?? $default;
 }
 
-// H1: bearerToken() and requireAuth() removed â€” use requireSession() from auth_helper.php
+// bearerToken() and requireAuth() removed -- use requireSession() from auth_helper.php
 // requireSession() adds APCu caching, cutting DB auth hits by ~97% at load.
 
 function getLockDate(PDO $db): string {
@@ -44,7 +44,7 @@ function getLockDate(PDO $db): string {
     return (string) ($s ?? '');
 }
 
-// H2: proper UUID v4 using cryptographically secure random bytes (replaces mt_rand)
+// UUID v4 using cryptographically secure random bytes (replaces mt_rand)
 function genUuid(): string {
     $bytes = random_bytes(16);
     $bytes[6] = chr((ord($bytes[6]) & 0x0f) | 0x40); // version 4
@@ -52,7 +52,7 @@ function genUuid(): string {
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
 }
 
-// SHIFT_MAP: shift -> hour24 start index (matches GAS exactly)
+// SHIFT_MAP: shift -> start index in 24-hour array (shift1=07:00, shift2=15:00, shift3=23:00)
 const SHIFT_MAP = ['1' => 0, '2' => 8, '3' => 16];
 
 function logAction(PDO $db, string $actor, string $action, string $details): void {
@@ -63,7 +63,7 @@ function logAction(PDO $db, string $actor, string $action, string $details): voi
     } catch (Throwable) {}
 }
 
-// -- Kalkulasi server-side (mirror logika GAS handleTransaction_) -------------
+// -- Server-side recalculation -- client values never trusted ------------------
 function calcMaterial(array $mat, string $shift): array {
     $stockAwal  = max(0, (float)($mat['stockAwal'] ?? 0));
     $masuk      = max(0, (float)($mat['masuk']     ?? 0));
@@ -280,7 +280,7 @@ function actionSubmit(): void {
         $db->commit();
     } catch (Throwable $e) {
         $db->rollBack();
-        fail('Gagal menyimpan: ' . $e->getMessage());
+        fail('Gagal menyimpan. Coba lagi.');
     }
 
     logAction($db, $session['username'], 'SUBMIT', "ID: {$uuid}");
@@ -307,24 +307,6 @@ function actionRevise(): void {
     if ($lockDate && !$isAdmin && $tanggal <= $lockDate) {
         fail("Data terkunci. Tidak bisa edit tanggal <= {$lockDate}");
     }
-
-    // Cek transaksi lama
-    $stmtOld = $db->prepare(
-        "SELECT created_by, status, revision_count FROM transactions
-         WHERE uuid = :u AND status NOT IN ('HISTORY','SUPERSEDED')
-         ORDER BY revision_count DESC LIMIT 1"
-    );
-    $stmtOld->execute([':u' => $oldUuid]);
-    $old = $stmtOld->fetch();
-    if (!$old) fail('Data lama tidak ditemukan.');
-
-    if (!$isAdmin) {
-        if ($old['status'] === 'FINAL') fail('Laporan sudah FINAL. Tidak bisa diedit.');
-        if ($old['created_by'] !== $session['username']) fail('Anda tidak bisa mengedit data Grup lain.');
-        if ((int)$old['revision_count'] >= 3) fail('Batas revisi habis (Maks 3x).');
-    }
-
-    $nextRev = (int)$old['revision_count'] + 1;
 
     $materialsJson = (string)($b['materialsJson'] ?? '[]');
     $outputsJson   = (string)($b['outputsJson']   ?? '[]');
@@ -357,6 +339,24 @@ function actionRevise(): void {
 
     $db->beginTransaction();
     try {
+        // Lock dulu — FOR UPDATE serializes concurrent revise calls for same UUID
+        $stmtOld = $db->prepare(
+            "SELECT created_by, status, revision_count FROM transactions
+             WHERE uuid = :u AND status NOT IN ('HISTORY','SUPERSEDED')
+             ORDER BY revision_count DESC LIMIT 1
+             FOR UPDATE"
+        );
+        $stmtOld->execute([':u' => $oldUuid]);
+        $old = $stmtOld->fetch();
+        if (!$old) { $db->rollBack(); fail('Data lama tidak ditemukan.'); }
+
+        if (!$isAdmin) {
+            if ($old['status'] === 'FINAL') { $db->rollBack(); fail('Laporan sudah FINAL. Tidak bisa diedit.'); }
+            if ($old['created_by'] !== $session['username']) { $db->rollBack(); fail('Anda tidak bisa mengedit data Grup lain.'); }
+            if ((int)$old['revision_count'] >= 3) { $db->rollBack(); fail('Batas revisi habis (Maks 3x).'); }
+        }
+
+        $nextRev = (int)$old['revision_count'] + 1;
         // Mark old records as HISTORY
         $db->prepare(
             "UPDATE transactions SET status='HISTORY' WHERE uuid=:u AND status NOT IN ('HISTORY','SUPERSEDED')"
@@ -376,7 +376,7 @@ function actionRevise(): void {
         $db->commit();
     } catch (Throwable $e) {
         $db->rollBack();
-        fail('Gagal menyimpan revisi: ' . $e->getMessage());
+        fail('Gagal menyimpan revisi. Coba lagi.');
     }
 
     logAction($db, $session['username'], 'REVISI', "ID: {$oldUuid} rev{$nextRev}");
@@ -419,7 +419,7 @@ function actionDelete(): void {
     $session = requireSession($db);
     $b       = body();
 
-    // C2: delete is admin-only â€” enforce at server side (frontend guard is not enough)
+    // Delete is admin-only -- enforced server-side (frontend guard alone is not enough)
     if (($session['role'] ?? '') !== 'admin') {
         fail('Aksi ini hanya untuk admin.', 403);
     }
@@ -437,7 +437,7 @@ function actionDelete(): void {
         $db->commit();
     } catch (Throwable $e) {
         $db->rollBack();
-        fail('Gagal menghapus: ' . $e->getMessage());
+        fail('Gagal menghapus. Coba lagi.');
     }
 
     logAction($db, $session['username'], 'DELETE', "ID: {$uuid}");

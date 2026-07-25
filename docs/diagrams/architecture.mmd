@@ -1,0 +1,79 @@
+graph TB
+    subgraph BROWSER["🌐 Browser — Cluster: App (41 symbols, 93%)"]
+        direction TB
+        API_JS["api.js\nstate · api() · saveSession\nclearSession · fmt · esc · toast\ncurrentShiftHours · getShiftStartIndex"]
+        AUTH_JS["auth.js\nsubmitLogin · doLogin · validateExistingSession\nenterAdminMode · exitAdminMode\nstartTakeoverMonitor · waitForTakeover\nloadLoginMachines · afterLogin"]
+        FORM_JS["form.js\nrenderHistoryCards · renderMaterialTable\nrenderMaterialList · collectOutputs\nsnapshotRows · defaultMaterialRow\ngetActiveMaterials · populateFormFromHistory"]
+        ADMIN_JS["admin.js\nrenderMaterialList (admin view)"]
+        API_JS --> AUTH_JS
+        API_JS --> FORM_JS
+        API_JS --> ADMIN_JS
+    end
+
+    subgraph BACKEND["⚙️  Backend — Cluster: Api (86 symbols, 90%)"]
+        direction TB
+        subgraph CONFIG["config/"]
+            DB_PHP["database.php\ngetDb() ← CRITICAL"]
+            AUTH_HELPER["auth_helper.php\nrequireSession() ← CRITICAL\nauthFail · getBearerToken"]
+        end
+        subgraph API_FILES["api/"]
+            AUTH_PHP["auth.php\nactionLogin · actionLogout\nactionForceLogin · actionValidate\nactionChangePassword\nactionCheckTakeover · actionTakeoverDecision\nactionTakeoverStatus\ncreateSession · deleteSession\ngenerateToken · validateToken"]
+            TXN_PHP["transactions.php\nactionSubmit · actionRevise\nactionFinalize · actionDelete\nactionPreviousStock · actionDiff\ninsertTransaction · calcMaterial\ngetLockDate · genUuid · logAction"]
+            HIST_PHP["history.php\n(GET laporan history)"]
+            SETTINGS_PHP["settings.php\ngetSettingValues\nLIST_MESIN · LIST_SIZE · LIST_ALIASES"]
+            MATERIALS_PHP["materials.php\n(master material)"]
+            ADMIN_PHP["admin.php\n(admin panel)"]
+            PHOTOS_PHP["photos.php\n(upload label)"]
+            INIT_PHP["init.php\n(DB init / migrate)"]
+        end
+        DB_PHP --> AUTH_PHP
+        DB_PHP --> TXN_PHP
+        DB_PHP --> HIST_PHP
+        DB_PHP --> SETTINGS_PHP
+        DB_PHP --> MATERIALS_PHP
+        DB_PHP --> ADMIN_PHP
+        DB_PHP --> PHOTOS_PHP
+        DB_PHP --> INIT_PHP
+        AUTH_HELPER --> TXN_PHP
+        AUTH_HELPER --> HIST_PHP
+        AUTH_HELPER --> SETTINGS_PHP
+        AUTH_HELPER --> MATERIALS_PHP
+        AUTH_HELPER --> ADMIN_PHP
+        AUTH_HELPER --> PHOTOS_PHP
+    end
+
+    subgraph DATABASE["🗄️  PostgreSQL"]
+        T_SESS["sessions"]
+        T_TKO["takeover_requests"]
+        T_TXN["transactions"]
+        T_MAT["transaction_materials"]
+        T_HOUR["material_hourly_usage"]
+        T_OUT["production_outputs"]
+        T_RPT["production_reports"]
+        T_SET["settings"]
+        T_USR["users"]
+    end
+
+    subgraph PYTHON_BOT["🤖 Python Bot — Cluster: Python_bot (91 symbols, 97%)"]
+        direction TB
+        LTC["langgraph_trace_center.py\nLangGraph StateGraph\nbuild_function_edges · summarize\nbuild_io_db_dot · enrich_gitnexus"]
+        LAP["langgraph_audit_protocol.py\nLangGraph StateGraph\nphase_preflight · phase_contracts\nphase_dependencies · phase_status"]
+        LCM["langgraph_codebase_map.py\ndiscover_files · read_text\nload_gitnexus · count_lines"]
+        LFDB["langgraph_function_db_map.py\ncollect_functions\nfind_named_function_blocks\nbuild_function_edges"]
+        LEUI["langgraph_endpoint_ui_map.py\n(endpoint ↔ UI mapping)"]
+        AUDIT["character_audit.py\nmain · scan_file · render_md"]
+    end
+
+    subgraph DOCS_GEN["📄 Generated Documentation"]
+        FUNC_DB["FUNCTION_DB_MAP.json"]
+        ENDPT_UI["ENDPOINT_UI_MAP.json"]
+        MD_REPORTS["Markdown Reports"]
+        SVG_GRAPHS["SVG Diagrams"]
+    end
+
+    BROWSER -- "HTTP REST (Bearer token)" --> BACKEND
+    BACKEND -- "PDO Queries" --> DATABASE
+    PYTHON_BOT -- "reads source files" --> BROWSER
+    PYTHON_BOT -- "reads source files" --> BACKEND
+    PYTHON_BOT -- "reads DB config" --> DATABASE
+    PYTHON_BOT --> DOCS_GEN

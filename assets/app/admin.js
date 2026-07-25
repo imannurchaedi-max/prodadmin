@@ -40,7 +40,7 @@
         <td>${App.esc(item.mid)}</td>
         <td>${App.esc(item.name)}</td>
         <td>${App.fmt(item.weight)}</td>
-        <td>${App.fmt(item.ratio, 4)}</td>
+        <td>${App.fmt(item.ratio, 0)}</td>
         <td>${App.esc(item.catBag || "")}</td>
         <td>${App.esc(item.catBox || "")}</td>
         <td class="text-end">
@@ -61,6 +61,8 @@
       document.getElementById("convRatio").value = item.ratio || 0;
       document.getElementById("convCatBag").value = item.catBag || "";
       document.getElementById("convCatBox").value = item.catBox || "";
+      resetConversionModalBtn();
+      populateMaterialDatalist();
       bootstrap.Modal.getOrCreateInstance(document.getElementById("modalConversion")).show();
     }));
     tbody.querySelectorAll("[data-del-conv]").forEach((button) => button.addEventListener("click", async function () {
@@ -77,13 +79,27 @@
     document.getElementById(`adminTab_${tab}`)?.classList.remove("d-none");
   };
 
+  function populateMaterialDatalist() {
+    const dl = document.getElementById("materialDatalistConv");
+    if (dl) dl.innerHTML = (state.materials || []).map((m) => `<option value="${App.esc(m)}">`).join("");
+  }
+
+  function resetConversionModalBtn() {
+    const btn = document.getElementById("btnSaveConversion");
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk me-1"></i>Simpan'; }
+  }
+
   window.openConversionModal = function openConversionModal() {
     document.getElementById("modalConvTitle").textContent = "Tambah Produk Baru";
     ["convOldMid", "convMid", "convName", "convWeight", "convRatio", "convCatBag", "convCatBox"].forEach((id) => document.getElementById(id).value = "");
+    resetConversionModalBtn();
+    populateMaterialDatalist();
     bootstrap.Modal.getOrCreateInstance(document.getElementById("modalConversion")).show();
   };
 
   window.saveConversionData = async function saveConversionData() {
+    const btn = document.getElementById("btnSaveConversion");
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Menyimpan...'; }
     const payload = {
       oldMid: document.getElementById("convOldMid").value,
       mid: document.getElementById("convMid").value.trim(),
@@ -93,11 +109,18 @@
       catBag: document.getElementById("convCatBag").value.trim(),
       catBox: document.getElementById("convCatBox").value.trim(),
     };
-    await App.api("api/conversions.php?action=save", { method: "POST", body: JSON.stringify(payload) });
-    const res = await App.api("api/conversions.php?action=list", { method: "GET" });
-    state.conversions = res.data || [];
-    renderConversionTable();
-    bootstrap.Modal.getOrCreateInstance(document.getElementById("modalConversion")).hide();
+    try {
+      await App.api("api/conversions.php?action=save", { method: "POST", body: JSON.stringify(payload) });
+      const res = await App.api("api/conversions.php?action=list", { method: "GET" });
+      state.conversions = res.data || [];
+      renderConversionTable();
+      bootstrap.Modal.getOrCreateInstance(document.getElementById("modalConversion")).hide();
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk me-1"></i>Simpan'; }
+      App.toast("success", "Produk tersimpan");
+    } catch (e) {
+      App.toast("error", "Gagal menyimpan produk", e.message);
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk me-1"></i>Simpan'; }
+    }
   };
 
   window.filterConversionTable = renderConversionTable;
@@ -199,7 +222,7 @@
   };
 
   document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("searchConversion")?.addEventListener("input", renderConversionTable);
+    // searchConversion sudah punya oninput="filterConversionTable()" di HTML — tidak perlu addEventListener lagi
     document.getElementById("switchBroadcast")?.addEventListener("change", window.saveBroadcast);
     const obs = new MutationObserver(() => {
       if (state.isAdmin) {

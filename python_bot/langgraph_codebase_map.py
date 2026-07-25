@@ -11,6 +11,8 @@ from typing import Any, TypedDict
 from langgraph.graph import END, START, StateGraph
 
 
+ROOT = Path(__file__).resolve().parents[1]  # project root, not python_bot/
+
 TEXT_SUFFIXES = {
     ".php",
     ".js",
@@ -125,7 +127,7 @@ def extract_signals(path: Path, text: str) -> dict[str, Any]:
         signals["classes"] = len(re.findall(r"\bclass\s+[A-Za-z_][A-Za-z0-9_]*\b", text))
         endpoints = set(re.findall(r"action=([A-Za-z0-9_]+)", text))
         endpoints.update(re.findall(r"\$action\s*===\s*'([A-Za-z0-9_]+)'", text))
-        for block in re.findall(r"match\(\$action\)\s*\{(.*?)\n\};", text, re.S):
+        for block in re.findall(r"match\(\$action\)\s*\{(.*?)\n\s*\};", text, re.S):
             endpoints.update(re.findall(r"^\s*'([A-Za-z0-9_]+)'\s*=>", block, re.M))
         signals["endpoints"] = sorted(endpoints)
     elif suffix == ".js":
@@ -351,7 +353,7 @@ def build_graph():
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a LangGraph-driven codebase map.")
-    parser.add_argument("--repo", default=".", help="Repository root to map.")
+    parser.add_argument("--repo", default=str(ROOT), help="Repository root to map.")
     parser.add_argument("--out-dir", default="documentation/generated", help="Output directory for map artifacts.")
     return parser.parse_args()
 

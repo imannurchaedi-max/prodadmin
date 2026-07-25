@@ -1,0 +1,606 @@
+{
+  "summary": {
+    "generated_at": "2026-07-07T06:01:07.956019+00:00",
+    "function_node_count": 273,
+    "function_edge_count": 408,
+    "endpoint_contract_count": 23,
+    "io_db_contract_count": 23,
+    "db_table_touch_count": 15,
+    "db_tables_touched": [
+      "audit_logs",
+      "conversions",
+      "material_hourly_usage",
+      "material_suppliers",
+      "photo_migration",
+      "photo_migration_map",
+      "production_outputs",
+      "production_reports",
+      "sessions",
+      "settings",
+      "suppliers",
+      "takeover_requests",
+      "transaction_materials",
+      "transactions",
+      "users"
+    ],
+    "risk_endpoint_count": 22,
+    "risk_endpoints": [
+      "api/admin.php::logs::POST",
+      "api/admin.php::photoProgress::GET",
+      "api/admin.php::verifyAdmin::POST",
+      "api/auth.php::changePassword::POST",
+      "api/auth.php::logout::POST",
+      "api/config.php::get::GET",
+      "api/config.php::save::POST",
+      "api/conversions.php::delete::POST",
+      "api/conversions.php::list::GET",
+      "api/conversions.php::save::POST",
+      "api/history.php::paged::GET",
+      "api/init.php::__default__::GET",
+      "api/materials.php::delete::POST",
+      "api/materials.php::saveList::POST",
+      "api/materials.php::update::POST",
+      "api/photos.php::__default__::POST",
+      "api/settings.php::__default__::GET",
+      "api/settings.php::__default__::POST",
+      "api/transactions.php::delete::POST",
+      "api/transactions.php::diff::GET"
+    ],
+    "trace_entrypoints": [
+      {
+        "symptom": "Login / takeover / session",
+        "start_with": [
+          "api/auth.php",
+          "generated/IO_DB_CONNECTION_MAP.md",
+          "generated/FUNCTION_DEPENDENCY_MAP.md"
+        ]
+      },
+      {
+        "symptom": "History / table / photo / loss / berat",
+        "start_with": [
+          "api/history.php",
+          "generated/IO_DB_CONNECTION_MAP.md",
+          "generated/IO_DEPENDENCY_MAP.md"
+        ]
+      },
+      {
+        "symptom": "Submit / revise / finalize",
+        "start_with": [
+          "api/transactions.php",
+          "generated/FUNCTION_DB_MAP.md",
+          "generated/IO_DB_CONNECTION_MAP.md"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "endpoint_key": "api/admin.php::logs::POST",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "logs",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::loadAuditLogs"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/admin.php",
+      "backend_block": "action:logs",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/admin.php::photoProgress::GET",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "photoProgress",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/admin.js::loadPhotoMigrationProgress"
+      ],
+      "frontend_input_keys": [
+        "method"
+      ],
+      "backend_file": "api/admin.php",
+      "backend_block": "action:photoProgress",
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "doneCount",
+        "failedCount",
+        "firstAnyDone",
+        "firstFullyDone",
+        "fullDays",
+        "lastAnyDone",
+        "lastFullyDone",
+        "latestDays",
+        "partialDays",
+        "pendingCount",
+        "progressPct",
+        "range",
+        "summary",
+        "totalCount"
+      ],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/admin.php::verifyAdmin::POST",
+      "endpoint_base": "api/admin.php",
+      "endpoint_action": "verifyAdmin",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/auth.js::showAdminLogin"
+      ],
+      "frontend_input_keys": [
+        "Authorization",
+        "body",
+        "headers",
+        "method"
+      ],
+      "backend_file": "api/admin.php",
+      "backend_block": "action:verifyAdmin",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'Terlalu banyak percobaan. Coba lagi dalam 5 menit.', 429"
+      ]
+    },
+    {
+      "endpoint_key": "api/auth.php::changePassword::POST",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "changePassword",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::openChangePassword"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method",
+        "newPass",
+        "oldPass",
+        "username"
+      ],
+      "backend_file": "api/auth.php",
+      "backend_block": "actionChangePassword",
+      "backend_input_keys": [
+        "newPass",
+        "oldPass",
+        "username"
+      ],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'Wajib diisi.'",
+        "'Password lama salah.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/auth.php::logout::POST",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "logout",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/auth.js::handleLogout"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "machine",
+        "method",
+        "username"
+      ],
+      "backend_file": "api/auth.php",
+      "backend_block": "actionLogout",
+      "backend_input_keys": [
+        "machine"
+      ],
+      "backend_response_keys": [],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/auth.php::validate::GET",
+      "endpoint_base": "api/auth.php",
+      "endpoint_action": "validate",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/auth.js::validateExistingSession"
+      ],
+      "frontend_input_keys": [
+        "method"
+      ],
+      "backend_file": "api/auth.php",
+      "backend_block": "actionValidate",
+      "backend_input_keys": [
+        "token"
+      ],
+      "backend_response_keys": [
+        "isAdmin",
+        "username"
+      ],
+      "failure_examples": [
+        "'Token tidak diberikan.', 401",
+        "'Sesi tidak valid atau telah berakhir.', 401"
+      ]
+    },
+    {
+      "endpoint_key": "api/config.php::get::GET",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "get",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/auth.js::loadLoginMachines"
+      ],
+      "frontend_input_keys": [
+        "headers",
+        "selected"
+      ],
+      "backend_file": "api/config.php",
+      "backend_block": "action:get",
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "aliases",
+        "aliasesRaw",
+        "mesin",
+        "mesinRaw",
+        "size",
+        "sizeRaw"
+      ],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/config.php::save::POST",
+      "endpoint_base": "api/config.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveMachineSizeConfig"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/config.php",
+      "backend_block": "action:save",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'mesin dan size tidak boleh kosong.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/conversions.php::delete::POST",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::renderConversionTable"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:delete",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'mid wajib diisi.'",
+        "'Data tidak ditemukan.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/conversions.php::list::GET",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "list",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveConversionData"
+      ],
+      "frontend_input_keys": [
+        "method"
+      ],
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:list",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/conversions.php::save::POST",
+      "endpoint_base": "api/conversions.php",
+      "endpoint_action": "save",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveConversionData"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:save",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'MID dan Nama wajib diisi.'",
+        "'MID sudah terdaftar!'",
+        "'Gagal menyimpan: ' . $e->getMessage()"
+      ]
+    },
+    {
+      "endpoint_key": "api/history.php::paged::GET",
+      "endpoint_base": "api/history.php",
+      "endpoint_action": "paged",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/form.js::loadHistory",
+        "assets/app/form.js::loadMoreHistory"
+      ],
+      "frontend_input_keys": [
+        "limit",
+        "method",
+        "page"
+      ],
+      "backend_file": "api/history.php",
+      "backend_block": "action:paged",
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "data",
+        "page",
+        "total",
+        "totalPages"
+      ],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/init.php::__default__::GET",
+      "endpoint_base": "api/init.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/form.js::loadInitialData"
+      ],
+      "frontend_input_keys": [
+        "map",
+        "method",
+        "order"
+      ],
+      "backend_file": "api/init.php",
+      "backend_block": null,
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "suppliers",
+        "conversion",
+        "config"
+      ],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/materials.php::delete::POST",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::renderMaterialList"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/materials.php",
+      "backend_block": "action:delete",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'name wajib diisi.'",
+        "'Material tidak ditemukan.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/materials.php::saveList::POST",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "saveList",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveMaterialChanges"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method"
+      ],
+      "backend_file": "api/materials.php",
+      "backend_block": "action:saveList",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'order harus array.'",
+        "'Gagal menyimpan urutan: ' . $e->getMessage()"
+      ]
+    },
+    {
+      "endpoint_key": "api/materials.php::update::POST",
+      "endpoint_base": "api/materials.php",
+      "endpoint_action": "update",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::addNewMaterial"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method",
+        "newName",
+        "oldName",
+        "suppliers"
+      ],
+      "backend_file": "api/materials.php",
+      "backend_block": "action:update",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'newName wajib diisi.'",
+        "'Gagal update: ' . $e->getMessage()"
+      ]
+    },
+    {
+      "endpoint_key": "api/photos.php::__default__::POST",
+      "endpoint_base": "api/photos.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/form.js::openPhotoModal"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "files",
+        "method"
+      ],
+      "backend_file": "api/photos.php",
+      "backend_block": null,
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/settings.php::__default__::GET",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/form.js::loadInitialData"
+      ],
+      "frontend_input_keys": [
+        "method"
+      ],
+      "backend_file": "api/settings.php",
+      "backend_block": "method:GET",
+      "backend_input_keys": [],
+      "backend_response_keys": [
+        "broadcastActive",
+        "broadcastMsg",
+        "enableHandover",
+        "lockDate"
+      ],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/settings.php::__default__::POST",
+      "endpoint_base": "api/settings.php",
+      "endpoint_action": "__default__",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/admin.js::saveAppSettings",
+        "assets/app/admin.js::saveBroadcast",
+        "assets/app/admin.js::saveLockDate"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "broadcastActive",
+        "broadcastMsg",
+        "handover",
+        "lockDate",
+        "method"
+      ],
+      "backend_file": "api/settings.php",
+      "backend_block": "method:POST",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": []
+    },
+    {
+      "endpoint_key": "api/transactions.php::delete::POST",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "delete",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/form.js::renderHistoryCards"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "method",
+        "uuid"
+      ],
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionDelete",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'Aksi ini hanya untuk admin.', 403",
+        "'uuid wajib diisi.'",
+        "'Data tidak ditemukan.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::diff::GET",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "diff",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/form.js::renderHistoryCards"
+      ],
+      "frontend_input_keys": [
+        "method",
+        "uuid"
+      ],
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionDiff",
+      "backend_input_keys": [
+        "uuid"
+      ],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'uuid wajib diisi.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::finalize::POST",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "finalize",
+      "method": "POST",
+      "frontend_consumers": [
+        "assets/app/form.js::renderHistoryCards"
+      ],
+      "frontend_input_keys": [
+        "body",
+        "confirmButtonColor",
+        "icon",
+        "method",
+        "showCancelButton",
+        "text",
+        "title",
+        "uuid"
+      ],
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionFinalize",
+      "backend_input_keys": [],
+      "backend_response_keys": [],
+      "failure_examples": [
+        "'uuid wajib diisi.'",
+        "'Data tidak ditemukan.'",
+        "'Anda tidak berhak memfinalisasi data grup lain.'"
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::previousStock::GET",
+      "endpoint_base": "api/transactions.php",
+      "endpoint_action": "previousStock",
+      "method": "GET",
+      "frontend_consumers": [
+        "assets/app/form.js::triggerHandover"
+      ],
+      "frontend_input_keys": [
+        "date",
+        "mesin",
+        "method",
+        "shift"
+      ],
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionPreviousStock",
+      "backend_input_keys": [
+        "date",
+        "mesin",
+        "shift"
+      ],
+      "backend_response_keys": [],
+      "failure_examples": []
+    }
+  ]
+}

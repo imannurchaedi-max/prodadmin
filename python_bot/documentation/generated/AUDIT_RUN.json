@@ -1,0 +1,198 @@
+{
+  "repo_root": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot",
+  "generated_at": "2026-07-07T05:56:22.825904+00:00",
+  "phases": [
+    {
+      "phase_id": "phase_0",
+      "title": "Preflight & Index Integrity",
+      "status": "FAIL",
+      "objective": "Validate audit tooling, graph index, and baseline architecture artifacts.",
+      "checks": [
+        {
+          "name": "gitnexus_status",
+          "status": "PASS",
+          "details": "GitNexus index must exist and be up-to-date.",
+          "evidence": {
+            "stdout": "Repository: C:\\xampp\\htdocs\\ProdAdmin\nIndexed: 23/06/2026, 05.05.40\nIndexed commit: cf03123\nCurrent commit: cf03123\nStatus: ✅ up-to-date",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "gitnexus_doctor",
+          "status": "PASS",
+          "details": "GitNexus doctor must confirm graph and full-text search availability.",
+          "evidence": {
+            "stdout": "GitNexus Doctor\n\nRuntime\n  OS:        win32/x64\n  Node:      v24.14.0\n  GitNexus:  1.6.5\n  LadybugDB: unknown\n  ONNX:      1.26.0\n\nCapabilities\n  Graph store:     available\n  Full-text search: available\n  VECTOR index:    unavailable\n  Semantic mode:   exact-scan\n  Exact scan limit:    10000 chunks\n  Note:            LadybugDB VECTOR is disabled on this platform; semantic search uses exact scan when embeddings exist.\n\nEmbeddings\n  Backend:   local\n  Device:    auto\n  Threads:   4\n  Batch:     16 nodes\n  Sub-batch: 8 chunks",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "audit_artifacts_present",
+          "status": "FAIL",
+          "details": "Meta index and codebase map must exist before the audit advances.",
+          "evidence": {
+            "meta_json": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot\\.gitnexus\\meta.json",
+            "codebase_map": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot\\documentation\\generated\\CODEBASE_MAP.md"
+          }
+        }
+      ],
+      "next_step": "Advance to architecture audit only if all preflight checks pass."
+    },
+    {
+      "phase_id": "phase_1",
+      "title": "Architecture Conformance",
+      "status": "FAIL",
+      "objective": "Confirm that runtime boundaries, major layers, and critical symbols align with the documented architecture.",
+      "checks": [
+        {
+          "name": "required_architecture_layers",
+          "status": "FAIL",
+          "details": "Codebase map JSON is missing, so architecture layering could not be verified.",
+          "evidence": {}
+        },
+        {
+          "name": "context_actionSubmit",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/api/transactions.php:actionSubmit` must be traceable in the graph.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        },
+        {
+          "name": "context_doLogin",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/assets/app/auth.js:doLogin` must be traceable in the graph.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        }
+      ],
+      "next_step": "Advance to dependency audit only if runtime layers and critical symbols are visible."
+    },
+    {
+      "phase_id": "phase_2",
+      "title": "Dependency & Runtime Audit",
+      "status": "PASS",
+      "objective": "Validate interpreter/tool availability and syntax health for critical runtime files.",
+      "checks": [
+        {
+          "name": "python_version",
+          "status": "PASS",
+          "details": "python_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "Python 3.14.5",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "node_version",
+          "status": "PASS",
+          "details": "node_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "v24.14.0",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "npm_version",
+          "status": "PASS",
+          "details": "npm_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "11.9.0",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "gitnexus_version",
+          "status": "PASS",
+          "details": "gitnexus_version must be available for the audit/runtime workflow.",
+          "evidence": {
+            "stdout": "1.6.5",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "langgraph_stack",
+          "status": "PASS",
+          "details": "LangGraph core and required checkpoint/prebuilt packages must import cleanly.",
+          "evidence": {
+            "stdout": "LANGGRAPH_STACK_OK",
+            "stderr": ""
+          }
+        },
+        {
+          "name": "php_lint",
+          "status": "PASS",
+          "details": "All PHP files must pass syntax linting.",
+          "evidence": {
+            "files_checked": 7,
+            "failures": []
+          }
+        }
+      ],
+      "next_step": "Advance to contract audit only if runtime dependencies are present and syntax checks are clean."
+    },
+    {
+      "phase_id": "phase_3",
+      "title": "Function Contract Audit",
+      "status": "FAIL",
+      "objective": "Validate that core function entrypoints and documented API contracts remain visible and consistent.",
+      "checks": [
+        {
+          "name": "contract_docs_present",
+          "status": "FAIL",
+          "details": "Function map and endpoint contract must exist before I/O audit.",
+          "evidence": {
+            "endpoint_contract": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot\\documentation\\ENDPOINT_CONTRACT.md",
+            "function_map": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot\\documentation\\GAS_VS_PHP_MAPPING.md"
+          }
+        },
+        {
+          "name": "core_action_coverage",
+          "status": "FAIL",
+          "details": "Codebase map JSON missing; could not compare router actions.",
+          "evidence": {}
+        },
+        {
+          "name": "function_trace_actionSubmit",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/api/transactions.php:actionSubmit` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        },
+        {
+          "name": "function_trace_actionRevise",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/api/transactions.php:actionRevise` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        },
+        {
+          "name": "function_trace_actionFinalize",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/api/transactions.php:actionFinalize` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        },
+        {
+          "name": "function_trace_doLogin",
+          "status": "FAIL",
+          "details": "Critical workflow symbol `Function:active/assets/app/auth.js:doLogin` must remain traceable for I/O and outcome audit.",
+          "evidence": {
+            "stdout": "",
+            "stderr": "file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329\n        throw new Error(`Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: ${labels.join(', ')}`);\n              ^\n\nError: Multiple repositories indexed. Specify which one with the \"repo\" parameter. Available: machine_dashboard, ProdAdmin\n    at LocalBackend.resolveRepo (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:329:15)\n    at async LocalBackend.callTool (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/mcp/local/local-backend.js:568:22)\n    at async contextCommand (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/tool.js:79:20)\n    at async Command.<anonymous> (file:///C:/Users/DAM-PM-P/AppData/Roaming/npm/node_modules/gitnexus/dist/cli/lazy-action.js:16:9)\n\nNode.js v24.14.0"
+          }
+        }
+      ],
+      "next_step": "Advance to dynamic workflow audit once core function contracts are intact."
+    }
+  ]
+}

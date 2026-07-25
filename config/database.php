@@ -9,8 +9,11 @@ function prodAdminDbConfig(): array
     $user = getenv('PRODADMIN_DB_USER') ?: 'postgres';
     $pass = getenv('PRODADMIN_DB_PASS');
 
-    if ($pass === false) {
-        $pass = 'SASMU123';
+    if ($pass === false || $pass === '') {
+        http_response_code(500);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => false, 'message' => 'Database not configured. Set PRODADMIN_DB_PASS environment variable.']);
+        exit;
     }
 
     return [
@@ -43,7 +46,6 @@ function getDb(): PDO
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
-            PDO::ATTR_PERSISTENT         => true,  // reuse connections across requests
         ]);
         $db->exec("SET timezone='Asia/Jakarta'");
     } catch (PDOException $e) {
@@ -52,7 +54,6 @@ function getDb(): PDO
         echo json_encode([
             'success' => false,
             'message' => 'Database connection failed.',
-            'error' => $e->getMessage(),
         ]);
         exit;
     }

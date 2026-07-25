@@ -1,0 +1,94 @@
+graph TD
+    subgraph INPUTS["📥 INPUTS (dari Browser / User)"]
+        I_LOGIN(["POST action=login\n{username, password, machine, force}"])
+        I_VALIDATE(["GET action=validate\nHeader: Authorization Bearer TOKEN"])
+        I_LOGOUT(["POST action=logout"])
+        I_CHANGEPW(["POST action=change_password\n{oldPass, newPass}"])
+        I_SUBMIT(["POST action=submit\n{tanggal, shift, mesin, size\nmaterialsJson, outputsJson, reportJson}"])
+        I_REVISE(["POST action=revise\n{uuid, tanggal, shift, mesin, size\nmaterialsJson, outputsJson, reportJson}"])
+        I_FINALIZE(["POST action=finalize\n{uuid}"])
+        I_DELETE(["POST action=delete\n{uuid} — Admin only"])
+        I_PREVSTOCK(["GET action=previous_stock\n?mesin=&shift="])
+        I_DIFF(["GET action=diff\n?uuid="])
+        I_HISTORY(["GET api/history.php\n?from=&to=&mesin=&shift="])
+        I_SETTINGS_GET(["GET api/settings.php?action=get"])
+        I_SETTINGS_SAVE(["POST api/settings.php?action=save\n{mesin, size, aliases}"])
+        I_MATERIALS(["GET api/materials.php"])
+        I_INIT(["GET api/init.php"])
+    end
+
+    subgraph DB_READS["🗄️ DB READS"]
+        DR_SESS(["SELECT sessions\nWHERE token=? AND expires_at>NOW()"])
+        DR_USR(["SELECT users\nWHERE username=?"])
+        DR_TXN(["SELECT transactions\nWHERE uuid=? OR mesin+date+shift"])
+        DR_MAT(["SELECT transaction_materials\nWHERE transaction_uuid=?"])
+        DR_OUT(["SELECT production_outputs\nWHERE transaction_uuid=?"])
+        DR_RPT(["SELECT production_reports\nWHERE transaction_uuid=?"])
+        DR_SET(["SELECT settings\nWHERE key IN (...)"])
+        DR_TKO(["SELECT takeover_requests"])
+        DR_LOCK(["SELECT settings WHERE key='LOCK_DATE'"])
+        DR_MAT_MASTER(["SELECT materials (master)"])
+    end
+
+    subgraph DB_WRITES["✏️ DB WRITES"]
+        DW_SESS_INS(["INSERT sessions\n(token, username, machine_id, expires_at)"])
+        DW_SESS_DEL(["DELETE sessions WHERE token=?"])
+        DW_SESS_GC(["DELETE sessions WHERE expires_at<=NOW()"])
+        DW_TKO(["INSERT/UPDATE takeover_requests"])
+        DW_TXN(["INSERT transactions\n(uuid, date, shift, mesin, size, rev, by, status=DRAFT)"])
+        DW_MAT(["INSERT transaction_materials\n(uuid, txnid, name, supplier,\nstockInitial..stockFinal, photos)"])
+        DW_HOUR(["INSERT material_hourly_usage\n(transaction_material_id, hour_idx, amount)"])
+        DW_OUT(["INSERT production_outputs\n(uuid, date, mid, name, qty,\ncatBag, catBox, counterPcs, kg, loss, rev)"])
+        DW_RPT(["INSERT production_reports\n(uuid, date, shift, mesin,\ntotalKg, loss, avgLossPct,\ndowntime, speed, trouble, notes)"])
+        DW_TXN_HIST(["UPDATE transactions SET status=HISTORY"])
+        DW_OUT_HIST(["UPDATE production_outputs SET status=HISTORY"])
+        DW_RPT_HIST(["UPDATE production_reports SET status=HISTORY"])
+        DW_TXN_FINAL(["UPDATE transactions SET status=FINAL"])
+        DW_TXN_DEL(["UPDATE transactions SET status=SUPERSEDED"])
+        DW_SET(["INSERT/UPDATE settings ON CONFLICT"])
+        DW_LOG(["INSERT action_logs\n(user, action, detail, timestamp)"])
+    end
+
+    subgraph OUTPUTS["📤 OUTPUTS (JSON Response)"]
+        O_TOKEN(["{ success:true, token, username,\ntakeoverDirect?, tempToken? }"])
+        O_SESSION(["{ success:true, username, isAdmin }"])
+        O_UUID(["{ success:true, uuid, count, rev }"])
+        O_HISTORY(["{ success:true, data:[{id,date,shift,\nmesin,owner,status,revision\noutputs:[],logs:{}} ] }"])
+        O_PREVSTOCK(["{ success:true, materials:[{name,\nsupplier,stockAwal,...}] }"])
+        O_DIFF(["{ success:true, revisions:[{rev,\nmaterials,outputs}] }"])
+        O_CONFIG(["{ success:true, mesin:[],\nsize:[], aliases:{} }"])
+        O_FAIL(["{ success:false, message }"])
+        O_401(["401 Unauthorized - token invalid"])
+    end
+
+    %% Auth flows
+    I_LOGIN --> DR_USR --> DR_SESS
+    I_LOGIN --> DW_SESS_INS --> DW_SESS_GC --> O_TOKEN
+    I_VALIDATE --> DR_SESS --> O_SESSION
+    I_LOGOUT --> DW_SESS_DEL --> O_SESSION
+    I_CHANGEPW --> DR_USR --> DW_LOG --> O_SESSION
+
+    %% Transaction flows
+    I_SUBMIT --> DR_LOCK --> DW_TXN --> DW_MAT --> DW_HOUR --> DW_OUT --> DW_RPT --> DW_LOG --> O_UUID
+    I_REVISE --> DR_TXN --> DW_TXN_HIST --> DW_OUT_HIST --> DW_RPT_HIST
+    DW_RPT_HIST --> DW_TXN --> O_UUID
+    I_FINALIZE --> DW_TXN_FINAL --> DW_OUT --> DW_LOG --> O_UUID
+    I_DELETE --> DW_TXN_DEL --> DW_LOG --> O_UUID
+
+    %% Read flows
+    I_PREVSTOCK --> DR_MAT --> O_PREVSTOCK
+    I_DIFF --> DR_TXN --> DR_MAT --> DR_OUT --> O_DIFF
+    I_HISTORY --> DR_TXN --> DR_OUT --> DR_RPT --> O_HISTORY
+    I_SETTINGS_GET --> DR_SET --> O_CONFIG
+    I_SETTINGS_SAVE --> DW_SET --> O_UUID
+    I_MATERIALS --> DR_MAT_MASTER --> O_CONFIG
+    I_INIT --> DW_SET --> O_UUID
+
+    %% Auth guard
+    I_SUBMIT & I_REVISE & I_FINALIZE & I_DELETE --> DR_SESS
+    DR_SESS -->|"token invalid"| O_401
+
+    style O_401 fill:#ffebee,stroke:#f44336
+    style DW_TXN fill:#e8f5e9,stroke:#4caf50
+    style DW_MAT fill:#e8f5e9,stroke:#4caf50
+    style DW_TXN_HIST fill:#fff3e0,stroke:#ff9800

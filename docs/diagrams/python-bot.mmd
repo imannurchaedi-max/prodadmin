@@ -1,0 +1,84 @@
+graph TD
+    subgraph LTC_GRAPH["langgraph_trace_center.py — TraceState Graph"]
+        LTC_START(["START"])
+        LTC_LOAD_FN(["load_function_db\n← baca FUNCTION_DB_MAP.json"])
+        LTC_LOAD_EP(["load_endpoint_ui\n← baca ENDPOINT_UI_MAP.json"])
+        LTC_READ_JSON(["read_json(path)"])
+        LTC_BUILD(["build_function_edges(state)\n← PHP: param() calls\n← JS: App.api() / rawJson() calls"])
+        LTC_ENRICH(["enrich_gitnexus(state)\n← gitnexus_context per symbol"])
+        LTC_SUMMARIZE(["summarize(state)\n← hitung total functions,\nedges, endpoint contracts"])
+        LTC_DOT(["build_io_db_dot(state)\n← Graphviz DOT format\nI/O → DB mapping"])
+        LTC_RENDER_MD(["render_function_dependency_markdown(state)\n← markdown dengan call graph"])
+        LTC_END(["END\n→ outputs: {markdown, dot, summary}"])
+
+        LTC_START --> LTC_LOAD_FN
+        LTC_START --> LTC_LOAD_EP
+        LTC_LOAD_FN --> LTC_READ_JSON
+        LTC_LOAD_EP --> LTC_READ_JSON
+        LTC_READ_JSON --> LTC_BUILD
+        LTC_BUILD --> LTC_ENRICH
+        LTC_ENRICH --> LTC_SUMMARIZE
+        LTC_SUMMARIZE --> LTC_DOT
+        LTC_DOT --> LTC_RENDER_MD
+        LTC_RENDER_MD --> LTC_END
+    end
+
+    subgraph LAP_GRAPH["langgraph_audit_protocol.py — AuditState Graph"]
+        LAP_START(["START"])
+        LAP_PREFLIGHT(["phase_preflight(state)\n- gitnexus status\n- git status\n- PHP syntax check\n- DB connectivity"])
+        LAP_CONTRACTS(["phase_contracts(state)\n- endpoint ↔ UI contracts\n- missing endpoints\n- orphan UI calls"])
+        LAP_DEPS(["phase_dependencies(state)\n- blast radius check\n- CRITICAL symbol list\n- dependency health"])
+        LAP_STATUS(["phase_status(checks)\n→ PASS | FAIL | PENDING"])
+        LAP_REPORT(["write report\n→ documentation/generated/\naudit-YYYYMMDD.md"])
+        LAP_END(["END"])
+
+        LAP_START --> LAP_PREFLIGHT
+        LAP_PREFLIGHT --> LAP_CONTRACTS
+        LAP_CONTRACTS --> LAP_DEPS
+        LAP_DEPS --> LAP_STATUS
+        LAP_STATUS --> LAP_REPORT
+        LAP_REPORT --> LAP_END
+    end
+
+    subgraph LCM_GRAPH["langgraph_codebase_map.py — CodebaseState Graph"]
+        LCM_START(["START"])
+        LCM_DISCOVER(["discover_files(state)\n← scan api/, assets/app/,\npython_bot/"])
+        LCM_READ(["read_text(path)\n← UTF-8 file content"])
+        LCM_COUNT(["count_lines(path)"])
+        LCM_GITNEXUS(["load_gitnexus(state)\n← gitnexus_query()"])
+        LCM_MAP(["build codebase map\n→ per-file stats,\nfunction counts"])
+        LCM_END(["END → CODEBASE_MAP.json"])
+
+        LCM_START --> LCM_DISCOVER --> LCM_READ --> LCM_COUNT --> LCM_GITNEXUS --> LCM_MAP --> LCM_END
+    end
+
+    subgraph LFDB_GRAPH["langgraph_function_db_map.py"]
+        LFDB_START(["START"])
+        LFDB_COLLECT(["collect_functions(state)\n← PHP regex: function name()\n← JS regex: async function,\nconst = ()=>"])
+        LFDB_FIND(["find_named_function_blocks(src)\n← regex parse per file"])
+        LFDB_BUILD(["build_function_edges()\n← call graph edges"])
+        LFDB_OUT(["END → FUNCTION_DB_MAP.json"])
+
+        LFDB_START --> LFDB_COLLECT --> LFDB_FIND --> LFDB_BUILD --> LFDB_OUT
+    end
+
+    subgraph DATA_FLOW["📂 Data Flow"]
+        SRC_FILES(["Source Files\napi/*.php\nassets/app/*.js"])
+        GN_API(["GitNexus MCP\ngitnexus_context()\ngitnexus_query()\ngitnexus_impact()"])
+        GEN_DIR(["documentation/generated/\nFUNCTION_DB_MAP.json\nENDPOINT_UI_MAP.json\naudit-*.md\nSVG diagrams"])
+    end
+
+    SRC_FILES --> LCM_DISCOVER
+    SRC_FILES --> LFDB_COLLECT
+    GN_API --> LTC_ENRICH
+    GN_API --> LAP_PREFLIGHT
+    LFDB_OUT --> LTC_LOAD_FN
+    LTC_END --> GEN_DIR
+    LAP_REPORT --> GEN_DIR
+    LCM_END --> GEN_DIR
+    LFDB_OUT --> GEN_DIR
+
+    style LTC_START fill:#e3f2fd,stroke:#1976d2
+    style LAP_START fill:#f3e5f5,stroke:#7b1fa2
+    style LCM_START fill:#e8f5e9,stroke:#388e3c
+    style LFDB_START fill:#fff3e0,stroke:#f57c00

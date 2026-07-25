@@ -13,7 +13,7 @@ from langgraph.graph import END, START, StateGraph
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-ACTIVE_ROOT = PROJECT_ROOT / "active"
+ACTIVE_ROOT = PROJECT_ROOT  # no "active" subdir; files live directly in project root
 ASSETS_DIR = ACTIVE_ROOT / "assets" / "app"
 API_DIR = ACTIVE_ROOT / "api"
 INDEX_PATH = ACTIVE_ROOT / "index.php"
@@ -128,7 +128,7 @@ def run_gitnexus_context(symbol: str) -> dict[str, Any]:
     env = dict(**subprocess.os.environ)
     env["PATH"] = str(GIT_CMD_DIR) + ";" + env.get("PATH", "")
     proc = subprocess.run(
-        f'gitnexus context {symbol}',
+        f'gitnexus context -r ProdAdmin {symbol}',
         cwd=str(PROJECT_ROOT),
         shell=True,
         capture_output=True,
@@ -288,11 +288,11 @@ def summarize(state: AuditState) -> AuditState:
         base_file, action, method = endpoint_key.split("::", 2)
         normalized_base = base_file.lstrip("./")
         if normalized_base.startswith("active/"):
-            backend_file = normalized_base
+            backend_file = normalized_base[len("active/"):]  # strip legacy prefix
         elif normalized_base.startswith("api/"):
-            backend_file = f"active/{normalized_base}"
+            backend_file = normalized_base
         else:
-            backend_file = f"active/api/{normalized_base}"
+            backend_file = f"api/{normalized_base}"
         backend_actions = backend.get(backend_file, {}).get("actions", {})
         backend_action = backend_actions.get(action)
         if backend_action is None and action == "__default__":

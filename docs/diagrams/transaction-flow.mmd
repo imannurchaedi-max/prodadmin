@@ -1,0 +1,93 @@
+flowchart TD
+    subgraph FRONTEND["Frontend (form.js + auth.js)"]
+        F1["User isi form\ntanggal · shift · mesin · size\nmaterials · outputs · report"]
+        F2["collectOutputs()"]
+        F3["snapshotRows()"]
+        F4["renderMaterialTable()"]
+        F5["renderHistoryCards()\n← tampilkan riwayat"]
+    end
+
+    subgraph SUBMIT_FLOW["📤 SUBMIT (POST transactions.php?action=submit)"]
+        S1["actionSubmit()"]
+        S2["getDb() + requireSession()"]
+        S3["body() — parse JSON request"]
+        S4["getLockDate() — cek lock admin"]
+        S5{"tanggal > lockDate?\natau isAdmin?"}
+        S6["genUuid()"]
+        S7["db.beginTransaction()"]
+        S8["insertTransaction(db, uuid, ...)"]
+        S8A["INSERT transactions\n(uuid, date, shift, mesin, size, rev=0, status=DRAFT)"]
+        S8B["INSERT transaction_materials\n(per material + calcMaterial)"]
+        S8C["INSERT material_hourly_usage\n(per jam per material)"]
+        S8D["INSERT production_outputs\n(per output item)"]
+        S8E["INSERT production_reports\n(summary laporan)"]
+        S9["db.commit()"]
+        S10["logAction(SUBMIT)"]
+        S11["ok({uuid, count, rev:0})"]
+        S_FAIL["fail() + db.rollBack()"]
+    end
+
+    subgraph REVISE_FLOW["✏️ REVISE (POST transactions.php?action=revise)"]
+        R1["actionRevise()"]
+        R2["cek status lama:\nFINAL? → tolak\nrev >= 3? → tolak\nbukan owner? → tolak"]
+        R3["nextRev = oldRev + 1"]
+        R4["UPDATE transactions SET status=HISTORY"]
+        R5["UPDATE production_outputs SET status=HISTORY"]
+        R6["UPDATE production_reports SET status=HISTORY"]
+        R7["insertTransaction(db, oldUuid, ..., nextRev)\n← UUID SAMA, revisi baru"]
+        R8["logAction(REVISI)"]
+    end
+
+    subgraph FINALIZE_FLOW["✅ FINALIZE (POST transactions.php?action=finalize)"]
+        FN1["actionFinalize()"]
+        FN2["UPDATE transactions SET status=FINAL\nWHERE uuid=? AND status=DRAFT"]
+        FN3["UPDATE production_outputs SET status=FINAL"]
+        FN4["logAction(FINAL)"]
+    end
+
+    subgraph DELETE_FLOW["🗑️ DELETE (POST transactions.php?action=delete)"]
+        D1["actionDelete() — Admin only"]
+        D2["UPDATE transactions SET status=SUPERSEDED"]
+        D3["logAction(DELETE)"]
+    end
+
+    subgraph PREV_STOCK["📦 PREVIOUS STOCK (GET ?action=previous_stock)"]
+        P1["actionPreviousStock()"]
+        P2["SELECT transaction_materials\nWHERE mesin=? AND date < today\nORDER BY date DESC LIMIT 1"]
+        P3["return {materials: [...]}"]
+    end
+
+    subgraph DIFF_FLOW["🔍 DIFF (GET ?action=diff)"]
+        DIF1["actionDiff()"]
+        DIF2["SELECT all revisions by uuid"]
+        DIF3["return [{rev, materials, outputs}]"]
+    end
+
+    F1 --> F2 --> F3
+    F1 -->|"btnSubmit click"| S1
+    S1 --> S2 --> S3 --> S4 --> S5
+    S5 -->|"OK"| S6 --> S7 --> S8
+    S8 --> S8A --> S8B --> S8C --> S8D --> S8E --> S9 --> S10 --> S11
+    S7 -->|"Exception"| S_FAIL
+    S5 -->|"Locked & not admin"| S_FAIL
+
+    F5 -->|"edit button"| R1
+    R1 --> S2 --> R2 --> R3 --> S7
+    S7 --> R4 --> R5 --> R6 --> R7 --> S9 --> R8
+
+    F5 -->|"finalize button"| FN1
+    FN1 --> S2 --> FN2 --> FN3 --> FN4
+
+    F5 -->|"delete button (admin)"| D1
+    D1 --> S2 --> D2 --> D3
+
+    F4 -->|"load previous"| P1
+    P1 --> P2 --> P3
+
+    F5 -->|"diff button"| DIF1
+    DIF1 --> DIF2 --> DIF3
+
+    style S8 fill:#e8f5e9,stroke:#4caf50
+    style R7 fill:#fff3e0,stroke:#ff9800
+    style D1 fill:#ffebee,stroke:#f44336
+    style FN2 fill:#e3f2fd,stroke:#2196f3

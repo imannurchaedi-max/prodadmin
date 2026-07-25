@@ -244,6 +244,22 @@
       }
       return;
     }
+    if (res.status === "MACHINE_IN_USE" && !force) {
+      const activeUser = res.activeUser || "user lain";
+      const confirm = await Swal.fire({
+        title: "Mesin Sedang Digunakan",
+        text: `Mesin ini sedang digunakan oleh ${activeUser}. Ambil alih sekarang? (${activeUser} akan dikeluarkan)`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        confirmButtonText: "Ya, Ambil Alih",
+        cancelButtonText: "Batal",
+      });
+      if (confirm.isConfirmed) {
+        return doLogin(username, password, machine, isAdmin, true);
+      }
+      return;
+    }
     // M4: guard against infinite recursion — only show force prompt if we have NOT already sent force=true
     if (res.status === "FORCE_TAKEOVER_PROMPT" && !force) {
       const confirm = await Swal.fire({

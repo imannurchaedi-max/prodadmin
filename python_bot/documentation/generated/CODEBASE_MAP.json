@@ -1,0 +1,148 @@
+{
+  "repo": {
+    "root": "C:\\xampp\\htdocs\\ProdAdmin\\python_bot",
+    "generated_at": "2026-07-07T05:58:15.599648+00:00"
+  },
+  "gitnexus": {},
+  "counts": {
+    "files": 26,
+    "lines": 7474,
+    "by_suffix": {
+      ".py": 14,
+      ".ps1": 3,
+      ".sh": 1,
+      ".json": 1,
+      ".php": 7
+    },
+    "by_bucket": {
+      "other": {
+        "file_count": 25,
+        "line_count": 7363,
+        "largest_files": [
+          {
+            "path": "setup.php",
+            "lines": 969
+          },
+          {
+            "path": "setup_ASUSVIVO_May-26-130308-2026_Conflict.php",
+            "lines": 959
+          },
+          {
+            "path": "langgraph_trace_center.py",
+            "lines": 767
+          },
+          {
+            "path": "langgraph_function_db_map.py",
+            "lines": 610
+          },
+          {
+            "path": "langgraph_dynamic_audit.py",
+            "lines": 535
+          }
+        ]
+      },
+      "root_runtime": {
+        "file_count": 1,
+        "line_count": 111,
+        "largest_files": [
+          {
+            "path": "deploy_to_xampp.ps1",
+            "lines": 111
+          }
+        ]
+      }
+    }
+  },
+  "runtime_entrypoints": [
+    "index.php",
+    "api/*.php",
+    "assets/app/*.js",
+    "config/database.php",
+    "tools/setup.php"
+  ],
+  "api_actions": {},
+  "key_file_snippets": {},
+  "top_files": [
+    {
+      "path": "setup.php",
+      "lines": 969,
+      "bucket": "other"
+    },
+    {
+      "path": "setup_ASUSVIVO_May-26-130308-2026_Conflict.php",
+      "lines": 959,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_trace_center.py",
+      "lines": 767,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_function_db_map.py",
+      "lines": 610,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_dynamic_audit.py",
+      "lines": 535,
+      "bucket": "other"
+    },
+    {
+      "path": "import_excel.py",
+      "lines": 512,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_endpoint_ui_map.py",
+      "lines": 478,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_audit_protocol.py",
+      "lines": 405,
+      "bucket": "other"
+    },
+    {
+      "path": "langgraph_codebase_map.py",
+      "lines": 377,
+      "bucket": "other"
+    },
+    {
+      "path": "setup_photo_migration.py",
+      "lines": 214,
+      "bucket": "other"
+    },
+    {
+      "path": "test_e2e.py",
+      "lines": 190,
+      "bucket": "other"
+    },
+    {
+      "path": "test_transactions.php",
+      "lines": 154,
+      "bucket": "other"
+    },
+    {
+      "path": "character_audit.py",
+      "lines": 149,
+      "bucket": "other"
+    },
+    {
+      "path": "setup_database_ASUSVIVO_May-26-130315-2026_Conflict.ps1",
+      "lines": 142,
+      "bucket": "other"
+    },
+    {
+      "path": "test_transactions_ASUSVIVO_May-26-130309-2026_Conflict.php",
+      "lines": 136,
+      "bucket": "other"
+    }
+  ],
+  "observations": [
+    "Repo menggabungkan aplikasi PHP runtime, dokumen migrasi, aset legacy GAS, SQL schema/migration, dan seed/testing scripts.",
+    "Lapisan runtime utama berada di index.php, api/, config/, dan assets/app/.",
+    "Lapisan referensi migrasi masih penting karena Kode.gs dan file HTML GAS dipakai sebagai sumber kebenaran historis.",
+    "GitNexus sudah menyediakan graph + embeddings lokal; LangGraph di sini dipakai sebagai orchestrator mapping agar output bisa dijalankan ulang."
+  ]
+}

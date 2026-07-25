@@ -49,7 +49,7 @@ foreach ($rows as $row) {
 
 // -- Conversions ---------------------------------------------------------------
 $convStmt = $db->query(
-    "SELECT mid, item_name AS name, cat_bag AS catBag, cat_box AS catBox,
+    "SELECT mid, item_name AS name, cat_bag AS \"catBag\", cat_box AS \"catBox\",
             ratio::float, weight_grams::float AS weight
      FROM conversions ORDER BY item_name"
 );

@@ -17,11 +17,7 @@ function getBearerToken(): string
         return trim($m[1]);
     }
 
-    return trim((string) (
-        $_GET['token']
-        ?? $_POST['token']
-        ?? ($GLOBALS['_BODY']['token'] ?? '')
-    ));
+    return '';
 }
 
 function authFail(string $message, int $code = 401): void
@@ -56,6 +52,9 @@ function requireSession(PDO $db): array
     $token = getBearerToken();
     if ($token === '') {
         authFail('Token tidak diberikan.', 401);
+    }
+    if (strlen($token) < 32 || strlen($token) > 128 || !ctype_xdigit($token)) {
+        authFail('Format token tidak valid.', 401);
     }
 
     // --- APCu fast path ---

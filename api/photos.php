@@ -23,20 +23,29 @@ function body(): array {
     return $b;
 }
 
-// H1: requireAuth() removed — use requireSession() from auth_helper.php
+// requireAuth() removed -- use requireSession() from auth_helper.php
 
-const MAX_UPLOAD_BYTES    = 5_242_880;  // H5: 5 MB per file
-const MAX_FILES_PER_REQ   = 10;          // H5: max 10 files per request
+const MAX_UPLOAD_BYTES    = 5_242_880;  // 5 MB per file
+const MAX_FILES_PER_REQ   = 10;          // max 10 files per request
 
 // Serve foto (GET ?file=YYYY-MM/filename.jpg)
-// H4: token required even for GET — read from ?token= query param or Authorization header
+// Auth required for GET -- requireSession() reads Authorization: Bearer header only
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $db = getDb();
-    requireSession($db);   // H4: auth gate — stops unauthenticated image access
+    requireSession($db);
 
     $file = trim((string)($_GET['file'] ?? ''));
     $file = ltrim(str_replace(['..', '\\'], '', $file), '/');
     if (!$file) fail('file param diperlukan.');
+
+    // If file looks like a GDrive ID (no slash, 15+ alphanumeric chars), look up local path
+    if (!str_contains($file, '/') && strlen($file) >= 15 && preg_match('/^[A-Za-z0-9_-]+$/', $file)) {
+        $stmt = $db->prepare("SELECT local_path FROM photo_migration WHERE gdrive_id = ? AND status = 'DONE' LIMIT 1");
+        $stmt->execute([$file]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$row || !$row['local_path']) { http_response_code(404); exit; }
+        $file = ltrim($row['local_path'], '/');
+    }
 
     $base = dirname(__DIR__) . '/uploads/labels/';
     $path = realpath($base . $file);
@@ -54,12 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // Upload foto (POST)
 $db      = getDb();
-$session = requireSession($db);   // H1: use shared requireSession (APCu-cached)
+$session = requireSession($db);
 $b       = body();
 $files   = $b['files'] ?? [];
 
 if (!is_array($files) || empty($files)) fail('files wajib diisi (array).');
-// H5: limit number of files per request
 if (count($files) > MAX_FILES_PER_REQ) fail('Maksimal ' . MAX_FILES_PER_REQ . ' file per permintaan.');
 
 $subdir = (new DateTime('now', new DateTimeZone('Asia/Jakarta')))->format('Y-m');
@@ -77,7 +85,6 @@ foreach ($files as $f) {
     $data  = base64_decode(substr($b64, strpos($b64, 'base64,') + 7));
     if (!$data) continue;
 
-    // H5: reject oversized files before writing to disk
     if (strlen($data) > MAX_UPLOAD_BYTES) {
         fail('File terlalu besar. Maksimal ' . (MAX_UPLOAD_BYTES / 1048576) . ' MB per file.');
     }
@@ -88,7 +95,7 @@ foreach ($files as $f) {
         default      => 'jpg'
     };
 
-    // H2: use cryptographically secure random bytes for filename (replaces mt_rand)
+    // Cryptographically secure random bytes for filename (replaces mt_rand)
     $uid   = bin2hex(random_bytes(8));
     $fname = $uid . '.' . $ext;
     $fpath = $dir . '/' . $fname;

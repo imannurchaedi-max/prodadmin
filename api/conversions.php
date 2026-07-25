@@ -23,19 +23,15 @@ function body(): array {
     return $b;
 }
 
-function requireAuth(PDO $db): array {
-    return requireSession($db);
-}
-
 $db      = getDb();
-$session = requireAuth($db);
+$session = requireSession($db);
 $b       = body();
 $action  = trim((string)($_GET['action'] ?? $b['action'] ?? ''));
 
 // GET / list
 if ($action === 'list' || ($action === '' && $_SERVER['REQUEST_METHOD'] === 'GET')) {
     $rows = $db->query(
-        "SELECT mid, item_name AS name, cat_bag AS catBag, cat_box AS catBox,
+        "SELECT mid, item_name AS name, cat_bag AS \"catBag\", cat_box AS \"catBox\",
                 ratio::float, weight_grams::float AS weight
          FROM conversions ORDER BY item_name"
     )->fetchAll();

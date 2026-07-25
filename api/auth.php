@@ -46,16 +46,7 @@ function param(string $key, mixed $default = null): mixed {
     return $GLOBALS['_BODY'][$key] ?? $default;
 }
 
-function bearerToken(): ?string {
-    // Sama seperti getBearerToken() di auth_helper.php - semua fallback
-    $h = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
-    if (!$h && function_exists('getallheaders')) {
-        $headers = array_change_key_case(getallheaders(), CASE_LOWER);
-        $h = $headers['authorization'] ?? '';
-    }
-    if ($h && preg_match('/Bearer\s+(.+)/i', $h, $m)) return trim($m[1]);
-    return $_GET['token'] ?? null;
-}
+// getBearerToken() tersedia dari auth_helper.php (Authorization: Bearer header only, no URL params)
 
 function getAdminPin(): string {
     $db   = getDb();
@@ -87,6 +78,12 @@ function generateToken(): string {
 }
 
 function createSession(PDO $db, string $username, string $machineId): string {
+    // Pembersihan rutin (Garbage Collection) agar tabel tidak membengkak (OOM/Bloating)
+    try {
+        $db->exec("DELETE FROM sessions WHERE expires_at <= NOW()");
+        $db->exec("DELETE FROM takeover_requests WHERE created_at < NOW() - INTERVAL '1 day'");
+    } catch (Throwable $e) {}
+
     $token = generateToken();
     $stmt = $db->prepare(
         "INSERT INTO sessions (token, username, machine_id, expires_at)
@@ -216,8 +213,26 @@ function actionLogin(): void {
         apcu_delete($rlKey);
     }
 
-    // 2. Cek sesi aktif di mesin ini
-    $active = getActiveSession($db, $username, $machine);
+    // 2. Cek sesi aktif di mesin ini (siapapun user-nya)
+    $stmtMachine = $db->prepare(
+        "SELECT token, username FROM sessions WHERE machine_id = :m AND expires_at > NOW() LIMIT 1"
+    );
+    $stmtMachine->execute([':m' => $machine]);
+    $anyActive = $stmtMachine->fetch();
+
+    // Beda user di mesin yang sama: tampilkan konfirmasi ambil alih di frontend
+    if ($anyActive && $anyActive['username'] !== $username && !$force) {
+        echo json_encode([
+            'success'    => false,
+            'status'     => 'MACHINE_IN_USE',
+            'activeUser' => $anyActive['username'],
+            'message'    => "Mesin {$machine} sedang digunakan oleh {$anyActive['username']}.",
+        ]);
+        exit;
+    }
+
+    // Sesi user yang sama di mesin ini: takeover flow normal
+    $active = ($anyActive && $anyActive['username'] === $username) ? $anyActive : null;
 
     if ($active && !$force) {
         $timeoutCount = getTakeoverTimeoutCount($db, $username, $machine);
@@ -253,12 +268,16 @@ function actionLogin(): void {
     // 3. Login bersih -> buat sesi baru (ATOMIC: cegah race condition)
     $db->beginTransaction();
     try {
-        // Ambil token lama untuk invalidate cache sebelum dihapus
-        $oldStmt = $db->prepare("SELECT token FROM sessions WHERE machine_id = :m FOR UPDATE");
+        // Ambil token + username lama untuk invalidate cache dan bersihkan history
+        $oldStmt = $db->prepare("SELECT token, username FROM sessions WHERE machine_id = :m FOR UPDATE");
         $oldStmt->execute([':m' => $machine]);
         $oldRow = $oldStmt->fetch();
         if ($oldRow) {
             invalidateSessionCache($oldRow['token']);
+            // Bersihkan takeover history user lama jika beda user
+            if ($oldRow['username'] !== $username) {
+                clearTakeoverHistory($db, $oldRow['username'], $machine);
+            }
         }
 
         clearTakeoverHistory($db, $username, $machine);
@@ -267,7 +286,7 @@ function actionLogin(): void {
         $db->commit();
     } catch (Throwable $e) {
         $db->rollBack();
-        fail('Gagal membuat sesi: ' . $e->getMessage());
+        fail('Gagal membuat sesi. Coba lagi.');
     }
 
     ok(['token' => $token, 'username' => $username, 'takeoverDirect' => $force]);
@@ -339,7 +358,7 @@ function actionChangePassword(): void {
 }
 
 function actionValidate(): void {
-    $token = bearerToken() ?? (string) param('token', '');
+    $token = getBearerToken();
     if ($token === '') fail('Token tidak diberikan.', 401);
 
     $result = validateToken($token);
@@ -350,7 +369,7 @@ function actionValidate(): void {
 
 function actionCheckTakeover(): void {
     $username     = trim((string) param('username', ''));
-    $currentToken = (string) param('token', '') ?: (bearerToken() ?? '');
+    $currentToken = (string)(body()['token'] ?? '');
     $machine      = trim((string) param('machine', ''));
 
     if ($username === '' || $machine === '') fail('username dan machine wajib diisi.');
@@ -418,7 +437,7 @@ function actionTakeoverDecision(): void {
             $db->commit();
         } catch (Throwable $e) {
             $db->rollBack();
-            fail('Gagal memproses keputusan: ' . $e->getMessage());
+            fail('Gagal memproses. Coba lagi.');
         }
     } else {
         $db->prepare(
@@ -478,10 +497,8 @@ function actionTakeoverStatus(): void {
     }
 
     if ($isExpired) {
-        // Ambil / increment timeout_count dari sisi client atau DB
-        // GAS menggunakan Props terpisah; di PHP kita simpan di takeover_requests
-        // Tapi jika request sudah dihapus, kita tidak bisa increment.
-        // Gunakan session temporary counter - simpan di takeover_requests baru dengan status EXPIRED
+        // Request sudah dihapus -- ambil MAX timeout_count yang tersimpan lalu increment.
+        // Simpan entry baru ber-status EXPIRED sebagai counter; ON CONFLICT update saja.
         $stmt2 = $db->prepare(
             "SELECT COALESCE(MAX(timeout_count),0) AS cnt
              FROM takeover_requests
@@ -539,6 +556,6 @@ try {
     };
 } catch (Throwable $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Server error: ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Server error. Coba lagi.']);
     exit;
 }

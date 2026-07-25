@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS sessions (
     token      VARCHAR(255) PRIMARY KEY,
     username   VARCHAR(100) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
-    machine_id VARCHAR(100) NOT NULL,
+    machine_id VARCHAR(100) NOT NULL UNIQUE,  -- satu session aktif per mesin
     expires_at TIMESTAMPTZ NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS takeover_requests (
     status          VARCHAR(20) NOT NULL DEFAULT 'PENDING',
     timeout_count   INTEGER NOT NULL DEFAULT 0,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    UNIQUE (username, machine_id, requester_token)  -- untuk ON CONFLICT di timeout handling
 );
 
 CREATE TABLE IF NOT EXISTS settings (

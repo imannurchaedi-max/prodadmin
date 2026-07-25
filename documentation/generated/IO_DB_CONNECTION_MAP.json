@@ -1,0 +1,788 @@
+{
+  "summary": {
+    "generated_at": "2026-07-07T06:01:07.956019+00:00",
+    "function_node_count": 273,
+    "function_edge_count": 408,
+    "endpoint_contract_count": 23,
+    "io_db_contract_count": 23,
+    "db_table_touch_count": 15,
+    "db_tables_touched": [
+      "audit_logs",
+      "conversions",
+      "material_hourly_usage",
+      "material_suppliers",
+      "photo_migration",
+      "photo_migration_map",
+      "production_outputs",
+      "production_reports",
+      "sessions",
+      "settings",
+      "suppliers",
+      "takeover_requests",
+      "transaction_materials",
+      "transactions",
+      "users"
+    ],
+    "risk_endpoint_count": 22,
+    "risk_endpoints": [
+      "api/admin.php::logs::POST",
+      "api/admin.php::photoProgress::GET",
+      "api/admin.php::verifyAdmin::POST",
+      "api/auth.php::changePassword::POST",
+      "api/auth.php::logout::POST",
+      "api/config.php::get::GET",
+      "api/config.php::save::POST",
+      "api/conversions.php::delete::POST",
+      "api/conversions.php::list::GET",
+      "api/conversions.php::save::POST",
+      "api/history.php::paged::GET",
+      "api/init.php::__default__::GET",
+      "api/materials.php::delete::POST",
+      "api/materials.php::saveList::POST",
+      "api/materials.php::update::POST",
+      "api/photos.php::__default__::POST",
+      "api/settings.php::__default__::GET",
+      "api/settings.php::__default__::POST",
+      "api/transactions.php::delete::POST",
+      "api/transactions.php::diff::GET"
+    ],
+    "trace_entrypoints": [
+      {
+        "symptom": "Login / takeover / session",
+        "start_with": [
+          "api/auth.php",
+          "generated/IO_DB_CONNECTION_MAP.md",
+          "generated/FUNCTION_DEPENDENCY_MAP.md"
+        ]
+      },
+      {
+        "symptom": "History / table / photo / loss / berat",
+        "start_with": [
+          "api/history.php",
+          "generated/IO_DB_CONNECTION_MAP.md",
+          "generated/IO_DEPENDENCY_MAP.md"
+        ]
+      },
+      {
+        "symptom": "Submit / revise / finalize",
+        "start_with": [
+          "api/transactions.php",
+          "generated/FUNCTION_DB_MAP.md",
+          "generated/IO_DB_CONNECTION_MAP.md"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "endpoint_key": "api/admin.php::logs::POST",
+      "backend_file": "api/admin.php",
+      "backend_block": "action:logs",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "audit_logs",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "settings",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/admin.php::photoProgress::GET",
+      "backend_file": "api/admin.php",
+      "backend_block": "action:photoProgress",
+      "input_keys": [],
+      "response_keys": [
+        "doneCount",
+        "failedCount",
+        "firstAnyDone",
+        "firstFullyDone",
+        "fullDays",
+        "lastAnyDone",
+        "lastFullyDone",
+        "latestDays",
+        "partialDays",
+        "pendingCount",
+        "progressPct",
+        "range",
+        "summary",
+        "totalCount"
+      ],
+      "tables": [
+        {
+          "table": "photo_migration",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "photo_migration_map",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "transaction_materials",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/admin.php::verifyAdmin::POST",
+      "backend_file": "api/admin.php",
+      "backend_block": "action:verifyAdmin",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "settings",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/auth.php::changePassword::POST",
+      "backend_file": "api/auth.php",
+      "backend_block": "actionChangePassword",
+      "input_keys": [
+        "newPass",
+        "oldPass",
+        "username"
+      ],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "users",
+          "operations": [
+            "SELECT",
+            "UPDATE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/auth.php::logout::POST",
+      "backend_file": "api/auth.php",
+      "backend_block": "actionLogout",
+      "input_keys": [
+        "machine"
+      ],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "sessions",
+          "operations": [
+            "DELETE",
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "takeover_requests",
+          "operations": [
+            "DELETE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/auth.php::validate::GET",
+      "backend_file": "api/auth.php",
+      "backend_block": "actionValidate",
+      "input_keys": [
+        "token"
+      ],
+      "response_keys": [
+        "isAdmin",
+        "username"
+      ],
+      "tables": [
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "api/auth.php::validateToken"
+          ]
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "api/auth.php::validateToken"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/config.php::get::GET",
+      "backend_file": "api/config.php",
+      "backend_block": "action:get",
+      "input_keys": [],
+      "response_keys": [
+        "aliases",
+        "aliasesRaw",
+        "mesin",
+        "mesinRaw",
+        "size",
+        "sizeRaw"
+      ],
+      "tables": [
+        {
+          "table": "settings",
+          "operations": [
+            "REFERENCE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/config.php::save::POST",
+      "backend_file": "api/config.php",
+      "backend_block": "action:save",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "settings",
+          "operations": [
+            "INSERT"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/conversions.php::delete::POST",
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:delete",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "conversions",
+          "operations": [
+            "DELETE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/conversions.php::list::GET",
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:list",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "conversions",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/conversions.php::save::POST",
+      "backend_file": "api/conversions.php",
+      "backend_block": "action:save",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "conversions",
+          "operations": [
+            "DELETE",
+            "INSERT",
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/history.php::paged::GET",
+      "backend_file": "api/history.php",
+      "backend_block": "action:paged",
+      "input_keys": [],
+      "response_keys": [
+        "data",
+        "page",
+        "total",
+        "totalPages"
+      ],
+      "tables": [
+        {
+          "table": "material_hourly_usage",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "production_outputs",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "production_reports",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "transaction_materials",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "JOIN",
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/init.php::__default__::GET",
+      "backend_file": "api/init.php",
+      "backend_block": "__file_scope__",
+      "input_keys": [],
+      "response_keys": [
+        "suppliers",
+        "conversion",
+        "config"
+      ],
+      "tables": [
+        {
+          "table": "conversions",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "material_suppliers",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "settings",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "suppliers",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/materials.php::delete::POST",
+      "backend_file": "api/materials.php",
+      "backend_block": "action:delete",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "suppliers",
+          "operations": [
+            "DELETE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/materials.php::saveList::POST",
+      "backend_file": "api/materials.php",
+      "backend_block": "action:saveList",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "suppliers",
+          "operations": [
+            "INSERT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/materials.php::update::POST",
+      "backend_file": "api/materials.php",
+      "backend_block": "action:update",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "material_suppliers",
+          "operations": [
+            "DELETE",
+            "INSERT"
+          ],
+          "via": []
+        },
+        {
+          "table": "suppliers",
+          "operations": [
+            "INSERT",
+            "SELECT",
+            "UPDATE"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/photos.php::__default__::POST",
+      "backend_file": "api/photos.php",
+      "backend_block": "__file_scope__",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": []
+    },
+    {
+      "endpoint_key": "api/settings.php::__default__::GET",
+      "backend_file": "api/settings.php",
+      "backend_block": "method:GET",
+      "input_keys": [],
+      "response_keys": [
+        "broadcastActive",
+        "broadcastMsg",
+        "enableHandover",
+        "lockDate"
+      ],
+      "tables": [
+        {
+          "table": "settings",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/settings.php::__default__::POST",
+      "backend_file": "api/settings.php",
+      "backend_block": "method:POST",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "settings",
+          "operations": [
+            "INSERT"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::delete::POST",
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionDelete",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "audit_logs",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "api/transactions.php::logAction"
+          ]
+        },
+        {
+          "table": "production_outputs",
+          "operations": [
+            "UPDATE"
+          ],
+          "via": []
+        },
+        {
+          "table": "production_reports",
+          "operations": [
+            "UPDATE"
+          ],
+          "via": []
+        },
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "UPDATE"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::diff::GET",
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionDiff",
+      "input_keys": [
+        "uuid"
+      ],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "production_outputs",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "production_reports",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "transaction_materials",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::finalize::POST",
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionFinalize",
+      "input_keys": [],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "audit_logs",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "api/transactions.php::logAction"
+          ]
+        },
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "SELECT",
+            "UPDATE"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint_key": "api/transactions.php::previousStock::GET",
+      "backend_file": "api/transactions.php",
+      "backend_block": "actionPreviousStock",
+      "input_keys": [
+        "date",
+        "mesin",
+        "shift"
+      ],
+      "response_keys": [],
+      "tables": [
+        {
+          "table": "sessions",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        },
+        {
+          "table": "transaction_materials",
+          "operations": [
+            "JOIN"
+          ],
+          "via": []
+        },
+        {
+          "table": "transactions",
+          "operations": [
+            "SELECT"
+          ],
+          "via": []
+        },
+        {
+          "table": "users",
+          "operations": [
+            "CALL"
+          ],
+          "via": [
+            "config/auth_helper.php::requireSession"
+          ]
+        }
+      ]
+    }
+  ]
+}

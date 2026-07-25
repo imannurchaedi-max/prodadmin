@@ -25,7 +25,7 @@ function sanitizeDate(?string $value, string $fallback): string {
     return $value;
 }
 
-// H1: bearerToken() and requireAuth() removed — use requireSession() from auth_helper.php
+// bearerToken() and requireAuth() removed -- use requireSession() from auth_helper.php
 
 $action  = trim((string)($_GET['action'] ?? 'paged'));
 $db      = getDb();
@@ -174,6 +174,7 @@ if ($action === 'paged' || $action === 'admin') {
             'in'       => (float)$row['stock_in'],
             'retur'    => (float)$row['stock_return'],
             'reject'   => (float)$row['reject_amount'],
+            'prod'     => (float)$row['production_amount'],
             'total'    => (float)$row['total_usage'],
             'sisa'     => (float)$row['stock_final'],
             'hours'    => $hours24,

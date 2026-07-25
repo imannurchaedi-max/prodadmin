@@ -23,14 +23,14 @@ function body(): array {
     return $b;
 }
 
-// H1: bearerToken() and requireAuth() removed â€” use requireSession() from auth_helper.php
+// bearerToken() and requireAuth() removed -- use requireSession() from auth_helper.php
 
 $db     = getDb();
 $action = trim((string)($_GET['action'] ?? body()['action'] ?? ''));
 
 // -- verifyAdmin - tidak butuh session token -----------------------------------
 if ($action === 'verifyAdmin') {
-    // C3: rate-limit PIN attempts â€” max 5 per IP per 5 minutes (via APCu)
+    // Rate-limit PIN attempts -- max 5 per IP per 5 minutes (via APCu)
     $ip    = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $rlKey = 'admin_verify_' . hash('sha256', $ip);
     if (function_exists('apcu_fetch')) {
@@ -40,7 +40,7 @@ if ($action === 'verifyAdmin') {
         }
         apcu_store($rlKey, $attempts + 1, 300);
     }
-    // H6: read PIN from request body only â€” never from URL query params
+    // PIN from request body only -- never from URL query params
     $pin    = (string)(body()['pin'] ?? '');
     $stored = $db->query("SELECT value FROM settings WHERE key='ADMIN_PIN'")->fetchColumn();
     $ok     = $pin === (string)$stored;
@@ -125,10 +125,10 @@ if ($action === 'stats') {
 
 // -- logs (audit) --------------------------------------------------------------
 if ($action === 'logs') {
-    // H6: PIN must come from request body â€” never from URL query params
+    // PIN must come from request body -- never from URL query params
     $pin    = (string)(body()['pin'] ?? '');
     $stored = $db->query("SELECT value FROM settings WHERE key='ADMIN_PIN'")->fetchColumn();
-    if ($pin !== (string)$stored) ok([]); // kembalikan kosong jika PIN salah (sama dengan GAS)
+    if ($pin !== (string)$stored) ok([]); // kembalikan array kosong jika PIN salah
 
     $logs = $db->query(
         "SELECT to_char(timestamp,'DD-MM HH24:MI') AS time, actor, action, details
@@ -245,7 +245,6 @@ if ($action === 'changePassword') {
 
     if (!$username || !$oldPass || !$newPass) fail('username, oldPass, newPass wajib.');
 
-    // H7: removed dead code ($row = ... ? null : null) that was here
     $stmt = $db->prepare("SELECT password_hash FROM users WHERE username=:u");
     $stmt->execute([':u' => $username]);
     $user = $stmt->fetch();

@@ -23,12 +23,8 @@ function body(): array {
     return $b;
 }
 
-function requireAuth(PDO $db): array {
-    return requireSession($db);
-}
-
 $db      = getDb();
-$session = requireAuth($db);
+$session = requireSession($db);
 $b       = body();
 $action  = trim((string)($_GET['action'] ?? $b['action'] ?? ''));
 

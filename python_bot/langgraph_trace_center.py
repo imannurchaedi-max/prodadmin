@@ -15,7 +15,7 @@ from langgraph.graph import END, START, StateGraph
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-ACTIVE_ROOT = PROJECT_ROOT / "active"
+ACTIVE_ROOT = PROJECT_ROOT  # no "active" subdir; files live directly in project root
 API_DIR = ACTIVE_ROOT / "api"
 JS_DIR = ACTIVE_ROOT / "assets" / "app"
 DOC_DIR = PROJECT_ROOT / "documentation"
@@ -24,7 +24,7 @@ FUNCTION_DB_JSON = GENERATED_DIR / "FUNCTION_DB_MAP.json"
 ENDPOINT_UI_JSON = GENERATED_DIR / "ENDPOINT_UI_MAP.json"
 GIT_CMD_DIR = Path(r"C:\Program Files\Git\cmd")
 DOT_EXE = "dot"
-GITNEXUS_REPO = "prod3-local"
+GITNEXUS_REPO = "ProdAdmin"
 
 PHP_FUNCTION_REGEX = re.compile(r"function\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(", re.M)
 JS_FUNCTION_REGEXES = (
@@ -335,7 +335,7 @@ def build_endpoint_contracts(state: TraceState) -> TraceState:
         grouped[(consumer["endpoint_base"], consumer["endpoint_action"], consumer["method"])].append(consumer)
 
     for (endpoint_base, action, method), uses in sorted(grouped.items()):
-        backend_file = f"active/{endpoint_base.lstrip('./')}" if endpoint_base.startswith("api/") else f"active/api/{endpoint_base.lstrip('./')}"
+        backend_file = endpoint_base.lstrip("./") if endpoint_base.startswith("api/") else f"api/{endpoint_base.lstrip('./')}"
         action_meta = backend.get(backend_file, {}).get("actions", {}).get(action)
         if action_meta is None and action == "__default__":
             action_meta = backend.get(backend_file, {}).get("actions", {}).get(method)
@@ -463,15 +463,15 @@ def summarize(state: TraceState) -> TraceState:
         "trace_entrypoints": [
             {
                 "symptom": "Login / takeover / session",
-                "start_with": ["active/api/auth.php", "generated/IO_DB_CONNECTION_MAP.md", "generated/FUNCTION_DEPENDENCY_MAP.md"],
+                "start_with": ["api/auth.php", "generated/IO_DB_CONNECTION_MAP.md", "generated/FUNCTION_DEPENDENCY_MAP.md"],
             },
             {
                 "symptom": "History / table / photo / loss / berat",
-                "start_with": ["active/api/history.php", "generated/IO_DB_CONNECTION_MAP.md", "generated/IO_DEPENDENCY_MAP.md"],
+                "start_with": ["api/history.php", "generated/IO_DB_CONNECTION_MAP.md", "generated/IO_DEPENDENCY_MAP.md"],
             },
             {
                 "symptom": "Submit / revise / finalize",
-                "start_with": ["active/api/transactions.php", "generated/FUNCTION_DB_MAP.md", "generated/IO_DB_CONNECTION_MAP.md"],
+                "start_with": ["api/transactions.php", "generated/FUNCTION_DB_MAP.md", "generated/IO_DB_CONNECTION_MAP.md"],
             },
         ],
     }

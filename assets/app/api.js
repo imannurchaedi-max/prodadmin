@@ -108,7 +108,10 @@
 
       const viewInput = document.getElementById("viewInput");
       if (viewInput && viewInput.contains(e.target) && !viewInput.classList.contains("d-none")) {
-          if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") {
+          // Jangan submit jika Enter ditekan di output rows atau material table — hanya di header form
+          const inOutputRow = !!e.target.closest("[data-output-row]");
+          const inTableBody = !!e.target.closest("#tableBody");
+          if (!inOutputRow && !inTableBody && (e.target.tagName === "INPUT" || e.target.tagName === "SELECT")) {
               e.preventDefault();
               const btnSubmit = document.getElementById("btnSubmit");
               if (btnSubmit && !btnSubmit.disabled) btnSubmit.click();

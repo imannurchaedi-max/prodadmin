@@ -13,7 +13,7 @@ from langgraph.graph import END, START, StateGraph
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-ACTIVE_ROOT = PROJECT_ROOT / "active"
+ACTIVE_ROOT = PROJECT_ROOT  # no "active" subdir; files live directly in project root
 PYTHON_BOT_DIR = PROJECT_ROOT / "python_bot"
 SQL_SCHEMA = ACTIVE_ROOT / "sql" / "setup_fresh.sql"
 API_DIR = ACTIVE_ROOT / "api"

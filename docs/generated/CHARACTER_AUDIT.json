@@ -1,0 +1,732 @@
+{
+  "findings": [
+    {
+      "path": ".claude/settings.local.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 7,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 22,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 22,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 6,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 15,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "decode_ok": true,
+      "non_ascii_count": 34,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".gitnexus/meta.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".gitnexus/parse-cache/28672352754a40dade29e078ad495dba66b5dba68f6133d8bb647d09fe275cb8.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".gitnexus/parse-cache/index.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": ".mcp.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "AGENTS.md",
+      "decode_ok": true,
+      "non_ascii_count": 4,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "CLAUDE.md",
+      "decode_ok": true,
+      "non_ascii_count": 4,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "api/admin.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/auth.php",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "api/config.php",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/conversions.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/history.php",
+      "decode_ok": true,
+      "non_ascii_count": 2,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "api/init.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/materials.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/migration_api.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "api/photos.php",
+      "decode_ok": true,
+      "non_ascii_count": 3,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/settings.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/transactions.php",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/Sortable.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/animate.min.css",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/app/admin.js",
+      "decode_ok": true,
+      "non_ascii_count": 2,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "assets/app/api.js",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "assets/app/auth.js",
+      "decode_ok": true,
+      "non_ascii_count": 2,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "assets/app/form.js",
+      "decode_ok": true,
+      "non_ascii_count": 13,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "assets/bootstrap.bundle.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/bootstrap.min.css",
+      "decode_ok": true,
+      "non_ascii_count": 2,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/chart.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/fontawesome.min.css",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/html2canvas.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 502,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/style.css",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/sweetalert2.all.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "assets/xlsx.full.min.js",
+      "decode_ok": true,
+      "non_ascii_count": 122918,
+      "mojibake_count": 51698,
+      "runtime_file": false
+    },
+    {
+      "path": "config/auth_helper.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "config/database.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/README.md",
+      "decode_ok": true,
+      "non_ascii_count": 13,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/architecture-overview.md",
+      "decode_ok": true,
+      "non_ascii_count": 81,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/auth-flow.md",
+      "decode_ok": true,
+      "non_ascii_count": 30,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/blast-radius.md",
+      "decode_ok": true,
+      "non_ascii_count": 142,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/function-map.md",
+      "decode_ok": true,
+      "non_ascii_count": 56,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/generated/CHARACTER_AUDIT.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/generated/CHARACTER_AUDIT.md",
+      "decode_ok": true,
+      "non_ascii_count": 2,
+      "mojibake_count": 2,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/io-dependency.md",
+      "decode_ok": true,
+      "non_ascii_count": 23,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/python-bot.md",
+      "decode_ok": true,
+      "non_ascii_count": 60,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "docs/transaction-flow.md",
+      "decode_ok": true,
+      "non_ascii_count": 50,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/TRACE_CENTER.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/AUDIT_RUN.json",
+      "decode_ok": true,
+      "non_ascii_count": 23,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/AUDIT_RUN.md",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/CODEBASE_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/CODEBASE_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/ENDPOINT_UI_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/ENDPOINT_UI_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/FUNCTION_DB_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/FUNCTION_DB_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/FUNCTION_DEPENDENCY_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 34,
+      "mojibake_count": 5,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/FUNCTION_DEPENDENCY_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/IO_DB_CONNECTION_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/IO_DB_CONNECTION_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/IO_DEPENDENCY_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "documentation/generated/IO_DEPENDENCY_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "import_excel.py",
+      "decode_ok": true,
+      "non_ascii_count": 203,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "index.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": true
+    },
+    {
+      "path": "index_ASUSVIVO_May-26-130321-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/character_audit.py",
+      "decode_ok": true,
+      "non_ascii_count": 5,
+      "mojibake_count": 5,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/db_config.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/documentation/generated/AUDIT_RUN.json",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/documentation/generated/AUDIT_RUN.md",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/documentation/generated/CODEBASE_MAP.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/documentation/generated/CODEBASE_MAP.md",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/import_excel.py",
+      "decode_ok": true,
+      "non_ascii_count": 203,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_audit_protocol.py",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_codebase_map.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_dynamic_audit.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_endpoint_ui_map.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_function_db_map.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/langgraph_trace_center.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/migration_progress.json",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/rehash_users.php",
+      "decode_ok": true,
+      "non_ascii_count": 1,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/setup.php",
+      "decode_ok": true,
+      "non_ascii_count": 2233,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 2233,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/setup_photo_migration.py",
+      "decode_ok": true,
+      "non_ascii_count": 332,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_auth.php",
+      "decode_ok": true,
+      "non_ascii_count": 184,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_auth_http.php",
+      "decode_ok": true,
+      "non_ascii_count": 127,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_db.py",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_e2e.py",
+      "decode_ok": true,
+      "non_ascii_count": 623,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_module2.py",
+      "decode_ok": true,
+      "non_ascii_count": 473,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_transactions.php",
+      "decode_ok": true,
+      "non_ascii_count": 706,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_transactions_ASUSVIVO_May-26-130309-2026_Conflict.php",
+      "decode_ok": true,
+      "non_ascii_count": 706,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "python_bot/test_txn_py.py",
+      "decode_ok": true,
+      "non_ascii_count": 6,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "sql/migration_v2_scale100.sql",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "sql/setup_fresh.sql",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "tools/migrate_photos.php",
+      "decode_ok": true,
+      "non_ascii_count": 382,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "tools/migration_wizard.php",
+      "decode_ok": true,
+      "non_ascii_count": 10,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "tools/run_migration_v2.php",
+      "decode_ok": true,
+      "non_ascii_count": 6,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "tools/setup.php",
+      "decode_ok": true,
+      "non_ascii_count": 2387,
+      "mojibake_count": 0,
+      "runtime_file": false
+    },
+    {
+      "path": "tools/smoke.php",
+      "decode_ok": true,
+      "non_ascii_count": 0,
+      "mojibake_count": 0,
+      "runtime_file": false
+    }
+  ]
+}

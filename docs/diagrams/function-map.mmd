@@ -1,0 +1,151 @@
+graph LR
+    subgraph APP["Cluster: App — assets/app/"]
+        subgraph API_JS["api.js (App global state)"]
+            state_obj(["state{token,username,\nmachine,isAdmin,\nconfig,materials,\nhistory,editUuid}"])
+            fn_api(["api(path, options)\n→ fetch + Bearer token"])
+            fn_save(["saveSession()\n→ localStorage"])
+            fn_clear(["clearSession()"])
+            fn_fmt(["fmt(value, digits)\n→ id-ID locale"])
+            fn_esc(["esc(value)\n→ HTML escape"])
+            fn_toast(["toast(icon, title, text)\n→ SweetAlert2"])
+            fn_shift(["currentShiftHours(shift)\n→ [07..14|15..22|23..06]"])
+            fn_shiftIdx(["getShiftStartIndex(shift)\n→ 0|8|16"])
+        end
+
+        subgraph AUTH_JS["auth.js"]
+            fn_submit(["submitLogin()"])
+            fn_doLogin(["doLogin(user,pass,mach,\nisAdmin,force)"])
+            fn_validate(["validateExistingSession()"])
+            fn_rawJson(["rawJson(path, body)\n→ POST JSON"])
+            fn_afterLogin(["afterLogin()\n→ loadConfig,loadMaterials\nloadHistory,setVisible"])
+            fn_waitTO(["waitForTakeover(user,\ntempToken,machine)"])
+            fn_enterAdmin(["enterAdminMode()"])
+            fn_exitAdmin(["exitAdminMode()"])
+            fn_startTO(["startTakeoverMonitor()"])
+            fn_loadMach(["loadLoginMachines()"])
+            fn_setVisible(["setAppVisible(bool)"])
+            fn_updateBadge(["updateUserBadge()"])
+            fn_logout(["handleLogout()"])
+        end
+
+        subgraph FORM_JS["form.js"]
+            fn_renderHist(["renderHistoryCards\n(targetId, rows, isAdmin)"])
+            fn_renderMatTable(["renderMaterialTable()"])
+            fn_renderMatList(["renderMaterialList(materials)"])
+            fn_collectOut(["collectOutputs()"])
+            fn_snapshot(["snapshotRows()"])
+            fn_defaultRow(["defaultMaterialRow()"])
+            fn_getActive(["getActiveMaterials()"])
+            fn_populate(["populateFormFromHistory(rpt)"])
+            fn_ensureRows(["ensureOutputRows()"])
+            fn_comp(["comp(selector)\n→ getElementById"])
+        end
+    end
+
+    subgraph API["Cluster: Api — api/ + config/"]
+        subgraph CFG["config/"]
+            fn_getDb(["getDb()\n← CRITICAL\nPDO singleton"])
+            fn_reqSess(["requireSession(db)\n← CRITICAL\n→ validateToken"])
+            fn_authFail(["authFail(msg)\n→ 401 JSON"])
+            fn_getBearer(["getBearerToken()\n→ Authorization header"])
+        end
+
+        subgraph AUTH_PHP["api/auth.php"]
+            fn_actionLogin(["actionLogin()"])
+            fn_actionLogout(["actionLogout()"])
+            fn_actionForce(["actionForceLogin()"])
+            fn_actionValidate(["actionValidate()"])
+            fn_actionChangePw(["actionChangePassword()"])
+            fn_actionCheckTO(["actionCheckTakeover()"])
+            fn_actionTODecision(["actionTakeoverDecision()"])
+            fn_actionTOStatus(["actionTakeoverStatus()"])
+            fn_createSession(["createSession(db,user,mach)\n→ generateToken()"])
+            fn_deleteSession(["deleteSession(db,user,mach)"])
+            fn_validateToken(["validateToken(db,token)"])
+            fn_genToken(["generateToken()\n→ bin2hex(32)"])
+            fn_getPending(["getPendingTakeover(db,mach)"])
+            fn_getAdminPin(["getAdminPin(db)"])
+        end
+
+        subgraph TXN_PHP["api/transactions.php"]
+            fn_actSubmit(["actionSubmit()"])
+            fn_actRevise(["actionRevise()"])
+            fn_actFinalize(["actionFinalize()"])
+            fn_actDelete(["actionDelete() — admin"])
+            fn_actPrevStock(["actionPreviousStock()"])
+            fn_actDiff(["actionDiff()"])
+            fn_insertTxn(["insertTransaction(db,uuid,\ndate,shift,mesin,size,\nrev,by,materials,\noutputs,report)"])
+            fn_calcMat(["calcMaterial(mat, shift)\n→ {stockAwal,masuk,retur\nreject,totalProd,\ntotalPakai,sisa,hours24}"])
+            fn_getLock(["getLockDate(db)"])
+            fn_genUuid(["genUuid()\n→ UUID v4"])
+            fn_logAction(["logAction(db,user,\naction,detail)"])
+        end
+    end
+
+    subgraph PYBOT["Cluster: Python_bot — python_bot/"]
+        subgraph LTC["langgraph_trace_center.py"]
+            py_readJson(["read_json(path)"])
+            py_buildEdges(["build_function_edges(state)"])
+            py_enrich(["enrich_gitnexus(state)"])
+            py_summarize(["summarize(state)"])
+            py_buildDot(["build_io_db_dot(state)"])
+            py_renderMd(["render_function_dependency_markdown(state)"])
+        end
+        subgraph LAP["langgraph_audit_protocol.py"]
+            py_preflight(["phase_preflight(state)"])
+            py_contracts(["phase_contracts(state)"])
+            py_deps(["phase_dependencies(state)"])
+            py_phaseStatus(["phase_status(checks)"])
+        end
+        subgraph LCM["langgraph_codebase_map.py"]
+            py_discover(["discover_files(state)"])
+            py_readText(["read_text(path)"])
+            py_loadGN(["load_gitnexus(state)"])
+            py_countLines(["count_lines(path)"])
+        end
+        subgraph LFDB["langgraph_function_db_map.py"]
+            py_collectFn(["collect_functions(state)"])
+            py_findBlocks(["find_named_function_blocks(src)"])
+        end
+    end
+
+    %% App → Api calls
+    fn_submit --> fn_doLogin
+    fn_doLogin --> fn_rawJson
+    fn_doLogin --> fn_afterLogin
+    fn_doLogin --> fn_save
+    fn_doLogin --> fn_waitTO
+    fn_validate --> fn_api
+    fn_validate --> fn_save
+    fn_validate --> fn_clear
+    fn_validate --> fn_afterLogin
+    fn_enterAdmin --> fn_api
+    fn_logout --> fn_api
+    fn_renderHist --> fn_populate
+    fn_renderHist --> fn_fmt
+    fn_renderHist --> fn_esc
+    fn_renderHist --> fn_toast
+    fn_renderHist --> fn_shift
+    fn_renderHist --> fn_comp
+
+    %% Api internal
+    fn_actionLogin --> fn_getDb
+    fn_actionLogin --> fn_createSession
+    fn_actSubmit --> fn_getDb
+    fn_actSubmit --> fn_reqSess
+    fn_actSubmit --> fn_insertTxn
+    fn_actSubmit --> fn_logAction
+    fn_actRevise --> fn_getDb
+    fn_actRevise --> fn_reqSess
+    fn_actRevise --> fn_insertTxn
+    fn_insertTxn --> fn_calcMat
+    fn_createSession --> fn_genToken
+    fn_reqSess --> fn_validateToken
+    fn_reqSess --> fn_authFail
+
+    %% Python_bot graph
+    py_discover --> py_readText
+    py_loadGN --> py_readJson
+    py_collectFn --> py_findBlocks
+    py_buildEdges --> py_enrich
+    py_buildEdges --> py_summarize

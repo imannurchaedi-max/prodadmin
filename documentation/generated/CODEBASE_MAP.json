@@ -1,0 +1,512 @@
+{
+  "repo": {
+    "root": "C:\\xampp\\htdocs\\ProdAdmin",
+    "generated_at": "2026-07-07T16:30:29.351820+00:00"
+  },
+  "gitnexus": {
+    "repoPath": "C:\\xampp\\htdocs\\ProdAdmin",
+    "lastCommit": "cf03123a04519ee2bc397fe2f6d5009f8b5a704d",
+    "indexedAt": "2026-07-07T05:56:48.707Z",
+    "stats": {
+      "files": 74,
+      "nodes": 1812,
+      "edges": 2934,
+      "communities": 108,
+      "processes": 114,
+      "embeddings": 0
+    },
+    "capabilities": {
+      "graph": {
+        "provider": "ladybugdb",
+        "status": "available"
+      },
+      "fts": {
+        "provider": "ladybugdb-fts",
+        "status": "available"
+      },
+      "vectorSearch": {
+        "provider": "exact-scan",
+        "status": "unavailable",
+        "exactScanLimit": 10000,
+        "reason": "LadybugDB VECTOR is disabled on this platform; semantic search uses exact scan when embeddings exist."
+      }
+    },
+    "schemaVersion": 1,
+    "fileHashes": {
+      "index_ASUSVIVO_May-26-130321-2026_Conflict.php": "47ac9641ef141d8c82c9d3511708d5b56af9fb3ec789da923f690ddd7f9312b0",
+      "index.php": "f87b95e06e363c839addecddb70055db9609f4dea8dc3470b2f9a52505ad1c26",
+      "import_excel.py": "7a6f793aeeb10413e11052ecfb8f367f27b40533a7b867886975d88d128aade1",
+      "CLAUDE.md": "bfd8716acc15bb879910a6b1af19c3bb9091f827ed5ea374c3644820aa50abe4",
+      "AGENTS.md": "bfd8716acc15bb879910a6b1af19c3bb9091f827ed5ea374c3644820aa50abe4",
+      "sql/setup_fresh.sql": "44e624e3d4f85fc39f5baf047664d00cf9fdbd4a8c0cd38bd6c72e3b23464b18",
+      "sql/migration_v2_scale100.sql": "fa55148c6bd49a43da43b649cf539b54dda3c184e13fb1591efaf042f94854e0",
+      "tools/smoke.php": "badd5f391b18c588617c2407dac50e2730c48a3160a698e67b1082f9c2f68001",
+      "tools/setup.php": "066fbf3a5920b3d34a93ea78373700645bf32c3b481cb10c0c0aa270499e5d82",
+      "tools/run_migration_v2.php": "b13fed0cf95745e70305871032a610a350337bd28c127c0eefc601f2f6f64a5c",
+      "tools/migration_wizard.php": "884af2ab7776ebf6bf0242ea348d243ce903780dffb79ad64c02695422db3c4e",
+      "tools/migrate_photos.php": "f109293357a6a89f7c6b50d61da1a3620f858d33c58dbdf13d42634443cc743c",
+      "docs/transaction-flow.md": "b6a61d5d98086947f81b68a6815c76690e5d7d71f7fe6be6eab82c8f42f70262",
+      "docs/README.md": "f4e7167f33479f04f16c3d83f3822040625bd3f827be9d463fe6f99fd6920e47",
+      "docs/python-bot.md": "03d02b79dae77e0949c777c0fee26ad29a84c7d9f6e7a23fc133d13c02f0812f",
+      "docs/io-dependency.md": "8518d8914ef1822ced4d193205c220bca1e95e304daf96d5820e7fe689c41e92",
+      "docs/function-map.md": "335002f1e27812e631c123c95d8f9e177fa56abfe04c63da3653192172ab5f35",
+      "docs/blast-radius.md": "b86f4a57c02878a1df263af9c076cd519192a89ae2a7c306bd223578b0bf996c",
+      "docs/auth-flow.md": "d738deb7f00f53891d179963b8b16a75fdb41dca296787126c4c5fe463d52e9e",
+      "docs/architecture-overview.md": "13012aa83906c998978f3d1c6e91a0cc9aaad49b7cda6d2b578945ab52bea123",
+      "config/database.php": "0a39ca999d36f902f80802f40663641255a2154caf82a1a2fe96d567017b08d6",
+      "config/auth_helper.php": "4161052e98577ab9bdf51fe1643ea40cec8d6e8b7c7ec5ce77098a98dffb1b11",
+      "python_bot/test_txn_py.py": "97a796fa34692dcfb9ca1309dde52f848dee747683ea5ac86bfca866493b790f",
+      "python_bot/test_transactions_ASUSVIVO_May-26-130309-2026_Conflict.php": "7e7393de407d011f58d5c0258282cf79ee5ab6ab34074f83060115831666115c",
+      "python_bot/test_transactions.php": "7a81e779bd3d03956b72c35a54d4e4eb16da484e60007f6429aa7666b5c3330d",
+      "python_bot/test_module2.py": "bdca8ab775b28474c555ab7c77577d83c2a58d9dacab880fb67adc7393930681",
+      "python_bot/test_e2e.py": "e6984838c4c2a3e730646ee0f8abef44c8b3b45dce35bd225a77d9d2a4edf0c5",
+      "python_bot/test_db.py": "675440db1ec14d583228fd1da01e14be1d439331459bce52626bce17bd477933",
+      "python_bot/test_auth_http.php": "04637ded230d61b9d2a237ce5e8a9528affdae82988109993a2d30cc7b0ae739",
+      "python_bot/test_auth.php": "9d0b4d8423e3e6ade8a86e01e92cd07d4c806d654e99c87d4996a1a79ef5455e",
+      "python_bot/setup_photo_migration.py": "a1f566c027207622c03b40904f581abb8502fdc5bc5b465ac929ed540099c078",
+      "python_bot/setup_database_ASUSVIVO_May-26-130315-2026_Conflict.ps1": "e38dd89fff949b7cdc38c6efb0692608885d539f02e9fba80c641ceda93efbe8",
+      "python_bot/setup_database.ps1": "e07a694f0bcc89efea7dce83a291aa29e2ac6877680679374e005a643857a41f",
+      "python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php": "76d62d101ad26b59c1331dbf57f0a5b221cba18759b957c03041ea3e52721cda",
+      "python_bot/setup.php": "20cd5f367145ea5291cfea98b71e4fd68b2dacc6c762b3d772a997f64a2c5157",
+      "python_bot/rehash_users.php": "24fd78d966dde7e1873709969128a3848f0114f63be0f6918559dd2df8746cb4",
+      "python_bot/migration_progress.json": "b4b0f771aaea8ae08825ba59e606591c2b8d2e31a227e1067e81c27b0179e17b",
+      "python_bot/langgraph_trace_center.py": "f2c29ead5603f82f715530af35ae81894f17e97bcd489352653fb9955cb51701",
+      "python_bot/langgraph_function_db_map.py": "efd3694e4ac0196ddc661b4c3373cf13143dfce6918b3fd3442c7fa96fe99f70",
+      "python_bot/langgraph_endpoint_ui_map.py": "a3a3d292dc9e9c4b8c940f53e7cbe855451f6791d436671f318820a544b58f1a",
+      "python_bot/langgraph_dynamic_audit.py": "e1b097945a7a9e15640a24967cfcf6c02a0b3075db9e3ffb9c243586001c49c2",
+      "python_bot/langgraph_codebase_map.py": "b78928bf314efdb5e7b7bed776abdc573f9c30c02446a5f7a6663e609aea0c2d",
+      "python_bot/langgraph_audit_protocol.py": "efd5357130245f50e860decaf6e47af1fb413bd640c608aa7d07e8cad55e230a",
+      "python_bot/import_excel.py": "7a6f793aeeb10413e11052ecfb8f367f27b40533a7b867886975d88d128aade1",
+      "python_bot/download_assets.sh": "70126700a2d6e6c89325b4db7934943c9c01fee918a008b6fd0d4e935f9a51c4",
+      "python_bot/deploy_to_xampp.ps1": "e561aacf3fed2f1fe4957347617920472653dbd4f2439686da7fe10c04dbd746",
+      "python_bot/db_config.py": "513de1c13c03e9c8a9961b00bfdcacc2f6e1e25b4ada1a34534823dd9529c8a6",
+      "python_bot/character_audit.py": "4fcf582abc5f100276b2f7dc63b3579338996898a08e4d223594d985b5d711e1",
+      "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php": "1e5604e4c61f3b29ffd6e798bf2eeec646433a42a35726928464719e9cb4b003",
+      "api/transactions.php": "2c847c341e2184047c6da221790affaaecd8fd159df10c01b9a2e99cf0072cd2",
+      "api/settings.php": "610fa3d658b1c07500946630ab897719d482fea8a4d63a340480756d1550e4c1",
+      "api/photos.php": "91057dcdb247a4a3f75bc21b2a860858c9fb45ad008094c2066a5e8ffed0a7bd",
+      "api/migration_api.php": "3268bab9e694524fc7dcbff067e0247bcc5f2a7618a816ccb8d271fb3d4d212c",
+      "api/materials.php": "e411e1a153707b6002ca1cd5c26bbf423346ef86bbaf273d2e53e52a7e12ee03",
+      "api/init.php": "654e5ae32b6bd847aae3bf6fbe4865e26bd84e71e88f378b67f635d3eaa6addc",
+      "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php": "019ceb4565155b15b563e2a7eace340e5ad0fb2431bb3eb8c68410f2e924006f",
+      "api/history.php": "1e326f86e64b248d4395743d32df9b6fefdef28c4218c6f0811b4e19e5990135",
+      "api/conversions.php": "d9f1cd4a3731b8df6f141e8a9a2c80d731f8334f83407798228cee7ca82b6096",
+      "api/config.php": "f2dc8aa8ec96b77503605a3b7d7e2bf0d19f6ce08c39e681787af75f2999419a",
+      "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php": "b0c898fff169b72b1faf36472e831313adcf0d58fdb6c73949392122299ef0ce",
+      "api/auth.php": "984eec5b312f2127cc130e7a8795d3319db7c8234d6a953fb84b7a38cb4b241a",
+      "api/admin.php": "9ec48e90b33a926fb20c3c224e61ac2726a9cca9b264a2917fb8f57d4faa1234",
+      "assets/style.css": "87b3940a0f8cfef84716fee94510cae9e9bb7a2f5f41435a76a3284b0f304edf",
+      "docs/diagrams/transaction-flow.mmd": "21e81294117d0965b1af072cb0d1986921264c29ec19aa7b031994202bcfb99a",
+      "docs/diagrams/python-bot.mmd": "a45ef9480ef07107dbda7b2e0efceb9cc8a335cb917e0e1c5462e7e3d20fb5ea",
+      "docs/diagrams/io-dependency.mmd": "acc08cdb0f5bb98f2a9093df511f88b395b8d96a8e31dee39b3de362e0cc4387",
+      "docs/diagrams/function-map.mmd": "ceefa0fddccfd54a0ff77d047327efb9fccab689fe5a1545b1f38c7bb6870cd3",
+      "docs/diagrams/blast-radius.mmd": "f9a2af548d0bbadeba07752301a79106ac04ad4e0bd6c22f73d930dab92db9c3",
+      "docs/diagrams/auth-flow.mmd": "f4ba4eb913fc86cba361e2ff3dceec40f56f052c82af066df063e61e5488eca8",
+      "docs/diagrams/architecture.mmd": "680817cf010101d8739888256b5e39976fad3307691b5ca249ede239e6f89692",
+      "assets/app/form.js": "c56ed43e92b38c4564dcb6f3b1713a1c2b7b706297a1f9de72d23ea8168d1347",
+      "assets/app/auth.js": "216669fb4286d62c1f61c7092a9548c4487dc74b7d1471095593610643265eb6",
+      "assets/app/api.js": "f3cef0751a9ad4db3f8605b7f6b380240ba8d0505f6a023aef3a010e4700cc05",
+      "assets/app/admin.js": "09ecb516c2c2d9ee73433d3865df899e9a910403542ade960e126825e88191d9"
+    }
+  },
+  "counts": {
+    "files": 85,
+    "lines": 21278,
+    "by_suffix": {
+      ".htaccess": 1,
+      ".json": 5,
+      ".md": 14,
+      ".php": 30,
+      ".js": 10,
+      ".css": 4,
+      ".py": 15,
+      ".ps1": 3,
+      ".sh": 1,
+      ".sql": 2
+    },
+    "by_bucket": {
+      "root_runtime": {
+        "file_count": 2,
+        "line_count": 729,
+        "largest_files": [
+          {
+            "path": "index.php",
+            "lines": 728
+          },
+          {
+            "path": ".htaccess",
+            "lines": 1
+          }
+        ]
+      },
+      "other": {
+        "file_count": 34,
+        "line_count": 9250,
+        "largest_files": [
+          {
+            "path": "python_bot/setup.php",
+            "lines": 969
+          },
+          {
+            "path": "python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php",
+            "lines": 959
+          },
+          {
+            "path": "python_bot/langgraph_trace_center.py",
+            "lines": 767
+          },
+          {
+            "path": "index_ASUSVIVO_May-26-130321-2026_Conflict.php",
+            "lines": 695
+          },
+          {
+            "path": "python_bot/langgraph_function_db_map.py",
+            "lines": 610
+          }
+        ]
+      },
+      "project_docs": {
+        "file_count": 2,
+        "line_count": 166,
+        "largest_files": [
+          {
+            "path": "documentation/TRACE_CENTER.md",
+            "lines": 123
+          },
+          {
+            "path": "CLAUDE.md",
+            "lines": 43
+          }
+        ]
+      },
+      "backend_api": {
+        "file_count": 14,
+        "line_count": 3559,
+        "largest_files": [
+          {
+            "path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+            "lines": 579
+          },
+          {
+            "path": "api/auth.php",
+            "lines": 561
+          },
+          {
+            "path": "api/transactions.php",
+            "lines": 559
+          },
+          {
+            "path": "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php",
+            "lines": 434
+          },
+          {
+            "path": "api/admin.php",
+            "lines": 264
+          }
+        ]
+      },
+      "frontend_assets": {
+        "file_count": 10,
+        "line_count": 406,
+        "largest_files": [
+          {
+            "path": "assets/style.css",
+            "lines": 315
+          },
+          {
+            "path": "assets/xlsx.full.min.js",
+            "lines": 22
+          },
+          {
+            "path": "assets/html2canvas.min.js",
+            "lines": 20
+          },
+          {
+            "path": "assets/chart.min.js",
+            "lines": 14
+          },
+          {
+            "path": "assets/fontawesome.min.css",
+            "lines": 9
+          }
+        ]
+      },
+      "backend_config": {
+        "file_count": 2,
+        "line_count": 154,
+        "largest_files": [
+          {
+            "path": "config/auth_helper.php",
+            "lines": 92
+          },
+          {
+            "path": "config/database.php",
+            "lines": 62
+          }
+        ]
+      },
+      "documentation": {
+        "file_count": 10,
+        "line_count": 2004,
+        "largest_files": [
+          {
+            "path": "docs/generated/CHARACTER_AUDIT.json",
+            "lines": 732
+          },
+          {
+            "path": "docs/blast-radius.md",
+            "lines": 258
+          },
+          {
+            "path": "docs/io-dependency.md",
+            "lines": 228
+          },
+          {
+            "path": "docs/function-map.md",
+            "lines": 181
+          },
+          {
+            "path": "docs/python-bot.md",
+            "lines": 164
+          }
+        ]
+      },
+      "database_sql": {
+        "file_count": 2,
+        "line_count": 280,
+        "largest_files": [
+          {
+            "path": "sql/setup_fresh.sql",
+            "lines": 199
+          },
+          {
+            "path": "sql/migration_v2_scale100.sql",
+            "lines": 81
+          }
+        ]
+      },
+      "operations_tools": {
+        "file_count": 5,
+        "line_count": 2327,
+        "largest_files": [
+          {
+            "path": "tools/setup.php",
+            "lines": 948
+          },
+          {
+            "path": "tools/smoke.php",
+            "lines": 450
+          },
+          {
+            "path": "tools/migrate_photos.php",
+            "lines": 442
+          },
+          {
+            "path": "tools/migration_wizard.php",
+            "lines": 342
+          },
+          {
+            "path": "tools/run_migration_v2.php",
+            "lines": 145
+          }
+        ]
+      },
+      "frontend_app": {
+        "file_count": 4,
+        "line_count": 2403,
+        "largest_files": [
+          {
+            "path": "assets/app/form.js",
+            "lines": 1636
+          },
+          {
+            "path": "assets/app/auth.js",
+            "lines": 395
+          },
+          {
+            "path": "assets/app/admin.js",
+            "lines": 239
+          },
+          {
+            "path": "assets/app/api.js",
+            "lines": 133
+          }
+        ]
+      }
+    }
+  },
+  "runtime_entrypoints": [
+    "index.php",
+    "api/*.php",
+    "assets/app/*.js",
+    "config/database.php",
+    "tools/setup.php"
+  ],
+  "api_actions": {
+    "api/admin.php": [
+      "changePassword",
+      "logs",
+      "photoProgress",
+      "stats",
+      "verifyAdmin"
+    ],
+    "api/auth.php": [
+      "changePassword",
+      "checkTakeover",
+      "forceLogin",
+      "login",
+      "logout",
+      "takeoverDecision",
+      "takeoverStatus",
+      "validate"
+    ],
+    "api/auth_ASUSVIVO_May-26-130322-2026_Conflict.php": [
+      "changePassword",
+      "checkTakeover",
+      "forceLogin",
+      "login",
+      "logout",
+      "takeoverDecision",
+      "takeoverStatus",
+      "validate"
+    ],
+    "api/config.php": [
+      "get",
+      "save"
+    ],
+    "api/conversions.php": [
+      "delete",
+      "list",
+      "save"
+    ],
+    "api/history.php": [
+      "admin",
+      "paged"
+    ],
+    "api/history_ASUSVIVO_May-26-130325-2026_Conflict.php": [
+      "admin",
+      "paged"
+    ],
+    "api/init.php": [],
+    "api/materials.php": [
+      "delete",
+      "list",
+      "saveList",
+      "update"
+    ],
+    "api/migration_api.php": [
+      "photo_batch",
+      "photo_retry",
+      "photo_stats",
+      "progress",
+      "reset_progress",
+      "run_import",
+      "run_setup_photos",
+      "upload"
+    ],
+    "api/photos.php": [],
+    "api/settings.php": [],
+    "api/transactions.php": [
+      "delete",
+      "diff",
+      "finalize",
+      "previousStock",
+      "revise",
+      "submit"
+    ],
+    "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php": [
+      "delete",
+      "diff",
+      "finalize",
+      "previousStock",
+      "revise",
+      "submit"
+    ]
+  },
+  "key_file_snippets": {
+    "index.php": "<!DOCTYPE html>\n<html lang=\"id\" data-theme=\"light\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0\">\n    <title>Production Report Pro</title>\n\n    <link rel=\"icon\" href=\"https://raw.githubusercontent.com/KANAN-lab/WFG-DAM/refs/heads/main/DAM%20LOGO.ico\">\n\n    <!-- Library CSS (lokal - tidak ada CDN, app jalan di LAN) -->\n    <link href=\"assets/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"assets/fontawesome.min.css\" rel=\"stylesheet\">\n    <link href=\"assets/animate.min.css\" rel=\"stylesheet\">\n\n    <!-- App CSS (termasuk @font-face Inter lokal) -->\n    <link href=\"assets/style.css?v=<?=time()?>\" rel=\"stylesheet\">\n</head>\n<body>\n\n    <!-- -- Animated background (login only) ---------------------------------- -->\n    <div class=\"gooey-bg\" id=\"globalBackground\">\n        <div class=\"blob blob-1\"></div>\n        <div class=\"blob blob-2\"></div>\n        <div class=\"blob blob-3\"></div>\n    </div>\n\n    <!-- -- Login wrapper ------------------------------------------------------ -->\n    <div id=\"login-wrapper\">\n        <div class=\"card card-custom border-0 shadow-lg\" style=\"max-width:400px;width:"
+  },
+  "top_files": [
+    {
+      "path": "assets/app/form.js",
+      "lines": 1636,
+      "bucket": "frontend_app"
+    },
+    {
+      "path": "python_bot/setup.php",
+      "lines": 969,
+      "bucket": "other"
+    },
+    {
+      "path": "python_bot/setup_ASUSVIVO_May-26-130308-2026_Conflict.php",
+      "lines": 959,
+      "bucket": "other"
+    },
+    {
+      "path": "tools/setup.php",
+      "lines": 948,
+      "bucket": "operations_tools"
+    },
+    {
+      "path": "python_bot/langgraph_trace_center.py",
+      "lines": 767,
+      "bucket": "other"
+    },
+    {
+      "path": "docs/generated/CHARACTER_AUDIT.json",
+      "lines": 732,
+      "bucket": "documentation"
+    },
+    {
+      "path": "index.php",
+      "lines": 728,
+      "bucket": "root_runtime"
+    },
+    {
+      "path": "index_ASUSVIVO_May-26-130321-2026_Conflict.php",
+      "lines": 695,
+      "bucket": "other"
+    },
+    {
+      "path": "python_bot/langgraph_function_db_map.py",
+      "lines": 610,
+      "bucket": "other"
+    },
+    {
+      "path": "api/transactions_ASUSVIVO_May-26-130326-2026_Conflict.php",
+      "lines": 579,
+      "bucket": "backend_api"
+    },
+    {
+      "path": "api/auth.php",
+      "lines": 561,
+      "bucket": "backend_api"
+    },
+    {
+      "path": "api/transactions.php",
+      "lines": 559,
+      "bucket": "backend_api"
+    },
+    {
+      "path": "python_bot/langgraph_dynamic_audit.py",
+      "lines": 535,
+      "bucket": "other"
+    },
+    {
+      "path": "import_excel.py",
+      "lines": 512,
+      "bucket": "other"
+    },
+    {
+      "path": "python_bot/import_excel.py",
+      "lines": 512,
+      "bucket": "other"
+    }
+  ],
+  "observations": [
+    "Repo menggabungkan aplikasi PHP runtime, dokumen migrasi, aset legacy GAS, SQL schema/migration, dan seed/testing scripts.",
+    "Lapisan runtime utama berada di index.php, api/, config/, dan assets/app/.",
+    "Lapisan referensi migrasi masih penting karena Kode.gs dan file HTML GAS dipakai sebagai sumber kebenaran historis.",
+    "GitNexus sudah menyediakan graph + embeddings lokal; LangGraph di sini dipakai sebagai orchestrator mapping agar output bisa dijalankan ulang."
+  ]
+}
